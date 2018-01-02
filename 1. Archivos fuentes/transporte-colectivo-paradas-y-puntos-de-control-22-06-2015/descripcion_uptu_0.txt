@@ -1,0 +1,46 @@
+Descripción del shape v_uptu_paradas
+Autor:  IM - UPTU
+Descripcion: Ubicaciones de paradas de ómnibus
+ 
+Cod_ubic_p    Código de la ubicación de parada
+Cod_varian    Código de la variante de línea de ómnibus (refiere v_uptu_lsv)
+Ordinal       Número correlativo de la parada en el trayecto de la variante
+Calle         Nombre de la calle sobre la que se ubica la parada
+Cod_calle1    Código de la Calle según nomenclator oficial de Montevideo
+Esquina       Nombre de la esquina más próxima 
+Cod_calle1    Código de la Esquina según nomenclator oficial de Montevideo
+X             Coordenada X de la ubicación (SIRGAS2000 UTM 21s)
+Y             Coordenada Y de la ubicación (SIRGAS2000 UTM 21s)
+
+
+Descripción del shape v_uptu_controles
+Autor:  IM - UPTU
+Descripcion: Ubicaciones de puntos de control
+ 
+Cod_ubic_c    Código de la ubicación de control
+Cod_varian    Código de la variante de línea de ómnibus (refiere v_uptu_lsv)
+Ordinal       Número correlativo del punto de control en el trayecto de la variante
+Calle         Nombre de la calle sobre la que se ubica la parada
+Cod_calle1    Código de la Calle según nomenclator oficial de Montevideo
+Esquina       Nombre de la esquina más próxima 
+Cod_calle1    Código de la Esquina según nomenclator oficial de Montevideo
+X             Coordenada X de la ubicación (SIRGAS2000 UTM 21s)
+Y             Coordenada Y de la ubicación (SIRGAS2000 UTM 21s)
+
+
+Descripción del shape v_uptu_lsv
+Autor:  IM - UPTU
+Descripcion: Recorridos de las líneas de ómnibus
+ 
+Gid         Código identificador de uso interno
+Cod_linea   Código de la línea de transporte
+Desc_linea  Descripción de la línea de transporte (ej: 145, D10, etc)
+Ordinal_su  Número correlativo de la sublinea en la línea
+Cod_sublin  Código de la sublínea de recorrido
+Desc_subli  Descripción de la sublínea de recorrido (ej: ADUANA-PORTONES)
+Cod_varian  Código de la variante de recorrido (para vincular con v_uptu_parada)
+Desc_varia  Descripción de la variante (Se asigna sentido A, a todas las líneas que circulan 
+            con destino hacia la zona sur del departamento (Ciudad Vieja, Centro, Cordón, 
+            P. Rodó, P. Carretas, Pocitos, Buceo, Malvín), además de todas las líneas 
+            que atraviesan esta zona en sentido Oeste-Este.
+            Se asigna sentido B, a todas las líneas en sentido contrario al antes mencionado.

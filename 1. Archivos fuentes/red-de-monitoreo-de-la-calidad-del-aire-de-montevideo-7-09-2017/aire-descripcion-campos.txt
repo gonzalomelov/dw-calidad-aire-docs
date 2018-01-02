@@ -1,0 +1,29 @@
+Descripción de campos de los archivos históricos 
+------------------------------------------------
+FEED_ID:    Referencia del dato UYMVD_YYYY_M_D_H, donde YYYY es el año con cuatro cifras, M es el Mes, D es el día del mes, y H es Hora del dia.
+METHOD_ID:    Identifica el método con el cual se midió el Parametro. Los métodos se describen en el archivo metodos.csv
+POLLUTANT_AVERAGING:  Período de toma de muestra en horas
+POLLUTANT_ID:   Identificación de contaminante. Estos identificadores se describen en el archivo contaminantes.csv
+POLLUTANT_UNIT:   Unidades en que está expresado el contaminante
+DATE:     Fecha y hora que fue tomado el dato
+POLLUTANT_VALUE:  Valor del parámetro 
+STATION_ID:   Denominación de la zona que caracteriza la estación.
+X:      Localización. Coordenada X de la estación, (UTM Sirgas S21)
+Y:      Localización. Coordenada Y de la estación, (UTM Sirgas S21)
+ID_ESTACIONES:    Identificación de la estación según consta en el archivo estaciones.csv
+    
+
+Mas informacion
+---------------       
+Estaciones automáticas que tienen datos horarios.
+CV_pm2.csv  Ciudad vieja PM2.5  2015
+CV_pm10.csv Ciudad vieja PM10 2014
+TRC_NO2.csv Tres Cruces NO2   2015
+TRC_pm10.csv  Tres Cruces PM10  2014-2015
+
+Estaciones manuales que tienen datos cada 24/48 horas
+hn.csv    Humo Negro        2004-2015
+PM2.csv   Material particulado PM2,5 manual 2007-2013 
+PM10.csv  Material particulado PM10 manual  2007-2015
+pts.csv   Particulado total     2004-2015
+soman.csv SO2 manual        2012-2015
