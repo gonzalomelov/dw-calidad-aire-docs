@@ -25,3 +25,26 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+
+# Office Temp
+
+*.tmp
+
+# Word temporary
+~$*.doc*
+
+# Excel temporary
+~$*.xls*
+
+# Excel Backup File
+*.xlk
+
+# PowerPoint temporary
+~$*.ppt*
+
+# Visio autosave temporary files
+*.~vsd*
+
+# LibreOffice locks
+.~lock.*#
