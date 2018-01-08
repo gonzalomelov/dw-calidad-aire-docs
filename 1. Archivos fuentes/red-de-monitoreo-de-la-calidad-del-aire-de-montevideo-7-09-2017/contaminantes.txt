@@ -1,0 +1,8 @@
+Contaminante;subtipo;tipo
+particulado (PM2);Material particulado;Contaminante secundario
+particulado (PM10);Material particulado;Contaminante secundario	
+particulado (PTS);Particulado total;Contaminante primario	
+dióxido de azufre (SO2);Compuestos de Azufre (S);Contaminante primario
+dióxido de nitrógeno (NO2);Compuestos de Nitrogeno (N);Contaminante secundario
+Humo Negro (HN);Humo;Contaminante primario
+Ozono (O3);Compuesto gaseoso (NO2+compuestos orgánicos volátiles(COV));Contaminante secundario
