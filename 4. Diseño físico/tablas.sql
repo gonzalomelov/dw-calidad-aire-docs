@@ -148,6 +148,7 @@ CREATE TABLE mediciones
 , polucion INT
 , PRIMARY KEY (idEstacion, idMetodo, idContaminante, idLinea, idFecha)
 )
+;CREATE INDEX idx_mediciones_pk ON mediciones(idEstacion, idMetodo, idContaminante, idLinea, idFecha)
 ;CREATE INDEX idx_mediciones_idEstacion ON mediciones(idEstacion)
 ;CREATE INDEX idx_mediciones_idMetodo ON mediciones(idMetodo)
 ;CREATE INDEX idx_mediciones_idContaminante ON mediciones(idContaminante)
@@ -169,6 +170,7 @@ CREATE TABLE afectados
 , polucion INT
 , PRIMARY KEY (idHogar, idBarrio, idContaminante, idFecha)
 )
+;CREATE INDEX idx_afectados_pk ON afectados(idHogar, idBarrio, idContaminante, idFecha)
 ;CREATE INDEX idx_afectados_idHogar ON afectados(idHogar)
 ;CREATE INDEX idx_afectados_idBarrio ON afectados(idBarrio)
 ;CREATE INDEX idx_afectados_idContaminante ON afectados(idContaminante)
