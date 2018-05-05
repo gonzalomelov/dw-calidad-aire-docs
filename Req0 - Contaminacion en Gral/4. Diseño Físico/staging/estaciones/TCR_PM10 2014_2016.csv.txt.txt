@@ -1,0 +1,2 @@
+station_id;X;Y;ID_estacion
+UYMVD_E5;576214;6138342;Tres Cruces 2                 

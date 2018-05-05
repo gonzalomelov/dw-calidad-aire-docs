@@ -1,0 +1,62 @@
+1;Ciudad Vieja;1;CCZ1
+2;Centro;1;CCZ1
+3;Barrio Sur;1;CCZ1
+4;Cordón;2;CCZ2
+5;Palermo;2;CCZ2
+6;Parque Rodó;2;CCZ2
+7;Punta Carretas;5;CCZ5
+8;Pocitos;5;CCZ5
+9;Buceo;5;CCZ5
+10;Parque Batlle; Villa Dolores;4;CCZ4
+11;Malvín;7;CCZ7
+12;Malvín Norte;6;CCZ6
+13;Punta Gorda;7;CCZ7
+14;Carrasco;8;CCZ8
+15;Carrasco Norte;8;CCZ8
+16;Bañados de Carrasco;9;CCZ9
+17;Maroñas, Parque Guaraní;9;CCZ9
+18;Flor de Maroñas;9;CCZ9
+19;Las Canteras;8;CCZ8
+20;Punta de Rieles; Bella Italia;9;CCZ9
+21;Jardines del Hipódromo;9;CCZ9
+22;Ituzaingó;9;CCZ9
+23;Unión;6;CCZ6
+24;Villa Española;9;CCZ9
+25;Mercado Modelo; Bolívar;3;CCZ3
+26;Castro, Pérez Castellanos;11;CCZ11
+27;Cerrito de la Victoria;11;CCZ11
+28;Las Acacias;11;CCZ11
+29;Aires Puros;10;CCZ10
+30;Casavalle;11;CCZ11
+31;Piedras Blancas;9;CCZ9
+32;Manga; Toledo Chico;10;CCZ10
+33;Paso de las Duranas;13;CCZ13
+34;Peñarol, Lavalleja;13;CCZ13
+35;Villa del Cerro;17;CCZ17
+36;Casabó; Pajas Blancas;17;CCZ17
+37;La Paloma; Tomkinson;17;CCZ17
+38;La Teja;14;CCZ14
+39;Prado, Nueva Savona;15;CCZ15
+40;Capurro, Bella Vista, Arroyo Seco;16;CCZ16
+41;Aguada;1;CCZ1
+42;Reducto;3;CCZ3
+43;Atahualpa;15;CCZ15
+44;Jacinto Vera;3;CCZ3
+45;La Figurita;3;CCZ3
+46;Larrañaga;4;CCZ4
+47;La Blanqueada;4;CCZ4
+48;Villa Muñoz, Retiro, Goes;3;CCZ3
+49;La Comercial;2;CCZ2
+50;Tres Cruces;4;CCZ4
+51;Brazo Oriental;3;CCZ3
+52;Sayago;13;CCZ13
+53;Conciliación;13;CCZ13
+54;Belvedere; Paso Molino;13;CCZ13
+55;Nuevo París;13;CCZ13
+56;Tres Ombúes, Pueblo Victoria;14;CCZ14
+57;Paso de la Arena, Santiago Vázquez;18;CCZ18
+58;Colón Sureste, Abayubá;12;CCZ12
+59;Colón Centro y Noroeste;12;CCZ12
+60;Lezica, Melilla;12;CCZ12
+61;Villa García, Manga Rural;9;CCZ9
+62;Manga;9;CCZ9

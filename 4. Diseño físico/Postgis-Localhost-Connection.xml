@@ -1,0 +1,4 @@
+<!DOCTYPE connections>
+<qgsPgConnections version="1.0">
+    <postgis port="5432" saveUsername="true" password="password" savePassword="true" sslmode="1" service="" username="gonzalomelo" host="localhost" database="dwcalidadaire" name="localhost" estimatedMetadata="false"/>
+</qgsPgConnections>

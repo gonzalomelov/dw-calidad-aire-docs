@@ -1,0 +1,52 @@
+tiempo
+1-Copiar el que tengo
+2-Generar a nivel de minutos
+
+camaras
+1-Por cada uno de los archivos autoscope_x_2017.csv
+2-Agrupo por id_detector;id_carril;dsc_avenida;dsc_int_anterior;dsc_int_siguiente;latitud;longitud
+3-Inserto
+
+ubicacionGeog_1 (estaciones)
+1-Ya tengo
+
+contaminantes
+1-Ya tengo
+
+mediciones
+1-PM10 3-5 Tres Cruces 2 -> 2 minutos
+  1-Los que son mayores a 1000 los divido entre 1000
+  2-Tengo que dejarlos cada 5 minutos
+    1.1-Se hace un promedio de los valores dentro del período cada 5 minutos
+      Ejemplo 1 con datos: Para el 0255 se toman los valores entre 0250-0255:
+        AQM60 PM10  2017-03-01 02:48:00 38111
+        AQM60 PM10  2017-03-01 02:50:00 37229 <---
+        AQM60 PM10  2017-03-01 02:52:00 33036 <---
+        AQM60 PM10  2017-03-01 02:54:00 33424 <---
+        AQM60 PM10  2017-03-01 02:56:00 37229
+      -> Se hace un promedio: (37229+33036+33424)/3=34.563
+      Ejemplo 2 con datos: Para el 0100 se toman:
+        AQM60 PM10  2017-03-03 00:53:34 19239
+        AQM60 PM10  2017-03-03 00:55:34 22786 <---
+        AQM60 PM10  2017-03-03 00:57:34 20633 <---
+        AQM60 PM10  2017-03-03 00:59:34 19817 <---
+        AQM60 PM10  2017-03-03 01:01:34 19446
+      -> Se hace un promedio: (22786+20633+19817)/3=21.079
+  3-Tengo
+    AQM60 PM10  2017-03-03 0255 34.563
+    AQM60 PM10  2017-03-03 0100 21.079
+2-Volumen vehícular 3-5 194,195,196,233,234,235,236 -> 5 minutos
+  1-Utilizo sólo id_detector,fecha,hora,volumen,volumenHora
+  2-Tengo
+    1;2017-04-01;00:05;13;156
+3-Los joineo por fecha
+  1-Tengo
+    idEstacion,idContaminante,idDetector,idFechaHora,polucion,volumen
+    51,PM10,1,201704010005,13,34.563
+
+
+#### tengo que joinear las estaciones que se encuentran cerca de las camaras
+
+4-Definir cómo se puede actualizar estos datos
+  -Subir autoscope nuevo
+  -Subir contaminacion nueva

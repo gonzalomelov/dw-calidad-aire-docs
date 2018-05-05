@@ -1,0 +1,11 @@
+station_id;X;Y;ID_estacion
+UYMVD_E1;572452;6137044;Ciudad Vieja 2                
+UYMVD_E2;574318;6137072;Centro                        
+UYMVD_E3;569843;6141519;La Teja 1                     
+UYMVD_E3;570883;6142541;La Teja 2                     
+UYMVD_E4;573289;6142937;Prado                         
+UYMVD_E5;576888;6138953;Tres Cruces                   
+UYMVD_E6;579230;6142255;Curva de Maronas              
+UYMVD_E7;583940;6139695;Portones de Carrasco          
+UYMVD_E8;570970;6149046;Colon 1                       
+UYMVD_E9;574668;6139720;Goes                          

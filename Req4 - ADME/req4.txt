@@ -1,0 +1,18 @@
+tiempo
+1-Ya tengo
+
+ubicacionGeog_1 (estaciones)
+1-Ya tengo
+
+contaminantes
+1-Ya tengo
+
+central batlle
+1-Generar fechas desde 10-2015 al 01-2018
+2-Por cada día generado
+  1-GET http://latorre.adme.com.uy/mmee/postoper/PostOper/ANO/MES/DIA/index.html
+  2-Obtener valor e Central Batlle
+  3-Guardar valor
+
+mediciones
+1-Lo que mida la estación de Palacio por día

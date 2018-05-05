@@ -1,0 +1,2 @@
+station_id;X;Y;ID_estacion
+UYMVD_E1;572452;6137044;Ciudad Vieja 2                

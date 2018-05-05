@@ -1,0 +1,1 @@
+sh '/Users/gonzalomelo/Proyecto\ Apps/pentaho-server/stop-pentaho.sh'
