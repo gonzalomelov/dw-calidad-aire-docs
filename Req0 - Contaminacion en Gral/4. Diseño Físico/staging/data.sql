@@ -28,6 +28,8 @@ INSERT INTO public.ubicaciongeog_1(idestacion, nomestacion, idbarrio, nombarrio,
 INSERT INTO public.ubicaciongeog_1(idestacion, nomestacion, idbarrio, nombarrio, idCCZ, nomCCZ) VALUES (72, 'Portones de Carrasco', 14, 'Carrasco', 8, 'CCZ8');
 INSERT INTO public.ubicaciongeog_1(idestacion, nomestacion, idbarrio, nombarrio, idCCZ, nomCCZ) VALUES (81, 'Colon 1', 59, 'Colón Centro y Noroeste', 12, 'CCZ12');
 INSERT INTO public.ubicaciongeog_1(idestacion, nomestacion, idbarrio, nombarrio, idCCZ, nomCCZ) VALUES (91, 'Goes', 48, 'Villa Muñoz, Retiro, Goes', 3, 'CCZ3');
+INSERT INTO public.ubicaciongeog_1(idestacion, nomestacion, idbarrio, nombarrio, idCCZ, nomCCZ) VALUES (101, 'ANCAP La Teja', 38, 'La Teja', 14, 'CCZ14');
+
 
 -- public.ubicaciongeog_1_Geom
 
@@ -45,6 +47,7 @@ INSERT INTO public.ubicaciongeog_1_Geom(idestacion, nomestacion, idbarrio, nomba
 INSERT INTO public.ubicaciongeog_1_Geom(idestacion, nomestacion, idbarrio, nombarrio, idCCZ, nomCCZ, geom) VALUES (72, 'Portones de Carrasco', 14, 'Carrasco', 8, 'CCZ8', ST_GeomFromText('POINT (583940 6139695)', 32721));
 INSERT INTO public.ubicaciongeog_1_Geom(idestacion, nomestacion, idbarrio, nombarrio, idCCZ, nomCCZ, geom) VALUES (81, 'Colon 1', 59, 'Colón Centro y Noroeste', 12, 'CCZ12', ST_GeomFromText('POINT (570970 6149046)', 32721));
 INSERT INTO public.ubicaciongeog_1_Geom(idestacion, nomestacion, idbarrio, nombarrio, idCCZ, nomCCZ, geom) VALUES (91, 'Goes', 48, 'Villa Muñoz, Retiro, Goes', 3, 'CCZ3', ST_GeomFromText('POINT (574668 6139720)', 32721));
+INSERT INTO public.ubicaciongeog_1_Geom(idestacion, nomestacion, idbarrio, nombarrio, idCCZ, nomCCZ, geom) VALUES (101, 'ANCAP La Teja', 38, 'La Teja', 14, 'CCZ14', ST_GeomFromText('POINT (571121 6141282)',32721));
 
 -- public.ubicaciongeog_2
 
