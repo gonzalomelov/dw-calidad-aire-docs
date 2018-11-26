@@ -7,7 +7,7 @@
       </Level>
       <Level name="Hora" visible="true" table="tiempo" column="hora" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
       </Level>
-      <Level name="Fecha" visible="true" table="tiempo" column="idfechahora" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="fecha">
+      <Level name="Fecha" visible="true" table="tiempo" column="idfechahora" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
       </Level>
     </Hierarchy>
   </Dimension>
@@ -43,7 +43,7 @@
       </Level>
     </Hierarchy>
   </Dimension>
-  <Cube name="Polucion y Volumen Autos" visible="true" cache="true" enabled="true">
+  <Cube name="Polucion y Volumen Autos 2" visible="true" cache="true" enabled="true">
     <Table name="mediciones" schema="public">
     </Table>
     <DimensionUsage source="Tiempo" level="Fecha" name="Tiempo" visible="true" foreignKey="idfechahora" highCardinality="false">
