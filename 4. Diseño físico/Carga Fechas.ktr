@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>Carga Contaminante Con Lineas</name>
+    <name>Carga Fechas</name>
     <description />
     <extended_description />
     <trans_version />
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
     </parameters>
@@ -427,16 +428,16 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2018/02/03 10:09:59.016</created_date>
-    <modified_user>-</modified_user>
-    <modified_date>2018/02/03 10:09:59.016</modified_date>
+    <created_date>2014/06/16 01:33:48.000</created_date>
+    <modified_user>admin</modified_user>
+    <modified_date>2014/07/02 08:05:10.000</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>localhost-dwcalidadaire-req0</name>
+    <name>dwcalidadaire</name>
     <server>localhost</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
@@ -486,50 +487,197 @@
       </attribute>
     </attributes>
   </connection>
+  <connection>
+    <name>dwcalidadaire-final</name>
+    <server>localhost</server>
+    <type>POSTGRESQL</type>
+    <access>Native</access>
+    <database>dwcalidadaire-final</database>
+    <port>5432</port>
+    <username>gonzalomelo</username>
+    <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+    <servername />
+    <data_tablespace />
+    <index_tablespace />
+    <attributes>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_LOWERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>FORCE_IDENTIFIERS_TO_UPPERCASE</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>IS_CLUSTERED</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>PORT_NUMBER</code>
+        <attribute>5432</attribute>
+      </attribute>
+      <attribute>
+        <code>PRESERVE_RESERVED_WORD_CASE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>QUOTE_ALL_FIELDS</code>
+        <attribute>N</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_BOOLEAN_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>SUPPORTS_TIMESTAMP_DATA_TYPE</code>
+        <attribute>Y</attribute>
+      </attribute>
+      <attribute>
+        <code>USE_POOLING</code>
+        <attribute>N</attribute>
+      </attribute>
+    </attributes>
+  </connection>
   <order>
     <hop>
-      <from>Lineas</from>
-      <to>Merge Join 3</to>
+      <from>Generar Fechas</from>
+      <to>Agregar contador de dias</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Lineas Barrios Estaciones</from>
-      <to>Merge Join 3</to>
+      <from>Agregar contador de dias</from>
+      <to>Setear Fecha</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge Join 2</from>
-      <to>Insertar Rangos</to>
+      <from>Setear Fecha</from>
+      <to>Calcular campos</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge Join 3</from>
-      <to>Sort Barrio</to>
+      <from>Calcular campos</from>
+      <to>Calculadora</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort Barrio</from>
-      <to>Merge Join 2</to>
+      <from>Calculadora</from>
+      <to>Calcular otros valores</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort Barrio 2</from>
-      <to>Merge Join 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Mapping (sub-transformation)</from>
-      <to>Sort Barrio 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Calculator</from>
-      <to>Mapping (sub-transformation)</to>
+      <from>Calcular otros valores</from>
+      <to>Actualizar en tabla Fechas</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Calculator</name>
+    <name>Actualizar en tabla Fechas</name>
+    <type>InsertUpdate</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>dwcalidadaire-final</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema />
+      <table>fechas</table>
+      <key>
+        <name>idFecha</name>
+        <field>idFecha</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>idFecha</name>
+        <rename>idFecha</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>fecha</name>
+        <rename>fecha</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>idMes</name>
+        <rename>idMes</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>mes</name>
+        <rename>mes</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>anio</name>
+        <rename>anio</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>trimestre</name>
+        <rename>quarter</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>semestre</name>
+        <rename>half</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>960</xloc>
+      <yloc>192</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Agregar contador de dias</name>
+    <type>Sequence</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <valuename>cant_dias</valuename>
+    <use_database>N</use_database>
+    <connection>dwcalidadaire</connection>
+    <schema />
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name>cant_dias</counter_name>
+    <start_at>0</start_at>
+    <increment_by>1</increment_by>
+    <max_value>10000</max_value>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Calculadora</name>
     <type>Calculator</type>
     <description />
     <distribute>Y</distribute>
@@ -540,12 +688,87 @@
       <schema_name />
     </partitioning>
     <calculation>
-      <field_name>input</field_name>
-      <calc_type>CONSTANT</calc_type>
-      <field_a>nombre</field_a>
+      <field_name>idDiaSemana</field_name>
+      <calc_type>DAY_OF_WEEK</calc_type>
+      <field_a>DimensionDate</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>weekday_in_month_str</field_name>
+      <calc_type>COPY_FIELD</calc_type>
+      <field_a>DimensionDate</field_a>
       <field_b />
       <field_c />
       <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>Y</remove>
+      <conversion_mask>W</conversion_mask>
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>weekday_in_month</field_name>
+      <calc_type>COPY_FIELD</calc_type>
+      <field_a>weekday_in_month_str</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>day</field_name>
+      <calc_type>DAY_OF_MONTH</calc_type>
+      <field_a>DimensionDate</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>year</field_name>
+      <calc_type>YEAR_OF_DATE</calc_type>
+      <field_a>DimensionDate</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>month</field_name>
+      <calc_type>MONTH_OF_DATE</calc_type>
+      <field_a>DimensionDate</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <remove>N</remove>
@@ -562,105 +785,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>288</yloc>
+      <xloc>720</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Insertar Rangos</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>localhost-dwcalidadaire-req0</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema />
-      <table>mediciones</table>
-      <key>
-        <name>idmetodo</name>
-        <field>idMetodo</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>idcontaminante</name>
-        <field>idContaminante</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>idFecha</name>
-        <field>idFecha</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>idEstacion</name>
-        <field>idEstacion</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>idlinea</name>
-        <field>idLinea</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>idMetodo</name>
-        <rename>idmetodo</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>idContaminante</name>
-        <rename>idcontaminante</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>idFecha</name>
-        <rename>idFecha</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>polucion</name>
-        <rename>pollutant_value</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>idEstacion</name>
-        <rename>idEstacion</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>idLinea</name>
-        <rename>idlinea</rename>
-        <update>N</update>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Lineas</name>
-    <type>TableInput</type>
+    <name>Calcular campos</name>
+    <type>Formula</type>
     <description />
     <distribute>N</distribute>
     <custom_distribution />
@@ -669,13 +801,46 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost-dwcalidadaire-req0</connection>
-    <sql>SELECT * FROM lineas order by nomlinea;</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
+    <formula>
+      <field_name>idFecha</field_name>
+      <formula_string>INT(Year([DimensionDate])*10000) + INT(Month([DimensionDate])*100) + int(day([DimensionDate]))</formula_string>
+      <value_type>Number</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <formula>
+      <field_name>fecha</field_name>
+      <formula_string>TEXT(day([DimensionDate])) &amp; "-" &amp; TEXT(month([DimensionDate])) &amp; "-" &amp; TEXT(year([DimensionDate]))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <formula>
+      <field_name>idMes</field_name>
+      <formula_string>INT(Year([DimensionDate])*100) + INT(Month([DimensionDate]))</formula_string>
+      <value_type>Number</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <formula>
+      <field_name>mes</field_name>
+      <formula_string>TEXT(month([DimensionDate])) &amp; "-" &amp; TEXT(year([DimensionDate]))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <formula>
+      <field_name>anio</field_name>
+      <formula_string>year([DimensionDate])</formula_string>
+      <value_type>Number</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -684,14 +849,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>176</xloc>
-      <yloc>112</yloc>
+      <xloc>592</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Lineas Barrios Estaciones</name>
-    <type>TableInput</type>
+    <name>Calcular otros valores</name>
+    <type>ScriptValueMod</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -700,180 +865,140 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost-dwcalidadaire-req0</connection>
-    <sql>SELECT * FROM "lineas-barrios-estaciones" order by desc_linea;</sql>
-    <limit>0</limit>
-    <lookup />
-    <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
-    <lazy_conversion_active>N</lazy_conversion_active>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Mapping (sub-transformation)</name>
-    <type>Mapping</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <specification_method>filename</specification_method>
-    <trans_object_id />
-    <trans_name />
-    <filename>file:///Users/gonzalomelo/Kona/proy-grad/Proyecto Calidad del Aire/Req0 - Contaminacion en Gral/4. Diseño Físico/Carga Contaminante.ktr</filename>
-    <directory_path />
-    <mappings>
-      <input>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>Y</rename_on_output>
-          <description />
-          <connector>
-            <parent>input</parent>
-            <child>gonzalo</child>
-          </connector>
-        </mapping>
-      </input>
-      <output>
-        <mapping>
-          <input_step />
-          <output_step />
-          <main_path>Y</main_path>
-          <rename_on_output>N</rename_on_output>
-          <description />
-          <connector>
-            <parent>idbarrio</parent>
-            <child />
-          </connector>
-        </mapping>
-      </output>
-      <parameters>
-        <inherit_all_vars>Y</inherit_all_vars>
-      </parameters>
-    </mappings>
-    <allow_multiple_input>Y</allow_multiple_input>
-    <allow_multiple_output>Y</allow_multiple_output>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>288</xloc>
-      <yloc>288</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Merge Join 2</name>
-    <type>MergeJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <join_type>INNER</join_type>
-    <step1>Sort Barrio</step1>
-    <step2>Sort Barrio 2</step2>
-    <keys_1>
-      <key>idbarrio</key>
-    </keys_1>
-    <keys_2>
-      <key>idbarrio</key>
-    </keys_2>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>512</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Merge Join 3</name>
-    <type>MergeJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <join_type>INNER</join_type>
-    <step1>Lineas</step1>
-    <step2>Lineas Barrios Estaciones</step2>
-    <keys_1>
-      <key>nomlinea</key>
-    </keys_1>
-    <keys_2>
-      <key>desc_linea</key>
-    </keys_2>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>304</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort Barrio</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var Calendar = Packages.java.util.Calendar;
+var Locale = Packages.java.util.Locale;
+var SimpleDateFormat = Packages.java.text.SimpleDateFormat;
+
+var spanish = new Locale("es", "ES");
+
+var quarter = Math.floor((month-1) / 3) + 1;
+var half = Math.floor((quarter-1) / 2) + 1;
+
+var cal = Calendar.getInstance();
+cal.set(year, month-1, day);
+var d = cal.getTime()
+
+var day_of_week_short_label_spa = new SimpleDateFormat("E",spanish).format(d);
+var day_of_week_long_label_spa = new SimpleDateFormat("EEEEE",spanish).format(d);
+var month_short_label_spa = new SimpleDateFormat("MMM",spanish).format(d);
+var month_long_label_spa = new SimpleDateFormat("MMMMM",spanish).format(d);
+
+var is_weekend = (idDiaSemana == Calendar.SUNDAY || idDiaSemana == Calendar.SATURDAY)?1:0;
+
+var date = new Date(year, month-1, day);
+
+var a0 = new Date(year - 1, 12-1, 22);
+var a = new Date(year, 3-1, 22);
+var b = new Date(year, 6-1, 22);
+var c = new Date(year, 09-1, 22);
+var d = new Date(year, 12-1, 22);
+var d1 = new Date(year + 1, 3-1, 22);
+
+var seasons = ['verano', 'otono', 'invierno', 'primavera'];
+
+var season, seasonName;
+
+if (a0 &lt;= date &amp;&amp; date &lt; a) {
+    season = 1;
+} else if (a &lt;= date &amp;&amp; date &lt; b) {
+    season = 2;
+} else if (b &lt;= date &amp;&amp; date &lt; c) {
+    season = 3;
+} else if (c &lt;= date &amp;&amp; date &lt; d) {
+    season = 4;
+} else if (d &lt;= date &amp;&amp; date &lt; d1) {
+    season = 1;
+}
+
+seasonName = seasons[season-1];</jsScript_script>
+      </jsScript>
+    </jsScripts>
     <fields>
       <field>
-        <name>idbarrio</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+        <name>quarter</name>
+        <rename>quarter</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>quarter_yyyyq</name>
+        <rename>quarter_yyyyq</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>half</name>
+        <rename>half</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>is_weekend</name>
+        <rename>is_weekend</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>day_of_week_short_label_spa</name>
+        <rename>day_of_week_short_label_spa</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>day_of_week_long_label_spa</name>
+        <rename>day_of_week_long_label_spa</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>month_short_label_spa</name>
+        <rename>month_short_label_spa</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>month_long_label_spa</name>
+        <rename>month_long_label_spa</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>season</name>
+        <rename>season</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>seasonName</name>
+        <rename>seasonName</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
       </field>
     </fields>
     <cluster_schema />
@@ -884,14 +1009,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>144</yloc>
+      <xloc>816</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Sort Barrio 2</name>
-    <type>SortRows</type>
+    <name>Generar Fechas</name>
+    <type>RowGenerator</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -900,23 +1025,25 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>idbarrio</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
+        <name>FechaInicial</name>
+        <type>Date</type>
+        <format>yyyy-MM-dd</format>
+        <currency />
+        <decimal />
+        <group />
+        <nullif>1999-01-01</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
       </field>
     </fields>
+    <limit>10000</limit>
+    <never_ending>N</never_ending>
+    <interval_in_ms>5000</interval_in_ms>
+    <row_time_field>now</row_time_field>
+    <last_time_field>FiveSecondsAgo</last_time_field>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -925,8 +1052,40 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>416</xloc>
-      <yloc>288</yloc>
+      <xloc>185</xloc>
+      <yloc>209</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Setear Fecha</name>
+    <type>Formula</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <formula>
+      <field_name>DimensionDate</field_name>
+      <formula_string>date(year([FechaInicial]); month([FechaInicial]); day([FechaInicial]) + [cant_dias])</formula_string>
+      <value_type>Date</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>471</xloc>
+      <yloc>209</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

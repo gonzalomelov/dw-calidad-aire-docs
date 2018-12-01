@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>Carga Tiempo</name>
+    <name>Carga Fechas</name>
     <description />
     <extended_description />
     <trans_version />
@@ -488,11 +488,11 @@
     </attributes>
   </connection>
   <connection>
-    <name>dwcalidadaire-req4</name>
+    <name>dwcalidadaire-final</name>
     <server>localhost</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>dwcalidadaire-req4</database>
+    <database>dwcalidadaire-final</database>
     <port>5432</port>
     <username>gonzalomelo</username>
     <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
@@ -566,12 +566,12 @@
     </hop>
     <hop>
       <from>Calcular otros valores</from>
-      <to>Actualizar en tabla Tiempo</to>
+      <to>Actualizar en tabla Fechas</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Actualizar en tabla Tiempo</name>
+    <name>Actualizar en tabla Fechas</name>
     <type>InsertUpdate</type>
     <description />
     <distribute>Y</distribute>
@@ -581,7 +581,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>dwcalidadaire-req4</connection>
+    <connection>dwcalidadaire-final</connection>
     <commit>100</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
