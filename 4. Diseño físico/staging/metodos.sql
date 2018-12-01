@@ -1,0 +1,10 @@
+INSERT INTO public.metodos(idmetodo, nommetodo) VALUES (1, 'UYMVD_PM2_b');
+INSERT INTO public.metodos(idmetodo, nommetodo) VALUES (2, 'UYMVD_PM2_D');
+INSERT INTO public.metodos(idmetodo, nommetodo) VALUES (3, 'UYMVD_PM10_2');
+INSERT INTO public.metodos(idmetodo, nommetodo) VALUES (4, 'UYMVD_PM10_D');
+INSERT INTO public.metodos(idmetodo, nommetodo) VALUES (5, 'UYMVD_PM10_H');
+INSERT INTO public.metodos(idmetodo, nommetodo) VALUES (6, 'UYMVD_PTS');
+INSERT INTO public.metodos(idmetodo, nommetodo) VALUES (7, 'UYMVD_SO2_T');
+INSERT INTO public.metodos(idmetodo, nommetodo) VALUES (8, 'UYMVD_NO2_2');
+INSERT INTO public.metodos(idmetodo, nommetodo) VALUES (9, 'UYMVD_HN');
+INSERT INTO public.metodos(idmetodo, nommetodo) VALUES (10, 'UYMVD_O3');
