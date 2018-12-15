@@ -1,0 +1,108 @@
+<Schema name="VehiculosContaminacion">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Fechas">
+    <Hierarchy name="Fechas" visible="true" hasAll="true">
+      <Table name="fechas" schema="public">
+      </Table>
+      <Level name="Fecha" visible="true" table="fechas" column="idfecha" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Contaminantes">
+    <Hierarchy name="Contaminantes" visible="true" hasAll="true">
+      <Table name="contaminantes" schema="public">
+      </Table>
+      <Level name="Tipo" visible="true" table="contaminantes" column="idtipo" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomtipo">
+      </Level>
+      <Level name="Subtipo" visible="true" table="contaminantes" column="idsubtipo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomsubtipo">
+      </Level>
+      <Level name="Contaminante" visible="true" table="contaminantes" column="idcontaminante" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomcontaminante">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesMeteorologicas">
+    <Hierarchy name="EstacionesMeteorologicas" visible="true" hasAll="true">
+      <Table name="estacionesmeteorologicas" schema="public">
+      </Table>
+      <Level name="CCZ" visible="true" table="estacionesmeteorologicas" column="idccz" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomccz">
+      </Level>
+      <Level name="Barrio" visible="true" table="estacionesmeteorologicas" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
+      </Level>
+      <Level name="EstacionMeteorologica" visible="true" table="estacionesmeteorologicas" column="idestacionmeteorologica" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestacionmeteorologica">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Camaras">
+    <Hierarchy name="Camaras" visible="true" hasAll="true">
+      <Table name="camaras" schema="public">
+      </Table>
+      <Level name="Camara" visible="true" table="camaras" column="iddetector" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="dscavenida">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="DiasSemana">
+    <Hierarchy name="DiasSemana" visible="true" hasAll="true">
+      <Table name="diassemana" schema="public" alias="">
+      </Table>
+      <Level name="DiaSemana" visible="true" table="diassemana" column="iddiasemana" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomdiasemana">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="EstacionesDelAnio">
+    <Hierarchy name="EstacionesDelAnio" visible="true" hasAll="true">
+      <Table name="estacionesdelanio" schema="public" alias="">
+      </Table>
+      <Level name="EstacionDelAnio" visible="true" table="estacionesdelanio" column="idestaciondelanio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelanio">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="HorasMinutos">
+    <Hierarchy name="HorasMinutos" visible="true" hasAll="true">
+      <Table name="horasminutos" schema="public" alias="">
+      </Table>
+      <Level name="HoraMinuto" visible="true" table="horasminutos" column="idhoraminuto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="horaminuto">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Metodos">
+    <Hierarchy name="Metodos" visible="true" hasAll="true">
+      <Table name="metodos" schema="public" alias="">
+      </Table>
+      <Level name="Metodo" visible="true" table="metodos" column="idmetodo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nommetodo">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="TemperaturaExterna">
+    <Hierarchy name="TemperaturaExterna" visible="true" hasAll="true">
+      <Table name="temperaturaexterna" schema="public" alias="">
+      </Table>
+      <Level name="TemperaturaExterna" visible="true" table="temperaturaexterna" column="valorenc" type="Numeric" uniqueMembers="false" levelType="Regular">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Contaminacion y Volumen Autos Final" visible="true" cache="true" enabled="true">
+    <Table name="mediciones" schema="public">
+    </Table>
+    <DimensionUsage source="Fechas" level="Fecha" name="Fechas" visible="true" foreignKey="idfecha" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Contaminantes" level="Contaminante" name="Contaminantes" visible="true" foreignKey="idcontaminante" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="EstacionesMeteorologicas" level="EstacionMeteorologica" name="EstacionesMeteorologicas" visible="true" foreignKey="idestacionmeteorologica" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Camaras" level="Camara" name="Camaras" visible="true" foreignKey="iddetector" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="DiasSemana" level="DiaSemana" name="DiasSemana" visible="true" foreignKey="iddiasemana">
+    </DimensionUsage>
+    <DimensionUsage source="EstacionesDelAnio" level="EstacionDelAnio" name="EstacionesDelAnio" visible="true" foreignKey="idestaciondelanio">
+    </DimensionUsage>
+    <DimensionUsage source="HorasMinutos" level="HoraMinuto" name="HorasMinutos" visible="true" foreignKey="idhoraminuto">
+    </DimensionUsage>
+    <DimensionUsage source="Metodos" level="Metodo" name="Metodos" visible="true" foreignKey="idmetodo">
+    </DimensionUsage>
+    <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenc">
+    </DimensionUsage>
+    <Measure name="Contaminacion Promedio" column="polucion" datatype="Numeric" aggregator="avg" visible="true">
+    </Measure>
+    <Measure name="Volumen Vehicular Promedio" column="volumenvehiculos" datatype="Numeric" aggregator="avg" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
