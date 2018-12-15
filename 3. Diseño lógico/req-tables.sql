@@ -203,7 +203,7 @@ CREATE TABLE mediciones
 --, valorEnGrados INT REFERENCES vientoDireccion
 --, valorEnM_s INT REFERENCES vientoVelocidad
 , idDetector INT REFERENCES camaras
-, polucion REAL
+, contaminacion REAL
 , volumenVehiculos INT
 , PRIMARY KEY (
     idHoraMinuto

@@ -1,4 +1,4 @@
-<Schema name="Polucion Y Generacion Termica">
+<Schema name="Contaminacion Y Generacion Termica">
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Tiempo">
     <Hierarchy name="Fecha_Mes_Trimestre_Semestre_Anio" visible="true" hasAll="true">
       <Table name="tiempo" schema="public">
@@ -71,7 +71,7 @@
       </Level>
     </Hierarchy>
   </Dimension>
-  <Cube name="Polucion Y Generacion Termica" visible="true" cache="true" enabled="true">
+  <Cube name="Contaminacion Y Generacion Termica" visible="true" cache="true" enabled="true">
     <Table name="mediciones" schema="public">
     </Table>
     <DimensionUsage source="Tiempo" level="Fecha" name="Tiempo" visible="true" foreignKey="idfecha" highCardinality="false">
@@ -84,7 +84,7 @@
     </DimensionUsage>
     <DimensionUsage source="Generadores" level="Generador" name="Generadores" visible="true" foreignKey="idgenerador" highCardinality="false">
     </DimensionUsage>
-    <Measure name="Polucion" column="polucion" datatype="Integer" aggregator="avg" visible="true">
+    <Measure name="Contaminacion" column="contaminacion" datatype="Integer" aggregator="avg" visible="true">
     </Measure>
     <Measure name="Generacion T&#233;rmica" column="energiagenerada" datatype="Numeric" aggregator="avg" visible="true">
     </Measure>

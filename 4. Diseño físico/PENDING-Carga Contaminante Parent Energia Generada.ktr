@@ -582,7 +582,7 @@
         <update>N</update>
       </value>
       <value>
-        <name>polucion</name>
+        <name>contaminacion</name>
         <rename>pollutant_value</rename>
         <update>Y</update>
       </value>

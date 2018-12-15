@@ -1,4 +1,4 @@
-<Schema name="Polucion">
+<Schema name="Contaminacion">
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Tiempo">
     <Hierarchy name="Fecha_Mes_Trimestre_Semestre_Anio" visible="true" hasAll="true">
       <Table name="tiempo" schema="public">
@@ -71,7 +71,7 @@
       </Level>
     </Hierarchy>
   </Dimension>
-  <Cube name="Polucion" visible="true" cache="true" enabled="true">
+  <Cube name="Contaminacion" visible="true" cache="true" enabled="true">
     <Table name="mediciones" schema="public">
     </Table>
     <DimensionUsage source="Tiempo" level="Fecha" name="Tiempo" visible="true" foreignKey="idfecha" highCardinality="false">
@@ -84,7 +84,7 @@
     </DimensionUsage>
     <DimensionUsage source="Lineas" level="Linea" name="Lineas" visible="true" foreignKey="idlinea" highCardinality="false">
     </DimensionUsage>
-    <Measure name="Polucion" column="polucion" datatype="Integer" aggregator="avg" visible="true">
+    <Measure name="Contaminacion" column="contaminacion" datatype="Integer" aggregator="avg" visible="true">
     </Measure>
   </Cube>
 </Schema>

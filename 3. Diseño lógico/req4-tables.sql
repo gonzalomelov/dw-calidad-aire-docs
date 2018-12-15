@@ -60,7 +60,7 @@ CREATE TABLE mediciones
 , idMetodo INT REFERENCES metodos
 , idGenerador INT REFERENCES generadores
 , idFecha BIGINT REFERENCES tiempo
-, polucion INT
+, contaminacion INT
 , energiagenerada REAL
 , PRIMARY KEY (idEstacion, idContaminante, idGenerador, idFecha)
 )

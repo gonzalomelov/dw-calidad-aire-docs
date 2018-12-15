@@ -156,7 +156,7 @@ CREATE TABLE mediciones
 , idContaminante INT REFERENCES contaminantes
 , idLinea INT REFERENCES lineas
 , idFecha INT REFERENCES tiempo
-, polucion INT
+, contaminacion INT
 , PRIMARY KEY (idEstacion, idMetodo, idContaminante, idLinea, idFecha)
 )
 ;CREATE INDEX idx_mediciones_pk ON mediciones(idEstacion, idMetodo, idContaminante, idLinea, idFecha)
@@ -213,7 +213,7 @@ CREATE TABLE afectados
 , cantPersonas<14 INT
 , cantMujeres INT
 , cantHombres INT
-, polucion INT
+, contaminacion INT
 , PRIMARY KEY (idHogar, idBarrio, idContaminante, idFecha)
 )
 ;CREATE INDEX idx_afectados_pk ON afectados(idHogar, idBarrio, idContaminante, idFecha)

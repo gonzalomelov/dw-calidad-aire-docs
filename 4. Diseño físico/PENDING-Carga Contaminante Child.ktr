@@ -519,7 +519,7 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Traer polucion de CSV</from>
+      <from>Traer contaminacion de CSV</from>
       <to>Filter rows</to>
       <enabled>Y</enabled>
     </hop>
@@ -570,12 +570,12 @@
     </hop>
     <hop>
       <from>Mapping input specification</from>
-      <to>Traer polucion de CSV</to>
+      <to>Traer contaminacion de CSV</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Generate Rows</from>
-      <to>Traer polucion de CSV</to>
+      <to>Traer contaminacion de CSV</to>
       <enabled>N</enabled>
     </hop>
     <hop>
@@ -1297,7 +1297,7 @@
     </GUI>
   </step>
   <step>
-    <name>Traer polucion de CSV</name>
+    <name>Traer contaminacion de CSV</name>
     <type>CsvInput</type>
     <description />
     <distribute>Y</distribute>

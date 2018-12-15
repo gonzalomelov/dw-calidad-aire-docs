@@ -100,7 +100,7 @@
     </DimensionUsage>
     <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenc">
     </DimensionUsage>
-    <Measure name="Contaminacion Promedio" column="polucion" datatype="Numeric" aggregator="avg" visible="true">
+    <Measure name="Contaminacion Promedio" column="contaminacion" datatype="Numeric" aggregator="avg" visible="true">
     </Measure>
     <Measure name="Volumen Vehicular Promedio" column="volumenvehiculos" datatype="Numeric" aggregator="avg" visible="true">
     </Measure>

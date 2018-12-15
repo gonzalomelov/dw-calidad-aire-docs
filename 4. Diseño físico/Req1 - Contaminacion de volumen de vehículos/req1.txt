@@ -41,7 +41,7 @@ mediciones
     1;2017-04-01;00:05;13;156
 3-Los joineo por fecha
   1-Tengo
-    idEstacion,idContaminante,idDetector,idFechaHora,polucion,volumen
+    idEstacion,idContaminante,idDetector,idFechaHora,contaminacion,volumen
     51,PM10,1,201704010005,13,34.563
 
 

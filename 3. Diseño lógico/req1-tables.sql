@@ -60,7 +60,7 @@ CREATE TABLE mediciones
 , idContaminante INT REFERENCES contaminantes
 , idDetector INT REFERENCES camaras
 , idFechaHora BIGINT REFERENCES tiempo
-, polucion INT
+, contaminacion INT
 , volumen INT
 -- , volumenHora INT
 , PRIMARY KEY (idEstacion, idContaminante, idDetector, idFechaHora)

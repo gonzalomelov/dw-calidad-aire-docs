@@ -447,13 +447,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Traer polucion de CSV</from>
+      <from>Traer contaminacion de CSV</from>
       <to>Selecciono info de estaciones</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Get Variables</from>
-      <to>Traer polucion de CSV</to>
+      <to>Traer contaminacion de CSV</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -581,7 +581,7 @@
     </GUI>
   </step>
   <step>
-    <name>Traer polucion de CSV</name>
+    <name>Traer contaminacion de CSV</name>
     <type>CsvInput</type>
     <description />
     <distribute>Y</distribute>

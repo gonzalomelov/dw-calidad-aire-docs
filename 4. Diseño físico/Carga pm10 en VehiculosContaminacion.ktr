@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>Carga pm10 en VehiculosPolucion</name>
+    <name>Carga pm10 en VehiculosContaminacion</name>
     <description />
     <extended_description />
     <trans_version />
@@ -1517,8 +1517,8 @@ seasonName = seasons[season-1];</jsScript_script>
         <name2 />
       </key>
       <key>
-        <name>polucion</name>
-        <field>polucion</field>
+        <name>contaminacion</name>
+        <field>contaminacion</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -1574,8 +1574,8 @@ seasonName = seasons[season-1];</jsScript_script>
         <update>N</update>
       </value>
       <value>
-        <name>polucion</name>
-        <rename>polucion</rename>
+        <name>contaminacion</name>
+        <rename>contaminacion</rename>
         <update>Y</update>
       </value>
       <value>
@@ -2461,7 +2461,7 @@ fecha2 = [fecha2.getFullYear(),
       </field>
       <field>
         <name>valor_v</name>
-        <rename>polucion</rename>
+        <rename>contaminacion</rename>
       </field>
       <field>
         <name>volumen</name>
