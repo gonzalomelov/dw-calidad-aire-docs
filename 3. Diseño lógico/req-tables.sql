@@ -16,7 +16,7 @@ DROP TABLE estacionesMeteorologicas;
 DROP TABLE fechas;
 DROP TABLE diasSemana;
 DROP TABLE estacionesDelAnio;
-DROP TABLE horasMinutos;
+DROP TABLE horas;
 
 DELETE FROM mediciones;
 
@@ -33,17 +33,17 @@ DELETE FROM estacionesMeteorologicas;
 DELETE FROM fechas;
 DELETE FROM diasSemana;
 DELETE FROM estacionesDelAnio;
-DELETE FROM horasMinutos;
+DELETE FROM horas;
 
-CREATE TABLE horasMinutos
+CREATE TABLE horas
 (
-  idHoraMinuto INT
-, horaMinuto VARCHAR(4)
+  idHora INT
+, hora VARCHAR(2)
 , idRangoHoras INT
 , descRangoHoras VARCHAR(10)
-, PRIMARY KEY (idHoraMinuto)
+, PRIMARY KEY (idHora)
 )
-;CREATE INDEX idx_horas_idHoraMinuto ON horasMinutos(idHoraMinuto)
+;CREATE INDEX idx_horas_idHora ON horas(idHora)
 ;
 
 CREATE TABLE estacionesDelAnio
@@ -189,7 +189,7 @@ CREATE TABLE camaras
 
 CREATE TABLE mediciones
 (
-  idHoraMinuto INT REFERENCES horasMinutos
+  idHora INT REFERENCES horas
 , idEstacionDelAnio INT REFERENCES estacionesDelAnio
 , idDiaSemana INT REFERENCES diasSemana
 , idFecha INT REFERENCES fechas
@@ -206,7 +206,7 @@ CREATE TABLE mediciones
 , contaminacion REAL
 , volumenVehiculos INT
 , PRIMARY KEY (
-    idHoraMinuto
+    idHora
     , idEstacionDelAnio
     , idDiaSemana
     , idFecha
@@ -223,7 +223,7 @@ CREATE TABLE mediciones
   )
 )
 ;CREATE INDEX idx_mediciones_pk ON mediciones(
-    idHoraMinuto
+    idHora
     , idEstacionDelAnio
     , idDiaSemana
     , idFecha
@@ -238,7 +238,7 @@ CREATE TABLE mediciones
     -- , valorEnM_s
     , idDetector
   )
-;CREATE INDEX idx_mediciones_idHoraMinuto ON mediciones(idHoraMinuto)
+;CREATE INDEX idx_mediciones_idHora ON mediciones(idHora)
 ;CREATE INDEX idx_mediciones_idEstacionDelAnio ON mediciones(idEstacionDelAnio)
 ;CREATE INDEX idx_mediciones_idDiaSemana ON mediciones(idDiaSemana)
 ;CREATE INDEX idx_mediciones_idFecha ON mediciones(idFecha)
