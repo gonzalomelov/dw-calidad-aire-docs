@@ -1,4 +1,4 @@
-<Schema name="VehiculosContaminacion">
+<Schema name="VehiculosContaminacion3">
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Fechas">
     <Hierarchy name="Fechas" visible="true" hasAll="true">
       <Table name="fechas" schema="public">
@@ -35,47 +35,47 @@
     <Hierarchy name="Camaras" visible="true" hasAll="true">
       <Table name="camaras" schema="public">
       </Table>
-      <Level name="Camara" visible="true" table="camaras" column="iddetector" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="dscavenida">
+      <Level name="Camara" visible="true" table="camaras" column="iddetector" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="dscubicacion">
       </Level>
     </Hierarchy>
   </Dimension>
-  <Dimension type="StandardDimension" visible="true" name="DiasSemana">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="DiasSemana">
     <Hierarchy name="DiasSemana" visible="true" hasAll="true">
-      <Table name="diassemana" schema="public" alias="">
+      <Table name="diassemana" schema="public">
       </Table>
       <Level name="DiaSemana" visible="true" table="diassemana" column="iddiasemana" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomdiasemana">
       </Level>
     </Hierarchy>
   </Dimension>
-  <Dimension type="StandardDimension" visible="true" name="EstacionesDelAnio">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesDelAnio">
     <Hierarchy name="EstacionesDelAnio" visible="true" hasAll="true">
-      <Table name="estacionesdelanio" schema="public" alias="">
+      <Table name="estacionesdelanio" schema="public">
       </Table>
       <Level name="EstacionDelAnio" visible="true" table="estacionesdelanio" column="idestaciondelanio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelanio">
       </Level>
     </Hierarchy>
   </Dimension>
-  <Dimension type="StandardDimension" visible="true" name="HorasMinutos">
-    <Hierarchy name="HorasMinutos" visible="true" hasAll="true">
-      <Table name="horasminutos" schema="public" alias="">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Horas">
+    <Hierarchy name="Horas" visible="true" hasAll="true">
+      <Table name="horas" schema="public">
       </Table>
-      <Level name="HoraMinuto" visible="true" table="horasminutos" column="idhoraminuto" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="horaminuto">
+      <Level name="Hora" visible="true" table="horas" column="idhora" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="hora">
       </Level>
     </Hierarchy>
   </Dimension>
-  <Dimension type="StandardDimension" visible="true" name="Metodos">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Metodos">
     <Hierarchy name="Metodos" visible="true" hasAll="true">
-      <Table name="metodos" schema="public" alias="">
+      <Table name="metodos" schema="public">
       </Table>
       <Level name="Metodo" visible="true" table="metodos" column="idmetodo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nommetodo">
       </Level>
     </Hierarchy>
   </Dimension>
-  <Dimension type="StandardDimension" visible="true" name="TemperaturaExterna">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="TemperaturaExterna">
     <Hierarchy name="TemperaturaExterna" visible="true" hasAll="true">
-      <Table name="temperaturaexterna" schema="public" alias="">
+      <Table name="temperaturaexterna" schema="public">
       </Table>
-      <Level name="TemperaturaExterna" visible="true" table="temperaturaexterna" column="valorenc" type="Numeric" uniqueMembers="false" levelType="Regular">
+      <Level name="TemperaturaExterna" visible="true" table="temperaturaexterna" column="valorenc" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
       </Level>
     </Hierarchy>
   </Dimension>
@@ -90,15 +90,15 @@
     </DimensionUsage>
     <DimensionUsage source="Camaras" level="Camara" name="Camaras" visible="true" foreignKey="iddetector" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="DiasSemana" level="DiaSemana" name="DiasSemana" visible="true" foreignKey="iddiasemana">
+    <DimensionUsage source="DiasSemana" level="DiaSemana" name="DiasSemana" visible="true" foreignKey="iddiasemana" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="EstacionesDelAnio" level="EstacionDelAnio" name="EstacionesDelAnio" visible="true" foreignKey="idestaciondelanio">
+    <DimensionUsage source="EstacionesDelAnio" level="EstacionDelAnio" name="EstacionesDelAnio" visible="true" foreignKey="idestaciondelanio" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="HorasMinutos" level="HoraMinuto" name="HorasMinutos" visible="true" foreignKey="idhoraminuto">
+    <DimensionUsage source="Horas" level="Hora" name="Horas" visible="true" foreignKey="idhora" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="Metodos" level="Metodo" name="Metodos" visible="true" foreignKey="idmetodo">
+    <DimensionUsage source="Metodos" level="Metodo" name="Metodos" visible="true" foreignKey="idmetodo" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenc">
+    <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenc" highCardinality="false">
     </DimensionUsage>
     <Measure name="Contaminacion Promedio" column="contaminacion" datatype="Numeric" aggregator="avg" visible="true">
     </Measure>

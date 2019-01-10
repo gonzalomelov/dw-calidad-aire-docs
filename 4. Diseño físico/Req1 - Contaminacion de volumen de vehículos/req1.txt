@@ -1,6 +1,5 @@
 tiempo
-1-Copiar el que tengo
-2-Generar a nivel de minutos
+1-Ya tengo
 
 camaras
 1-Por cada uno de los archivos autoscope_x_2017.csv
@@ -14,35 +13,79 @@ contaminantes
 1-Ya tengo
 
 mediciones
-1-PM10 3-5 Tres Cruces 2 -> 2 minutos
+OK-1-PM10 Marzo-Mayo Tres Cruces 2 -> 2 minutos
   1-Los que son mayores a 1000 los divido entre 1000
-  2-Tengo que dejarlos cada 5 minutos
-    1.1-Se hace un promedio de los valores dentro del período cada 5 minutos
-      Ejemplo 1 con datos: Para el 0255 se toman los valores entre 0250-0255:
-        AQM60 PM10  2017-03-01 02:48:00 38111
-        AQM60 PM10  2017-03-01 02:50:00 37229 <---
-        AQM60 PM10  2017-03-01 02:52:00 33036 <---
-        AQM60 PM10  2017-03-01 02:54:00 33424 <---
-        AQM60 PM10  2017-03-01 02:56:00 37229
-      -> Se hace un promedio: (37229+33036+33424)/3=34.563
-      Ejemplo 2 con datos: Para el 0100 se toman:
-        AQM60 PM10  2017-03-03 00:53:34 19239
-        AQM60 PM10  2017-03-03 00:55:34 22786 <---
-        AQM60 PM10  2017-03-03 00:57:34 20633 <---
-        AQM60 PM10  2017-03-03 00:59:34 19817 <---
-        AQM60 PM10  2017-03-03 01:01:34 19446
-      -> Se hace un promedio: (22786+20633+19817)/3=21.079
+  2-Tengo que dejarlos cada 1 hora
+    1.1-Se hace un promedio de los valores dentro del período cada 1 hora
+      Ejemplo con datos: Para el 01 se toman los valores en 01:
+        AQM60 PM10  2017-03-01 00:59:19 37,848
+        AQM60 PM10  2017-03-01 01:01:19 37,495  <---
+        AQM60 PM10  2017-03-01 01:03:58 37,436  <---
+        AQM60 PM10  2017-03-01 01:05:58 37,169  <---
+        AQM60 PM10  2017-03-01 01:07:58 36,661  <---
+        AQM60 PM10  2017-03-01 01:09:58 32,283  <---
+        AQM60 PM10  2017-03-01 01:11:58 32,612  <---
+        AQM60 PM10  2017-03-01 01:13:58 30,472  <---
+        AQM60 PM10  2017-03-01 01:15:58 29,437  <---
+        AQM60 PM10  2017-03-01 01:17:58 29,854  <---
+        AQM60 PM10  2017-03-01 01:19:58 30,404  <---
+        AQM60 PM10  2017-03-01 01:21:58 29,333  <---
+        AQM60 PM10  2017-03-01 01:23:58 29,681  <---
+        AQM60 PM10  2017-03-01 01:25:58 27,052  <---
+        AQM60 PM10  2017-03-01 01:27:58 28,912  <---
+        AQM60 PM10  2017-03-01 01:29:58 27,234  <---
+        AQM60 PM10  2017-03-01 01:31:58 26,43  <---
+        AQM60 PM10  2017-03-01 01:33:58 24,939  <---
+        AQM60 PM10  2017-03-01 01:35:58 24,939  <---
+        AQM60 PM10  2017-03-01 01:37:58 25,503  <---
+        AQM60 PM10  2017-03-01 01:39:58 22,471  <---
+        AQM60 PM10  2017-03-01 01:41:58 23,795  <---
+        AQM60 PM10  2017-03-01 01:43:58 21,599  <---
+        AQM60 PM10  2017-03-01 01:45:58 22,746  <---
+        AQM60 PM10  2017-03-01 01:47:58 23,254  <---
+        AQM60 PM10  2017-03-01 01:49:58 24,37  <---
+        AQM60 PM10  2017-03-01 01:51:58 25,466  <---
+        AQM60 PM10  2017-03-01 01:53:58 25,764  <---
+        AQM60 PM10  2017-03-01 01:55:58 25,801  <---
+        AQM60 PM10  2017-03-01 01:57:58 27,703  <---
+        AQM60 PM10  2017-03-01 01:59:58 29,403  <---
+        AQM60 PM10  2017-03-01 02:04:00 56,064
+        -> Se hace un promedio: 850.218/30=28.3406
   3-Tengo
-    AQM60 PM10  2017-03-03 0255 34.563
-    AQM60 PM10  2017-03-03 0100 21.079
-2-Volumen vehícular 3-5 194,195,196,233,234,235,236 -> 5 minutos
+    AQM60 PM10  2017-03-01 01 28.3406
+2-Volumen vehícular Marzo-Mayo 194,195,196,233,234,235,236 -> 5 minutos
   1-Utilizo sólo id_detector,fecha,hora,volumen,volumenHora
+  2-Tengo que dejarlos cada 1 hora
+    1.1-Se hace la sumatoria de los valores dentro del período cada 1 hora
+      Ejemplo con datos: Para el 01 se toman el valor del 02:00 y los 11 anteriores
+        194;2;2017-03-01;00:55:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;6;72
+        194;2;2017-03-01;01:00:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;4;48
+        194;2;2017-03-01;01:05:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;12;144 <---
+        194;2;2017-03-01;01:10:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;6;72 <---
+        194;2;2017-03-01;01:15:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;3;36 <---
+        194;2;2017-03-01;01:20:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;1;12 <---
+        194;2;2017-03-01;01:25:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;6;72 <---
+        194;2;2017-03-01;01:30:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;4;48 <---
+        194;2;2017-03-01;01:35:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;3;36 <---
+        194;2;2017-03-01;01:40:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;4;48 <---
+        194;2;2017-03-01;01:45:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;6;72 <---
+        194;2;2017-03-01;01:50:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;4;48 <---
+        194;2;2017-03-01;01:55:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;5;60 <---
+        194;2;2017-03-01;02:00:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;5;60 <---
+        194;2;2017-03-01;02:05:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;2;24
+        -> Total: 59
+  3-Tengo
+    194;2;2017-03-01;01:00:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;59
+3-Los joineo por ubicación y fecha. TODO: Mergear por distancia entre camara y estación en 90m
+  1-Tengo las estaciones:
+    194, 195, 196 son los de Acevedo Díaz
+    233, 234, 235, 236 son los de Bv Artigas
   2-Tengo
-    1;2017-04-01;00:05;13;156
-3-Los joineo por fecha
-  1-Tengo
+    AQM60 PM10  2017-03-01 01 28.3406
+    194;2;2017-03-01;01:00:00;Acevedo Diaz;Garibaldi;Ferrer Serra;-34.8941520;-56.1674980;59
+
     idEstacion,idContaminante,idDetector,idFechaHora,contaminacion,volumen
-    51,PM10,1,201704010005,13,34.563
+    AQM60,PM10,194,2017030101,28.3406,59
 
 
 #### tengo que joinear las estaciones que se encuentran cerca de las camaras
