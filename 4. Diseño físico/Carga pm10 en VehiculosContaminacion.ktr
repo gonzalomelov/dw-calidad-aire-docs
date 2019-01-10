@@ -509,16 +509,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
-      <to>Append streams</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Append streams</from>
-      <to>Sort id node</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sort id node</from>
       <to>Merge Join 2</to>
       <enabled>Y</enabled>
@@ -554,11 +544,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 2</from>
-      <to>Append streams</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Merge Join 2 2</from>
       <to>Select values 3</to>
       <enabled>Y</enabled>
@@ -571,21 +556,6 @@
     <hop>
       <from>Replace in string 2</from>
       <to>Strings cut</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Strings cut</from>
-      <to>Modified Java Script Value</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Modified Java Script Value</from>
-      <to>Select values 3 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>CSV file input 2</from>
-      <to>Sort id detector</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -604,11 +574,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 3 2 2</from>
-      <to>Concat Fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Replace in string 2 2</from>
       <to>Strings cut 2</to>
       <enabled>Y</enabled>
@@ -616,16 +581,6 @@
     <hop>
       <from>Concat Fields</from>
       <to>Replace in string 2 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Strings cut 2</from>
-      <to>Sort rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows</from>
-      <to>Merge Join 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -684,11 +639,6 @@
       <enabled>N</enabled>
     </hop>
     <hop>
-      <from>Merge Join 6</from>
-      <to>Select Final Values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select Final Values</from>
       <to>Metadata structure of stream</to>
       <enabled>N</enabled>
@@ -714,21 +664,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 3 2</from>
-      <to>Unique rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Unique rows</from>
-      <to>Strings cut 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select Final Values</from>
-      <to>Unique rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Calculadora</from>
       <to>Sort rows 5</to>
       <enabled>Y</enabled>
@@ -749,37 +684,86 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Unique rows 2</from>
-      <to>Insert / Update</to>
+      <from>Strings cut</from>
+      <to>Select values 3 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3 2</from>
+      <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Sorted Merge</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2</from>
+      <to>Sorted Merge</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sorted Merge</from>
+      <to>Sort id node</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by</from>
+      <to>Strings cut 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Merge Join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>CSV file input 2</from>
+      <to>Concat Fields</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3 2 2</from>
+      <to>Group by 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by 2</from>
+      <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Strings cut 2</from>
+      <to>Modified Java Script Value</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified Java Script Value</from>
+      <to>Sort id detector</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 6</from>
+      <to>Sort rows 3 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 3 3</from>
+      <to>Select Final Values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select Final Values</from>
+      <to>Filter rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows 2</from>
+      <to>Insert / Update 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
-  <step>
-    <name>Append streams</name>
-    <type>Append</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <head_name>Select values</head_name>
-    <tail_name>Select values 2</tail_name>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step>
     <name>CSV Contaminante</name>
     <type>CsvInput</type>
@@ -1241,10 +1225,10 @@ seasonName = seasons[season-1];</jsScript_script>
       <field_b>mil</field_b>
       <field_c />
       <value_type>Number</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
+      <value_length>15</value_length>
+      <value_precision>0</value_precision>
       <remove>N</remove>
-      <conversion_mask>#</conversion_mask>
+      <conversion_mask>#######.###</conversion_mask>
       <decimal_symbol>,</decimal_symbol>
       <grouping_symbol />
       <currency_symbol />
@@ -1295,10 +1279,10 @@ seasonName = seasons[season-1];</jsScript_script>
       <field_b>uno</field_b>
       <field_c />
       <value_type>Number</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
+      <value_length>15</value_length>
+      <value_precision>0</value_precision>
       <remove>N</remove>
-      <conversion_mask>#</conversion_mask>
+      <conversion_mask>#######.###</conversion_mask>
       <decimal_symbol>,</decimal_symbol>
       <grouping_symbol />
       <currency_symbol />
@@ -1397,8 +1381,8 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1488</xloc>
-      <yloc>416</yloc>
+      <xloc>1104</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1446,7 +1430,140 @@ seasonName = seasons[season-1];</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Insert / Update</name>
+    <name>Filter rows 2</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Insert / Update 2</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>valorEnCTemperaturaExterna</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2704</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group by</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>idestacionmeteorologica</name>
+      </field>
+      <field>
+        <name>idcontaminante</name>
+      </field>
+      <field>
+        <name>fecha2</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>valor_v</aggregate>
+        <subject>valor_v</subject>
+        <type>AVERAGE</type>
+        <valuefield>valor_v_average</valuefield>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1632</xloc>
+      <yloc>528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Group by 2</name>
+    <type>GroupBy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <all_rows>N</all_rows>
+    <ignore_aggregate>N</ignore_aggregate>
+    <field_ignore />
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>grp</prefix>
+    <add_linenr>N</add_linenr>
+    <linenr_fieldname />
+    <give_back_row>N</give_back_row>
+    <group>
+      <field>
+        <name>id_detector</name>
+      </field>
+      <field>
+        <name>fecha_without_seconds</name>
+      </field>
+    </group>
+    <fields>
+      <field>
+        <aggregate>volumen</aggregate>
+        <subject>volumen</subject>
+        <type>SUM</type>
+        <valuefield>volumen</valuefield>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1488</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Insert / Update 2</name>
     <type>InsertUpdate</type>
     <description />
     <distribute>Y</distribute>
@@ -1458,13 +1575,13 @@ seasonName = seasons[season-1];</jsScript_script>
     </partitioning>
     <connection>localhost-dwcalidadaire-final</connection>
     <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
+    <update_bypassed>Y</update_bypassed>
     <lookup>
       <schema />
       <table>mediciones</table>
       <key>
-        <name>idhoraminuto</name>
-        <field>idhoraminuto</field>
+        <name>idhora</name>
+        <field>idhora</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -1505,8 +1622,8 @@ seasonName = seasons[season-1];</jsScript_script>
         <name2 />
       </key>
       <key>
-        <name>valorenc</name>
-        <field>valorenc</field>
+        <name>valorEnCTemperaturaExterna</name>
+        <field>valorEnCTemperaturaExterna</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -1516,21 +1633,9 @@ seasonName = seasons[season-1];</jsScript_script>
         <condition>=</condition>
         <name2 />
       </key>
-      <key>
-        <name>contaminacion</name>
-        <field>contaminacion</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>volumenvehiculos</name>
-        <field>volumenvehiculos</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
       <value>
-        <name>idhoraminuto</name>
-        <rename>idhoraminuto</rename>
+        <name>idhora</name>
+        <rename>idhora</rename>
         <update>N</update>
       </value>
       <value>
@@ -1564,8 +1669,8 @@ seasonName = seasons[season-1];</jsScript_script>
         <update>N</update>
       </value>
       <value>
-        <name>valorenc</name>
-        <rename>valorenc</rename>
+        <name>valorEnCTemperaturaExterna</name>
+        <rename>valorEnCTemperaturaExterna</rename>
         <update>N</update>
       </value>
       <value>
@@ -1592,8 +1697,8 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2800</xloc>
-      <yloc>480</yloc>
+      <xloc>2816</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2176,64 +2281,72 @@ seasonName = seasons[season-1];</jsScript_script>
       <jsScript>
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//var fecha_without_seconds = "201703011000";
-var minutes = fecha_without_seconds.substring((fecha_without_seconds.length)-2, fecha_without_seconds.length);
-//alert(minutes);
+        <jsScript_script>//Script here
 
-var last = minutes.substring(1, 2);
-//alert(last);
- 
-var a = parseFloat(last);
+var minutes_div_100 = parseInt(minutes, 10) / 100;
+var hour = Math.ceil(minutes_div_100);
+var hour_mod = (hour % 24) * 100;
+var hour_lpad = lpad(hour_mod, '0', 4);
+var fecha_without_seconds = (fecha_without_minutes + hour_lpad).substring(0, 10);
+var fecha_split = fecha.split('-');
+var fecha_date = new Date(fecha_split[0], fecha_split[1]-1, fecha_split[2], hour, 0, 0);
+fecha_date.setHours(fecha_date.getHours() - 1);
 
-if (Math.round(a/10) == 0) {
-  minutes = minutes[0] + "5";
-} else {
-  minutes = minutes[0] + "0";
-}
-//alert(minutes);
+var yyyy = fecha_date.getFullYear();
+var mm = fecha_date.getMonth() &lt; 9 ? "0" + (fecha_date.getMonth() + 1) : (fecha_date.getMonth() + 1); // getMonth() is zero-based
+var dd  = fecha_date.getDate() &lt; 10 ? "0" + fecha_date.getDate() : fecha_date.getDate();
+var hh = fecha_date.getHours() &lt; 10 ? "0" + fecha_date.getHours() : fecha_date.getHours();
 
-var fecha_before = fecha_without_seconds.substring(0, fecha_without_seconds.length-2) + minutes;
-//alert(fecha_before);
+var final = "".concat(yyyy).concat(mm).concat(dd).concat(hh);
 
-var year = parseInt(fecha_before.substring(0, 4));
-//alert(year);
-var month = parseInt(fecha_before.substring(4, 6));
-//alert(month);
-var day = parseInt(fecha_before.substring(6, 8));
-//alert(day);
-var hours = parseInt(fecha_before.substring(8, 10));
-//alert(hours);
-var minutes = parseInt(fecha_before.substring(10, 12));
-//alert(minutes);
-
-var oldDateObj = new Date(year, month-1, day, hours, minutes, 0, 0);
-//alert(oldDateObj);
-
-var fecha2;
-if (Math.round(a/10) == 0) {
-  fecha2 = oldDateObj;
-} else {
-  fecha2 = new Date(oldDateObj.getTime() + 10*60000);
-}
-var mm = fecha2.getMonth() + 1; // getMonth() is zero-based
-var dd = fecha2.getDate();
-var hours = fecha2.getHours();
-var minutes = fecha2.getMinutes();
-
-fecha2 = [fecha2.getFullYear(),
-        (mm>9 ? '' : '0') + mm,
-        (dd>9 ? '' : '0') + dd,
-		(hours>9 ? '' : '0') + hours,
-        (minutes>9 ? '' : '0') + minutes
-       ].join('');
-//alert(fecha2);</jsScript_script>
+fecha_without_seconds = final;</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
       <field>
-        <name>fecha2</name>
-        <rename>fecha2</rename>
+        <name>minutes_div_100</name>
+        <rename>minutes_div_100</rename>
+        <type>Number</type>
+        <length>16</length>
+        <precision>2</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>hour</name>
+        <rename>hour</rename>
+        <type>Number</type>
+        <length>16</length>
+        <precision>2</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>hour_mod</name>
+        <rename>hour_mod</rename>
+        <type>Number</type>
+        <length>16</length>
+        <precision>2</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>hour_lpad</name>
+        <rename>hour_lpad</rename>
         <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>fecha_without_seconds</name>
+        <rename>fecha_without_seconds</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+      <field>
+        <name>fecha_date</name>
+        <rename>fecha_date</rename>
+        <type>Date</type>
         <length>-1</length>
         <precision>-1</precision>
         <replace>N</replace>
@@ -2247,8 +2360,8 @@ fecha2 = [fecha2.getFullYear(),
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1552</xloc>
-      <yloc>528</yloc>
+      <xloc>1408</xloc>
+      <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2358,8 +2471,8 @@ fecha2 = [fecha2.getFullYear(),
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1600</xloc>
-      <yloc>416</yloc>
+      <xloc>1216</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2414,13 +2527,15 @@ fecha2 = [fecha2.getFullYear(),
     <fields>
       <field>
         <name>hours_minutes</name>
-        <rename>idhoraminuto</rename>
+        <rename>idhora</rename>
       </field>
       <field>
         <name>idestaciondelanio</name>
+        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
+        <rename />
       </field>
       <field>
         <name>fecha_without_minutes</name>
@@ -2428,6 +2543,7 @@ fecha2 = [fecha2.getFullYear(),
       </field>
       <field>
         <name>idestacionmeteorologica</name>
+        <rename />
       </field>
       <field>
         <name>metodo</name>
@@ -2435,25 +2551,31 @@ fecha2 = [fecha2.getFullYear(),
       </field>
       <field>
         <name>idcontaminante</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Global_Sun_rad_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Relative_Humidity_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Temperature_Extern_1</name>
-        <rename>valorenc</rename>
+        <rename>valorEnCTemperaturaExterna</rename>
       </field>
       <field>
         <name>ANCAP1_Temp_Internal_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Direction_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Speed_1</name>
+        <rename />
       </field>
       <field>
         <name>id_detector</name>
@@ -2462,6 +2584,8 @@ fecha2 = [fecha2.getFullYear(),
       <field>
         <name>valor_v</name>
         <rename>contaminacion</rename>
+        <length>100</length>
+        <precision>4</precision>
       </field>
       <field>
         <name>volumen</name>
@@ -2469,10 +2593,10 @@ fecha2 = [fecha2.getFullYear(),
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
-        <name>idhoraminuto</name>
-        <rename>idhoraminuto</rename>
+        <name>idhora</name>
+        <rename>idhora</rename>
         <type>Integer</type>
-        <length>4</length>
+        <length>2</length>
         <precision>-2</precision>
         <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
@@ -2588,10 +2712,10 @@ fecha2 = [fecha2.getFullYear(),
         <storage_type />
       </meta>
       <meta>
-        <name>volumenvehiculos</name>
-        <rename>volumenvehiculos</rename>
+        <name>idfecha</name>
+        <rename>idfecha</rename>
         <type>Integer</type>
-        <length>3</length>
+        <length>8</length>
         <precision>-2</precision>
         <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
@@ -2605,10 +2729,10 @@ fecha2 = [fecha2.getFullYear(),
         <storage_type />
       </meta>
       <meta>
-        <name>idfecha</name>
-        <rename>idfecha</rename>
+        <name>volumenvehiculos</name>
+        <rename>volumenvehiculos</rename>
         <type>Integer</type>
-        <length>8</length>
+        <length>3</length>
         <precision>-2</precision>
         <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
@@ -2749,7 +2873,7 @@ fecha2 = [fecha2.getFullYear(),
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1248</xloc>
+      <xloc>1232</xloc>
       <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2773,7 +2897,8 @@ fecha2 = [fecha2.getFullYear(),
         <name>idcontaminante</name>
       </field>
       <field>
-        <name>fecha2</name>
+        <name>fecha_with_hours</name>
+        <rename>fecha2</rename>
       </field>
       <field>
         <name>valor_v</name>
@@ -2788,8 +2913,8 @@ fecha2 = [fecha2.getFullYear(),
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1648</xloc>
-      <yloc>592</yloc>
+      <xloc>1536</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2812,7 +2937,8 @@ fecha2 = [fecha2.getFullYear(),
         <name>fecha</name>
       </field>
       <field>
-        <name>hora</name>
+        <name>hour</name>
+        <rename>hora</rename>
       </field>
       <field>
         <name>dsc_avenida</name>
@@ -2828,6 +2954,12 @@ fecha2 = [fecha2.getFullYear(),
       </field>
       <field>
         <name>volumen_hora</name>
+      </field>
+      <field>
+        <name>fecha_without_seconds</name>
+      </field>
+      <field>
+        <name>minutes</name>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -2889,7 +3021,7 @@ fecha2 = [fecha2.getFullYear(),
     <name>Sort id detector</name>
     <type>SortRows</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -2906,6 +3038,14 @@ fecha2 = [fecha2.getFullYear(),
     <fields>
       <field>
         <name>id_detector</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>fecha_without_seconds</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -3044,7 +3184,7 @@ fecha2 = [fecha2.getFullYear(),
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1776</xloc>
+      <xloc>1792</xloc>
       <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3128,6 +3268,47 @@ fecha2 = [fecha2.getFullYear(),
     <GUI>
       <xloc>1968</xloc>
       <yloc>544</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 3 3</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>fecha_with_hours</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2512</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3255,6 +3436,36 @@ fecha2 = [fecha2.getFullYear(),
     </GUI>
   </step>
   <step>
+    <name>Sorted Merge</name>
+    <type>SortedMerge</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>timestamp</name>
+        <ascending>Y</ascending>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Strings cut</name>
     <type>StringCut</type>
     <description />
@@ -3268,9 +3479,9 @@ fecha2 = [fecha2.getFullYear(),
     <fields>
       <field>
         <in_stream_name>fecha_with_minutes</in_stream_name>
-        <out_stream_name>fecha_without_seconds</out_stream_name>
+        <out_stream_name>fecha_with_hours</out_stream_name>
         <cut_from>0</cut_from>
-        <cut_to>12</cut_to>
+        <cut_to>10</cut_to>
       </field>
     </fields>
     <cluster_schema />
@@ -3304,6 +3515,18 @@ fecha2 = [fecha2.getFullYear(),
         <cut_from>0</cut_from>
         <cut_to>12</cut_to>
       </field>
+      <field>
+        <in_stream_name>fecha_with_minutes</in_stream_name>
+        <out_stream_name>minutes</out_stream_name>
+        <cut_from>8</cut_from>
+        <cut_to>12</cut_to>
+      </field>
+      <field>
+        <in_stream_name>fecha_with_minutes</in_stream_name>
+        <out_stream_name>fecha_without_minutes</out_stream_name>
+        <cut_from>0</cut_from>
+        <cut_to>8</cut_to>
+      </field>
     </fields>
     <cluster_schema />
     <remotesteps>
@@ -3313,8 +3536,8 @@ fecha2 = [fecha2.getFullYear(),
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1696</xloc>
-      <yloc>416</yloc>
+      <xloc>1312</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3375,7 +3598,7 @@ fecha2 = [fecha2.getFullYear(),
     </partitioning>
     <fields>
       <field>
-        <in_stream_name>fecha_with_minutes</in_stream_name>
+        <in_stream_name>fecha_without_seconds</in_stream_name>
         <out_stream_name>fecha_with_hours</out_stream_name>
         <cut_from>0</cut_from>
         <cut_to>10</cut_to>
@@ -3389,7 +3612,7 @@ fecha2 = [fecha2.getFullYear(),
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1888</xloc>
+      <xloc>1872</xloc>
       <yloc>544</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3421,8 +3644,8 @@ fecha2 = [fecha2.getFullYear(),
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1696</xloc>
-      <yloc>496</yloc>
+      <xloc>1712</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3454,134 +3677,6 @@ fecha2 = [fecha2.getFullYear(),
     <GUI>
       <xloc>1072</xloc>
       <yloc>448</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique rows</name>
-    <type>Unique</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>
-      <field>
-        <name>idestacionmeteorologica</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>idcontaminante</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>fecha2</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1728</xloc>
-      <yloc>592</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Unique rows 2</name>
-    <type>Unique</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <count_rows>N</count_rows>
-    <count_field />
-    <reject_duplicate_row>N</reject_duplicate_row>
-    <error_description />
-    <fields>
-      <field>
-        <name>idhoraminuto</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>idestaciondelanio</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>iddiasemana</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>idfecha</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>idestacionmeteorologica</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>idmetodo</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>idcontaminante</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>ANCAP1_Global_Sun_rad_1</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>ANCAP1_Relative_Humidity_1</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>valorenc</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>ANCAP1_Temp_Internal_1</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>ANCAP1_Wind_Direction_1</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>ANCAP1_Wind_Speed_1</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-      <field>
-        <name>iddetector</name>
-        <case_insensitive>N</case_insensitive>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2688</xloc>
-      <yloc>480</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
