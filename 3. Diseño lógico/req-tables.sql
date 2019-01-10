@@ -181,6 +181,7 @@ CREATE TABLE camaras
 , dscAvenida VARCHAR(20)
 , dscIntAnterior VARCHAR(20)
 , dscIntSiguiente VARCHAR(20)
+, dscubicacion VARCHAR(100)
 , ubicCamara geometry(Geometry,32721)
 , PRIMARY KEY (idDetector)
 )
@@ -198,8 +199,8 @@ CREATE TABLE mediciones
 , idContaminante INT REFERENCES contaminantes
 --, valorEnW_m2 INT REFERENCES radiacionSolarGlobal
 --, valorEnPorcentaje INT REFERENCES humedadRelativa
-, valorEnC REAL REFERENCES temperaturaExterna
---, valorEnC INT REFERENCES temperaturaInterna
+, valorEnCTemperaturaExterna REAL REFERENCES temperaturaExterna
+--, valorEnCTemperaturaInterna INT REFERENCES temperaturaInterna
 --, valorEnGrados INT REFERENCES vientoDireccion
 --, valorEnM_s INT REFERENCES vientoVelocidad
 , idDetector INT REFERENCES camaras
@@ -215,8 +216,8 @@ CREATE TABLE mediciones
     , idContaminante
     --, valorEnW_m2
     --, valorEnPorcentaje
-    , valorEnC
-    --, valorEnC
+    , valorEnCTemperaturaExterna
+    --, valorEnCTemperaturaInterna
     --, valorEnGrados
     --, valorEnM_s
     , idDetector
@@ -232,8 +233,8 @@ CREATE TABLE mediciones
     , idContaminante
     -- , valorEnW_m2
     -- , valorEnPorcentaje
-    , valorEnC
-    -- , valorEnC
+    , valorEnCTemperaturaExterna
+    -- , valorEnCTemperaturaInterna
     -- , valorEnGrados
     -- , valorEnM_s
     , idDetector
@@ -247,8 +248,8 @@ CREATE TABLE mediciones
 ;CREATE INDEX idx_mediciones_idContaminante ON mediciones(idContaminante)
 --;CREATE INDEX idx_mediciones_valorEnW_m2 ON mediciones(valorEnW_m2)
 --;CREATE INDEX idx_mediciones_valorEnPorcentaje ON mediciones(valorEnPorcentaje)
-;CREATE INDEX idx_mediciones_valorEnC ON mediciones(valorEnC)
---;CREATE INDEX idx_mediciones_valorEnC ON mediciones(valorEnC)
+;CREATE INDEX idx_mediciones_valorEnCTemperaturaExterna ON mediciones(valorEnCTemperaturaExterna)
+--;CREATE INDEX idx_mediciones_valorEnCTemperaturaInterna ON mediciones(valorEnCTemperaturaInterna)
 --;CREATE INDEX idx_mediciones_valorEnGrados ON mediciones(valorEnGrados)
 --;CREATE INDEX idx_mediciones_valorEnM_s ON mediciones(valorEnM_s)
 ;CREATE INDEX idx_mediciones_idDetector ON mediciones(idDetector)
