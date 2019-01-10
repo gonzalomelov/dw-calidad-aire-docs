@@ -12,7 +12,7 @@ DROP TABLE humedadRelativa;
 DROP TABLE radiacionSolarGlobal;
 DROP TABLE contaminantes;
 DROP TABLE metodos;
-DROP TABLE estacionesMeteorologicas;
+DROP TABLE estacionesDeLaRed;
 DROP TABLE fechas;
 DROP TABLE diasSemana;
 DROP TABLE estacionesDelAnio;
@@ -29,7 +29,7 @@ DELETE FROM humedadRelativa;
 DELETE FROM radiacionSolarGlobal;
 DELETE FROM contaminantes;
 DELETE FROM metodos;
-DELETE FROM estacionesMeteorologicas;
+DELETE FROM estacionesDeLaRed;
 DELETE FROM fechas;
 DELETE FROM diasSemana;
 DELETE FROM estacionesDelAnio;
@@ -78,18 +78,18 @@ CREATE TABLE fechas
 ;CREATE INDEX idx_fechas_idFecha ON fechas(idFecha)
 ;
 
-CREATE TABLE estacionesMeteorologicas
+CREATE TABLE estacionesDeLaRed
 (
-  idEstacionMeteorologica INT
-, nomEstacionMeteorologica VARCHAR(22)
-, ubicEstacionMeteorologica geometry(Geometry,32721)
+  idEstacionDeLaRed INT
+, nomEstacionDeLaRed VARCHAR(22)
+, ubicEstacionDeLaRed geometry(Geometry,32721)
 , idBarrio INT
 , nomBarrio VARCHAR(25)
 , idCCZ INT
 , nomCCZ VARCHAR(5)
-, PRIMARY KEY (idEstacionMeteorologica)
+, PRIMARY KEY (idEstacionDeLaRed)
 )
-;CREATE INDEX idx_estacionesMeteorologicas_idEstacionMeteorologica ON estacionesMeteorologicas(idEstacionMeteorologica)
+;CREATE INDEX idx_estacionesDeLaRed_idEstacionDeLaRed ON estacionesDeLaRed(idEstacionDeLaRed)
 ;
 
 CREATE TABLE metodos
@@ -194,7 +194,7 @@ CREATE TABLE mediciones
 , idEstacionDelAnio INT REFERENCES estacionesDelAnio
 , idDiaSemana INT REFERENCES diasSemana
 , idFecha INT REFERENCES fechas
-, idEstacionMeteorologica INT REFERENCES estacionesMeteorologicas
+, idEstacionDeLaRed INT REFERENCES estacionesDeLaRed
 , idMetodo INT REFERENCES metodos
 , idContaminante INT REFERENCES contaminantes
 --, valorEnW_m2 INT REFERENCES radiacionSolarGlobal
@@ -211,7 +211,7 @@ CREATE TABLE mediciones
     , idEstacionDelAnio
     , idDiaSemana
     , idFecha
-    , idEstacionMeteorologica
+    , idEstacionDeLaRed
     , idMetodo
     , idContaminante
     --, valorEnW_m2
@@ -228,7 +228,7 @@ CREATE TABLE mediciones
     , idEstacionDelAnio
     , idDiaSemana
     , idFecha
-    , idEstacionMeteorologica
+    , idEstacionDeLaRed
     , idMetodo
     , idContaminante
     -- , valorEnW_m2
@@ -243,7 +243,7 @@ CREATE TABLE mediciones
 ;CREATE INDEX idx_mediciones_idEstacionDelAnio ON mediciones(idEstacionDelAnio)
 ;CREATE INDEX idx_mediciones_idDiaSemana ON mediciones(idDiaSemana)
 ;CREATE INDEX idx_mediciones_idFecha ON mediciones(idFecha)
-;CREATE INDEX idx_mediciones_idEstacionMeteorologica ON mediciones(idEstacionMeteorologica)
+;CREATE INDEX idx_mediciones_idEstacionDeLaRed ON mediciones(idEstacionDeLaRed)
 ;CREATE INDEX idx_mediciones_idMetodo ON mediciones(idMetodo)
 ;CREATE INDEX idx_mediciones_idContaminante ON mediciones(idContaminante)
 --;CREATE INDEX idx_mediciones_valorEnW_m2 ON mediciones(valorEnW_m2)

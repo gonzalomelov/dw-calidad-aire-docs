@@ -1484,7 +1484,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <give_back_row>N</give_back_row>
     <group>
       <field>
-        <name>idestacionmeteorologica</name>
+        <name>idestaciondelared</name>
       </field>
       <field>
         <name>idcontaminante</name>
@@ -1604,8 +1604,8 @@ seasonName = seasons[season-1];</jsScript_script>
         <name2 />
       </key>
       <key>
-        <name>idestacionmeteorologica</name>
-        <field>idestacionmeteorologica</field>
+        <name>idestaciondelared</name>
+        <field>idestaciondelared</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -1654,8 +1654,8 @@ seasonName = seasons[season-1];</jsScript_script>
         <update>N</update>
       </value>
       <value>
-        <name>idestacionmeteorologica</name>
-        <rename>idestacionmeteorologica</rename>
+        <name>idestaciondelared</name>
+        <rename>idestaciondelared</rename>
         <update>N</update>
       </value>
       <value>
@@ -1753,7 +1753,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <key>id_node</key>
     </keys_1>
     <keys_2>
-      <key>nomestacionmeteorologica</key>
+      <key>nomestaciondelared</key>
     </keys_2>
     <cluster_schema />
     <remotesteps>
@@ -2542,7 +2542,7 @@ fecha_without_seconds = final;</jsScript_script>
         <rename>idfecha</rename>
       </field>
       <field>
-        <name>idestacionmeteorologica</name>
+        <name>idestaciondelared</name>
         <rename />
       </field>
       <field>
@@ -2661,8 +2661,8 @@ fecha_without_seconds = final;</jsScript_script>
         <storage_type />
       </meta>
       <meta>
-        <name>idestacionmeteorologica</name>
-        <rename>idestacionmeteorologica</rename>
+        <name>idestaciondelared</name>
+        <rename>idestaciondelared</rename>
         <type>Integer</type>
         <length>3</length>
         <precision>-2</precision>
@@ -2852,7 +2852,7 @@ fecha_without_seconds = final;</jsScript_script>
     </partitioning>
     <fields>
       <field>
-        <name>idestacionmeteorologica</name>
+        <name>idestaciondelared</name>
       </field>
       <field>
         <name>idcontaminante</name>
@@ -2891,7 +2891,7 @@ fecha_without_seconds = final;</jsScript_script>
     </partitioning>
     <fields>
       <field>
-        <name>idestacionmeteorologica</name>
+        <name>idestaciondelared</name>
       </field>
       <field>
         <name>idcontaminante</name>
@@ -3754,7 +3754,7 @@ fecha_without_seconds = final;</jsScript_script>
       <schema_name />
     </partitioning>
     <connection>localhost-dwcalidadaire-final</connection>
-    <sql>SELECT * FROM estacionesmeteorologicas order by nomestacionmeteorologica asc;</sql>
+    <sql>SELECT * FROM estacionesdelared order by nomestaciondelared asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>

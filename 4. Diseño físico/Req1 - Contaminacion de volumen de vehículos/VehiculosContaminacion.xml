@@ -19,15 +19,15 @@
       </Level>
     </Hierarchy>
   </Dimension>
-  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesMeteorologicas">
-    <Hierarchy name="EstacionesMeteorologicas" visible="true" hasAll="true">
-      <Table name="estacionesmeteorologicas" schema="public">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesDeLaRed">
+    <Hierarchy name="EstacionesDeLaRed" visible="true" hasAll="true">
+      <Table name="estacionesDeLaRed" schema="public">
       </Table>
-      <Level name="CCZ" visible="true" table="estacionesmeteorologicas" column="idccz" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomccz">
+      <Level name="CCZ" visible="true" table="estacionesDeLaRed" column="idccz" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomccz">
       </Level>
-      <Level name="Barrio" visible="true" table="estacionesmeteorologicas" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
+      <Level name="Barrio" visible="true" table="estacionesDeLaRed" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
       </Level>
-      <Level name="EstacionMeteorologica" visible="true" table="estacionesmeteorologicas" column="idestacionmeteorologica" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestacionmeteorologica">
+      <Level name="EstacionDeLaRed" visible="true" table="estacionesDeLaRed" column="idestacionDeLaRed" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestacionDeLaRed">
       </Level>
     </Hierarchy>
   </Dimension>
@@ -86,7 +86,7 @@
     </DimensionUsage>
     <DimensionUsage source="Contaminantes" level="Contaminante" name="Contaminantes" visible="true" foreignKey="idcontaminante" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="EstacionesMeteorologicas" level="EstacionMeteorologica" name="EstacionesMeteorologicas" visible="true" foreignKey="idestacionmeteorologica" highCardinality="false">
+    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="idestacionDeLaRed" highCardinality="false">
     </DimensionUsage>
     <DimensionUsage source="Camaras" level="Camara" name="Camaras" visible="true" foreignKey="iddetector" highCardinality="false">
     </DimensionUsage>
