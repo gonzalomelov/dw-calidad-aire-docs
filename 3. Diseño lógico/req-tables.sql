@@ -6,7 +6,6 @@ DROP TABLE mediciones;
 DROP TABLE camaras;
 DROP TABLE vientoVelocidad;
 DROP TABLE vientoDireccion;
-DROP TABLE temperaturaInterna;
 DROP TABLE temperaturaExterna;
 DROP TABLE humedadRelativa;
 DROP TABLE radiacionSolarGlobal;
@@ -23,7 +22,6 @@ DELETE FROM mediciones;
 DELETE FROM camaras;
 DELETE FROM vientoVelocidad;
 DELETE FROM vientoDireccion;
-DELETE FROM temperaturaInterna;
 DELETE FROM temperaturaExterna;
 DELETE FROM humedadRelativa;
 DELETE FROM radiacionSolarGlobal;
@@ -144,16 +142,6 @@ CREATE TABLE temperaturaExterna
 ;CREATE INDEX idx_temperaturaExterna_valorEnC ON temperaturaExterna(valorEnC)
 ;
 
-CREATE TABLE temperaturaInterna
-(
-  valorEnC REAL
-, idRangoTemperaturaInterna INT
-, descRangoTemperaturaInterna VARCHAR(10)
-, PRIMARY KEY (valorEnC)
-)
-;CREATE INDEX idx_temperaturaInterna_valorEnC ON temperaturaInterna(valorEnC)
-;
-
 CREATE TABLE vientoDireccion
 (
   valorEnGrados REAL
@@ -200,7 +188,6 @@ CREATE TABLE mediciones
 --, valorEnW_m2 INT REFERENCES radiacionSolarGlobal
 --, valorEnPorcentaje INT REFERENCES humedadRelativa
 , valorEnCTemperaturaExterna REAL REFERENCES temperaturaExterna
---, valorEnCTemperaturaInterna INT REFERENCES temperaturaInterna
 --, valorEnGrados INT REFERENCES vientoDireccion
 --, valorEnM_s INT REFERENCES vientoVelocidad
 , idDetector INT REFERENCES camaras
@@ -217,7 +204,6 @@ CREATE TABLE mediciones
     --, valorEnW_m2
     --, valorEnPorcentaje
     , valorEnCTemperaturaExterna
-    --, valorEnCTemperaturaInterna
     --, valorEnGrados
     --, valorEnM_s
     , idDetector
@@ -234,7 +220,6 @@ CREATE TABLE mediciones
     -- , valorEnW_m2
     -- , valorEnPorcentaje
     , valorEnCTemperaturaExterna
-    -- , valorEnCTemperaturaInterna
     -- , valorEnGrados
     -- , valorEnM_s
     , idDetector
@@ -249,7 +234,6 @@ CREATE TABLE mediciones
 --;CREATE INDEX idx_mediciones_valorEnW_m2 ON mediciones(valorEnW_m2)
 --;CREATE INDEX idx_mediciones_valorEnPorcentaje ON mediciones(valorEnPorcentaje)
 ;CREATE INDEX idx_mediciones_valorEnCTemperaturaExterna ON mediciones(valorEnCTemperaturaExterna)
---;CREATE INDEX idx_mediciones_valorEnCTemperaturaInterna ON mediciones(valorEnCTemperaturaInterna)
 --;CREATE INDEX idx_mediciones_valorEnGrados ON mediciones(valorEnGrados)
 --;CREATE INDEX idx_mediciones_valorEnM_s ON mediciones(valorEnM_s)
 ;CREATE INDEX idx_mediciones_idDetector ON mediciones(idDetector)
