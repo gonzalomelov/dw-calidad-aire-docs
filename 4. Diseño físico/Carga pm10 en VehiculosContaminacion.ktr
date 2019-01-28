@@ -2531,11 +2531,9 @@ fecha_without_seconds = final;</jsScript_script>
       </field>
       <field>
         <name>idestaciondelanio</name>
-        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
-        <rename />
       </field>
       <field>
         <name>fecha_without_minutes</name>
@@ -2543,7 +2541,6 @@ fecha_without_seconds = final;</jsScript_script>
       </field>
       <field>
         <name>idestaciondelared</name>
-        <rename />
       </field>
       <field>
         <name>metodo</name>
@@ -2551,15 +2548,12 @@ fecha_without_seconds = final;</jsScript_script>
       </field>
       <field>
         <name>idcontaminante</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Global_Sun_rad_1</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Relative_Humidity_1</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Temperature_Extern_1</name>
@@ -2567,15 +2561,12 @@ fecha_without_seconds = final;</jsScript_script>
       </field>
       <field>
         <name>ANCAP1_Temp_Internal_1</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Direction_1</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Speed_1</name>
-        <rename />
       </field>
       <field>
         <name>id_detector</name>
