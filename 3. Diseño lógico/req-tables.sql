@@ -1,8 +1,9 @@
 postgres://gonzalomelo:password@localhost:5432/dwcalidadaire-final
 
---DATAWAREHOUSE
+
 DROP TABLE mediciones;
 
+DROP TABLE diasImportantes;
 DROP TABLE camaras;
 DROP TABLE vientoVelocidad;
 DROP TABLE vientoDireccion;
@@ -19,6 +20,7 @@ DROP TABLE horas;
 
 DELETE FROM mediciones;
 
+DELETE FROM diasImportantes;
 DELETE FROM camaras;
 DELETE FROM vientoVelocidad;
 DELETE FROM vientoDireccion;
@@ -32,6 +34,8 @@ DELETE FROM fechas;
 DELETE FROM diasSemana;
 DELETE FROM estacionesDelAnio;
 DELETE FROM horas;
+
+-- Dimensiones
 
 CREATE TABLE horas
 (
@@ -157,9 +161,9 @@ CREATE TABLE vientoVelocidad
   valorEnM_s REAL
 , idRangoVientoVelocidad INT
 , descRangoVientoVelocidad VARCHAR(10)
-, PRIMARY KEY (valorEnGrados)
+, PRIMARY KEY (valorEnM_s)
 )
-;CREATE INDEX idx_vientoVelocidad_valorEnGrados ON vientoVelocidad(valorEnGrados)
+;CREATE INDEX idx_vientoVelocidad_valorEnM_s ON vientoVelocidad(valorEnM_s)
 ;
 
 CREATE TABLE camaras
@@ -175,6 +179,21 @@ CREATE TABLE camaras
 )
 ;CREATE INDEX idx_camaras_idDetector ON camaras(idDetector)
 ;
+
+CREATE TABLE diasImportantes
+(
+  idDiaImportante INT
+, nomDiaImportante VARCHAR(20)
+, idTipoDiaImportante INT
+, nomTipoDiaImportante VARCHAR(20)
+, idFecha INT
+, idHora INT
+, PRIMARY KEY (idDiaImportante)
+)
+;CREATE INDEX idx_diasImportantes_idDiaImportante ON diasImportantes(idDiaImportante)
+;
+
+-- Medidas
 
 CREATE TABLE mediciones
 (
