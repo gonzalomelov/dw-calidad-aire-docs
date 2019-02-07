@@ -2,6 +2,7 @@ postgres://gonzalomelo:password@localhost:5432/dwcalidadaire-final
 
 
 DROP TABLE mediciones;
+DROP TABLE mediciones2;
 
 DROP TABLE diasImportantes;
 DROP TABLE camaras;
@@ -19,6 +20,7 @@ DROP TABLE estacionesDelAnio;
 DROP TABLE horas;
 
 DELETE FROM mediciones;
+DELETE FROM mediciones2;
 
 DELETE FROM diasImportantes;
 DELETE FROM camaras;
@@ -256,4 +258,62 @@ CREATE TABLE mediciones
 --;CREATE INDEX idx_mediciones_valorEnGrados ON mediciones(valorEnGrados)
 --;CREATE INDEX idx_mediciones_valorEnM_s ON mediciones(valorEnM_s)
 ;CREATE INDEX idx_mediciones_idDetector ON mediciones(idDetector)
+;
+
+CREATE TABLE mediciones2
+(
+  idHora INT REFERENCES horas
+, idEstacionDelAnio INT REFERENCES estacionesDelAnio
+, idDiaSemana INT REFERENCES diasSemana
+, idFecha INT REFERENCES fechas
+, idEstacionDeLaRed INT REFERENCES estacionesDeLaRed
+, idMetodo INT REFERENCES metodos
+, idContaminante INT REFERENCES contaminantes
+--, valorEnW_m2 INT REFERENCES radiacionSolarGlobal
+--, valorEnPorcentaje INT REFERENCES humedadRelativa
+, valorEnCTemperaturaExterna REAL REFERENCES temperaturaExterna
+--, valorEnGrados INT REFERENCES vientoDireccion
+--, valorEnM_s INT REFERENCES vientoVelocidad
+, contaminacion REAL
+, PRIMARY KEY (
+    idHora
+    , idEstacionDelAnio
+    , idDiaSemana
+    , idFecha
+    , idEstacionDeLaRed
+    , idMetodo
+    , idContaminante
+    --, valorEnW_m2
+    --, valorEnPorcentaje
+    , valorEnCTemperaturaExterna
+    --, valorEnGrados
+    --, valorEnM_s
+  )
+)
+;CREATE INDEX idx_mediciones2_pk ON mediciones2(
+    idHora
+    , idEstacionDelAnio
+    , idDiaSemana
+    , idFecha
+    , idEstacionDeLaRed
+    , idMetodo
+    , idContaminante
+    -- , valorEnW_m2
+    -- , valorEnPorcentaje
+    , valorEnCTemperaturaExterna
+    -- , valorEnGrados
+    -- , valorEnM_s
+  )
+;CREATE INDEX idx_mediciones2_idHora ON mediciones2(idHora)
+;CREATE INDEX idx_mediciones2_idEstacionDelAnio ON mediciones2(idEstacionDelAnio)
+;CREATE INDEX idx_mediciones2_idDiaSemana ON mediciones2(idDiaSemana)
+;CREATE INDEX idx_mediciones2_idFecha ON mediciones2(idFecha)
+;CREATE INDEX idx_mediciones2_idEstacionDeLaRed ON mediciones2(idEstacionDeLaRed)
+;CREATE INDEX idx_mediciones2_idMetodo ON mediciones2(idMetodo)
+;CREATE INDEX idx_mediciones2_idContaminante ON mediciones2(idContaminante)
+--;CREATE INDEX idx_mediciones2_valorEnW_m2 ON mediciones2(valorEnW_m2)
+--;CREATE INDEX idx_mediciones2_valorEnPorcentaje ON mediciones2(valorEnPorcentaje)
+;CREATE INDEX idx_mediciones2_valorEnCTemperaturaExterna ON mediciones2(valorEnCTemperaturaExterna)
+--;CREATE INDEX idx_mediciones2_valorEnGrados ON mediciones2(valorEnGrados)
+--;CREATE INDEX idx_mediciones2_valorEnM_s ON mediciones2(valorEnM_s)
 ;
