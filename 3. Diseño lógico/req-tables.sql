@@ -274,6 +274,7 @@ CREATE TABLE mediciones2
 , valorEnCTemperaturaExterna REAL REFERENCES temperaturaExterna
 --, valorEnGrados INT REFERENCES vientoDireccion
 --, valorEnM_s INT REFERENCES vientoVelocidad
+, idDiaImportante INT REFERENCES diasImportantes
 , contaminacion REAL
 , PRIMARY KEY (
     idHora
@@ -288,6 +289,7 @@ CREATE TABLE mediciones2
     , valorEnCTemperaturaExterna
     --, valorEnGrados
     --, valorEnM_s
+    , idDiaImportante
   )
 )
 ;CREATE INDEX idx_mediciones2_pk ON mediciones2(
@@ -303,6 +305,7 @@ CREATE TABLE mediciones2
     , valorEnCTemperaturaExterna
     -- , valorEnGrados
     -- , valorEnM_s
+    , idDiaImportante
   )
 ;CREATE INDEX idx_mediciones2_idHora ON mediciones2(idHora)
 ;CREATE INDEX idx_mediciones2_idEstacionDelAnio ON mediciones2(idEstacionDelAnio)
@@ -316,4 +319,5 @@ CREATE TABLE mediciones2
 ;CREATE INDEX idx_mediciones2_valorEnCTemperaturaExterna ON mediciones2(valorEnCTemperaturaExterna)
 --;CREATE INDEX idx_mediciones2_valorEnGrados ON mediciones2(valorEnGrados)
 --;CREATE INDEX idx_mediciones2_valorEnM_s ON mediciones2(valorEnM_s)
+;CREATE INDEX idx_mediciones2_idDiaImportante ON mediciones2(idDiaImportante)
 ;
