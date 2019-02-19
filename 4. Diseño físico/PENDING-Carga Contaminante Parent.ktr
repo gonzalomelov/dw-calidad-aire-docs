@@ -564,6 +564,12 @@
         <condition>=</condition>
         <name2 />
       </key>
+      <key>
+        <name>iddiaimportante</name>
+        <field>iddiaimportante</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
       <value>
         <name>valorEnCTemperaturaExterna</name>
         <rename>valorEnCTemperaturaExterna</rename>
@@ -607,6 +613,11 @@
       <value>
         <name>idmetodo</name>
         <rename>idmetodo</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>iddiaimportante</name>
+        <rename>iddiaimportante</rename>
         <update>N</update>
       </value>
     </lookup>
