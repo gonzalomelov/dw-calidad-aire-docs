@@ -1,4 +1,4 @@
-<Schema name="DiasImportantesContaminacion2">
+<Schema name="DiasImportantesContaminacion3">
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Fechas">
     <Hierarchy name="Fechas" visible="true" hasAll="true">
       <Table name="fechas" schema="public">
@@ -71,7 +71,15 @@
       </Level>
     </Hierarchy>
   </Dimension>
-  <Cube name="DiasImportantesContaminacion2" visible="true" cache="true" enabled="true">
+  <Dimension type="StandardDimension" visible="true" name="DiasImportantes">
+    <Hierarchy name="DiasImportantes" visible="true" hasAll="true">
+      <Table name="diasimportantes" schema="public" alias="">
+      </Table>
+      <Level name="DiaImportante" visible="true" table="diasimportantes" column="iddiaimportante" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomdiaimportante">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="DiasImportantesContaminacion3" visible="true" cache="true" enabled="true">
     <Table name="mediciones2" schema="public">
     </Table>
     <DimensionUsage source="Fechas" level="Fecha" name="Fechas" visible="true" foreignKey="idfecha" highCardinality="false">
@@ -89,6 +97,8 @@
     <DimensionUsage source="Metodos" level="Metodo" name="Metodos" visible="true" foreignKey="idmetodo" highCardinality="false">
     </DimensionUsage>
     <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenc" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="DiasImportantes" level="DiaImportante" name="DiasImportantes" visible="true" foreignKey="iddiaimportante">
     </DimensionUsage>
     <Measure name="Contaminacion Promedio" column="contaminacion" datatype="Numeric" aggregator="avg" visible="true">
     </Measure>
