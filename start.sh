@@ -6,5 +6,5 @@ osascript proygrad-terminal.applescript
 open -a 'Data Integration'
 open -a 'pgAdmin3'
 open -a 'Schema_Workbench'
-cd '/Users/gonzalomelo/Proyecto Apps/pentaho-server'
+cd '/Users/gonzalomelo/ProyectoApps/pentaho-server'
 sh start-pentaho.sh
