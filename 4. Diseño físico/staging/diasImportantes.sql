@@ -1,2 +1,3 @@
+INSERT INTO public.diasImportantes(idDiaImportante, nomDiaImportante, idTipoDiaImportante, nomTipoDiaImportante, idFecha, idHora) VALUES (0, 'No es día importante', 0, 'No es día importante', null, null);
 INSERT INTO public.diasImportantes(idDiaImportante, nomDiaImportante, idTipoDiaImportante, nomTipoDiaImportante, idFecha, idHora) VALUES (1, 'Uruguay y Portugal', 1, 'Mundial', 20180630, 15);
 INSERT INTO public.diasImportantes(idDiaImportante, nomDiaImportante, idTipoDiaImportante, nomTipoDiaImportante, idFecha, idHora) VALUES (2, '1ro de Mayo', 2, 'Fecha Patria', 20160501, 13);
