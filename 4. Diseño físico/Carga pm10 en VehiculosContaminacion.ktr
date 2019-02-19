@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
     <name>Carga pm10 en VehiculosContaminacion</name>
@@ -430,7 +429,7 @@
     <created_user>-</created_user>
     <created_date>2018/01/16 21:26:09.467</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2018/01/16 21:26:09.467</modified_date>
+    <modified_date>2019/02/19 20:16:36.487</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -739,11 +738,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 3 3</from>
-      <to>Select Final Values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select Final Values</from>
       <to>Filter rows 2</to>
       <enabled>Y</enabled>
@@ -757,6 +751,11 @@
       <from>Filter rows 2</from>
       <to>Dummy (do nothing)</to>
       <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 3 3</from>
+      <to>Select Final Values</to>
+      <enabled>Y</enabled>
     </hop>
   </order>
   <step>
@@ -1400,8 +1399,8 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2976</xloc>
-      <yloc>592</yloc>
+      <xloc>3088</xloc>
+      <yloc>608</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1718,8 +1717,8 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2880</xloc>
-      <yloc>496</yloc>
+      <xloc>2992</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1957,8 +1956,8 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2992</xloc>
-      <yloc>496</yloc>
+      <xloc>3104</xloc>
+      <yloc>512</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2214,8 +2213,8 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2896</xloc>
-      <yloc>368</yloc>
+      <xloc>3008</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2486,9 +2485,11 @@ fecha_without_seconds = final;</jsScript_script>
       </field>
       <field>
         <name>idestaciondelanio</name>
+        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
+        <rename />
       </field>
       <field>
         <name>fecha_without_minutes</name>
@@ -2496,6 +2497,7 @@ fecha_without_seconds = final;</jsScript_script>
       </field>
       <field>
         <name>idestaciondelared</name>
+        <rename />
       </field>
       <field>
         <name>metodo</name>
@@ -2503,12 +2505,15 @@ fecha_without_seconds = final;</jsScript_script>
       </field>
       <field>
         <name>idcontaminante</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Global_Sun_rad_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Relative_Humidity_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Temperature_Extern_1</name>
@@ -2516,12 +2521,15 @@ fecha_without_seconds = final;</jsScript_script>
       </field>
       <field>
         <name>ANCAP1_Temp_Internal_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Direction_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Speed_1</name>
+        <rename />
       </field>
       <field>
         <name>id_detector</name>
@@ -2700,7 +2708,7 @@ fecha_without_seconds = final;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2752</xloc>
+      <xloc>2816</xloc>
       <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3253,8 +3261,8 @@ fecha_without_seconds = final;</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2688</xloc>
-      <yloc>384</yloc>
+      <xloc>2704</xloc>
+      <yloc>464</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
