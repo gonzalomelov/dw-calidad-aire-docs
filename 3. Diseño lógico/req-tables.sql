@@ -3,8 +3,10 @@ postgres://gonzalomelo:password@localhost:5432/dwcalidadaire-final
 
 DROP TABLE mediciones;
 DROP TABLE mediciones2;
+DROP TABLE mediciones3;
 
 DROP TABLE diasImportantes;
+DROP TABLE industrias;
 DROP TABLE camaras;
 DROP TABLE vientoVelocidad;
 DROP TABLE vientoDireccion;
@@ -21,8 +23,10 @@ DROP TABLE horas;
 
 DELETE FROM mediciones;
 DELETE FROM mediciones2;
+DELETE FROM mediciones3;
 
 DELETE FROM diasImportantes;
+DELETE FROM industrias;
 DELETE FROM camaras;
 DELETE FROM vientoVelocidad;
 DELETE FROM vientoDireccion;
@@ -182,6 +186,16 @@ CREATE TABLE camaras
 ;CREATE INDEX idx_camaras_idDetector ON camaras(idDetector)
 ;
 
+CREATE TABLE industrias
+(
+  idIndustria INT
+, nomIndustria VARCHAR(20)
+, ubicIndustria geometry(Geometry,32721)
+, PRIMARY KEY (idIndustria)
+)
+;CREATE INDEX idx_industrias_idIndustria ON industrias(idIndustria)
+;
+
 CREATE TABLE diasImportantes
 (
   idDiaImportante INT
@@ -320,4 +334,43 @@ CREATE TABLE mediciones2
 --;CREATE INDEX idx_mediciones2_valorEnGrados ON mediciones2(valorEnGrados)
 --;CREATE INDEX idx_mediciones2_valorEnM_s ON mediciones2(valorEnM_s)
 ;CREATE INDEX idx_mediciones2_idDiaImportante ON mediciones2(idDiaImportante)
+;
+
+CREATE TABLE mediciones3
+(
+  idEstacionDelAnio INT REFERENCES estacionesDelAnio
+, idDiaSemana INT REFERENCES diasSemana
+, idFecha INT REFERENCES fechas
+, idEstacionDeLaRed INT REFERENCES estacionesDeLaRed
+, idMetodo INT REFERENCES metodos
+, idContaminante INT REFERENCES contaminantes
+, idIndustria INT REFERENCES industrias
+, contaminacion REAL
+, energiaGenerada REAL
+, PRIMARY KEY (
+    idEstacionDelAnio
+    , idDiaSemana
+    , idFecha
+    , idEstacionDeLaRed
+    , idMetodo
+    , idContaminante
+    , idIndustria
+  )
+)
+;CREATE INDEX idx_mediciones3_pk ON mediciones3(
+    idEstacionDelAnio
+    , idDiaSemana
+    , idFecha
+    , idEstacionDeLaRed
+    , idMetodo
+    , idContaminante
+    , idIndustria
+  )
+;CREATE INDEX idx_mediciones3_idEstacionDelAnio ON mediciones3(idEstacionDelAnio)
+;CREATE INDEX idx_mediciones3_idDiaSemana ON mediciones3(idDiaSemana)
+;CREATE INDEX idx_mediciones3_idFecha ON mediciones3(idFecha)
+;CREATE INDEX idx_mediciones3_idEstacionDeLaRed ON mediciones3(idEstacionDeLaRed)
+;CREATE INDEX idx_mediciones3_idMetodo ON mediciones3(idMetodo)
+;CREATE INDEX idx_mediciones3_idContaminante ON mediciones3(idContaminante)
+;CREATE INDEX idx_mediciones3_idIndustria ON mediciones3(idIndustria)
 ;
