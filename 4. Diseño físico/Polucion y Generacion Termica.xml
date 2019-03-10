@@ -1,0 +1,88 @@
+<Schema name="Contaminacion Y Generacion Termica">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Fechas">
+    <Hierarchy name="Fecha" visible="true" hasAll="true">
+      <Table name="fechas" schema="public">
+      </Table>
+      <Level name="Fecha" visible="true" table="fechas" column="idfecha" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="fecha">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Contaminantes">
+    <Hierarchy name="Contaminantes" visible="true" hasAll="true">
+      <Table name="contaminantes" schema="public">
+      </Table>
+      <Level name="Tipo" visible="true" table="contaminantes" column="idtipo" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomtipo">
+      </Level>
+      <Level name="Subtipo" visible="true" table="contaminantes" column="idsubtipo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomsubtipo">
+      </Level>
+      <Level name="Contaminante" visible="true" table="contaminantes" column="idcontaminante" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomcontaminante">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Metodos">
+    <Hierarchy name="Metodos" visible="true" hasAll="true">
+      <Table name="metodos" schema="public">
+      </Table>
+      <Level name="Metodo" visible="true" table="metodos" column="idmetodo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nommetodo">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesDeLaRed">
+    <Hierarchy name="EstacionesDeLaRed" visible="true" hasAll="true">
+      <Table name="estacionesdelared" schema="public">
+      </Table>
+      <Level name="CCZ" visible="true" table="estacionesdelared" column="idccz" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomccz">
+      </Level>
+      <Level name="Barrio" visible="true" table="estacionesdelared" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
+      </Level>
+      <Level name="EstacionDeLaRed" visible="true" table="estacionesdelared" column="idestaciondelared" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelared">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Industrias">
+    <Hierarchy name="Industrias" visible="true" hasAll="true">
+      <Table name="industrias" schema="public">
+      </Table>
+      <Level name="Industria" visible="true" table="industrias" column="idindustria" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomindustria">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="DiasSemana">
+    <Hierarchy name="DiasSemana" visible="true" hasAll="true">
+      <Table name="diassemana" schema="public">
+      </Table>
+      <Level name="DiaSemana" visible="true" table="diassemana" column="iddiasemana" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomdiasemana">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesDelAnio">
+    <Hierarchy name="EstacionesDelAnio" visible="true" hasAll="true">
+      <Table name="estacionesdelanio" schema="public">
+      </Table>
+      <Level name="EstacionDelAnio" visible="true" table="estacionesdelanio" column="idestaciondelanio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelanio">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Contaminacion Y Generacion Termica" visible="true" cache="true" enabled="true">
+    <Table name="mediciones3" schema="public">
+    </Table>
+    <DimensionUsage source="Fechas" level="Fecha" name="Fechas" visible="true" foreignKey="idfecha" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Contaminantes" level="Contaminante" name="Contaminantes" visible="true" foreignKey="idcontaminante" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metodos" level="Metodo" name="Metodos" visible="true" foreignKey="idmetodo" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="idestaciondelared" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Industrias" level="Industria" name="Industrias" visible="true" foreignKey="idindustria" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="DiasSemana" level="DiaSemana" name="DiasSemana" visible="true" foreignKey="iddiasemana" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="EstacionesDelAnio" level="EstacionDelAnio" name="EstacionesDelAnio" visible="true" foreignKey="idestaciondelanio" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Contaminacion" column="contaminacion" datatype="Integer" aggregator="avg" visible="true">
+    </Measure>
+    <Measure name="Generacion T&#233;rmica" column="energiagenerada" datatype="Numeric" aggregator="avg" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
