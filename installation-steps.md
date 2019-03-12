@@ -6,4 +6,7 @@ create role anon;
 create role authenticator noinherit;
 grant anon to authenticator;
 
+exec pgjwt-init.sh
+CREATE EXTENSION pgjwt CASCADE;
+
 pg_restore -h localhost -p 5434 -U gonzalomelo -d dwcalidadaire-final -v  "dwcalidadaire-final"
