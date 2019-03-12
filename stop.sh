@@ -1,1 +1,1 @@
-sh '/Users/gonzalomelo/Proyecto\ Apps/pentaho-server/stop-pentaho.sh'
+sh /Users/gonzalomelo/ProyectoApps/pentaho-server/stop-pentaho.sh 
