@@ -1,12 +1,18 @@
-pg_dump --host localhost --port 5432 --username "gonzalomelo" --role "gonzalomelo" --no-password  --format custom --blobs --verbose --file "/Users/gonzalomelo/Kona/proy-grad/Proyecto Calidad del Aire/dwcalidadaire-final" "dwcalidadaire-final"
+pg_dump --host localhost --port 5432 --username "gonzalomelo" --no-password  --format plain --verbose --file "/Users/gonzalomelo/Kona/proy-grad/Proyecto Calidad del Aire/dwcalidadaire-final-plain" --schema "public" "dwcalidadaire-final"
 
-docker-compose up -d
+CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;
 
-create role anon;
-create role authenticator noinherit;
-grant anon to authenticator;
+UPDATE pg_extension 
+  SET extrelocatable = TRUE 
+    WHERE extname = 'postgis';
 
-exec pgjwt-init.sh
-CREATE EXTENSION pgjwt CASCADE;
+ALTER EXTENSION postgis 
+  SET SCHEMA data;
 
-pg_restore -h localhost -p 5434 -U gonzalomelo -d dwcalidadaire-final -v  "dwcalidadaire-final"
+Foreach table
+  GRANT ALL ON TABLE data.estacionesdelared TO superuser;
+  GRANT SELECT, UPDATE, INSERT, DELETE ON TABLE data.estacionesdelared TO api;
+
+  CREATE OR REPLACE VIEW
+
+psql data < dwcalidadaire-final-plain
