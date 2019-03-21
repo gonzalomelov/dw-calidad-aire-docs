@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <job>
   <name>CargaDiasImportantes</name>
   <description />
@@ -8,7 +7,7 @@
   <created_user>-</created_user>
   <created_date>2019/02/18 20:37:04.776</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2019/02/18 20:37:04.776</modified_date>
+  <modified_date>2019/03/17 18:23:46.888</modified_date>
   <parameters>
     </parameters>
   <slaveservers>
@@ -310,10 +309,11 @@
       <name>Transformation</name>
       <description />
       <type>TRANS</type>
-      <specification_method>filename</specification_method>
+      <specification_method>rep_name</specification_method>
       <trans_object_id />
-      <filename>/Users/gonzalomelo/Kona/proy-grad/Proyecto Calidad del Aire/4. Diseño físico/PENDING-Carga Contaminante Parent.ktr</filename>
-      <transname />
+      <filename />
+      <transname>CargaDiasImportantes</transname>
+      <directory>${Internal.Entry.Current.Directory}</directory>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -339,8 +339,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>352</xloc>
-      <yloc>272</yloc>
+      <xloc>368</xloc>
+      <yloc>304</yloc>
     </entry>
     <entry>
       <name>Success</name>
@@ -352,16 +352,37 @@
       <xloc>480</xloc>
       <yloc>272</yloc>
     </entry>
+    <entry>
+      <name>Wait for</name>
+      <description />
+      <type>DELAY</type>
+      <maximumTimeout>30</maximumTimeout>
+      <scaletime>0</scaletime>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>304</xloc>
+      <yloc>224</yloc>
+    </entry>
   </entries>
   <hops>
     <hop>
       <from>START</from>
-      <to>Transformation</to>
+      <to>Wait for</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Wait for</from>
+      <to>Transformation</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
     </hop>
     <hop>
       <from>Transformation</from>
