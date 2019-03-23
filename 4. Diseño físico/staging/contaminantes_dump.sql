@@ -1,0 +1,7 @@
+INSERT INTO data.contaminantes(idcontaminante, nomcontaminante, idsubtipo, nomsubtipo, idtipo, nomtipo, private, owner_id) VALUES (1, 'PM2', 1, 'PM', 2, 'Contaminante secundario', false, 1);
+INSERT INTO data.contaminantes(idcontaminante, nomcontaminante, idsubtipo, nomsubtipo, idtipo, nomtipo, private, owner_id) VALUES (2, 'PM10', 1, 'PM', 2, 'Contaminante secundario', false, 1);
+INSERT INTO data.contaminantes(idcontaminante, nomcontaminante, idsubtipo, nomsubtipo, idtipo, nomtipo, private, owner_id) VALUES (3, 'HN', 2, 'H', 1, 'Contaminante primario', false, 1);
+INSERT INTO data.contaminantes(idcontaminante, nomcontaminante, idsubtipo, nomsubtipo, idtipo, nomtipo, private, owner_id) VALUES (4, 'PTS', 3, 'PTS', 1, 'Contaminante primario', false, 1);
+INSERT INTO data.contaminantes(idcontaminante, nomcontaminante, idsubtipo, nomsubtipo, idtipo, nomtipo, private, owner_id) VALUES (5, 'SO2', 4, 'S', 1, 'Contaminante primario', false, 1);
+INSERT INTO data.contaminantes(idcontaminante, nomcontaminante, idsubtipo, nomsubtipo, idtipo, nomtipo, private, owner_id) VALUES (6, 'NO2', 5, 'N', 2, 'Contaminante secundario', false, 1);
+INSERT INTO data.contaminantes(idcontaminante, nomcontaminante, idsubtipo, nomsubtipo, idtipo, nomtipo, private, owner_id) VALUES (7, 'O3', 6, 'CG', 2, 'Contaminante secundario', false, 1);
