@@ -1,4 +1,4 @@
-INSERT INTO public.estacionesDelAnio(idEstacionDelAnio, nomEstacionDelAnio) VALUES (1, 'verano');
-INSERT INTO public.estacionesDelAnio(idEstacionDelAnio, nomEstacionDelAnio) VALUES (2, 'otono');
-INSERT INTO public.estacionesDelAnio(idEstacionDelAnio, nomEstacionDelAnio) VALUES (3, 'invierno');
-INSERT INTO public.estacionesDelAnio(idEstacionDelAnio, nomEstacionDelAnio) VALUES (4, 'primavera');
+INSERT INTO data.estacionesDelAnio(idEstacionDelAnio, nomEstacionDelAnio, private, owner_id) VALUES (1, 'verano', false, 1);
+INSERT INTO data.estacionesDelAnio(idEstacionDelAnio, nomEstacionDelAnio, private, owner_id) VALUES (2, 'otono', false, 1);
+INSERT INTO data.estacionesDelAnio(idEstacionDelAnio, nomEstacionDelAnio, private, owner_id) VALUES (3, 'invierno', false, 1);
+INSERT INTO data.estacionesDelAnio(idEstacionDelAnio, nomEstacionDelAnio, private, owner_id) VALUES (4, 'primavera', false, 1);

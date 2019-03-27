@@ -1,7 +1,7 @@
-INSERT INTO public.diasSemana(idDiaSemana, nomDiaSemana) VALUES (1, 'domingo');
-INSERT INTO public.diasSemana(idDiaSemana, nomDiaSemana) VALUES (2, 'lunes');
-INSERT INTO public.diasSemana(idDiaSemana, nomDiaSemana) VALUES (3, 'martes');
-INSERT INTO public.diasSemana(idDiaSemana, nomDiaSemana) VALUES (4, 'miércoles');
-INSERT INTO public.diasSemana(idDiaSemana, nomDiaSemana) VALUES (5, 'jueves');
-INSERT INTO public.diasSemana(idDiaSemana, nomDiaSemana) VALUES (6, 'viernes');
-INSERT INTO public.diasSemana(idDiaSemana, nomDiaSemana) VALUES (7, 'sábado');
+INSERT INTO data.diasSemana(idDiaSemana, nomDiaSemana, private, owner_id) VALUES (1, 'domingo', false, 1);
+INSERT INTO data.diasSemana(idDiaSemana, nomDiaSemana, private, owner_id) VALUES (2, 'lunes', false, 1);
+INSERT INTO data.diasSemana(idDiaSemana, nomDiaSemana, private, owner_id) VALUES (3, 'martes', false, 1);
+INSERT INTO data.diasSemana(idDiaSemana, nomDiaSemana, private, owner_id) VALUES (4, 'miércoles', false, 1);
+INSERT INTO data.diasSemana(idDiaSemana, nomDiaSemana, private, owner_id) VALUES (5, 'jueves', false, 1);
+INSERT INTO data.diasSemana(idDiaSemana, nomDiaSemana, private, owner_id) VALUES (6, 'viernes', false, 1);
+INSERT INTO data.diasSemana(idDiaSemana, nomDiaSemana, private, owner_id) VALUES (7, 'sábado', false, 1);
