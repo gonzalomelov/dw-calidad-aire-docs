@@ -54,16 +54,6 @@ CREATE TRIGGER send_change_event
   FOR EACH ROW
   EXECUTE PROCEDURE rabbitmq.on_row_change('{"include":["id","nomdiaimportante"]}');
 
--- INSERT
-
-INSERT INTO data.diasImportantes(id, idDiaImportante, nomDiaImportante, idTipoDiaImportante, nomTipoDiaImportante, idFecha, idHora, private, owner_id) VALUES (1, 0, 'No es día importante', 0, 'No es día importante', null, null, false, 1);
-INSERT INTO data.diasImportantes(id, idDiaImportante, nomDiaImportante, idTipoDiaImportante, nomTipoDiaImportante, idFecha, idHora, private, owner_id) VALUES (2, 1, 'Uruguay y Portugal', 1, 'Mundial', 20180630, 15, false, 1);
-INSERT INTO data.diasImportantes(id, idDiaImportante, nomDiaImportante, idTipoDiaImportante, nomTipoDiaImportante, idFecha, idHora, private, owner_id) VALUES (3, 2, '1ro de Mayo', 2, 'Fecha Patria', 20160501, 13, false, 1);
-
--- ALTER SEQUENCE
-
-ALTER SEQUENCE data.diasimportantes_id_seq RESTART WITH 4;
-
 -- View: api.diasImportantes
 
 -- DROP VIEW api.diasImportantes;
