@@ -43,7 +43,7 @@ DELETE FROM horas;
 
 -- Dimensiones
 
-CREATE TABLE horas
+CREATE TABLE dw.horas
 (
   idHora INT
 , hora VARCHAR(2)
@@ -51,28 +51,28 @@ CREATE TABLE horas
 , descRangoHoras VARCHAR(10)
 , PRIMARY KEY (idHora)
 )
-;CREATE INDEX idx_horas_idHora ON horas(idHora)
+;CREATE INDEX idx_horas_idHora ON dw.horas(idHora)
 ;
 
-CREATE TABLE estacionesDelAnio
+CREATE TABLE dw.estacionesDelAnio
 (
   idEstacionDelAnio INT
 , nomEstacionDelAnio VARCHAR(10)
 , PRIMARY KEY (idEstacionDelAnio)
 )
-;CREATE INDEX idx_estacionesDelAnio_idEstacionDelAnio ON estacionesDelAnio(idEstacionDelAnio)
+;CREATE INDEX idx_estacionesDelAnio_idEstacionDelAnio ON dw.estacionesDelAnio(idEstacionDelAnio)
 ;
 
-CREATE TABLE diasSemana
+CREATE TABLE dw.diasSemana
 (
   idDiaSemana INT
 , nomDiaSemana VARCHAR(10)
 , PRIMARY KEY (idDiaSemana)
 )
-;CREATE INDEX idx_diasSemana_idDiaSemana ON diasSemana(idDiaSemana)
+;CREATE INDEX idx_diasSemana_idDiaSemana ON dw.diasSemana(idDiaSemana)
 ;
 
-CREATE TABLE fechas
+CREATE TABLE dw.fechas
 (
   idFecha INT
 , fecha VARCHAR(10)
@@ -83,10 +83,10 @@ CREATE TABLE fechas
 , anio INT
 , PRIMARY KEY (idFecha)
 )
-;CREATE INDEX idx_fechas_idFecha ON fechas(idFecha)
+;CREATE INDEX idx_fechas_idFecha ON dw.fechas(idFecha)
 ;
 
-CREATE TABLE estacionesDeLaRed
+CREATE TABLE dw.estacionesDeLaRed
 (
   idEstacionDeLaRed INT
 , nomEstacionDeLaRed VARCHAR(22)
@@ -97,19 +97,19 @@ CREATE TABLE estacionesDeLaRed
 , nomCCZ VARCHAR(5)
 , PRIMARY KEY (idEstacionDeLaRed)
 )
-;CREATE INDEX idx_estacionesDeLaRed_idEstacionDeLaRed ON estacionesDeLaRed(idEstacionDeLaRed)
+;CREATE INDEX idx_estacionesDeLaRed_idEstacionDeLaRed ON dw.estacionesDeLaRed(idEstacionDeLaRed)
 ;
 
-CREATE TABLE metodos
+CREATE TABLE dw.metodos
 (
   idMetodo INT
 , nomMetodo VARCHAR(12)
 , PRIMARY KEY (idMetodo)
 )
-;CREATE INDEX idx_metodos_idMetodo ON metodos(idMetodo)
+;CREATE INDEX idx_metodos_idMetodo ON dw.metodos(idMetodo)
 ;
 
-CREATE TABLE contaminantes
+CREATE TABLE dw.contaminantes
 (
   idContaminante INT
 , nomContaminante VARCHAR(4)
@@ -119,60 +119,60 @@ CREATE TABLE contaminantes
 , nomTipo VARCHAR(23)
 , PRIMARY KEY (idContaminante)
 )
-;CREATE INDEX idx_contaminantes_idContaminante ON contaminantes(idContaminante)
+;CREATE INDEX idx_contaminantes_idContaminante ON dw.contaminantes(idContaminante)
 ;
 
-CREATE TABLE radiacionSolarGlobal
+CREATE TABLE dw.radiacionSolarGlobal
 (
   valorEnW_m2 REAL
 , idRangoRadiacionSolarGlobal INT
 , descRangoRadiacionSolarGlobal VARCHAR(10)
 , PRIMARY KEY (valorEnW_m2)
 )
-;CREATE INDEX idx_radiacionSolarGlobal_valorEnW_m2 ON radiacionSolarGlobal(valorEnW_m2)
+;CREATE INDEX idx_radiacionSolarGlobal_valorEnW_m2 ON dw.radiacionSolarGlobal(valorEnW_m2)
 ;
 
-CREATE TABLE humedadRelativa
+CREATE TABLE dw.humedadRelativa
 (
   valorEnPorcentaje REAL
 , idRangoHumedadRelativa INT
 , descRangoHumedadRelativa VARCHAR(10)
 , PRIMARY KEY (valorEnPorcentaje)
 )
-;CREATE INDEX idx_humedadRelativa_valorEnPorcentaje ON humedadRelativa(valorEnPorcentaje)
+;CREATE INDEX idx_humedadRelativa_valorEnPorcentaje ON dw.humedadRelativa(valorEnPorcentaje)
 ;
 
-CREATE TABLE temperaturaExterna
+CREATE TABLE dw.temperaturaExterna
 (
   valorEnC REAL
 , idRangoTemperaturaExterna INT
 , descRangoTemperaturaExterna VARCHAR(10)
 , PRIMARY KEY (valorEnC)
 )
-;CREATE INDEX idx_temperaturaExterna_valorEnC ON temperaturaExterna(valorEnC)
+;CREATE INDEX idx_temperaturaExterna_valorEnC ON dw.temperaturaExterna(valorEnC)
 ;
 
-CREATE TABLE vientoDireccion
+CREATE TABLE dw.vientoDireccion
 (
   valorEnGrados REAL
 , idRangoVientoDireccion INT
 , descRangoVientoDireccion VARCHAR(10)
 , PRIMARY KEY (valorEnGrados)
 )
-;CREATE INDEX idx_vientoDireccion_valorEnGrados ON vientoDireccion(valorEnGrados)
+;CREATE INDEX idx_vientoDireccion_valorEnGrados ON dw.vientoDireccion(valorEnGrados)
 ;
 
-CREATE TABLE vientoVelocidad
+CREATE TABLE dw.vientoVelocidad
 (
   valorEnM_s REAL
 , idRangoVientoVelocidad INT
 , descRangoVientoVelocidad VARCHAR(10)
 , PRIMARY KEY (valorEnM_s)
 )
-;CREATE INDEX idx_vientoVelocidad_valorEnM_s ON vientoVelocidad(valorEnM_s)
+;CREATE INDEX idx_vientoVelocidad_valorEnM_s ON dw.vientoVelocidad(valorEnM_s)
 ;
 
-CREATE TABLE camaras
+CREATE TABLE dw.camaras
 (
   idDetector INT
 , idCarril INT
@@ -183,20 +183,20 @@ CREATE TABLE camaras
 , ubicCamara geometry(Geometry,32721)
 , PRIMARY KEY (idDetector)
 )
-;CREATE INDEX idx_camaras_idDetector ON camaras(idDetector)
+;CREATE INDEX idx_camaras_idDetector ON dw.camaras(idDetector)
 ;
 
-CREATE TABLE industrias
+CREATE TABLE dw.industrias
 (
   idIndustria INT
 , nomIndustria VARCHAR(20)
 , ubicIndustria geometry(Geometry,32721)
 , PRIMARY KEY (idIndustria)
 )
-;CREATE INDEX idx_industrias_idIndustria ON industrias(idIndustria)
+;CREATE INDEX idx_industrias_idIndustria ON dw.industrias(idIndustria)
 ;
 
-CREATE TABLE diasImportantes
+CREATE TABLE dw.diasImportantes
 (
   idDiaImportante INT
 , nomDiaImportante VARCHAR(20)
@@ -206,26 +206,26 @@ CREATE TABLE diasImportantes
 , idHora INT
 , PRIMARY KEY (idDiaImportante)
 )
-;CREATE INDEX idx_diasImportantes_idDiaImportante ON diasImportantes(idDiaImportante)
+;CREATE INDEX idx_diasImportantes_idDiaImportante ON dw.diasImportantes(idDiaImportante)
 ;
 
 -- Medidas
 
-CREATE TABLE mediciones
+CREATE TABLE dw.mediciones
 (
-  idHora INT REFERENCES horas
-, idEstacionDelAnio INT REFERENCES estacionesDelAnio
-, idDiaSemana INT REFERENCES diasSemana
-, idFecha INT REFERENCES fechas
-, idEstacionDeLaRed INT REFERENCES estacionesDeLaRed
-, idMetodo INT REFERENCES metodos
-, idContaminante INT REFERENCES contaminantes
---, valorEnW_m2 INT REFERENCES radiacionSolarGlobal
---, valorEnPorcentaje INT REFERENCES humedadRelativa
-, valorEnCTemperaturaExterna REAL REFERENCES temperaturaExterna
---, valorEnGrados INT REFERENCES vientoDireccion
---, valorEnM_s INT REFERENCES vientoVelocidad
-, idDetector INT REFERENCES camaras
+  idHora INT REFERENCES dw.horas
+, idEstacionDelAnio INT REFERENCES dw.estacionesDelAnio
+, idDiaSemana INT REFERENCES dw.diasSemana
+, idFecha INT REFERENCES dw.fechas
+, idEstacionDeLaRed INT REFERENCES dw.estacionesDeLaRed
+, idMetodo INT REFERENCES dw.metodos
+, idContaminante INT REFERENCES dw.contaminantes
+--, valorEnW_m2 INT REFERENCES dw.radiacionSolarGlobal
+--, valorEnPorcentaje INT REFERENCES dw.humedadRelativa
+, valorEnCTemperaturaExterna REAL REFERENCES dw.temperaturaExterna
+--, valorEnGrados INT REFERENCES dw.vientoDireccion
+--, valorEnM_s INT REFERENCES dw.vientoVelocidad
+, idDetector INT REFERENCES dw.camaras
 , contaminacion REAL
 , volumenVehiculos INT
 , PRIMARY KEY (
@@ -244,7 +244,7 @@ CREATE TABLE mediciones
     , idDetector
   )
 )
-;CREATE INDEX idx_mediciones_pk ON mediciones(
+;CREATE INDEX idx_mediciones_pk ON dw.mediciones(
     idHora
     , idEstacionDelAnio
     , idDiaSemana
@@ -259,22 +259,22 @@ CREATE TABLE mediciones
     -- , valorEnM_s
     , idDetector
   )
-;CREATE INDEX idx_mediciones_idHora ON mediciones(idHora)
-;CREATE INDEX idx_mediciones_idEstacionDelAnio ON mediciones(idEstacionDelAnio)
-;CREATE INDEX idx_mediciones_idDiaSemana ON mediciones(idDiaSemana)
-;CREATE INDEX idx_mediciones_idFecha ON mediciones(idFecha)
-;CREATE INDEX idx_mediciones_idEstacionDeLaRed ON mediciones(idEstacionDeLaRed)
-;CREATE INDEX idx_mediciones_idMetodo ON mediciones(idMetodo)
-;CREATE INDEX idx_mediciones_idContaminante ON mediciones(idContaminante)
---;CREATE INDEX idx_mediciones_valorEnW_m2 ON mediciones(valorEnW_m2)
---;CREATE INDEX idx_mediciones_valorEnPorcentaje ON mediciones(valorEnPorcentaje)
-;CREATE INDEX idx_mediciones_valorEnCTemperaturaExterna ON mediciones(valorEnCTemperaturaExterna)
---;CREATE INDEX idx_mediciones_valorEnGrados ON mediciones(valorEnGrados)
---;CREATE INDEX idx_mediciones_valorEnM_s ON mediciones(valorEnM_s)
-;CREATE INDEX idx_mediciones_idDetector ON mediciones(idDetector)
+;CREATE INDEX idx_mediciones_idHora ON dw.mediciones(idHora)
+;CREATE INDEX idx_mediciones_idEstacionDelAnio ON dw.mediciones(idEstacionDelAnio)
+;CREATE INDEX idx_mediciones_idDiaSemana ON dw.mediciones(idDiaSemana)
+;CREATE INDEX idx_mediciones_idFecha ON dw.mediciones(idFecha)
+;CREATE INDEX idx_mediciones_idEstacionDeLaRed ON dw.mediciones(idEstacionDeLaRed)
+;CREATE INDEX idx_mediciones_idMetodo ON dw.mediciones(idMetodo)
+;CREATE INDEX idx_mediciones_idContaminante ON dw.mediciones(idContaminante)
+--;CREATE INDEX idx_mediciones_valorEnW_m2 ON dw.mediciones(valorEnW_m2)
+--;CREATE INDEX idx_mediciones_valorEnPorcentaje ON dw.mediciones(valorEnPorcentaje)
+;CREATE INDEX idx_mediciones_valorEnCTemperaturaExterna ON dw.mediciones(valorEnCTemperaturaExterna)
+--;CREATE INDEX idx_mediciones_valorEnGrados ON dw.mediciones(valorEnGrados)
+--;CREATE INDEX idx_mediciones_valorEnM_s ON dw.mediciones(valorEnM_s)
+;CREATE INDEX idx_mediciones_idDetector ON dw.mediciones(idDetector)
 ;
 
-CREATE TABLE mediciones2
+CREATE TABLE dw.mediciones2
 (
   idHora INT REFERENCES horas
 , idEstacionDelAnio INT REFERENCES estacionesDelAnio
@@ -336,7 +336,7 @@ CREATE TABLE mediciones2
 ;CREATE INDEX idx_mediciones2_idDiaImportante ON mediciones2(idDiaImportante)
 ;
 
-CREATE TABLE mediciones3
+CREATE TABLE dw.mediciones3
 (
   idEstacionDelAnio INT REFERENCES estacionesDelAnio
 , idDiaSemana INT REFERENCES diasSemana
