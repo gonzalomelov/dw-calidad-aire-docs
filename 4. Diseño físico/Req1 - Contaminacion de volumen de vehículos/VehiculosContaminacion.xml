@@ -21,13 +21,13 @@
   </Dimension>
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesDeLaRed">
     <Hierarchy name="EstacionesDeLaRed" visible="true" hasAll="true">
-      <Table name="estacionesDeLaRed" schema="dw">
+      <Table name="estacionesdelared" schema="dw">
       </Table>
-      <Level name="CCZ" visible="true" table="estacionesDeLaRed" column="idccz" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomccz">
+      <Level name="CCZ" visible="true" table="estacionesdelared" column="idccz" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomccz">
       </Level>
-      <Level name="Barrio" visible="true" table="estacionesDeLaRed" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
+      <Level name="Barrio" visible="true" table="estacionesdelared" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
       </Level>
-      <Level name="EstacionDeLaRed" visible="true" table="estacionesDeLaRed" column="idestacionDeLaRed" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestacionDeLaRed">
+      <Level name="EstacionDeLaRed" visible="true" table="estacionesdelared" column="idestaciondelared" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelared">
       </Level>
     </Hierarchy>
   </Dimension>
