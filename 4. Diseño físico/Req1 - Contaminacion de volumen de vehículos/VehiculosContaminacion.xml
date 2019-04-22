@@ -3,6 +3,10 @@
     <Hierarchy name="Fechas" visible="true" hasAll="true">
       <Table name="fechas" schema="dw">
       </Table>
+      <Level name="Anio" visible="true" table="fechas" column="anio" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Mes" visible="true" table="fechas" column="idmes" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="mes">
+      </Level>
       <Level name="Fecha" visible="true" table="fechas" column="idfecha" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
       </Level>
     </Hierarchy>
@@ -59,6 +63,8 @@
     <Hierarchy name="Horas" visible="true" hasAll="true">
       <Table name="horas" schema="dw">
       </Table>
+      <Level name="RangoHoras" visible="true" table="horas" column="idrangohoras" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangohoras">
+      </Level>
       <Level name="Hora" visible="true" table="horas" column="idhora" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="hora">
       </Level>
     </Hierarchy>
@@ -98,7 +104,7 @@
     </DimensionUsage>
     <DimensionUsage source="Metodos" level="Metodo" name="Metodos" visible="true" foreignKey="idmetodo" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenc" highCardinality="false">
+    <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenctemperaturaexterna" highCardinality="false">
     </DimensionUsage>
     <Measure name="Contaminacion Promedio" column="contaminacion" datatype="Numeric" aggregator="avg" visible="true">
     </Measure>
