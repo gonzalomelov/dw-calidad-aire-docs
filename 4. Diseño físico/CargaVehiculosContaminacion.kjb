@@ -8,9 +8,29 @@
   <created_user>-</created_user>
   <created_date>2019/02/18 20:37:04.776</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2019/03/27 05:20:57.240</modified_date>
+  <modified_date>2019/04/22 11:51:37.567</modified_date>
   <parameters>
-    </parameters>
+    <parameter>
+      <name>CONTAMINACION_PATH</name>
+      <default_value>contaminacion.csv</default_value>
+      <description>Contaminacion filename</description>
+    </parameter>
+    <parameter>
+      <name>CONTEO_VEHICULAR_PATH</name>
+      <default_value>conteo_vehicular.csv</default_value>
+      <description>Conteo Vehicular filepath</description>
+    </parameter>
+    <parameter>
+      <name>DATOS_METEOROLOGICOS_PATH</name>
+      <default_value>datos_meteorologicos.xlsx</default_value>
+      <description>Datos Meteorologicos filename</description>
+    </parameter>
+    <parameter>
+      <name>DB_HOST</name>
+      <default_value>localhost</default_value>
+      <description>Database host env</description>
+    </parameter>
+  </parameters>
   <slaveservers>
     </slaveservers>
   <job-log-table>
@@ -303,8 +323,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>208</xloc>
-      <yloc>272</yloc>
+      <xloc>128</xloc>
+      <yloc>336</yloc>
     </entry>
     <entry>
       <name>Transformation</name>
@@ -340,8 +360,8 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>336</xloc>
-      <yloc>272</yloc>
+      <xloc>416</xloc>
+      <yloc>336</yloc>
     </entry>
     <entry>
       <name>Success</name>
@@ -350,8 +370,98 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>480</xloc>
-      <yloc>272</yloc>
+      <xloc>528</xloc>
+      <yloc>336</yloc>
+    </entry>
+    <entry>
+      <name>Get a file Contaminacion</name>
+      <description />
+      <type>SFTP</type>
+      <servername>${DB_HOST}</servername>
+      <serverport>2222</serverport>
+      <username>admin</username>
+      <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+      <sftpdirectory>/upload</sftpdirectory>
+      <targetdirectory>${user.home}/Carte</targetdirectory>
+      <wildcard>${CONTAMINACION_PATH}</wildcard>
+      <remove>N</remove>
+      <isaddresult>Y</isaddresult>
+      <createtargetfolder>N</createtargetfolder>
+      <copyprevious>N</copyprevious>
+      <usekeyfilename>N</usekeyfilename>
+      <keyfilename />
+      <keyfilepass>Encrypted </keyfilepass>
+      <compression>none</compression>
+      <proxyType />
+      <proxyHost />
+      <proxyPort />
+      <proxyUsername />
+      <proxyPassword>Encrypted </proxyPassword>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>272</xloc>
+      <yloc>240</yloc>
+    </entry>
+    <entry>
+      <name>Get a file Conteo Vehicular</name>
+      <description />
+      <type>SFTP</type>
+      <servername>${DB_HOST}</servername>
+      <serverport>2222</serverport>
+      <username>admin</username>
+      <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+      <sftpdirectory>/upload</sftpdirectory>
+      <targetdirectory>${user.home}/Carte</targetdirectory>
+      <wildcard>${CONTEO_VEHICULAR_PATH}</wildcard>
+      <remove>N</remove>
+      <isaddresult>Y</isaddresult>
+      <createtargetfolder>N</createtargetfolder>
+      <copyprevious>N</copyprevious>
+      <usekeyfilename>N</usekeyfilename>
+      <keyfilename />
+      <keyfilepass>Encrypted </keyfilepass>
+      <compression>none</compression>
+      <proxyType />
+      <proxyHost />
+      <proxyPort />
+      <proxyUsername />
+      <proxyPassword>Encrypted </proxyPassword>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>272</xloc>
+      <yloc>336</yloc>
+    </entry>
+    <entry>
+      <name>Get a file Datos Meteorologicos</name>
+      <description />
+      <type>SFTP</type>
+      <servername>${DB_HOST}</servername>
+      <serverport>2222</serverport>
+      <username>admin</username>
+      <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+      <sftpdirectory>/upload</sftpdirectory>
+      <targetdirectory>${user.home}/Carte</targetdirectory>
+      <wildcard>${DATOS_METEOROLOGICOS_PATH}</wildcard>
+      <remove>N</remove>
+      <isaddresult>Y</isaddresult>
+      <createtargetfolder>N</createtargetfolder>
+      <copyprevious>N</copyprevious>
+      <usekeyfilename>N</usekeyfilename>
+      <keyfilename />
+      <keyfilepass>Encrypted </keyfilepass>
+      <compression>none</compression>
+      <proxyType />
+      <proxyHost />
+      <proxyPort />
+      <proxyUsername />
+      <proxyPassword>Encrypted </proxyPassword>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>272</xloc>
+      <yloc>432</yloc>
     </entry>
   </entries>
   <hops>
@@ -366,12 +476,39 @@
     </hop>
     <hop>
       <from>START</from>
-      <to>Transformation</to>
+      <to>Get a file Contaminacion</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
       <evaluation>Y</evaluation>
       <unconditional>Y</unconditional>
+    </hop>
+    <hop>
+      <from>Get a file Datos Meteorologicos</from>
+      <to>Transformation</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Get a file Contaminacion</from>
+      <to>Get a file Conteo Vehicular</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
+      <from>Get a file Conteo Vehicular</from>
+      <to>Get a file Datos Meteorologicos</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
     </hop>
   </hops>
   <notepads>
