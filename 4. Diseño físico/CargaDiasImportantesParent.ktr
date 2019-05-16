@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>Carga Contaminante Parent</name>
+    <name>CargaDiasImportantesParent</name>
     <description />
     <extended_description />
     <trans_version />
@@ -429,7 +429,7 @@
     <created_user>-</created_user>
     <created_date>2018/04/21 08:43:58.055</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/02/19 21:37:36.548</modified_date>
+    <modified_date>2019/05/16 20:15:08.111</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -440,10 +440,10 @@
     <server>localhost</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>dwcalidadaire-final</database>
+    <database>app</database>
     <port>5432</port>
-    <username>gonzalomelo</username>
-    <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+    <username>superuser</username>
+    <password>Encrypted 2be98afbb1fd79796be0aab62ce93bcc9</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -513,7 +513,7 @@
     <commit>100</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
-      <schema />
+      <schema>dw</schema>
       <table>mediciones2</table>
       <key>
         <name>valorEnCTemperaturaExterna</name>
@@ -569,6 +569,12 @@
         <condition>=</condition>
         <name2 />
       </key>
+      <key>
+        <name>categoria</name>
+        <field>categoria</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
       <value>
         <name>valorEnCTemperaturaExterna</name>
         <rename>valorEnCTemperaturaExterna</rename>
@@ -619,7 +625,13 @@
         <rename>iddiaimportante</rename>
         <update>N</update>
       </value>
+      <value>
+        <name>categoria</name>
+        <rename>categoria</rename>
+        <update>N</update>
+      </value>
     </lookup>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -652,7 +664,7 @@
         <currency />
         <decimal />
         <group />
-        <nullif>/Users/gonzalomelo/Kona/proy-grad/Proyecto Calidad del Aire/1. Archivos fuentes/red-de-monitoreo-de-la-calidad-del-aire-de-montevideo-7-09-2017/aire-datos-historicos/CV_PM2_5  2015_2016.csv</nullif>
+        <nullif>/Users/gonzalomelo/Carte/SO2 2012_2016.csv</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -663,6 +675,7 @@
     <interval_in_ms>5000</interval_in_ms>
     <row_time_field>now</row_time_field>
     <last_time_field>FiveSecondsAgo</last_time_field>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -689,7 +702,7 @@
     </partitioning>
     <specification_method>rep_name</specification_method>
     <trans_object_id />
-    <trans_name>Carga Contaminante Child</trans_name>
+    <trans_name>CargaDiasImportantesChild</trans_name>
     <filename />
     <directory_path>${Internal.Entry.Current.Directory}</directory_path>
     <mappings>
@@ -721,6 +734,7 @@
     </mappings>
     <allow_multiple_input>Y</allow_multiple_input>
     <allow_multiple_output>Y</allow_multiple_output>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -739,4 +753,5 @@
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes />
 </transformation>

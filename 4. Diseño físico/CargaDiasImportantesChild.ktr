@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>Carga Contaminante Child</name>
+    <name>CargaDiasImportantesChild</name>
     <description />
     <extended_description />
     <trans_version />
@@ -429,21 +429,21 @@
     <created_user>-</created_user>
     <created_date>2014/06/18 22:46:27.415</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2019/04/27 19:45:29.229</modified_date>
+    <modified_date>2019/05/16 20:14:50.361</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>dwcalidadaire-final</name>
+    <name>localhost</name>
     <server>localhost</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>dwcalidadaire-final</database>
+    <database>app</database>
     <port>5432</port>
-    <username>gonzalomelo</username>
-    <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+    <username>superuser</username>
+    <password>Encrypted 2be98afbb1fd79796be0aab62ce93bcc9</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -508,11 +508,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Traer contaminacion de CSV</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Filter rows</from>
       <to>Sort rows</to>
       <enabled>Y</enabled>
@@ -545,12 +540,12 @@
     <hop>
       <from>Mapping input specification</from>
       <to>Traer contaminacion de CSV</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Generate Rows</from>
       <to>Traer contaminacion de CSV</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Metodos</from>
@@ -625,12 +620,12 @@
     <hop>
       <from>Select Final Values</from>
       <to>Mapping output specification</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select Final Values</from>
       <to>Dummy (do nothing)</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Formula</from>
@@ -663,11 +658,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge Join 4 2</from>
-      <to>Select Final Values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Excel datos meteorologicos</from>
       <to>Filter rows 2</to>
       <enabled>Y</enabled>
@@ -692,7 +682,91 @@
       <to>Sort rows 3 3 2</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Traer contaminacion de CSV</from>
+      <to>Select values 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified Java Script Value 4</from>
+      <to>Select Final Values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3</from>
+      <to>Add constants</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>Filter rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 4 2</from>
+      <to>If field value is null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>If field value is null</from>
+      <to>Modified Java Script Value 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2</from>
+      <to>Formula 2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Formula 2</from>
+      <to>Filter rows</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
+  <step>
+    <name>Add constants</name>
+    <type>Constant</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>idhora</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif>-1</nullif>
+        <length>-1</length>
+        <precision>-1</precision>
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step>
     <name>Calculadora</name>
     <type>Calculator</type>
@@ -704,6 +778,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
@@ -764,6 +839,7 @@
       <grouping_symbol />
       <currency_symbol />
     </calculation>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -850,6 +926,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -867,20 +944,23 @@ seasonName = seasons[season-1];</jsScript_script>
     <name>Contaminante</name>
     <type>TableInput</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>dwcalidadaire-final</connection>
-    <sql>SELECT * FROM contaminantes order by nomcontaminante;</sql>
+    <connection>localhost</connection>
+    <sql>SELECT *
+FROM "data".contaminantes
+</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -889,7 +969,7 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
+      <xloc>640</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -905,6 +985,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -913,7 +994,7 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3040</xloc>
+      <xloc>3184</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1146,6 +1227,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>POI</spreadsheet_type>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1189,6 +1271,7 @@ seasonName = seasons[season-1];</jsScript_script>
         </value>
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1371,6 +1454,7 @@ seasonName = seasons[season-1];</jsScript_script>
         </conditions>
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1403,14 +1487,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <value_precision>-1</value_precision>
       <replace_field />
     </formula>
-    <formula>
-      <field_name>idHora</field_name>
-      <formula_string>TEXT(INT(Hour([date])))</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field />
-    </formula>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1421,6 +1498,39 @@ seasonName = seasons[season-1];</jsScript_script>
     <GUI>
       <xloc>1216</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Formula 2</name>
+    <type>Formula</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <formula>
+      <field_name>idHora</field_name>
+      <formula_string>TEXT(INT(Hour([date])))</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>304</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1443,7 +1553,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <currency />
         <decimal />
         <group />
-        <nullif>${user.home}/Carte/CV_PM2_5  2015_2016.csv</nullif>
+        <nullif>/Users/gonzalomelo/Carte/SO2 2012_2016.csv</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
@@ -1454,6 +1564,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <interval_in_ms>5000</interval_in_ms>
     <row_time_field>now</row_time_field>
     <last_time_field>FiveSecondsAgo</last_time_field>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1497,6 +1608,9 @@ seasonName = seasons[season-1];</jsScript_script>
         <name>date</name>
       </field>
       <field>
+        <name>idHora</name>
+      </field>
+      <field>
         <name>ID_estacion</name>
       </field>
     </group>
@@ -1508,6 +1622,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <valuefield />
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1518,6 +1633,46 @@ seasonName = seasons[season-1];</jsScript_script>
     <GUI>
       <xloc>544</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>If field value is null</name>
+    <type>IfNull</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <replaceAllByValue />
+    <replaceAllMask />
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>ANCAP1_Temperature_Extern_1</name>
+        <value>-1</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2848</xloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1541,6 +1696,7 @@ seasonName = seasons[season-1];</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1565,6 +1721,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1573,7 +1730,7 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3040</xloc>
+      <xloc>3184</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1598,6 +1755,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>nomestaciondelared</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1631,6 +1789,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>nomcontaminante</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1648,14 +1807,14 @@ seasonName = seasons[season-1];</jsScript_script>
     <name>Merge Join 4 2</name>
     <type>MergeJoin</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <join_type>INNER</join_type>
+    <join_type>LEFT OUTER</join_type>
     <step1>Sort rows 3 3 2</step1>
     <step2>Sort rows 3 2</step2>
     <keys_1>
@@ -1664,6 +1823,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>fecha_with_hours</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1672,8 +1832,8 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2784</xloc>
-      <yloc>256</yloc>
+      <xloc>2736</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1697,6 +1857,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>nommetodo</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1730,6 +1891,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>iddiasemana</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1763,6 +1925,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>idestaciondelanio</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1796,6 +1959,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>idfecha</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1820,13 +1984,14 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>dwcalidadaire-final</connection>
+    <connection>localhost</connection>
     <sql>SELECT idmetodo, trim(nommetodo) as nommetodo FROM metodos;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1859,7 +2024,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>//Script here
 
-var idHora = lpad(idHora, '0', 2)
+var idHora = lpad(idhora, '0', 2)
 var idFechaHora = idFecha + idHora</jsScript_script>
       </jsScript>
     </jsScripts>
@@ -1881,6 +2046,7 @@ var idFechaHora = idFecha + idHora</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1930,6 +2096,7 @@ if (!iddiaimportante) {
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1939,6 +2106,67 @@ if (!iddiaimportante) {
     </remotesteps>
     <GUI>
       <xloc>2272</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified Java Script Value 4</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+var categoria;
+var valor_v = pollutant_value;
+if (valor_v == 0) {
+  categoria = "ND";
+} else if (0 &lt;= valor_v &amp;&amp; valor_v &lt;= muybuena) {
+  categoria = "Muy Buena";
+} else if (muybuena &lt; valor_v &amp;&amp; valor_v &lt;= buena) {
+  categoria = "Buena";
+} else if (buena &lt; valor_v &amp;&amp; valor_v &lt;= aceptable) {
+  categoria = "Aceptable";
+} else if (aceptable &lt; valor_v &amp;&amp; valor_v &lt;= inadecuada) {
+  categoria = "Inadecuada";
+} else if (inadecuada &lt; valor_v &amp;&amp; valor_v &lt;= mala) {
+  categoria = "Mala";
+} else {
+  categoria = "Muy Mala";
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>categoria</name>
+        <rename>categoria</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2880</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1965,8 +2193,10 @@ if (!iddiaimportante) {
         <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1994,30 +2224,39 @@ if (!iddiaimportante) {
     <fields>
       <field>
         <name>idhora</name>
+        <rename />
       </field>
       <field>
         <name>idestaciondelanio</name>
+        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
+        <rename />
       </field>
       <field>
         <name>idfecha</name>
+        <rename />
       </field>
       <field>
         <name>idestaciondelared</name>
+        <rename />
       </field>
       <field>
         <name>idmetodo</name>
+        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Global_Sun_rad_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Relative_Humidity_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Temperature_Extern_1</name>
@@ -2025,9 +2264,11 @@ if (!iddiaimportante) {
       </field>
       <field>
         <name>ANCAP1_Wind_Direction_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Speed_1</name>
+        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
@@ -2038,6 +2279,10 @@ if (!iddiaimportante) {
       <field>
         <name>iddiaimportantenuevo</name>
         <rename>iddiaimportante</rename>
+      </field>
+      <field>
+        <name>categoria</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -2177,6 +2422,7 @@ if (!iddiaimportante) {
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2185,7 +2431,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2880</xloc>
+      <xloc>3024</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2464,6 +2710,7 @@ if (!iddiaimportante) {
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2474,6 +2721,96 @@ if (!iddiaimportante) {
     <GUI>
       <xloc>2400</xloc>
       <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 2</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>date</name>
+        <rename>date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>dd/MM/yyyy HH:mm</conversion_mask>
+        <date_format_lenient>true</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>208</xloc>
+      <yloc>48</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 3</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>date</name>
+        <rename>date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>dd/MM/yyyy</conversion_mask>
+        <date_format_lenient>true</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>480</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2505,6 +2842,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2546,6 +2884,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2603,6 +2942,14 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
       <field>
+        <name>idhora</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
         <name>ID_estacion</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
@@ -2611,6 +2958,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2652,6 +3000,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2693,6 +3042,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2734,6 +3084,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2775,6 +3126,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2816,6 +3168,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2857,6 +3210,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2898,6 +3252,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2939,6 +3294,7 @@ if (!iddiaimportante) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2983,6 +3339,7 @@ if (!iddiaimportante) {
         <cut_to>10</cut_to>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3089,8 +3446,8 @@ if (!iddiaimportante) {
       </field>
       <field>
         <name>date</name>
-        <type>Date</type>
-        <format>dd/MM/yyyy HH:mm</format>
+        <type>String</type>
+        <format />
         <currency>$</currency>
         <decimal>.</decimal>
         <group>,</group>
@@ -3154,6 +3511,7 @@ if (!iddiaimportante) {
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3178,13 +3536,14 @@ if (!iddiaimportante) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>dwcalidadaire-final</connection>
-    <sql>SELECT * FROM estacionesdelared order by nomEstacionDeLaRed;</sql>
+    <connection>localhost</connection>
+    <sql>SELECT * FROM dw.estacionesdelared order by nomEstacionDeLaRed;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3209,13 +3568,14 @@ if (!iddiaimportante) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>dwcalidadaire-final</connection>
-    <sql>SELECT * FROM diasimportantes order by idfecha asc;</sql>
+    <connection>localhost</connection>
+    <sql>SELECT * FROM dw.diasimportantes order by idfecha asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3240,13 +3600,14 @@ if (!iddiaimportante) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>dwcalidadaire-final</connection>
+    <connection>localhost</connection>
     <sql>SELECT * FROM diassemana order by iddiasemana asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3271,13 +3632,14 @@ if (!iddiaimportante) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>dwcalidadaire-final</connection>
+    <connection>localhost</connection>
     <sql>SELECT * FROM estacionesdelanio order by idestaciondelanio asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3292,8 +3654,21 @@ if (!iddiaimportante) {
     </GUI>
   </step>
   <step_error_handling>
+    <error>
+      <source_step>Select values 2</source_step>
+      <target_step>Select values 3</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename />
+      <descriptions_valuename />
+      <fields_valuename />
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
+    </error>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes />
 </transformation>
