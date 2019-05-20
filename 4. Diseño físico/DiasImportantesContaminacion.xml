@@ -1,15 +1,19 @@
 <Schema name="DiasImportantesContaminacion3">
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Fechas">
     <Hierarchy name="Fechas" visible="true" hasAll="true">
-      <Table name="fechas" schema="public">
+      <Table name="fechas" schema="dw">
       </Table>
+      <Level name="Anio" visible="true" table="fechas" column="anio" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Mes" visible="true" table="fechas" column="idmes" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="mes">
+      </Level>
       <Level name="Fecha" visible="true" table="fechas" column="idfecha" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
       </Level>
     </Hierarchy>
   </Dimension>
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Contaminantes">
     <Hierarchy name="Contaminantes" visible="true" hasAll="true">
-      <Table name="contaminantes" schema="public">
+      <Table name="contaminantes" schema="dw">
       </Table>
       <Level name="Tipo" visible="true" table="contaminantes" column="idtipo" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomtipo">
       </Level>
@@ -21,7 +25,7 @@
   </Dimension>
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesDeLaRed">
     <Hierarchy name="EstacionesDeLaRed" visible="true" hasAll="true">
-      <Table name="estacionesdelared" schema="public">
+      <Table name="estacionesdelared" schema="dw">
       </Table>
       <Level name="CCZ" visible="true" table="estacionesdelared" column="idccz" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomccz">
       </Level>
@@ -33,7 +37,7 @@
   </Dimension>
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="DiasSemana">
     <Hierarchy name="DiasSemana" visible="true" hasAll="true">
-      <Table name="diassemana" schema="public">
+      <Table name="diassemana" schema="dw">
       </Table>
       <Level name="DiaSemana" visible="true" table="diassemana" column="iddiasemana" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomdiasemana">
       </Level>
@@ -41,7 +45,7 @@
   </Dimension>
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesDelAnio">
     <Hierarchy name="EstacionesDelAnio" visible="true" hasAll="true">
-      <Table name="estacionesdelanio" schema="public">
+      <Table name="estacionesdelanio" schema="dw">
       </Table>
       <Level name="EstacionDelAnio" visible="true" table="estacionesdelanio" column="idestaciondelanio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelanio">
       </Level>
@@ -49,7 +53,7 @@
   </Dimension>
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Horas">
     <Hierarchy name="Horas" visible="true" hasAll="true">
-      <Table name="horas" schema="public">
+      <Table name="horas" schema="dw">
       </Table>
       <Level name="Hora" visible="true" table="horas" column="idhora" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="hora">
       </Level>
@@ -57,7 +61,7 @@
   </Dimension>
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Metodos">
     <Hierarchy name="Metodos" visible="true" hasAll="true">
-      <Table name="metodos" schema="public">
+      <Table name="metodos" schema="dw">
       </Table>
       <Level name="Metodo" visible="true" table="metodos" column="idmetodo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nommetodo">
       </Level>
@@ -65,28 +69,36 @@
   </Dimension>
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="TemperaturaExterna">
     <Hierarchy name="TemperaturaExterna" visible="true" hasAll="true">
-      <Table name="temperaturaexterna" schema="public">
+      <Table name="temperaturaexterna" schema="dw">
       </Table>
       <Level name="TemperaturaExterna" visible="true" table="temperaturaexterna" column="valorenc" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
       </Level>
     </Hierarchy>
   </Dimension>
-  <Dimension type="StandardDimension" visible="true" name="DiasImportantes">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="DiasImportantes">
     <Hierarchy name="DiasImportantes" visible="true" hasAll="true">
-      <Table name="diasimportantes" schema="public" alias="">
+      <Table name="diasimportantes" schema="dw">
       </Table>
       <Level name="DiaImportante" visible="true" table="diasimportantes" column="iddiaimportante" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomdiaimportante">
       </Level>
     </Hierarchy>
   </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="ContaminantesCategorias">
+    <Hierarchy name="ContaminantesCategorias" visible="true" hasAll="true">
+      <Table name="contaminantescategorias" schema="dw">
+      </Table>
+      <Level name="ContaminanteCategoria" visible="true" table="contaminantescategorias" column="surrogate_key" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
   <Cube name="DiasImportantesContaminacion3" visible="true" cache="true" enabled="true">
-    <Table name="mediciones2" schema="public">
+    <Table name="mediciones2" schema="dw">
     </Table>
     <DimensionUsage source="Fechas" level="Fecha" name="Fechas" visible="true" foreignKey="idfecha" highCardinality="false">
     </DimensionUsage>
     <DimensionUsage source="Contaminantes" level="Contaminante" name="Contaminantes" visible="true" foreignKey="idcontaminante" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="idestacionDeLaRed" highCardinality="false">
+    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="idestaciondelared" highCardinality="false">
     </DimensionUsage>
     <DimensionUsage source="DiasSemana" level="DiaSemana" name="DiasSemana" visible="true" foreignKey="iddiasemana" highCardinality="false">
     </DimensionUsage>
@@ -98,9 +110,13 @@
     </DimensionUsage>
     <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenc" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="DiasImportantes" level="DiaImportante" name="DiasImportantes" visible="true" foreignKey="iddiaimportante">
+    <DimensionUsage source="DiasImportantes" level="DiaImportante" name="DiasImportantes" visible="true" foreignKey="iddiaimportante" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="ContaminantesCategorias" level="ContaminanteCategoria" name="ContaminantesCategorias" visible="true" foreignKey="surrogate_key">
     </DimensionUsage>
     <Measure name="Contaminacion Promedio" column="contaminacion" datatype="Numeric" aggregator="avg" visible="true">
+    </Measure>
+    <Measure name="Contador" column="surrogate_key" aggregator="count" visible="true">
     </Measure>
   </Cube>
 </Schema>
