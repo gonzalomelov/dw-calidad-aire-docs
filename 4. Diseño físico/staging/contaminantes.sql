@@ -28,6 +28,11 @@ CREATE TABLE data.contaminantes
   nomsubtipo varchar(59),
   idtipo int,
   nomtipo varchar(23),
+  muybuena INT,
+  buena INT,
+  aceptable INT,
+  inadecuada INT,
+  mala INT,
 
   private boolean DEFAULT false,
   owner_id integer DEFAULT request.user_id(),
@@ -67,6 +72,11 @@ CREATE OR REPLACE VIEW api.contaminantes AS
     contaminantes.nomsubtipo,
     contaminantes.idtipo,
     contaminantes.nomtipo,
+    contaminantes.muybuena,
+    contaminantes.buena,
+    contaminantes.aceptable,
+    contaminantes.inadecuada,
+    contaminantes.mala,
 
     contaminantes.private,
     contaminantes.owner_id = request.user_id() AS mine
