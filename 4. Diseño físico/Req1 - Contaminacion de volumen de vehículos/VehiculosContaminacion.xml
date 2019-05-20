@@ -110,5 +110,7 @@
     </Measure>
     <Measure name="Volumen Vehicular Promedio" column="volumenvehiculos" datatype="Numeric" aggregator="avg" visible="true">
     </Measure>
+    <Measure name="Contador" aggregator="count" visible="true">
+    </Measure>
   </Cube>
 </Schema>
