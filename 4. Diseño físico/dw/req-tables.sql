@@ -1,45 +1,47 @@
 postgres://gonzalomelo:password@localhost:5432/dwcalidadaire-final
 
 
-DROP TABLE mediciones;
-DROP TABLE mediciones2;
-DROP TABLE mediciones3;
+DROP TABLE dw.mediciones;
+DROP TABLE dw.mediciones2;
+DROP TABLE dw.mediciones3;
 
-DROP TABLE diasImportantes;
-DROP TABLE industrias;
-DROP TABLE camaras;
-DROP TABLE vientoVelocidad;
-DROP TABLE vientoDireccion;
-DROP TABLE temperaturaExterna;
-DROP TABLE humedadRelativa;
-DROP TABLE radiacionSolarGlobal;
-DROP TABLE contaminantes;
-DROP TABLE metodos;
-DROP TABLE estacionesDeLaRed;
-DROP TABLE fechas;
-DROP TABLE diasSemana;
-DROP TABLE estacionesDelAnio;
-DROP TABLE horas;
+DROP TABLE dw.diasImportantes;
+DROP TABLE dw.industrias;
+DROP TABLE dw.camaras;
+DROP TABLE dw.contaminantescategorias;
+DROP TABLE dw.vientoVelocidad;
+DROP TABLE dw.vientoDireccion;
+DROP TABLE dw.temperaturaExterna;
+DROP TABLE dw.humedadRelativa;
+DROP TABLE dw.radiacionSolarGlobal;
+DROP TABLE dw.contaminantes;
+DROP TABLE dw.metodos;
+DROP TABLE dw.estacionesDeLaRed;
+DROP TABLE dw.fechas;
+DROP TABLE dw.diasSemana;
+DROP TABLE dw.estacionesDelAnio;
+DROP TABLE dw.horas;
 
-DELETE FROM mediciones;
-DELETE FROM mediciones2;
-DELETE FROM mediciones3;
+DELETE FROM dw.mediciones;
+DELETE FROM dw.mediciones2;
+DELETE FROM dw.mediciones3;
 
-DELETE FROM diasImportantes;
-DELETE FROM industrias;
-DELETE FROM camaras;
-DELETE FROM vientoVelocidad;
-DELETE FROM vientoDireccion;
-DELETE FROM temperaturaExterna;
-DELETE FROM humedadRelativa;
-DELETE FROM radiacionSolarGlobal;
-DELETE FROM contaminantes;
-DELETE FROM metodos;
-DELETE FROM estacionesDeLaRed;
-DELETE FROM fechas;
-DELETE FROM diasSemana;
-DELETE FROM estacionesDelAnio;
-DELETE FROM horas;
+DELETE FROM dw.diasImportantes;
+DELETE FROM dw.industrias;
+DELETE FROM dw.camaras;
+DELETE FROM dw.contaminantescategorias;
+DELETE FROM dw.vientoVelocidad;
+DELETE FROM dw.vientoDireccion;
+DELETE FROM dw.temperaturaExterna;
+DELETE FROM dw.humedadRelativa;
+DELETE FROM dw.radiacionSolarGlobal;
+DELETE FROM dw.contaminantes;
+DELETE FROM dw.metodos;
+DELETE FROM dw.estacionesDeLaRed;
+DELETE FROM dw.fechas;
+DELETE FROM dw.diasSemana;
+DELETE FROM dw.estacionesDelAnio;
+DELETE FROM dw.horas;
 
 -- Dimensiones
 
@@ -117,9 +119,26 @@ CREATE TABLE dw.contaminantes
 , nomSubTipo VARCHAR(59)
 , idTipo INT
 , nomTipo VARCHAR(23)
+, muybuena INT
+, buena INT
+, aceptable INT
+, inadecuada INT
+, mala INT
 , PRIMARY KEY (idContaminante)
 )
 ;CREATE INDEX idx_contaminantes_idContaminante ON dw.contaminantes(idContaminante)
+;
+
+CREATE TABLE dw.contaminantescategorias
+(
+  surrogate_key SERIAL
+, valor INT
+, idContaminante INT REFERENCES dw.contaminantes
+, idRangoContaminantesCategorias INT
+, descRangoContaminantesCategorias VARCHAR(10)
+, PRIMARY KEY (surrogate_key)
+)
+;CREATE INDEX idx_contaminantescategorias_surrogate_key ON dw.contaminantescategorias(surrogate_key)
 ;
 
 CREATE TABLE dw.radiacionSolarGlobal
@@ -276,19 +295,20 @@ CREATE TABLE dw.mediciones
 
 CREATE TABLE dw.mediciones2
 (
-  idHora INT REFERENCES horas
-, idEstacionDelAnio INT REFERENCES estacionesDelAnio
-, idDiaSemana INT REFERENCES diasSemana
-, idFecha INT REFERENCES fechas
-, idEstacionDeLaRed INT REFERENCES estacionesDeLaRed
-, idMetodo INT REFERENCES metodos
-, idContaminante INT REFERENCES contaminantes
---, valorEnW_m2 INT REFERENCES radiacionSolarGlobal
---, valorEnPorcentaje INT REFERENCES humedadRelativa
-, valorEnCTemperaturaExterna REAL REFERENCES temperaturaExterna
---, valorEnGrados INT REFERENCES vientoDireccion
---, valorEnM_s INT REFERENCES vientoVelocidad
-, idDiaImportante INT REFERENCES diasImportantes
+  idHora INT REFERENCES dw.horas
+, idEstacionDelAnio INT REFERENCES dw.estacionesDelAnio
+, idDiaSemana INT REFERENCES dw.diasSemana
+, idFecha INT REFERENCES dw.fechas
+, idEstacionDeLaRed INT REFERENCES dw.estacionesDeLaRed
+, idMetodo INT REFERENCES dw.metodos
+, idContaminante INT REFERENCES dw.contaminantes
+, surrogate_key INT REFERENCES dw.contaminantescategorias
+--, valorEnW_m2 INT REFERENCES dw.radiacionSolarGlobal
+--, valorEnPorcentaje INT REFERENCES dw.humedadRelativa
+, valorEnCTemperaturaExterna REAL REFERENCES dw.temperaturaExterna
+--, valorEnGrados INT REFERENCES dw.vientoDireccion
+--, valorEnM_s INT REFERENCES dw.vientoVelocidad
+, idDiaImportante INT REFERENCES dw.diasImportantes
 , contaminacion REAL
 , PRIMARY KEY (
     idHora
@@ -298,6 +318,7 @@ CREATE TABLE dw.mediciones2
     , idEstacionDeLaRed
     , idMetodo
     , idContaminante
+    , surrogate_key
     --, valorEnW_m2
     --, valorEnPorcentaje
     , valorEnCTemperaturaExterna
@@ -306,7 +327,7 @@ CREATE TABLE dw.mediciones2
     , idDiaImportante
   )
 )
-;CREATE INDEX idx_mediciones2_pk ON mediciones2(
+;CREATE INDEX idx_mediciones2_pk ON dw.mediciones2(
     idHora
     , idEstacionDelAnio
     , idDiaSemana
@@ -314,6 +335,7 @@ CREATE TABLE dw.mediciones2
     , idEstacionDeLaRed
     , idMetodo
     , idContaminante
+    , surrogate_key
     -- , valorEnW_m2
     -- , valorEnPorcentaje
     , valorEnCTemperaturaExterna
@@ -321,19 +343,20 @@ CREATE TABLE dw.mediciones2
     -- , valorEnM_s
     , idDiaImportante
   )
-;CREATE INDEX idx_mediciones2_idHora ON mediciones2(idHora)
-;CREATE INDEX idx_mediciones2_idEstacionDelAnio ON mediciones2(idEstacionDelAnio)
-;CREATE INDEX idx_mediciones2_idDiaSemana ON mediciones2(idDiaSemana)
-;CREATE INDEX idx_mediciones2_idFecha ON mediciones2(idFecha)
-;CREATE INDEX idx_mediciones2_idEstacionDeLaRed ON mediciones2(idEstacionDeLaRed)
-;CREATE INDEX idx_mediciones2_idMetodo ON mediciones2(idMetodo)
-;CREATE INDEX idx_mediciones2_idContaminante ON mediciones2(idContaminante)
---;CREATE INDEX idx_mediciones2_valorEnW_m2 ON mediciones2(valorEnW_m2)
---;CREATE INDEX idx_mediciones2_valorEnPorcentaje ON mediciones2(valorEnPorcentaje)
-;CREATE INDEX idx_mediciones2_valorEnCTemperaturaExterna ON mediciones2(valorEnCTemperaturaExterna)
---;CREATE INDEX idx_mediciones2_valorEnGrados ON mediciones2(valorEnGrados)
---;CREATE INDEX idx_mediciones2_valorEnM_s ON mediciones2(valorEnM_s)
-;CREATE INDEX idx_mediciones2_idDiaImportante ON mediciones2(idDiaImportante)
+;CREATE INDEX idx_mediciones2_idHora ON dw.mediciones2(idHora)
+;CREATE INDEX idx_mediciones2_idEstacionDelAnio ON dw.mediciones2(idEstacionDelAnio)
+;CREATE INDEX idx_mediciones2_idDiaSemana ON dw.mediciones2(idDiaSemana)
+;CREATE INDEX idx_mediciones2_idFecha ON dw.mediciones2(idFecha)
+;CREATE INDEX idx_mediciones2_idEstacionDeLaRed ON dw.mediciones2(idEstacionDeLaRed)
+;CREATE INDEX idx_mediciones2_idMetodo ON dw.mediciones2(idMetodo)
+;CREATE INDEX idx_mediciones2_idContaminante ON dw.mediciones2(idContaminante)
+;CREATE INDEX idx_mediciones2_surrogate_key ON dw.mediciones2(surrogate_key)
+--;CREATE INDEX idx_mediciones2_valorEnW_m2 ON dw.mediciones2(valorEnW_m2)
+--;CREATE INDEX idx_mediciones2_valorEnPorcentaje ON dw.mediciones2(valorEnPorcentaje)
+;CREATE INDEX idx_mediciones2_valorEnCTemperaturaExterna ON dw.mediciones2(valorEnCTemperaturaExterna)
+--;CREATE INDEX idx_mediciones2_valorEnGrados ON dw.mediciones2(valorEnGrados)
+--;CREATE INDEX idx_mediciones2_valorEnM_s ON dw.mediciones2(valorEnM_s)
+;CREATE INDEX idx_mediciones2_idDiaImportante ON dw.mediciones2(idDiaImportante)
 ;
 
 CREATE TABLE dw.mediciones3

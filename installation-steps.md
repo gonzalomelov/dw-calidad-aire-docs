@@ -2,12 +2,12 @@ pg_dump --host localhost --port 5432 --username "gonzalomelo" --no-password  --f
 
 CREATE EXTENSION postgis; CREATE EXTENSION postgis_topology;
 
-UPDATE pg_extension 
-  SET extrelocatable = TRUE 
-    WHERE extname = 'postgis';
-
-ALTER EXTENSION postgis 
-  SET SCHEMA data;
+// UPDATE pg_extension 
+//   SET extrelocatable = TRUE 
+//     WHERE extname = 'postgis';
+// 
+// ALTER EXTENSION postgis 
+//   SET SCHEMA data;
 
 Foreach table
   GRANT ALL ON TABLE data.estacionesdelared TO superuser;
