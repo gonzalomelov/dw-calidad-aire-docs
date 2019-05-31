@@ -87,7 +87,9 @@
     <Hierarchy name="ContaminantesCategorias" visible="true" hasAll="true">
       <Table name="contaminantescategorias" schema="dw">
       </Table>
-      <Level name="ContaminanteCategoria" visible="true" table="contaminantescategorias" column="surrogate_key" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      <Level name="Categoria" visible="true" table="contaminantescategorias" column="idrangocontaminantescategorias" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangocontaminantescategorias">
+      </Level>
+      <Level name="ContaminanteCategoria" visible="true" table="contaminantescategorias" column="surrogate_key" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="valor">
       </Level>
     </Hierarchy>
   </Dimension>
@@ -112,7 +114,7 @@
     </DimensionUsage>
     <DimensionUsage source="DiasImportantes" level="DiaImportante" name="DiasImportantes" visible="true" foreignKey="iddiaimportante" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="ContaminantesCategorias" level="ContaminanteCategoria" name="ContaminantesCategorias" visible="true" foreignKey="surrogate_key">
+    <DimensionUsage source="ContaminantesCategorias" level="ContaminanteCategoria" name="ContaminantesCategorias" visible="true" foreignKey="surrogate_key" highCardinality="false">
     </DimensionUsage>
     <Measure name="Contaminacion Promedio" column="contaminacion" datatype="Numeric" aggregator="avg" visible="true">
     </Measure>
