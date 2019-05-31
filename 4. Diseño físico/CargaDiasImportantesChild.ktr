@@ -429,7 +429,7 @@
     <created_user>-</created_user>
     <created_date>2014/06/18 22:46:27.415</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2019/05/20 19:03:50.343</modified_date>
+    <modified_date>2019/05/23 20:49:42.677</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -540,7 +540,7 @@
     <hop>
       <from>Generate Rows</from>
       <to>Traer contaminacion de CSV</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Metodos</from>
@@ -680,12 +680,7 @@
     <hop>
       <from>Traer contaminacion de CSV</from>
       <to>Select values 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Modified Java Script Value 4</from>
-      <to>Select Final Values</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Select values 3</from>
@@ -703,19 +698,14 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>If field value is null</from>
-      <to>Modified Java Script Value 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 2</from>
       <to>Formula 2</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Formula 2</from>
       <to>Filter rows</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values 2</from>
@@ -747,6 +737,21 @@
       <to>Sort rows 3</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>If field value is null</from>
+      <to>Select Final Values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Generate Rows</from>
+      <to>Microsoft Excel input</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel input</from>
+      <to>Select values 2</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Add constants</name>
@@ -762,7 +767,7 @@
     <fields>
       <field>
         <name>idhora</name>
-        <type>Integer</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -782,8 +787,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>160</yloc>
+      <xloc>352</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1034,7 +1039,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
+      <xloc>688</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1059,7 +1064,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3184</xloc>
+      <xloc>2800</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1301,8 +1306,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2224</xloc>
-      <yloc>336</yloc>
+      <xloc>1888</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1528,8 +1533,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2320</xloc>
-      <yloc>336</yloc>
+      <xloc>1984</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1595,7 +1600,7 @@ FROM dw.contaminantescategorias
     </remotesteps>
     <GUI>
       <xloc>304</xloc>
-      <yloc>160</yloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1638,7 +1643,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>192</xloc>
+      <xloc>64</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1736,8 +1741,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2848</xloc>
-      <yloc>160</yloc>
+      <xloc>2608</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1770,8 +1775,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>256</yloc>
+      <xloc>16</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1795,7 +1800,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3184</xloc>
+      <xloc>2880</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1897,8 +1902,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2736</xloc>
-      <yloc>192</yloc>
+      <xloc>2496</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1931,7 +1936,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
+      <xloc>992</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2069,8 +2074,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
-      <yloc>176</yloc>
+      <xloc>848</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2103,6 +2108,70 @@ FROM dw.contaminantescategorias
     <GUI>
       <xloc>784</xloc>
       <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Microsoft Excel input</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield />
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield />
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>N</accept_filenames>
+    <accept_field />
+    <accept_stepname />
+    <file>
+    </file>
+    <fields>
+    </fields>
+    <sheets>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>JXL</spreadsheet_type>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>368</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2212,67 +2281,6 @@ if (!iddiaimportante) {
     </GUI>
   </step>
   <step>
-    <name>Modified Java Script Value 4</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-var categoria;
-var valor_v = pollutant_value;
-if (valor_v == 0) {
-  categoria = "ND";
-} else if (0 &lt;= valor_v &amp;&amp; valor_v &lt;= muybuena) {
-  categoria = "Muy Buena";
-} else if (muybuena &lt; valor_v &amp;&amp; valor_v &lt;= buena) {
-  categoria = "Buena";
-} else if (buena &lt; valor_v &amp;&amp; valor_v &lt;= aceptable) {
-  categoria = "Aceptable";
-} else if (aceptable &lt; valor_v &amp;&amp; valor_v &lt;= inadecuada) {
-  categoria = "Inadecuada";
-} else if (inadecuada &lt; valor_v &amp;&amp; valor_v &lt;= mala) {
-  categoria = "Mala";
-} else {
-  categoria = "Muy Mala";
-}</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>categoria</name>
-        <rename>categoria</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2880</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Replace in string 2 2 2</name>
     <type>ReplaceString</type>
     <description />
@@ -2306,8 +2314,8 @@ if (valor_v == 0) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2512</xloc>
-      <yloc>336</yloc>
+      <xloc>2176</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2371,7 +2379,7 @@ if (valor_v == 0) {
         <rename>iddiaimportante</rename>
       </field>
       <field>
-        <name>categoria</name>
+        <name>surrogate_key</name>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -2520,7 +2528,7 @@ if (valor_v == 0) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3024</xloc>
+      <xloc>2720</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2808,8 +2816,8 @@ if (valor_v == 0) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2400</xloc>
-      <yloc>336</yloc>
+      <xloc>2064</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2854,7 +2862,7 @@ if (valor_v == 0) {
     </remotesteps>
     <GUI>
       <xloc>208</xloc>
-      <yloc>48</yloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2898,8 +2906,8 @@ if (valor_v == 0) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>480</xloc>
-      <yloc>48</yloc>
+      <xloc>272</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2940,7 +2948,7 @@ if (valor_v == 0) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
+      <xloc>1072</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3140,7 +3148,7 @@ if (valor_v == 0) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
+      <xloc>912</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3182,8 +3190,8 @@ if (valor_v == 0) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2720</xloc>
-      <yloc>336</yloc>
+      <xloc>2384</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3442,7 +3450,7 @@ if (valor_v == 0) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>784</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3537,8 +3545,8 @@ if (valor_v == 0) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2624</xloc>
-      <yloc>336</yloc>
+      <xloc>2288</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3709,8 +3717,8 @@ if (valor_v == 0) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>256</xloc>
-      <yloc>256</yloc>
+      <xloc>128</xloc>
+      <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
