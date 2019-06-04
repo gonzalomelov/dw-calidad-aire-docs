@@ -1,6 +1,5 @@
 postgres://gonzalomelo:password@localhost:5432/dwcalidadaire-final
 
-
 DROP TABLE dw.mediciones;
 DROP TABLE dw.mediciones2;
 DROP TABLE dw.mediciones3;
