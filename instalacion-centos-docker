@@ -1,0 +1,59 @@
+-Install Docker https://docs.docker.com/install/linux/docker-ce/centos/
+-Install docker-compose https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-centos-7
+-Generate server ssh key https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html
+-Install git https://www.digitalocean.com/community/tutorials/how-to-install-git-on-centos-7
+-Clone
+	git clone git@bitbucket.org:gonzalomelokonatech/admin.git
+	git clone git@bitbucket.org:gonzalomelokonatech/db-service.git
+	git clone git@bitbucket.org:gonzalomelokonatech/sftp.git
+	git clone git@bitbucket.org:gonzalomelokonatech/filestash.git
+	git clone git@bitbucket.org:gonzalomelokonatech/docsify.git
+	git clone git@bitbucket.org:gonzalomelokonatech/docker-pdi-ce.git 8.0
+	git clone git@bitbucket.org:gonzalomelokonatech/docker-biserver-ce.git 8.0
+-Foreach folder: docker-compose up -d
+	admin
+		?
+	db-service
+		openresty/openresty:jessie
+		subzerocloud/pg-amqp-bridge
+		postgrest/postgrest
+		dpage/pgadmin4
+		mdillon/postgis:9.6
+		rabbitmq:3-management
+	sftp
+		atmoz/sftp
+	filestash
+		machines/filestash
+	docsify
+		littlstar/docker-docsify	
+	docker-pdi-ce
+		zhicwu/pdi-ce:8.0
+		mysql/mysql-server:5.7
+	docker-biserver-ce
+		zhicwu/biserver-ce:8.0
+-Initialize
+	admin
+		?
+	OK-db-service
+		-http://localhost:3000
+	OK-sftp
+		-http://localhost:2222
+	OK-filestash 
+		-http://localhost:8334
+		-admin password:password
+		-SFTP
+			host.docker.internal
+			admin
+			password
+			upload
+			2222
+	OK-docsify
+		-http://localhost:3199
+	OK-docker-pdi-ce
+		-https://localhost:11011  http://localhost:9090
+			admin/password
+		-http://localhost:12345
+	OK-docker-biserver-ce
+		-http://localhost:8080
+			admin/password
+		-http://localhost:12346
