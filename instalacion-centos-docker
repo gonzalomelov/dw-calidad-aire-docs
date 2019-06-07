@@ -3,7 +3,7 @@
 -Generate server ssh key https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html
 -Install git https://www.digitalocean.com/community/tutorials/how-to-install-git-on-centos-7
 -Clone
-	git clone git@bitbucket.org:gonzalomelokonatech/admin.git
+	git clone git@bitbucket.org:gonzalomelokonatech/admin.git 
 	git clone git@bitbucket.org:gonzalomelokonatech/db-service.git
 	git clone git@bitbucket.org:gonzalomelokonatech/sftp.git
 	git clone git@bitbucket.org:gonzalomelokonatech/filestash.git
@@ -11,25 +11,25 @@
 	git clone git@bitbucket.org:gonzalomelokonatech/docker-pdi-ce.git 8.0
 	git clone git@bitbucket.org:gonzalomelokonatech/docker-biserver-ce.git 8.0
 -Foreach folder: docker-compose up -d
-	admin
+	admin => Front end para carga de datos
 		?
-	db-service
+	db-service => RESTful API para PostgreSQL + PostgreSQL + DW
 		openresty/openresty:jessie
 		subzerocloud/pg-amqp-bridge
 		postgrest/postgrest
 		dpage/pgadmin4
 		mdillon/postgis:9.6
 		rabbitmq:3-management
-	sftp
+	sftp => Servidor de archivos
 		atmoz/sftp
-	filestash
+	filestash => Servidor de archivos
 		machines/filestash
-	docsify
+	docsify => Manual de Usuario
 		littlstar/docker-docsify	
-	docker-pdi-ce
+	docker-pdi-ce => PDI
 		zhicwu/pdi-ce:8.0
 		mysql/mysql-server:5.7
-	docker-biserver-ce
+	docker-biserver-ce => PBI
 		zhicwu/biserver-ce:8.0
 -Initialize
 	admin
@@ -38,7 +38,7 @@
 		-http://localhost:3000
 	OK-sftp
 		-http://localhost:2222
-	OK-filestash 
+	OK-filestash
 		-http://localhost:8334
 		-admin password:password
 		-SFTP
