@@ -32,8 +32,9 @@
 	docker-biserver-ce => PBI
 		zhicwu/biserver-ce:8.0
 -Initialize
-	admin
-		?
+	OK-admin
+		-http://localhost:3001
+		-alice@email.com:pass
 	OK-db-service
 		-http://localhost:3000
 	OK-sftp
