@@ -454,14 +454,14 @@
     <created_user>-</created_user>
     <created_date>2018/01/16 21:26:09.467</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/05/05 18:39:03.847</modified_date>
+    <modified_date>2019/06/11 19:22:54.427</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>localhost</name>
+    <name>db</name>
     <server>${DATABASE_HOST}</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
@@ -1039,6 +1039,7 @@
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1199,6 +1200,7 @@
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1359,6 +1361,7 @@
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1519,6 +1522,7 @@
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1767,6 +1771,7 @@
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1791,6 +1796,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
@@ -1866,6 +1872,7 @@
       <grouping_symbol />
       <currency_symbol />
     </calculation>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1952,6 +1959,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1976,6 +1984,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>mil</field_name>
       <calc_type>CONSTANT</calc_type>
@@ -2006,6 +2015,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <grouping_symbol />
       <currency_symbol />
     </calculation>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2030,6 +2040,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>uno</field_name>
       <calc_type>CONSTANT</calc_type>
@@ -2060,6 +2071,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <grouping_symbol />
       <currency_symbol />
     </calculation>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2099,7 +2111,6 @@ seasonName = seasons[season-1];</jsScript_script>
     <create_parent_folder>Y</create_parent_folder>
     <file>
       <name>file</name>
-      <is_command>N</is_command>
       <servlet_output>N</servlet_output>
       <do_not_open_new_file_init>Y</do_not_open_new_file_init>
       <extention>txt</extention>
@@ -2146,6 +2157,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <targetFieldLength>0</targetFieldLength>
       <removeSelectedFields>N</removeSelectedFields>
     </ConcatFields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2250,6 +2262,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <rootUriNameFieldName />
     <extensionFieldName />
     <sizeFieldName />
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2282,6 +2295,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <outputCRSAuthority />
     <outputCRSCode />
     <crsFromGeometry>N</crsFromGeometry>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2306,6 +2320,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2330,7 +2345,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
+    <connection>db</connection>
     <rowlimit>0</rowlimit>
     <sql>select cast(1.1 as real) as distance;
 </sql>
@@ -2338,6 +2353,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <replace_vars>N</replace_vars>
     <sql_fieldname>sql</sql_fieldname>
     <query_only_on_change>N</query_only_on_change>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2579,6 +2595,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>POI</spreadsheet_type>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2622,6 +2639,7 @@ seasonName = seasons[season-1];</jsScript_script>
         </value>
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2656,6 +2674,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <rightvalue />
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2699,6 +2718,7 @@ seasonName = seasons[season-1];</jsScript_script>
         </value>
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2742,6 +2762,7 @@ seasonName = seasons[season-1];</jsScript_script>
         </value>
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2785,6 +2806,7 @@ seasonName = seasons[season-1];</jsScript_script>
         </value>
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2836,6 +2858,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <valuefield>valor_v_average</valuefield>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2884,6 +2907,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <valuefield>volumen</valuefield>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2929,6 +2953,7 @@ seasonName = seasons[season-1];</jsScript_script>
     </group>
     <fields>
       </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2977,6 +3002,7 @@ seasonName = seasons[season-1];</jsScript_script>
     </group>
     <fields>
       </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3128,6 +3154,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <update>Y</update>
       </value>
     </lookup>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3164,6 +3191,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <rightvalue />
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3211,6 +3239,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <key>timestamp</key>
       <key>valor_v</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3244,6 +3273,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>nomestaciondelared</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3277,6 +3307,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>nomcontaminante</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3310,6 +3341,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>﻿Contaminante</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3343,6 +3375,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>fecha2</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3376,6 +3409,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>fecha_with_hours</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3409,6 +3443,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>iddiasemana</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3442,6 +3477,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>idestaciondelanio</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3475,6 +3511,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <keys_2>
       <key>idcontaminante</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3485,32 +3522,6 @@ seasonName = seasons[season-1];</jsScript_script>
     <GUI>
       <xloc>4640</xloc>
       <yloc>656</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Metadata structure of stream</name>
-    <type>StepMetastructure</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <outputRowcount>N</outputRowcount>
-    <rowcountField />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>4912</xloc>
-      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3602,6 +3613,7 @@ fecha_without_seconds = final;</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3651,6 +3663,7 @@ if (row.indexOf(',') > -1) {
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3694,6 +3707,7 @@ if (row.indexOf(',') > -1) {
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3739,6 +3753,7 @@ var sql = "select ST_Distance_Sphere(ST_GeomFromText('POINT (" +  longitud + " "
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3804,6 +3819,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3839,8 +3855,10 @@ var icaire = valor_v * a + b;</jsScript_script>
         <replace_field_by_string />
         <whole_word>yes</whole_word>
         <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3876,8 +3894,10 @@ var icaire = valor_v * a + b;</jsScript_script>
         <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3913,8 +3933,10 @@ var icaire = valor_v * a + b;</jsScript_script>
         <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3950,8 +3972,10 @@ var icaire = valor_v * a + b;</jsScript_script>
         <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4209,6 +4233,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4249,6 +4274,7 @@ var icaire = valor_v * a + b;</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4289,6 +4315,7 @@ var icaire = valor_v * a + b;</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4328,6 +4355,7 @@ var icaire = valor_v * a + b;</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4368,6 +4396,7 @@ var icaire = valor_v * a + b;</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4423,6 +4452,7 @@ var icaire = valor_v * a + b;</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4467,6 +4497,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4508,6 +4539,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4557,6 +4589,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4598,6 +4631,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4639,6 +4673,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4680,6 +4715,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4737,6 +4773,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4778,6 +4815,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4819,6 +4857,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4884,6 +4923,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4925,6 +4965,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4966,6 +5007,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4976,39 +5018,6 @@ var icaire = valor_v * a + b;</jsScript_script>
     <GUI>
       <xloc>4400</xloc>
       <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 6</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1808</xloc>
-      <yloc>496</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5040,6 +5049,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5081,6 +5091,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5122,6 +5133,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5163,6 +5175,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5193,6 +5206,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <ascending>Y</ascending>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5225,6 +5239,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <cut_to>10</cut_to>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5269,6 +5284,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <cut_to>8</cut_to>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5313,6 +5329,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <cut_to>10</cut_to>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5345,6 +5362,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <cut_to>10</cut_to>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5377,6 +5395,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <cut_to>12</cut_to>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5481,6 +5500,7 @@ var icaire = valor_v * a + b;</jsScript_script>
     <rootUriNameFieldName />
     <extensionFieldName />
     <sizeFieldName />
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5585,6 +5605,7 @@ var icaire = valor_v * a + b;</jsScript_script>
     <rootUriNameFieldName />
     <extensionFieldName />
     <sizeFieldName />
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5756,6 +5777,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5780,13 +5802,14 @@ var icaire = valor_v * a + b;</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
-    <sql>SELECT * FROM contaminantes order by nomcontaminante asc;</sql>
+    <connection>db</connection>
+    <sql>SELECT * FROM data.contaminantes order by nomcontaminante asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5811,13 +5834,14 @@ var icaire = valor_v * a + b;</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
-    <sql>SELECT * FROM diassemana order by iddiasemana asc;</sql>
+    <connection>db</connection>
+    <sql>SELECT * FROM data.diassemana order by iddiasemana asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5842,13 +5866,14 @@ var icaire = valor_v * a + b;</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
-    <sql>SELECT * FROM estacionesdelared order by nomestaciondelared asc;</sql>
+    <connection>db</connection>
+    <sql>SELECT * FROM data.estacionesdelared order by nomestaciondelared asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5873,13 +5898,14 @@ var icaire = valor_v * a + b;</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
-    <sql>SELECT * FROM estacionesdelanio order by idestaciondelanio asc;</sql>
+    <connection>db</connection>
+    <sql>SELECT * FROM data.estacionesdelanio order by idestaciondelanio asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5898,4 +5924,5 @@ var icaire = valor_v * a + b;</jsScript_script>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes />
 </transformation>
