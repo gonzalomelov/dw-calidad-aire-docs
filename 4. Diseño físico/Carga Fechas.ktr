@@ -429,7 +429,7 @@
     <created_user>-</created_user>
     <created_date>2014/06/16 01:33:48.000</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2019/03/27 20:02:54.319</modified_date>
+    <modified_date>2019/06/10 21:32:22.242</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -628,6 +628,7 @@
         <update>Y</update>
       </value>
     </lookup>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -662,6 +663,7 @@
     <start_at>0</start_at>
     <increment_by>1</increment_by>
     <max_value>10000</max_value>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -686,6 +688,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>idDiaSemana</field_name>
       <calc_type>DAY_OF_WEEK</calc_type>
@@ -776,6 +779,7 @@
       <grouping_symbol />
       <currency_symbol />
     </calculation>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -840,6 +844,7 @@
       <value_precision>-1</value_precision>
       <replace_field />
     </formula>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1000,6 +1005,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1043,6 +1049,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <interval_in_ms>5000</interval_in_ms>
     <row_time_field>now</row_time_field>
     <last_time_field>FiveSecondsAgo</last_time_field>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1075,6 +1082,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <value_precision>-1</value_precision>
       <replace_field />
     </formula>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1093,4 +1101,5 @@ seasonName = seasons[season-1];</jsScript_script>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes />
 </transformation>
