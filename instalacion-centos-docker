@@ -12,7 +12,7 @@
 	git clone git@bitbucket.org:gonzalomelokonatech/docker-biserver-ce.git 8.0
 -Foreach folder: docker-compose up -d
 	admin => Front end para carga de datos
-		?
+		admin
 	db-service => RESTful API para PostgreSQL + PostgreSQL + DW
 		openresty/openresty:jessie
 		subzerocloud/pg-amqp-bridge
@@ -25,36 +25,42 @@
 	filestash => Servidor de archivos
 		machines/filestash
 	docsify => Manual de Usuario
-		littlstar/docker-docsify	
+		littlstar/docker-docsify
 	docker-pdi-ce => PDI
 		zhicwu/pdi-ce:8.0
 		mysql/mysql-server:5.7
 	docker-biserver-ce => PBI
 		zhicwu/biserver-ce:8.0
 -Initialize
-	OK-admin
+	-admin
 		-http://localhost:3001
 		-alice@email.com:pass
-	OK-db-service
+	-db-service
 		-http://localhost:3000
-	OK-sftp
+    -http://localhost:5050
+    -pgadmin4@pgadmin.org admin
+	-sftp
 		-http://localhost:2222
-	OK-filestash
+	-filestash
 		-http://localhost:8334
 		-admin password:password
 		-SFTP
-			host.docker.internal
+			sftp
 			admin
-			password
+			9&*%asdflkjsd4123SS
 			upload
-			2222
-	OK-docsify
+			22
+	-docsify
 		-http://localhost:3199
-	OK-docker-pdi-ce
+	-docker-pdi-ce
 		-https://localhost:11011  http://localhost:9090
 			admin/password
 		-http://localhost:12345
-	OK-docker-biserver-ce
+	-docker-biserver-ce
 		-http://localhost:8080
 			admin/password
 		-http://localhost:12346
+-Run the following jobs
+  Carga Fechas
+  Carga Contaminantes Categorias
+  Carga Dias Importantes
