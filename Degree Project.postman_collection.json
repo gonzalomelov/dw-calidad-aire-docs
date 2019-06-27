@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "92d91293-6058-4898-84ae-4db8a2dfcb1f",
+		"name": "Degree Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CargaFechas",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/kettle/runJob/?job=CargaFechas&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kettle",
+						"runJob",
+						""
+					],
+					"query": [
+						{
+							"key": "job",
+							"value": "CargaFechas"
+						},
+						{
+							"key": "DB_HOST",
+							"value": "db"
+						},
+						{
+							"key": "DB_PASS",
+							"value": "superuserpass"
+						},
+						{
+							"key": "DB_PORT",
+							"value": "5432"
+						},
+						{
+							"key": "DB_USER",
+							"value": "superuser"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
