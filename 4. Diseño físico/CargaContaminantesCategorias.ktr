@@ -8,6 +8,26 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>DB_HOST</name>
+        <default_value>localhost</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_PASS</name>
+        <default_value>superuserpass</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_PORT</name>
+        <default_value>5432</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_USER</name>
+        <default_value>superuser</default_value>
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -429,7 +449,7 @@
     <created_user>-</created_user>
     <created_date>2019/05/01 10:11:15.151</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/06/10 21:32:28.687</modified_date>
+    <modified_date>2019/06/26 21:31:20.190</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -437,13 +457,13 @@
   </notepads>
   <connection>
     <name>db</name>
-    <server>localhost</server>
+    <server>${DB_HOST}</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>app</database>
-    <port>5432</port>
-    <username>superuser</username>
-    <password>Encrypted 2be98afbb1fd79796be0aab62ce93bcc9</password>
+    <port>${DB_PORT}</port>
+    <username>${DB_USER}</username>
+    <password>${DB_PASS}</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -462,7 +482,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>5432</attribute>
+        <attribute>${DB_PORT}</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
