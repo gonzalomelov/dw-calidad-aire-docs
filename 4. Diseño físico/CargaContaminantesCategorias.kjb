@@ -8,7 +8,7 @@
   <created_user>-</created_user>
   <created_date>2019/06/25 21:47:34.411</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2019/06/26 21:31:36.027</modified_date>
+  <modified_date>2019/06/26 21:58:27.768</modified_date>
   <parameters>
     <parameter>
       <name>DB_HOST</name>
@@ -28,6 +28,11 @@
     <parameter>
       <name>DB_USER</name>
       <default_value>superuser</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>TMP_DIR</name>
+      <default_value>/Users/Gonza/KONA/proygrad/desktop-apps/data-integration/tmp</default_value>
       <description />
     </parameter>
   </parameters>
