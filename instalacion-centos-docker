@@ -60,7 +60,22 @@
 		-http://localhost:8080
 			admin/password
 		-http://localhost:12346
--Run the following jobs
-  Carga Fechas
-  Carga Contaminantes Categorias
-  Carga Dias Importantes
+-Upload jobs and transformations to /data-integration/repository
+  Local
+    scp CargaFechas.kjb root@104.237.5.5:/root/transformations
+    scp CargaFechas.ktr root@104.237.5.5:/root/transformations
+    scp CargaContaminantesCategorias.kjb root@104.237.5.5:/root/transformations
+    scp CargaContaminantesCategorias.ktr root@104.237.5.5:/root/transformations
+  Docker host
+    docker cp CargaFechas.kjb pdi-slave:/data-integration/repository
+    docker cp CargaFechas.ktr pdi-slave:/data-integration/repository
+    docker cp CargaContaminantesCategorias.kjb pdi-slave:/data-integration/repository
+    docker cp CargaContaminantesCategorias.ktr pdi-slave:/data-integration/repository
+-Run the following jobs via API
+  Dimensions
+    CargaFechas
+    CargaContaminantesCategorias
+############# Cargar datos de DiasImportantes y hacer reporte de 2017
+-Run the following jobs via API
+  Measures
+      CargaDiasImportantes
