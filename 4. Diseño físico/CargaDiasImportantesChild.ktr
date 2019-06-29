@@ -8,6 +8,41 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>CONTAMINACION_PATH</name>
+        <default_value>datos2017.ods</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DATOS_METEOROLOGICOS_PATH</name>
+        <default_value>datos EMA 2012 a 2017 horarios para enviar.xlsx</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_HOST</name>
+        <default_value>localhost</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_PASS</name>
+        <default_value>superuserpass</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_PORT</name>
+        <default_value>5432</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_USER</name>
+        <default_value>superuser</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>TMP_DIR</name>
+        <default_value>/Users/Gonza/KONA/proygrad/desktop-apps/data-integration/tmp</default_value>
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -429,21 +464,21 @@
     <created_user>-</created_user>
     <created_date>2014/06/18 22:46:27.415</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2019/05/23 20:49:42.677</modified_date>
+    <modified_date>2019/06/29 09:00:29.903</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>localhost</name>
-    <server>localhost</server>
+    <name>db</name>
+    <server>${DB_HOST}</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>app</database>
-    <port>5432</port>
-    <username>superuser</username>
-    <password>Encrypted 2be98afbb1fd79796be0aab62ce93bcc9</password>
+    <port>${DB_PORT}</port>
+    <username>${DB_USER}</username>
+    <password>${DB_PASS}</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -462,7 +497,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>5432</attribute>
+        <attribute>${DB_PORT}</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -534,11 +569,6 @@
     </hop>
     <hop>
       <from>Mapping input specification</from>
-      <to>Traer contaminacion de CSV</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Generate Rows</from>
       <to>Traer contaminacion de CSV</to>
       <enabled>N</enabled>
     </hop>
@@ -615,12 +645,12 @@
     <hop>
       <from>Select Final Values</from>
       <to>Mapping output specification</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Select Final Values</from>
       <to>Dummy (do nothing)</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Formula</from>
@@ -676,11 +706,6 @@
       <from>Modified Java Script Value 3</from>
       <to>Sort rows 3 3 2</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Traer contaminacion de CSV</from>
-      <to>Select values 2</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Select values 3</from>
@@ -743,13 +768,143 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Generate Rows</from>
-      <to>Microsoft Excel input</to>
+      <from>Get variables</from>
+      <to>Calculator</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Microsoft Excel input</from>
+      <from>Calculator</from>
+      <to>Traer contaminacion de CSV</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Traer contaminacion de CSV</from>
       <to>Select values 2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Calculator 2</from>
+      <to>Select values 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2 2</from>
+      <to>Calculator 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculator</from>
+      <to>Excel datos meteorologicos</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Mapping input specification</from>
+      <to>Excel datos meteorologicos</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel TRS</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel PTS</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel HN</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel PM25</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel PM10</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel SO2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel Input NO2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel Input CO</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Calculator</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Mapping input specification</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel O3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel Input CO</from>
+      <to>Row normalizer CO</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel Input NO2</from>
+      <to>Row normalizer NO2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel SO2</from>
+      <to>Row normalizer SO2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel PM10</from>
+      <to>Row normalizer PM10</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel PM25</from>
+      <to>Row normalizer PM25</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel HN</from>
+      <to>Row normalizer HN</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel PTS</from>
+      <to>Row normalizer PTS</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel TRS</from>
+      <to>Row normalizer TRS</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel O3</from>
+      <to>Row normalizer O3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 3</from>
+      <to>Select values 2 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -787,7 +942,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>352</xloc>
+      <xloc>1184</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -873,7 +1028,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1440</xloc>
+      <xloc>2480</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -960,8 +1115,135 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1744</xloc>
+      <xloc>2784</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Calculator</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>file</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>/Carte/datos2017.ods</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>filename</field_name>
+      <calc_type>ADD</calc_type>
+      <field_a>user_home</field_a>
+      <field_b>file</field_b>
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>filedatosmeteorologicos</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>/Carte/datos EMA 2012 a 2017 horarios para enviar.xlsx</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>filenamedatosmeteorologicos</field_name>
+      <calc_type>ADD</calc_type>
+      <field_a>user_home</field_a>
+      <field_b>filedatosmeteorologicos</field_b>
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Calculator 2</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>method_id</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>UYMVD_SO2_T</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1008</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -976,7 +1258,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
+    <connection>db</connection>
     <sql>SELECT
   idcontaminante
 , nomcontaminante
@@ -1000,7 +1282,7 @@ FROM dw.contaminantes
       </output>
     </remotesteps>
     <GUI>
-      <xloc>640</xloc>
+      <xloc>1584</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1016,7 +1298,7 @@ FROM dw.contaminantes
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
+    <connection>db</connection>
     <sql>SELECT
   surrogate_key
 , valor
@@ -1039,7 +1321,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
+      <xloc>1632</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1064,8 +1346,33 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2800</xloc>
+      <xloc>3920</xloc>
       <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 2</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1093,10 +1400,10 @@ FROM dw.contaminantescategorias
     <encoding />
     <add_to_result_filenames>Y</add_to_result_filenames>
     <accept_filenames>N</accept_filenames>
-    <accept_field />
-    <accept_stepname />
+    <accept_field>filenamedatosmeteorologicos</accept_field>
+    <accept_stepname>Calculator</accept_stepname>
     <file>
-      <name>/Users/gonzalomelo/Kona/proy-grad/Proyecto Calidad del Aire/1. Archivos fuentes/ancap/datos EMA 2012 a 2017 horarios para enviar.xlsx</name>
+      <name>${user_home}/Carte/datos EMA 2012 a 2017 horarios para enviar.xlsx</name>
       <filemask />
       <exclude_filemask />
       <file_required>N</file_required>
@@ -1278,6 +1585,11 @@ FROM dw.contaminantescategorias
         <startrow>4</startrow>
         <startcol>0</startcol>
       </sheet>
+      <sheet>
+        <name>2017</name>
+        <startrow>2</startrow>
+        <startcol>0</startcol>
+      </sheet>
     </sheets>
     <strict_types>N</strict_types>
     <error_ignored>N</error_ignored>
@@ -1306,8 +1618,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1888</xloc>
-      <yloc>176</yloc>
+      <xloc>736</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1327,18 +1639,55 @@ FROM dw.contaminantescategorias
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>pollutant_value</leftvalue>
-        <function>&lt;></function>
-        <rightvalue />
-        <value>
-          <name>constant</name>
-          <type>String</type>
-          <text>NA</text>
-          <length>-1</length>
-          <precision>-1</precision>
-          <isnull>N</isnull>
-          <mask>####0;-####0</mask>
-        </value>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>pollutant_value</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>NA</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>pollutant_value</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>--</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>pollutant_value</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>&lt; 1</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+        </conditions>
       </condition>
     </compare>
     <attributes />
@@ -1350,7 +1699,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>384</xloc>
+      <xloc>1216</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1533,7 +1882,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1984</xloc>
+      <xloc>3024</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1566,7 +1915,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1216</xloc>
+      <xloc>2256</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1599,14 +1948,14 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>304</xloc>
+      <xloc>1136</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Generate Rows</name>
-    <type>RowGenerator</type>
+    <name>Get variables</name>
+    <type>GetVariable</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1617,23 +1966,18 @@ FROM dw.contaminantescategorias
     </partitioning>
     <fields>
       <field>
-        <name>filename</name>
+        <name>user_home</name>
+        <variable>${user.home}</variable>
         <type>String</type>
         <format />
         <currency />
         <decimal />
         <group />
-        <nullif>/Users/gonzalomelo/Carte/SO2 2012_2016.csv</nullif>
         <length>-1</length>
         <precision>-1</precision>
-        <set_empty_string>N</set_empty_string>
+        <trim_type>none</trim_type>
       </field>
     </fields>
-    <limit>1</limit>
-    <never_ending>N</never_ending>
-    <interval_in_ms>5000</interval_in_ms>
-    <row_time_field>now</row_time_field>
-    <last_time_field>FiveSecondsAgo</last_time_field>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -1643,8 +1987,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>64</xloc>
-      <yloc>336</yloc>
+      <xloc>240</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1701,7 +2045,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>544</xloc>
+      <xloc>1488</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1741,7 +2085,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2608</xloc>
+      <xloc>3728</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1775,8 +2119,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>16</xloc>
-      <yloc>224</yloc>
+      <xloc>496</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1800,7 +2144,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2880</xloc>
+      <xloc>4000</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1834,7 +2178,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1152</xloc>
+      <xloc>2192</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1868,7 +2212,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>720</xloc>
+      <xloc>1664</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1902,7 +2246,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2496</xloc>
+      <xloc>3616</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1936,7 +2280,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>992</xloc>
+      <xloc>1936</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1970,7 +2314,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1648</xloc>
+      <xloc>2688</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2004,7 +2348,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1936</xloc>
+      <xloc>2976</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2038,7 +2382,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2144</xloc>
+      <xloc>3264</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2074,7 +2418,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>848</xloc>
+      <xloc>1792</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2090,8 +2434,8 @@ FROM dw.contaminantescategorias
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
-    <sql>SELECT idmetodo, trim(nommetodo) as nommetodo FROM metodos;</sql>
+    <connection>db</connection>
+    <sql>SELECT idmetodo, trim(nommetodo) as nommetodo FROM dw.metodos;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -2106,16 +2450,16 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
+      <xloc>1728</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Microsoft Excel input</name>
+    <name>Microsoft Excel HN</name>
     <type>ExcelInput</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -2126,22 +2470,92 @@ FROM dw.contaminantescategorias
     <noempty>Y</noempty>
     <stoponempty>N</stoponempty>
     <filefield />
-    <sheetfield />
+    <sheetfield>pollutant_id</sheetfield>
     <sheetrownumfield />
     <rownumfield />
-    <sheetfield />
+    <sheetfield>pollutant_id</sheetfield>
     <filefield />
     <limit>0</limit>
     <encoding />
     <add_to_result_filenames>Y</add_to_result_filenames>
-    <accept_filenames>N</accept_filenames>
-    <accept_field />
-    <accept_stepname />
+    <accept_filenames>Y</accept_filenames>
+    <accept_field>filename</accept_field>
+    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
     <file>
+      <name>${user.home}/Carte/datos2017.ods</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
     </file>
     <fields>
+      <field>
+        <name>FECHA</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Ciudad Vieja</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Tres Cruces</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Curva de Maroñas</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Portones de Carrasco</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
     </fields>
     <sheets>
+      <sheet>
+        <name>HN</name>
+        <startrow>4</startrow>
+        <startcol>0</startcol>
+      </sheet>
     </sheets>
     <strict_types>N</strict_types>
     <error_ignored>N</error_ignored>
@@ -2160,7 +2574,7 @@ FROM dw.contaminantescategorias
     <rootUriNameFieldName />
     <extensionFieldName />
     <sizeFieldName />
-    <spreadsheet_type>JXL</spreadsheet_type>
+    <spreadsheet_type>ODS</spreadsheet_type>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -2170,8 +2584,886 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>160</xloc>
-      <yloc>368</yloc>
+      <xloc>656</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Microsoft Excel Input CO</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield>pollutant_id</sheetfield>
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield>pollutant_id</sheetfield>
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>N</accept_filenames>
+    <accept_field>filename</accept_field>
+    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
+    <file>
+      <name>${user.home}/Carte/datos2017.ods</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>FECHA</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>La Teja</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Palacio Legislativo</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>CO</name>
+        <startrow>3</startrow>
+        <startcol>0</startcol>
+      </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>ODS</spreadsheet_type>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Microsoft Excel Input NO2</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield>pollutant_id</sheetfield>
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield>pollutant_id</sheetfield>
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>Y</accept_filenames>
+    <accept_field>filename</accept_field>
+    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
+    <file>
+      <name>${user.home}/Carte/datos2017.ods</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>FECHA</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>La Teja</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Palacio Legislativo</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Tres Cruces</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Curvade Maroñas</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>NO2</name>
+        <startrow>3</startrow>
+        <startcol>0</startcol>
+      </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>ODS</spreadsheet_type>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Microsoft Excel PM10</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield>pollutant_id</sheetfield>
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield>pollutant_id</sheetfield>
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>Y</accept_filenames>
+    <accept_field>filename</accept_field>
+    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
+    <file>
+      <name>${user.home}/Carte/datos2017.ods</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>FECHA</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Palacio Legislativo</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Tres Cruces</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>PM10</name>
+        <startrow>4</startrow>
+        <startcol>0</startcol>
+      </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>ODS</spreadsheet_type>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>576</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Microsoft Excel PM25</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield>pollutant_id</sheetfield>
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield>pollutant_id</sheetfield>
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>Y</accept_filenames>
+    <accept_field>filename</accept_field>
+    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
+    <file>
+      <name>${user.home}/Carte/datos2017.ods</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>FECHA</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Ciudad Vieja</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Curva de Maroñas</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>La Teja</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>PM2,5</name>
+        <startrow>4</startrow>
+        <startcol>0</startcol>
+      </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>ODS</spreadsheet_type>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Microsoft Excel PTS</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield>pollutant_id</sheetfield>
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield>pollutant_id</sheetfield>
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>Y</accept_filenames>
+    <accept_field>filename</accept_field>
+    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
+    <file>
+      <name>${user.home}/Carte/datos2017.ods</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>FECHA</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Colón</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>PTS</name>
+        <startrow>4</startrow>
+        <startcol>0</startcol>
+      </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>ODS</spreadsheet_type>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Microsoft Excel SO2</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield>pollutant_id</sheetfield>
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield>pollutant_id</sheetfield>
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>Y</accept_filenames>
+    <accept_field>filename</accept_field>
+    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
+    <file>
+      <name>${user.home}/Carte/datos2017.ods</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>FECHA</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>La Teja</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Palacio Legislativo</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>SO2</name>
+        <startrow>4</startrow>
+        <startcol>0</startcol>
+      </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>ODS</spreadsheet_type>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Microsoft Excel TRS</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield>pollutant_id</sheetfield>
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield>pollutant_id</sheetfield>
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>Y</accept_filenames>
+    <accept_field>filename</accept_field>
+    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
+    <file>
+      <name>${user.home}/Carte/datos2017.ods</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>FECHA</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>La Teja</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>TRS</name>
+        <startrow>3</startrow>
+        <startcol>0</startcol>
+      </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>ODS</spreadsheet_type>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2225,7 +3517,7 @@ var idFechaHora = idFecha + idHora</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1328</xloc>
+      <xloc>2368</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2275,7 +3567,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2272</xloc>
+      <xloc>3392</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2314,7 +3606,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2176</xloc>
+      <xloc>3296</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2528,7 +3820,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2720</xloc>
+      <xloc>3840</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2816,7 +4108,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2064</xloc>
+      <xloc>3184</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2861,8 +4153,49 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>208</xloc>
+      <xloc>1040</xloc>
       <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 2 2</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>Fecha</name>
+        <rename>date</rename>
+      </field>
+      <field>
+        <name>pollutant_id</name>
+      </field>
+      <field>
+        <name>ID_estacion</name>
+      </field>
+      <field>
+        <name>pollutant_value</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>912</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2906,7 +4239,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>272</xloc>
+      <xloc>1104</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2948,7 +4281,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1072</xloc>
+      <xloc>2016</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2990,7 +4323,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1088</xloc>
+      <xloc>2032</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3064,7 +4397,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>1408</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3106,7 +4439,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>624</xloc>
+      <xloc>1568</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3148,7 +4481,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
+      <xloc>1856</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3190,7 +4523,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2384</xloc>
+      <xloc>3504</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3232,7 +4565,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2032</xloc>
+      <xloc>3152</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3274,7 +4607,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2400</xloc>
+      <xloc>3520</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3316,7 +4649,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>880</xloc>
+      <xloc>1824</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3358,7 +4691,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1536</xloc>
+      <xloc>2576</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3400,7 +4733,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1840</xloc>
+      <xloc>2880</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3450,7 +4783,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
+      <xloc>1728</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3500,7 +4833,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
+      <xloc>1728</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3545,7 +4878,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2288</xloc>
+      <xloc>3408</xloc>
       <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3561,10 +4894,10 @@ if (!iddiaimportante) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>/Users/gonzalomelo/Kona/proy-grad/Proyecto Calidad del Aire/1. Archivos fuentes/red-de-monitoreo-de-la-calidad-del-aire-de-montevideo-7-09-2017/aire-datos-historicos/SO2 2012_2016.csv</filename>
+    <filename>${user.home}/SO2 2012_2016.csv</filename>
     <filename_field>filename</filename_field>
     <rownum_field />
-    <include_filename>Y</include_filename>
+    <include_filename>N</include_filename>
     <separator>,</separator>
     <enclosure />
     <header>Y</header>
@@ -3717,8 +5050,8 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>128</xloc>
-      <yloc>272</yloc>
+      <xloc>720</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3733,7 +5066,7 @@ if (!iddiaimportante) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
+    <connection>db</connection>
     <sql>SELECT * FROM dw.estacionesdelared order by nomEstacionDeLaRed;</sql>
     <limit>0</limit>
     <lookup />
@@ -3749,7 +5082,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>976</xloc>
+      <xloc>1920</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3765,7 +5098,7 @@ if (!iddiaimportante) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
+    <connection>db</connection>
     <sql>SELECT * FROM dw.diasimportantes order by idfecha asc;</sql>
     <limit>0</limit>
     <lookup />
@@ -3781,7 +5114,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2064</xloc>
+      <xloc>3184</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3797,8 +5130,8 @@ if (!iddiaimportante) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
-    <sql>SELECT * FROM diassemana order by iddiasemana asc;</sql>
+    <connection>db</connection>
+    <sql>SELECT * FROM dw.diassemana order by iddiasemana asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -3813,7 +5146,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1568</xloc>
+      <xloc>2608</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3829,8 +5162,8 @@ if (!iddiaimportante) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <connection>localhost</connection>
-    <sql>SELECT * FROM estacionesdelanio order by idestaciondelanio asc;</sql>
+    <connection>db</connection>
+    <sql>SELECT * FROM dw.estacionesdelanio order by idestaciondelanio asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -3845,8 +5178,523 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1856</xloc>
+      <xloc>2896</xloc>
       <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Microsoft Excel O3</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield>pollutant_id</sheetfield>
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield>pollutant_id</sheetfield>
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>Y</accept_filenames>
+    <accept_field>filename</accept_field>
+    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
+    <file>
+      <name>${user.home}/Carte/datos2017.ods</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>FECHA</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Curva de Maroñas</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>O3</name>
+        <startrow>3</startrow>
+        <startcol>0</startcol>
+      </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>ODS</spreadsheet_type>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>896</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer CO</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>La Teja</name>
+        <value>La Teja</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Palacio Legislativo</name>
+        <value>Palacio Legislativo</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <value>La Tablada</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <value>BellaVista</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer NO2</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>La Teja</name>
+        <value>La Teja</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Palacio Legislativo</name>
+        <value>Palacio Legislativo</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <value>La Tablada</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <value>BellaVista</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Tres Cruces</name>
+        <value>Tres Cruces</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Curvade Maroñas</name>
+        <value>Curvade Maroñas</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer SO2</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>La Teja</name>
+        <value>La Teja</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Palacio Legislativo</name>
+        <value>Palacio Legislativo</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <value>La Tablada</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <value>BellaVista</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer PM10</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>Palacio Legislativo</name>
+        <value>Palacio Legislativo</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <value>La Tablada</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <value>BellaVista</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Tres Cruces</name>
+        <value>Tres Cruces</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>576</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer PM25</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>Ciudad Vieja</name>
+        <value>Ciudad Vieja</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Curva de Maroñas</name>
+        <value>Curva de Maroñas</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>La Teja</name>
+        <value>La Teja</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer HN</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>Ciudad Vieja</name>
+        <value>Ciudad Vieja</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Tres Cruces</name>
+        <value>Tres Cruces</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Curva de Maroñas</name>
+        <value>Curva de Maroñas</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Portones de Carrasco</name>
+        <value>Portones de Carrasco</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer PTS</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>Colón</name>
+        <value>Colón</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer TRS</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>La Teja</name>
+        <value>La Teja</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>832</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer O3</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>Curva de Maroñas</name>
+        <value>Curva de Maroñas</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>896</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 3</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
