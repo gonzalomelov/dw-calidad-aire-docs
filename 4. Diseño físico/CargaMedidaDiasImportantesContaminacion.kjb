@@ -1,5 +1,5 @@
 <job>
-  <name>CargaDiasImportantes</name>
+  <name>CargaMedidaDiasImportantesContaminacion</name>
   <description />
   <extended_description />
   <job_version />
@@ -371,7 +371,7 @@
       <specification_method>rep_name</specification_method>
       <trans_object_id />
       <filename />
-      <transname>CargaDiasImportantesParent</transname>
+      <transname>CargaMedidaDiasImportantesContaminacionParent</transname>
       <directory>${Internal.Entry.Current.Directory}</directory>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>

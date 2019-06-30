@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>CargaDiasImportantesParent</name>
+    <name>CargaMedidaDiasImportantesContaminacionParent</name>
     <description />
     <extended_description />
     <trans_version />
@@ -852,7 +852,7 @@
     </partitioning>
     <specification_method>rep_name</specification_method>
     <trans_object_id />
-    <trans_name>CargaDiasImportantesChild</trans_name>
+    <trans_name>CargaMedidaDiasImportantesContaminacionChild</trans_name>
     <filename />
     <directory_path>${Internal.Entry.Current.Directory}</directory_path>
     <mappings>
