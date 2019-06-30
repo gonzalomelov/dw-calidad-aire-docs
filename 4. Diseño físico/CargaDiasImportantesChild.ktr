@@ -464,7 +464,7 @@
     <created_user>-</created_user>
     <created_date>2014/06/18 22:46:27.415</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2019/06/29 09:00:29.903</modified_date>
+    <modified_date>2019/06/30 10:37:38.460</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -533,9 +533,19 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Mapping input specification</from>
+      <to>Traer contaminacion de CSV</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Ubic Geo</from>
       <to>Sort nom estacion</to>
       <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 3</from>
+      <to>Add constants</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Sort nom estacion</from>
@@ -543,9 +553,9 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Filter rows</from>
-      <to>Sort rows</to>
-      <enabled>Y</enabled>
+      <from>Select values 2</from>
+      <to>Formula 2</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Group by</from>
@@ -558,8 +568,18 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Select values 2</from>
+      <to>Select values 3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Contaminante</from>
       <to>Merge Join 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get variables</from>
+      <to>Calculator</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -568,8 +588,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Mapping input specification</from>
+      <from>Calculator</from>
       <to>Traer contaminacion de CSV</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Traer contaminacion de CSV</from>
+      <to>Select values 2</to>
       <enabled>N</enabled>
     </hop>
     <hop>
@@ -588,9 +613,19 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Mapping input specification</from>
+      <to>Excel datos meteorologicos</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Merge Join 5 2</from>
       <to>Calcular Season</to>
       <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel TRS</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Merge Join 6</from>
@@ -598,13 +633,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel PTS</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Sort rows 3 3</from>
       <to>Merge Join 7</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel HN</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Sort rows 5</from>
       <to>Merge Join 5 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel PM25</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -613,9 +663,19 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel PM10</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>diasimportantes</from>
       <to>Merge Join 7</to>
       <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel SO2</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>diassemana</from>
@@ -623,9 +683,19 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel Input NO2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>estacionesdelanio</from>
       <to>Merge Join 6</to>
       <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel Input CO</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Merge Join 5</from>
@@ -633,9 +703,19 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Mapping input specification</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Merge Join</from>
       <to>Formula</to>
       <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Microsoft Excel O3</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Calculadora</from>
@@ -643,8 +723,18 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Microsoft Excel Input CO</from>
+      <to>Row normalizer CO</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Select Final Values</from>
       <to>Mapping output specification</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel Input NO2</from>
+      <to>Row normalizer NO2</to>
       <enabled>N</enabled>
     </hop>
     <hop>
@@ -653,13 +743,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Microsoft Excel SO2</from>
+      <to>Row normalizer SO2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Formula</from>
       <to>Modified Java Script Value</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Microsoft Excel PM10</from>
+      <to>Row normalizer PM10</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Modified Java Script Value</from>
       <to>Calculadora</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel PM25</from>
+      <to>Row normalizer PM25</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -668,9 +773,19 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Microsoft Excel HN</from>
+      <to>Row normalizer HN</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Sort rows 3 2</from>
       <to>Merge Join 4 2</to>
       <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Microsoft Excel PTS</from>
+      <to>Row normalizer PTS</to>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Strings cut 2 2</from>
@@ -678,13 +793,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Microsoft Excel TRS</from>
+      <to>Row normalizer TRS</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Sort rows 3 3 2</from>
       <to>Merge Join 4 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Microsoft Excel O3</from>
+      <to>Row normalizer O3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
       <from>Excel datos meteorologicos</from>
       <to>Filter rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 3</from>
+      <to>Select values 2 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -693,8 +823,18 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>Calculator</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Select values</from>
       <to>Replace in string 2 2 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculator</from>
+      <to>Excel datos meteorologicos</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -703,18 +843,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
+      <from>If field value is null</from>
+      <to>Select Final Values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Modified Java Script Value 3</from>
       <to>Sort rows 3 3 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 3</from>
-      <to>Add constants</to>
+      <from>Merge join 2</from>
+      <to>Sort rows 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Add constants</from>
-      <to>Filter rows</to>
+      <from>Sort rows 7</from>
+      <to>Merge join 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 4</from>
+      <to>Sort rows 7</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -723,23 +873,33 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values 2</from>
-      <to>Formula 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Formula 2</from>
-      <to>Filter rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 2</from>
-      <to>Select values 3</to>
+      <from>Sort rows 6</from>
+      <to>Merge join 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Contaminantes Categorias</from>
       <to>Sort rows 6</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>If field value is null</from>
+      <to>Select Final Values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join 2</from>
+      <to>Sort rows 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Contaminantes Categorias</from>
+      <to>Sort rows 6</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 7</from>
+      <to>Merge join 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -753,158 +913,83 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 7</from>
-      <to>Merge join 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge join 2</from>
-      <to>Sort rows 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>If field value is null</from>
-      <to>Select Final Values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Get variables</from>
-      <to>Calculator</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Calculator</from>
-      <to>Traer contaminacion de CSV</to>
+      <from>Row normalizer CO</from>
+      <to>Dummy (do nothing) 3</to>
       <enabled>N</enabled>
     </hop>
     <hop>
-      <from>Traer contaminacion de CSV</from>
-      <to>Select values 2</to>
+      <from>Row normalizer NO2</from>
+      <to>Dummy (do nothing) 3</to>
       <enabled>N</enabled>
     </hop>
     <hop>
-      <from>Calculator 2</from>
-      <to>Select values 2</to>
+      <from>Row normalizer SO2</from>
+      <to>Dummy (do nothing) 3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Row normalizer PM10</from>
+      <to>Dummy (do nothing) 3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Row normalizer HN</from>
+      <to>Dummy (do nothing) 3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Row normalizer PTS</from>
+      <to>Dummy (do nothing) 3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Row normalizer TRS</from>
+      <to>Dummy (do nothing) 3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Row normalizer O3</from>
+      <to>Dummy (do nothing) 3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Row normalizer PM25</from>
+      <to>Calculator 2 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculator 2 2</from>
+      <to>Dummy (do nothing) 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Select values 2 2</from>
-      <to>Calculator 2</to>
+      <to>Add constants</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Calculator</from>
-      <to>Excel datos meteorologicos</to>
+      <from>Formula 2</from>
+      <to>Filter rows 3</to>
       <enabled>N</enabled>
     </hop>
     <hop>
-      <from>Mapping input specification</from>
-      <to>Excel datos meteorologicos</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
-      <to>Microsoft Excel TRS</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
-      <to>Microsoft Excel PTS</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
-      <to>Microsoft Excel HN</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
-      <to>Microsoft Excel PM25</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
-      <to>Microsoft Excel PM10</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
-      <to>Microsoft Excel SO2</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
-      <to>Microsoft Excel Input NO2</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
-      <to>Microsoft Excel Input CO</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Calculator</from>
-      <to>Dummy (do nothing) 2</to>
+      <from>Add constants</from>
+      <to>Filter rows 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Mapping input specification</from>
-      <to>Dummy (do nothing) 2</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 2</from>
-      <to>Microsoft Excel O3</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Microsoft Excel Input CO</from>
-      <to>Row normalizer CO</to>
+      <from>Calculator 2 2 2</from>
+      <to>Sort rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Microsoft Excel Input NO2</from>
-      <to>Row normalizer NO2</to>
-      <enabled>N</enabled>
+      <from>Filter rows 3</from>
+      <to>Select values 2 2 2</to>
+      <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Microsoft Excel SO2</from>
-      <to>Row normalizer SO2</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Microsoft Excel PM10</from>
-      <to>Row normalizer PM10</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Microsoft Excel PM25</from>
-      <to>Row normalizer PM25</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Microsoft Excel HN</from>
-      <to>Row normalizer HN</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Microsoft Excel PTS</from>
-      <to>Row normalizer PTS</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Microsoft Excel TRS</from>
-      <to>Row normalizer TRS</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Microsoft Excel O3</from>
-      <to>Row normalizer O3</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Dummy (do nothing) 3</from>
-      <to>Select values 2 2</to>
+      <from>Select values 2 2 2</from>
+      <to>Calculator 2 2 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1207,7 +1292,7 @@ seasonName = seasons[season-1];</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Calculator 2</name>
+    <name>Calculator 2 2</name>
     <type>Calculator</type>
     <description />
     <distribute>Y</distribute>
@@ -1221,7 +1306,37 @@ seasonName = seasons[season-1];</jsScript_script>
     <calculation>
       <field_name>method_id</field_name>
       <calc_type>CONSTANT</calc_type>
-      <field_a>UYMVD_SO2_T</field_a>
+      <field_a>UYMVD_PM2_b</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>pollutant_id</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>PM2</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>ID_Estacion</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>Ciudad Vieja 3</field_a>
       <field_b />
       <field_c />
       <value_type>None</value_type>
@@ -1242,8 +1357,8 @@ seasonName = seasons[season-1];</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1008</xloc>
-      <yloc>320</yloc>
+      <xloc>832</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1377,6 +1492,31 @@ FROM dw.contaminantescategorias
     </GUI>
   </step>
   <step>
+    <name>Dummy (do nothing) 3</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Excel datos meteorologicos</name>
     <type>ExcelInput</type>
     <description />
@@ -1399,7 +1539,7 @@ FROM dw.contaminantescategorias
     <limit>0</limit>
     <encoding />
     <add_to_result_filenames>Y</add_to_result_filenames>
-    <accept_filenames>N</accept_filenames>
+    <accept_filenames>Y</accept_filenames>
     <accept_field>filenamedatosmeteorologicos</accept_field>
     <accept_stepname>Calculator</accept_stepname>
     <file>
@@ -1581,11 +1721,6 @@ FROM dw.contaminantescategorias
     </fields>
     <sheets>
       <sheet>
-        <name>2016</name>
-        <startrow>4</startrow>
-        <startcol>0</startcol>
-      </sheet>
-      <sheet>
         <name>2017</name>
         <startrow>2</startrow>
         <startcol>0</startcol>
@@ -1620,87 +1755,6 @@ FROM dw.contaminantescategorias
     <GUI>
       <xloc>736</xloc>
       <yloc>48</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Filter rows</name>
-    <type>FilterRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <send_true_to />
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <conditions>
-          <condition>
-            <negated>N</negated>
-            <leftvalue>pollutant_value</leftvalue>
-            <function>&lt;></function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>NA</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask>####0;-####0</mask>
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>pollutant_value</leftvalue>
-            <function>&lt;></function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>--</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask />
-            </value>
-          </condition>
-          <condition>
-            <negated>N</negated>
-            <operator>AND</operator>
-            <leftvalue>pollutant_value</leftvalue>
-            <function>&lt;></function>
-            <rightvalue />
-            <value>
-              <name>constant</name>
-              <type>String</type>
-              <text>&lt; 1</text>
-              <length>-1</length>
-              <precision>-1</precision>
-              <isnull>N</isnull>
-              <mask />
-            </value>
-          </condition>
-        </conditions>
-      </condition>
-    </compare>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1216</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1884,6 +1938,87 @@ FROM dw.contaminantescategorias
     <GUI>
       <xloc>3024</xloc>
       <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows 3</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Select values 2 2 2</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>pollutant_value</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>NA</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask>####0;-####0</mask>
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>pollutant_value</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>--</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>pollutant_value</leftvalue>
+            <function>&lt;></function>
+            <rightvalue />
+            <value>
+              <name>constant</name>
+              <type>String</type>
+              <text>&lt; 1</text>
+              <length>-1</length>
+              <precision>-1</precision>
+              <isnull>N</isnull>
+              <mask />
+            </value>
+          </condition>
+        </conditions>
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1248</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2553,7 +2688,7 @@ FROM dw.contaminantescategorias
     <sheets>
       <sheet>
         <name>HN</name>
-        <startrow>4</startrow>
+        <startrow>2</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
@@ -2612,7 +2747,7 @@ FROM dw.contaminantescategorias
     <limit>0</limit>
     <encoding />
     <add_to_result_filenames>Y</add_to_result_filenames>
-    <accept_filenames>N</accept_filenames>
+    <accept_filenames>Y</accept_filenames>
     <accept_field>filename</accept_field>
     <accept_stepname>Dummy (do nothing) 2</accept_stepname>
     <file>
@@ -2687,7 +2822,7 @@ FROM dw.contaminantescategorias
     <sheets>
       <sheet>
         <name>CO</name>
-        <startrow>3</startrow>
+        <startrow>1</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
@@ -2845,7 +2980,7 @@ FROM dw.contaminantescategorias
     <sheets>
       <sheet>
         <name>NO2</name>
-        <startrow>3</startrow>
+        <startrow>1</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
@@ -2878,6 +3013,104 @@ FROM dw.contaminantescategorias
     <GUI>
       <xloc>656</xloc>
       <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Microsoft Excel O3</name>
+    <type>ExcelInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <header>Y</header>
+    <noempty>Y</noempty>
+    <stoponempty>N</stoponempty>
+    <filefield />
+    <sheetfield>pollutant_id</sheetfield>
+    <sheetrownumfield />
+    <rownumfield />
+    <sheetfield>pollutant_id</sheetfield>
+    <filefield />
+    <limit>0</limit>
+    <encoding />
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <accept_filenames>Y</accept_filenames>
+    <accept_field>filename</accept_field>
+    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
+    <file>
+      <name>${user.home}/Carte/datos2017.ods</name>
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+    </file>
+    <fields>
+      <field>
+        <name>FECHA</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+      <field>
+        <name>Curva de Maroñas</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+      </field>
+    </fields>
+    <sheets>
+      <sheet>
+        <name>O3</name>
+        <startrow>1</startrow>
+        <startcol>0</startcol>
+      </sheet>
+    </sheets>
+    <strict_types>N</strict_types>
+    <error_ignored>N</error_ignored>
+    <error_line_skipped>N</error_line_skipped>
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <spreadsheet_type>ODS</spreadsheet_type>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>656</xloc>
+      <yloc>896</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2979,7 +3212,7 @@ FROM dw.contaminantescategorias
     <sheets>
       <sheet>
         <name>PM10</name>
-        <startrow>4</startrow>
+        <startrow>2</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
@@ -3101,7 +3334,7 @@ FROM dw.contaminantescategorias
     <sheets>
       <sheet>
         <name>PM2,5</name>
-        <startrow>4</startrow>
+        <startrow>2</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
@@ -3199,7 +3432,7 @@ FROM dw.contaminantescategorias
     <sheets>
       <sheet>
         <name>PTS</name>
-        <startrow>4</startrow>
+        <startrow>2</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
@@ -3333,7 +3566,7 @@ FROM dw.contaminantescategorias
     <sheets>
       <sheet>
         <name>SO2</name>
-        <startrow>4</startrow>
+        <startrow>2</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
@@ -3431,7 +3664,7 @@ FROM dw.contaminantescategorias
     <sheets>
       <sheet>
         <name>TRS</name>
-        <startrow>3</startrow>
+        <startrow>1</startrow>
         <startcol>0</startcol>
       </sheet>
     </sheets>
@@ -3608,6 +3841,398 @@ if (!iddiaimportante) {
     <GUI>
       <xloc>3296</xloc>
       <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer CO</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>La Teja</name>
+        <value>La Teja</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Palacio Legislativo</name>
+        <value>Palacio Legislativo</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <value>La Tablada</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <value>BellaVista</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer HN</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>Ciudad Vieja</name>
+        <value>Ciudad Vieja</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Tres Cruces</name>
+        <value>Tres Cruces</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Curva de Maroñas</name>
+        <value>Curva de Maroñas</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Portones de Carrasco</name>
+        <value>Portones de Carrasco</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>704</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer NO2</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>La Teja</name>
+        <value>La Teja</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Palacio Legislativo</name>
+        <value>Palacio Legislativo</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <value>La Tablada</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <value>BellaVista</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Tres Cruces</name>
+        <value>Tres Cruces</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Curvade Maroñas</name>
+        <value>Curvade Maroñas</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer O3</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>Curva de Maroñas</name>
+        <value>Curva de Maroñas</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>896</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer PM10</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>Palacio Legislativo</name>
+        <value>Palacio Legislativo</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <value>La Tablada</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <value>BellaVista</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Tres Cruces</name>
+        <value>Tres Cruces</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>576</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer PM25</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>Ciudad Vieja</name>
+        <value>Ciudad Vieja</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Curva de Maroñas</name>
+        <value>Curva de Maroñas</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>La Teja</name>
+        <value>La Teja</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer PTS</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>Colón</name>
+        <value>Colón</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>768</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer SO2</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>La Teja</name>
+        <value>La Teja</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>Palacio Legislativo</name>
+        <value>Palacio Legislativo</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>La Tablada</name>
+        <value>La Tablada</value>
+        <norm>pollutant_value</norm>
+      </field>
+      <field>
+        <name>BellaVista</name>
+        <value>BellaVista</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>512</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Row normalizer TRS</name>
+    <type>Normaliser</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <typefield>ID_estacion</typefield>
+    <fields>
+      <field>
+        <name>La Teja</name>
+        <value>La Teja</value>
+        <norm>pollutant_value</norm>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>832</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4153,8 +4778,8 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
-      <yloc>224</yloc>
+      <xloc>944</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4172,7 +4797,6 @@ if (!iddiaimportante) {
     <fields>
       <field>
         <name>Fecha</name>
-        <rename>date</rename>
       </field>
       <field>
         <name>pollutant_id</name>
@@ -4183,7 +4807,27 @@ if (!iddiaimportante) {
       <field>
         <name>pollutant_value</name>
       </field>
+      <field>
+        <name>method_id</name>
+      </field>
       <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>Fecha</name>
+        <rename>date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy/MM/dd HH:mm:ss.SSS</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <attributes />
     <cluster_schema />
@@ -4194,8 +4838,8 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>912</xloc>
-      <yloc>320</yloc>
+      <xloc>944</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4239,7 +4883,7 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1104</xloc>
+      <xloc>1040</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -5184,8 +5828,49 @@ if (!iddiaimportante) {
     </GUI>
   </step>
   <step>
-    <name>Microsoft Excel O3</name>
-    <type>ExcelInput</type>
+    <name>Calculator 2 2 2</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>pollutant_value</field_name>
+      <calc_type>ROUND_1</calc_type>
+      <field_a>pollutant_value</field_a>
+      <field_b />
+      <field_c />
+      <value_type>None</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 2 2 2</name>
+    <type>SelectValues</type>
     <description />
     <distribute>N</distribute>
     <custom_distribution />
@@ -5194,126 +5879,49 @@ if (!iddiaimportante) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <header>Y</header>
-    <noempty>Y</noempty>
-    <stoponempty>N</stoponempty>
-    <filefield />
-    <sheetfield>pollutant_id</sheetfield>
-    <sheetrownumfield />
-    <rownumfield />
-    <sheetfield>pollutant_id</sheetfield>
-    <filefield />
-    <limit>0</limit>
-    <encoding />
-    <add_to_result_filenames>Y</add_to_result_filenames>
-    <accept_filenames>Y</accept_filenames>
-    <accept_field>filename</accept_field>
-    <accept_stepname>Dummy (do nothing) 2</accept_stepname>
-    <file>
-      <name>${user.home}/Carte/datos2017.ods</name>
-      <filemask />
-      <exclude_filemask />
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
-    </file>
     <fields>
       <field>
-        <name>FECHA</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format />
-        <currency />
-        <decimal />
-        <group />
+        <name>date</name>
+        <rename />
       </field>
       <field>
-        <name>Curva de Maroñas</name>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-        <repeat>N</repeat>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-      </field>
-    </fields>
-    <sheets>
-      <sheet>
-        <name>O3</name>
-        <startrow>3</startrow>
-        <startcol>0</startcol>
-      </sheet>
-    </sheets>
-    <strict_types>N</strict_types>
-    <error_ignored>N</error_ignored>
-    <error_line_skipped>N</error_line_skipped>
-    <bad_line_files_destination_directory />
-    <bad_line_files_extension>warning</bad_line_files_extension>
-    <error_line_files_destination_directory />
-    <error_line_files_extension>error</error_line_files_extension>
-    <line_number_files_destination_directory />
-    <line_number_files_extension>line</line_number_files_extension>
-    <shortFileFieldName />
-    <pathFieldName />
-    <hiddenFieldName />
-    <lastModificationTimeFieldName />
-    <uriNameFieldName />
-    <rootUriNameFieldName />
-    <extensionFieldName />
-    <sizeFieldName />
-    <spreadsheet_type>ODS</spreadsheet_type>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>656</xloc>
-      <yloc>896</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row normalizer CO</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>ID_estacion</typefield>
-    <fields>
-      <field>
-        <name>La Teja</name>
-        <value>La Teja</value>
-        <norm>pollutant_value</norm>
+        <name>pollutant_id</name>
+        <rename />
       </field>
       <field>
-        <name>Palacio Legislativo</name>
-        <value>Palacio Legislativo</value>
-        <norm>pollutant_value</norm>
+        <name>ID_estacion</name>
+        <rename />
       </field>
       <field>
-        <name>La Tablada</name>
-        <value>La Tablada</value>
-        <norm>pollutant_value</norm>
+        <name>pollutant_value</name>
+        <rename />
       </field>
       <field>
-        <name>BellaVista</name>
-        <value>BellaVista</value>
-        <norm>pollutant_value</norm>
+        <name>method_id</name>
+        <rename />
       </field>
+      <field>
+        <name>idhora</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>pollutant_value</name>
+        <rename>pollutant_value</rename>
+        <type>Integer</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
     </fields>
     <attributes />
     <cluster_schema />
@@ -5324,377 +5932,8 @@ if (!iddiaimportante) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
-      <yloc>384</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row normalizer NO2</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>ID_estacion</typefield>
-    <fields>
-      <field>
-        <name>La Teja</name>
-        <value>La Teja</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>Palacio Legislativo</name>
-        <value>Palacio Legislativo</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>La Tablada</name>
-        <value>La Tablada</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>BellaVista</name>
-        <value>BellaVista</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>Tres Cruces</name>
-        <value>Tres Cruces</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>Curvade Maroñas</name>
-        <value>Curvade Maroñas</value>
-        <norm>pollutant_value</norm>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>448</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row normalizer SO2</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>ID_estacion</typefield>
-    <fields>
-      <field>
-        <name>La Teja</name>
-        <value>La Teja</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>Palacio Legislativo</name>
-        <value>Palacio Legislativo</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>La Tablada</name>
-        <value>La Tablada</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>BellaVista</name>
-        <value>BellaVista</value>
-        <norm>pollutant_value</norm>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>512</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row normalizer PM10</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>ID_estacion</typefield>
-    <fields>
-      <field>
-        <name>Palacio Legislativo</name>
-        <value>Palacio Legislativo</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>La Tablada</name>
-        <value>La Tablada</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>BellaVista</name>
-        <value>BellaVista</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>Tres Cruces</name>
-        <value>Tres Cruces</value>
-        <norm>pollutant_value</norm>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>576</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row normalizer PM25</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>ID_estacion</typefield>
-    <fields>
-      <field>
-        <name>Ciudad Vieja</name>
-        <value>Ciudad Vieja</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>Curva de Maroñas</name>
-        <value>Curva de Maroñas</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>La Teja</name>
-        <value>La Teja</value>
-        <norm>pollutant_value</norm>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>640</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row normalizer HN</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>ID_estacion</typefield>
-    <fields>
-      <field>
-        <name>Ciudad Vieja</name>
-        <value>Ciudad Vieja</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>Tres Cruces</name>
-        <value>Tres Cruces</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>Curva de Maroñas</name>
-        <value>Curva de Maroñas</value>
-        <norm>pollutant_value</norm>
-      </field>
-      <field>
-        <name>Portones de Carrasco</name>
-        <value>Portones de Carrasco</value>
-        <norm>pollutant_value</norm>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>704</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row normalizer PTS</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>ID_estacion</typefield>
-    <fields>
-      <field>
-        <name>Colón</name>
-        <value>Colón</value>
-        <norm>pollutant_value</norm>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>768</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row normalizer TRS</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>ID_estacion</typefield>
-    <fields>
-      <field>
-        <name>La Teja</name>
-        <value>La Teja</value>
-        <norm>pollutant_value</norm>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>832</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row normalizer O3</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>ID_estacion</typefield>
-    <fields>
-      <field>
-        <name>Curva de Maroñas</name>
-        <value>Curva de Maroñas</value>
-        <norm>pollutant_value</norm>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>752</xloc>
-      <yloc>896</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing) 3</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>880</xloc>
-      <yloc>640</yloc>
+      <xloc>1296</xloc>
+      <yloc>320</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
