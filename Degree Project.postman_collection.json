@@ -60,6 +60,206 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "CargaContaminantesCategorias",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/kettle/runJob/?job=CargaContaminantesCategorias&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&TMP_DIR=/data-integration",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kettle",
+						"runJob",
+						""
+					],
+					"query": [
+						{
+							"key": "job",
+							"value": "CargaContaminantesCategorias"
+						},
+						{
+							"key": "DB_HOST",
+							"value": "db"
+						},
+						{
+							"key": "DB_PASS",
+							"value": "superuserpass"
+						},
+						{
+							"key": "DB_PORT",
+							"value": "5432"
+						},
+						{
+							"key": "DB_USER",
+							"value": "superuser"
+						},
+						{
+							"key": "TMP_DIR",
+							"value": "/data-integration"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CargaMedidaDiasImportantesContaminacion",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/kettle/runJob/?job=CargaMedidaDiasImportantesContaminacion&CONTAMINACION_PATH=datos2017.ods&DATOS_METEOROLOGICOS_PATH=datos EMA 2012 a 2017 horarios para enviar.xlsx&TMP_DIR=/data-integration&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&SFTP_HOST=sftp&SFTP_PASS=9%26*%asdflkjsd4123SS&SFTP_PORT=22&SFTP_USER=admin",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kettle",
+						"runJob",
+						""
+					],
+					"query": [
+						{
+							"key": "job",
+							"value": "CargaMedidaDiasImportantesContaminacion"
+						},
+						{
+							"key": "CONTAMINACION_PATH",
+							"value": "datos2017.ods"
+						},
+						{
+							"key": "DATOS_METEOROLOGICOS_PATH",
+							"value": "datos EMA 2012 a 2017 horarios para enviar.xlsx"
+						},
+						{
+							"key": "TMP_DIR",
+							"value": "/data-integration"
+						},
+						{
+							"key": "DB_HOST",
+							"value": "db"
+						},
+						{
+							"key": "DB_PASS",
+							"value": "superuserpass"
+						},
+						{
+							"key": "DB_PORT",
+							"value": "5432"
+						},
+						{
+							"key": "DB_USER",
+							"value": "superuser"
+						},
+						{
+							"key": "SFTP_HOST",
+							"value": "sftp"
+						},
+						{
+							"key": "SFTP_PASS",
+							"value": "9%26*%asdflkjsd4123SS"
+						},
+						{
+							"key": "SFTP_PORT",
+							"value": "22"
+						},
+						{
+							"key": "SFTP_USER",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CargaVehiculosContaminacion",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/kettle/runJob/?job=CargaConteoVehicular&DB_HOST=pdi&CONTEO_VEHICULAR_PATH=ConteoVeh.csv&CONTAMINACION_PATH=Cont.csv&DATOS_METEOROLOGICOS_PATH=DatosMete.xlsx",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kettle",
+						"runJob",
+						""
+					],
+					"query": [
+						{
+							"key": "job",
+							"value": "CargaConteoVehicular"
+						},
+						{
+							"key": "DB_HOST",
+							"value": "pdi"
+						},
+						{
+							"key": "CONTEO_VEHICULAR_PATH",
+							"value": "ConteoVeh.csv"
+						},
+						{
+							"key": "CONTAMINACION_PATH",
+							"value": "Cont.csv"
+						},
+						{
+							"key": "DATOS_METEOROLOGICOS_PATH",
+							"value": "DatosMete.xlsx"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
