@@ -66,16 +66,23 @@
     scp CargaFechas.ktr root@104.237.5.5:/root/transformations
     scp CargaContaminantesCategorias.kjb root@104.237.5.5:/root/transformations
     scp CargaContaminantesCategorias.ktr root@104.237.5.5:/root/transformations
+    scp CargaMedidaDiasImportantesContaminacion.kjb root@104.237.5.5:/root/transformations
+    scp CargaMedidaDiasImportantesContaminacionParent.ktr root@104.237.5.5:/root/transformations
+    scp CargaMedidaDiasImportantesContaminacionChild.ktr root@104.237.5.5:/root/transformations
   Docker host
     docker cp CargaFechas.kjb pdi-slave:/data-integration/repository
     docker cp CargaFechas.ktr pdi-slave:/data-integration/repository
     docker cp CargaContaminantesCategorias.kjb pdi-slave:/data-integration/repository
     docker cp CargaContaminantesCategorias.ktr pdi-slave:/data-integration/repository
+    docker cp CargaMedidaDiasImportantesContaminacion.kjb pdi-slave:/data-integration/repository
+    docker cp CargaMedidaDiasImportantesContaminacionParent.ktr pdi-slave:/data-integration/repository
+    docker cp CargaMedidaDiasImportantesContaminacionChild.ktr pdi-slave:/data-integration/repository
 -Run the following jobs via API
   Dimensions
     CargaFechas
     CargaContaminantesCategorias
-############# Cargar datos de DiasImportantes y hacer reporte de 2017
+############# Cargar datos de DiasImportantes
+############# Reporte de 2017
 -Run the following jobs via API
   Measures
-      CargaDiasImportantes
+      CargaMedidaDiasImportantesContaminacion
