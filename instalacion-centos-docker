@@ -47,7 +47,7 @@
 		-SFTP
 			sftp
 			admin
-			9&*%asdflkjsd4123SS
+			93765asdflkjsd4123SS
 			upload
 			22
 	-docsify
@@ -80,7 +80,9 @@
 -Run the following jobs via API
   Dimensions
     CargaFechas
+      curl -X GET 'http://localhost:9090/kettle/runJob/?job=CargaFechas&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser' -H 'Accept: */*' -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' -H 'Cache-Control: no-cache' -H 'Connection: keep-alive' -H 'Host: localhost:9090' -H 'Postman-Token: abc99de1-a150-4b59-bcbc-9cad12cdc550,b83c55c7-7ef6-4972-9fbf-f51e49c51792' -H 'User-Agent: PostmanRuntime/7.15.0' -H 'accept-encoding: gzip, deflate' -H 'cache-control: no-cache'
     CargaContaminantesCategorias
+      curl -X GET 'http://localhost:9090/kettle/runJob/?job=CargaContaminantesCategorias&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&TMP_DIR=/data-integration' -H 'Accept: */*' -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' -H 'Cache-Control: no-cache' -H 'Connection: keep-alive' -H 'Host: localhost:9090' -H 'Postman-Token: ce2c2dcb-b8a4-4bd0-97e9-5516bd7507cc,06183f7e-0839-4107-8f0f-b66388852ebe' -H 'User-Agent: PostmanRuntime/7.15.0' -H 'accept-encoding: gzip, deflate' -H 'cache-control: no-cache'
 ############# Cargar datos de DiasImportantes
 ############# Reporte de 2017
 -Run the following jobs via API
