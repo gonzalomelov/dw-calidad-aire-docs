@@ -454,7 +454,7 @@
     <created_user>-</created_user>
     <created_date>2014/06/18 22:46:27.415</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2019/07/06 11:19:52.796</modified_date>
+    <modified_date>2019/07/07 19:48:34.478</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -833,11 +833,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Contaminantes Categorias</from>
-      <to>Sort rows 6</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>If field value is null</from>
       <to>Select Final Values</to>
       <enabled>Y</enabled>
@@ -845,11 +840,6 @@
     <hop>
       <from>Merge join 2</from>
       <to>Sort rows 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Contaminantes Categorias</from>
-      <to>Sort rows 6</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1006,6 +996,11 @@
       <from>Calculator</from>
       <to>Modified JavaScript value 2 2</to>
       <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Contaminantes Categorias</from>
+      <to>Sort rows 6</to>
+      <enabled>Y</enabled>
     </hop>
   </order>
   <step>
@@ -2450,7 +2445,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1664</xloc>
+      <xloc>1648</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3366,10 +3361,10 @@ FROM dw.contaminantescategorias
     <noempty>Y</noempty>
     <stoponempty>N</stoponempty>
     <filefield />
-    <sheetfield>pollutant_id</sheetfield>
+    <sheetfield>pollutant_id_before</sheetfield>
     <sheetrownumfield />
     <rownumfield />
-    <sheetfield>pollutant_id</sheetfield>
+    <sheetfield>pollutant_id_before</sheetfield>
     <filefield />
     <limit>0</limit>
     <encoding />
@@ -3586,10 +3581,10 @@ FROM dw.contaminantescategorias
     <noempty>Y</noempty>
     <stoponempty>N</stoponempty>
     <filefield />
-    <sheetfield>pollutant_id</sheetfield>
+    <sheetfield>pollutant_id_before</sheetfield>
     <sheetrownumfield />
     <rownumfield />
-    <sheetfield>pollutant_id</sheetfield>
+    <sheetfield>pollutant_id_before</sheetfield>
     <filefield />
     <limit>0</limit>
     <encoding />
@@ -3973,11 +3968,53 @@ if (!iddiaimportante) {
       <jsScript>
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
+        <jsScript_script>//SO2
+
+if (ID_estacion == 'La Teja') {
+  ID_estacion = 'La Teja 1';
+}
+
+//if (ID_estacion == 'Palacio Legislativo') {
+//  ID_estacion = '?';
+//}
+
+//if (ID_estacion == 'La Tablada') {
+//  ID_estacion = '?';
+//}
+
+//if (ID_estacion == 'BellaVista') {
+//  ID_estacion = '?';
+//}
+
 if (ID_estacion == 'Ciudad Vieja') {
   ID_estacion = 'Ciudad Vieja 3';
 }
-</jsScript_script>
+
+if (ID_estacion == 'Tres Cruces') {
+  ID_estacion = 'Tres Cruces 2';
+}
+
+if (ID_estacion == 'Curva de Maroñas') {
+  ID_estacion = 'Curva de Maronas';
+}
+
+if (ID_estacion == 'Portones de Carrasco') {
+  ID_estacion = 'Portones de Carrasco 2';
+}
+
+//PM2
+
+if (ID_estacion == 'Ciudad Vieja') {
+  ID_estacion = 'Ciudad Vieja 3';
+}
+
+if (ID_estacion == 'Curva de Maroñas') {
+  ID_estacion = 'Curva de Maronas';
+}
+
+if (ID_estacion == 'La Teja') {
+  ID_estacion = 'La Teja 1';
+}</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
@@ -3987,7 +4024,7 @@ if (ID_estacion == 'Ciudad Vieja') {
         <type>String</type>
         <length>-1</length>
         <precision>-1</precision>
-        <replace>N</replace>
+        <replace>Y</replace>
       </field>
     </fields>
     <attributes />
@@ -5171,8 +5208,8 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>400</yloc>
+      <xloc>1024</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
