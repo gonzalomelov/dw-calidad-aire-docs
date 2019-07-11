@@ -19,7 +19,7 @@
         <description />
       </parameter>
       <parameter>
-        <name>Output_type</name>
+        <name>OUTPUT_TYPE</name>
         <default_value>pdf</default_value>
         <description />
       </parameter>
@@ -29,12 +29,12 @@
         <description />
       </parameter>
       <parameter>
-        <name>Report_Output_name</name>
+        <name>REPORT_OUTPUT_NAME</name>
         <default_value>output.pdf</default_value>
         <description />
       </parameter>
       <parameter>
-        <name>Report_Template_name</name>
+        <name>REPORT_TEMPLATE_NAME</name>
         <default_value>reporte.prpt</default_value>
         <description />
       </parameter>
@@ -94,7 +94,7 @@
         <description />
       </parameter>
       <parameter>
-        <name>Year</name>
+        <name>YEAR</name>
         <default_value>333</default_value>
         <description />
       </parameter>
@@ -519,7 +519,7 @@
     <created_user>-</created_user>
     <created_date>2019/07/09 21:13:52.831</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/07/11 08:33:47.083</modified_date>
+    <modified_date>2019/07/11 09:18:30.893</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -563,8 +563,8 @@
     <create_parent_folder>N</create_parent_folder>
     <parameters>
       <parameter>
-        <name>Year</name>
-        <field>Year</field>
+        <name>YEAR</name>
+        <field>YEAR</field>
       </parameter>
     </parameters>
     <processor_type>PDF</processor_type>
@@ -607,8 +607,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Year</name>
-        <variable>${Year}</variable>
+        <name>YEAR</name>
+        <variable>${YEAR}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -619,8 +619,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Report_Output_name</name>
-        <variable>${Report_Output_name}</variable>
+        <name>REPORT_OUTPUT_NAME</name>
+        <variable>${REPORT_OUTPUT_NAME}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -631,8 +631,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Report_Template_name</name>
-        <variable>${Report_Template_name}</variable>
+        <name>REPORT_TEMPLATE_NAME</name>
+        <variable>${REPORT_TEMPLATE_NAME}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -643,8 +643,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Output_type</name>
-        <variable>${Output_type}</variable>
+        <name>OUTPUT_TYPE</name>
+        <variable>${OUTPUT_TYPE}</variable>
         <type>String</type>
         <format />
         <currency />
@@ -801,7 +801,7 @@
       <field>
         <name>SUBJECT</name>
         <variable>${SUBJECT}</variable>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -893,53 +893,6 @@
     </GUI>
   </step>
   <step>
-    <name>SFTP put</name>
-    <type>SFTPPut</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <servername>${SFTP_HOST}</servername>
-    <serverport>${SFTP_PORT}</serverport>
-    <username>${SFTP_USER}</username>
-    <password>${SFTP_PASS}</password>
-    <sourceFileFieldName>Report_Output</sourceFileFieldName>
-    <remoteDirectoryFieldName>SFTP_FOLDER</remoteDirectoryFieldName>
-    <inputIsStream>N</inputIsStream>
-    <addFilenameResut>N</addFilenameResut>
-    <usekeyfilename>N</usekeyfilename>
-    <keyfilename />
-    <keyfilepass>Encrypted </keyfilepass>
-    <compression>none</compression>
-    <proxyType />
-    <proxyHost />
-    <proxyPort />
-    <proxyUsername />
-    <proxyPassword>Encrypted </proxyPassword>
-    <createRemoteFolder>N</createRemoteFolder>
-    <aftersftpput>nothing</aftersftpput>
-    <destinationfolderFieldName />
-    <createdestinationfolder>N</createdestinationfolder>
-    <remoteFilenameFieldName>Report_Output_name</remoteFilenameFieldName>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Modified JavaScript value</name>
     <type>ScriptValueMod</type>
     <description />
@@ -957,9 +910,9 @@
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
         <jsScript_script>var Separator = "/";
-var Report_Template = PATH + Separator + Report_Template_name;
-var Report_Output = PATH + Separator + Report_Output_name;
-var Email = FILESTASH_URL + "/view/" + Report_Output_name;</jsScript_script>
+var Report_Template = PATH + Separator + REPORT_TEMPLATE_NAME;
+var Report_Output = PATH + Separator + REPORT_OUTPUT_NAME;
+var Email = FILESTASH_URL + "/view/" + REPORT_OUTPUT_NAME;</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
@@ -1006,6 +959,53 @@ var Email = FILESTASH_URL + "/view/" + Report_Output_name;</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>288</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>SFTP put</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${SFTP_HOST}</servername>
+    <serverport>${SFTP_PORT}</serverport>
+    <username>${SFTP_USER}</username>
+    <password>${SFTP_PASS}</password>
+    <sourceFileFieldName>Report_Output</sourceFileFieldName>
+    <remoteDirectoryFieldName>SFTP_FOLDER</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>N</usekeyfilename>
+    <keyfilename />
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>N</createRemoteFolder>
+    <aftersftpput>nothing</aftersftpput>
+    <destinationfolderFieldName />
+    <createdestinationfolder>N</createdestinationfolder>
+    <remoteFilenameFieldName>REPORT_OUTPUT_NAME</remoteFilenameFieldName>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>528</xloc>
       <yloc>240</yloc>
       <draw>Y</draw>
     </GUI>
