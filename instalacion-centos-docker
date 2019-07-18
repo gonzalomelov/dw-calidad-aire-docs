@@ -33,16 +33,16 @@
 		zhicwu/biserver-ce:8.0
 -Initialize
 	-admin
-		-http://localhost:3001
+		-http://104.237.5.5:3001
 		-alice@email.com:pass
 	-db-service
-		-http://localhost:3000
-    -http://localhost:5050
+		-http://104.237.5.5:3000
+    -http://104.237.5.5:5050
     -pgadmin4@pgadmin.org admin
 	-sftp
-		-http://localhost:2222
+		-http://104.237.5.5:2222
 	-filestash
-		-http://localhost:8334
+		-http://104.237.5.5:8334
 		-admin password:password
 		-SFTP
 			sftp
@@ -51,15 +51,15 @@
 			upload
 			22
 	-docsify
-		-http://localhost:3199
+		-http://104.237.5.5:3199
 	-docker-pdi-ce
-		-https://localhost:11011  http://localhost:9090
+		-https://104.237.5.5:11011  http://104.237.5.5:9090
 			admin/password
-		-http://localhost:12345
+		-http://104.237.5.5:12345
 	-docker-biserver-ce
-		-http://localhost:8080
+		-http://104.237.5.5:8080
 			admin/password
-		-http://localhost:12346
+		-http://104.237.5.5:12346
 -Upload jobs and transformations to /data-integration/repository
   Local
     scp CargaFechas.kjb root@104.237.5.5:/root/transformations
@@ -69,6 +69,8 @@
     scp CargaMedidaDiasImportantesContaminacion.kjb root@104.237.5.5:/root/transformations
     scp CargaMedidaDiasImportantesContaminacionParent.ktr root@104.237.5.5:/root/transformations
     scp CargaMedidaDiasImportantesContaminacionChild.ktr root@104.237.5.5:/root/transformations
+    scp GenerarReporteAnual.kjb root@104.237.5.5:/root/transformations
+    scp GenerarReporteAnual.ktr root@104.237.5.5:/root/transformations
   Docker host
     docker cp CargaFechas.kjb pdi-slave:/data-integration/repository
     docker cp CargaFechas.ktr pdi-slave:/data-integration/repository
@@ -77,12 +79,22 @@
     docker cp CargaMedidaDiasImportantesContaminacion.kjb pdi-slave:/data-integration/repository
     docker cp CargaMedidaDiasImportantesContaminacionParent.ktr pdi-slave:/data-integration/repository
     docker cp CargaMedidaDiasImportantesContaminacionChild.ktr pdi-slave:/data-integration/repository
+    docker cp reporte.prpt pdi-slave:/data-integration/repository
+    docker cp GenerarReporteAnual.kjb pdi-slave:/data-integration/repository
+    docker cp GenerarReporteAnual.ktr pdi-slave:/data-integration/repository
+-Fix Carte ODF temp dir on docker-pdi-ce
+  Add org.odftoolkit.odfdom.tmpdir=/data-integration to system properties in Carte
+  /data-integration/spoon.sh
+    Check diff
+    OPT="$OPT $PENTAHO_DI_JAVA_OPTIONS -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.library.path=$LIBPATH -DKETTLE_HOME=$KETTLE_HOME -DKETTLE_REPOSITORY=$KETTLE_REPOSITORY -DKETTLE_USER=$KETTLE_USER -DKETTLE_PASSWORD=$KETTLE_PASSWORD -DKETTLE_PLUGIN_PACKAGES=$KETTLE_PLUGIN_PACKAGES -DKETTLE_LOG_SIZE_LIMIT=$KETTLE_LOG_SIZE_LIMIT -DKETTLE_JNDI_ROOT=$KETTLE_JNDI_ROOT"
+    OPT="$OPT $PENTAHO_DI_JAVA_OPTIONS -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.library.path=$LIBPATH -DKETTLE_HOME=$KETTLE_HOME -DKETTLE_REPOSITORY=$KETTLE_REPOSITORY -DKETTLE_USER=$KETTLE_USER -DKETTLE_PASSWORD=$KETTLE_PASSWORD -DKETTLE_PLUGIN_PACKAGES=$KETTLE_PLUGIN_PACKAGES -DKETTLE_LOG_SIZE_LIMIT=$KETTLE_LOG_SIZE_LIMIT -DKETTLE_JNDI_ROOT=$KETTLE_JNDI_ROOT -Dorg.odftoolkit.odfdom.tmpdir=/data-integration"
+-Install http://dekarlab.de/wp/?p=5
 -Run the following jobs via API
   Dimensions
     CargaFechas
-      curl -X GET 'http://localhost:9090/kettle/runJob/?job=CargaFechas&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser' -H 'Accept: */*' -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' -H 'Cache-Control: no-cache' -H 'Connection: keep-alive' -H 'Host: localhost:9090' -H 'Postman-Token: abc99de1-a150-4b59-bcbc-9cad12cdc550,b83c55c7-7ef6-4972-9fbf-f51e49c51792' -H 'User-Agent: PostmanRuntime/7.15.0' -H 'accept-encoding: gzip, deflate' -H 'cache-control: no-cache'
+      curl -X GET 'http://104.237.5.5:9090/kettle/runJob/?job=CargaFechas&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser' -H 'Accept: */*' -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' -H 'Cache-Control: no-cache' -H 'Connection: keep-alive' -H 'Host: 104.237.5.5:9090' -H 'Postman-Token: abc99de1-a150-4b59-bcbc-9cad12cdc550,b83c55c7-7ef6-4972-9fbf-f51e49c51792' -H 'User-Agent: PostmanRuntime/7.15.0' -H 'accept-encoding: gzip, deflate' -H 'cache-control: no-cache'
     CargaContaminantesCategorias
-      curl -X GET 'http://localhost:9090/kettle/runJob/?job=CargaContaminantesCategorias&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&TMP_DIR=/data-integration' -H 'Accept: */*' -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' -H 'Cache-Control: no-cache' -H 'Connection: keep-alive' -H 'Host: localhost:9090' -H 'Postman-Token: ce2c2dcb-b8a4-4bd0-97e9-5516bd7507cc,06183f7e-0839-4107-8f0f-b66388852ebe' -H 'User-Agent: PostmanRuntime/7.15.0' -H 'accept-encoding: gzip, deflate' -H 'cache-control: no-cache'
+      curl -X GET 'http://104.237.5.5:9090/kettle/runJob/?job=CargaContaminantesCategorias&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&TMP_DIR=/data-integration' -H 'Accept: */*' -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' -H 'Cache-Control: no-cache' -H 'Connection: keep-alive' -H 'Host: 104.237.5.5:9090' -H 'Postman-Token: ce2c2dcb-b8a4-4bd0-97e9-5516bd7507cc,06183f7e-0839-4107-8f0f-b66388852ebe' -H 'User-Agent: PostmanRuntime/7.15.0' -H 'accept-encoding: gzip, deflate' -H 'cache-control: no-cache'
 ############# Cargar datos de DiasImportantes
 ############# Reporte de 2017
 -Run the following jobs via API
