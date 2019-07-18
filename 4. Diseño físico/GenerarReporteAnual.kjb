@@ -8,8 +8,57 @@
   <created_user>-</created_user>
   <created_date>2019/07/09 21:46:46.624</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2019/07/11 09:19:03.068</modified_date>
+  <modified_date>2019/07/18 19:45:06.146</modified_date>
   <parameters>
+    <parameter>
+      <name>BellaVista</name>
+      <default_value>No se observaron valores de superación del estándar para ninguno de los parámetros monitoreados en el año 2017.</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>CiudadVieja</name>
+      <default_value>En el año 2017, se tomaron 31 muestras del tren de monitoreo, y en la estación automática se registraron valores durante 340 días, lo que representa el 90% del año.
+Los porcentajes de las diversas categorías de calidad de aire reportadas se muestran en la Ilustración 2. El 97% de muestras de Humo Negro , y el 90% de PM 2.5 se encuentran dentro de la categoría MUY BUENA.
+
+Cinco días del año 2017 (1%) se registraron valores de PM2.5 promedios diarios mayores de 50 ug/ m3, por lo que la categoría fue INADECUADA (5 días). Estos eventos se registraron en junio, julio y agosto.
+
+Se obtuvieron muy pocos resultados de SO2.</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>Colon</name>
+      <default_value>El 74% de los días en que se tiene registro la categoría de ICAire fue MUY BUENA.No se registraron valores superiores al estándar de 150 ug/m3 en todo el año 2017.</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>CurvaDeMaronas</name>
+      <default_value>La distribución de los resultados obtenidos en el año 2017 por parámetro y por categoría del ICAire se muestra en la tabla y en la gráfica anteriores.
+
+En esta estación, el 84% de las muestras obtenidas de Humo Negro y el 90% de PM10 corresponden a la categoría MUY BUENA.
+
+Once días en el año se superó el valor 50 para PM2.5, por lo que la categoría fue INADECUADA y tres MALA. Estas superaciones se observaron en los meses de marzo, abril, junio, julio y agosto.</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>DB_HOST</name>
+      <default_value>localhost</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>DB_PASS</name>
+      <default_value>superuserpass</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>DB_PORT</name>
+      <default_value>5432</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>DB_USER</name>
+      <default_value>superuser</default_value>
+      <description />
+    </parameter>
     <parameter>
       <name>FILESTASH_URL</name>
       <default_value>http://localhost:8334</default_value>
@@ -21,6 +70,22 @@
       <description />
     </parameter>
     <parameter>
+      <name>LaTablada</name>
+      <default_value>El mapa muestra la ubicación de la estación La Tablada, en las inmediaciones de la central térmica de respaldo de UTE en La Tablada.
+
+El porcentaje de días por categoría, se muestra en la tabla y en el gráfico a continuación.
+
+En todos los parámetros la calidad del aire fue mayoritariamente MUY BUENA; no se registró ningún valor de superación del estándar en esta estación.</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>LaTeja</name>
+      <default_value>El equipo de NO2, no estuvo operativo gran parte del año, por lo que los resultados registrados no son representativos del año 2017.
+
+En los días en que se monitoreó, se registraron, 5 días de superación del estándar de PM2.5 y 2 días de superación de TRS.</default_value>
+      <description />
+    </parameter>
+    <parameter>
       <name>OUTPUT_TYPE</name>
       <default_value>pdf</default_value>
       <description />
@@ -28,6 +93,20 @@
     <parameter>
       <name>PATH</name>
       <default_value>/Users/Gonza/KONA/proygrad/dw-calidad-aire/4. Diseño físico</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>PalacioLegislativo</name>
+      <default_value>En ninguna oportunidad se registraron valores superiores a los estándares para ninguno de los parámetros monitoreados.
+
+La mayoría de los valores registrados se encuentran dentro de la categoría MUY BUENA.</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>PortonesDeCarrasco</name>
+      <default_value>Las muestras no determinadas tanto para el PM10, el humo negro y el dióxido de azufre corresponden a problemas operativos con la conexión eléctrica del equipo.
+
+De los datos registrados, la mayoría corresponden a calidad de aire MUY BUENA. En ninguna oportunidad se registró una calidad INADECUADA.</default_value>
       <description />
     </parameter>
     <parameter>
@@ -42,7 +121,7 @@
     </parameter>
     <parameter>
       <name>SFTP_FOLDER</name>
-      <default_value>/uploads</default_value>
+      <default_value>/upload</default_value>
       <description />
     </parameter>
     <parameter>
@@ -97,8 +176,12 @@
       <description />
     </parameter>
     <parameter>
-      <name>YEAR</name>
-      <default_value>333</default_value>
+      <name>TresCruces</name>
+      <default_value>En el año 2017 se planificaron 31 muestreos de Humo Negro, SO2 y PM10 determinado por el muestreador de alto volumen. Por problemas operativos se perdieron 3 muestras de Humo Negro, 1 muestra de PM10.
+
+Los muestreos más comprometidos de esta estación son de SO2, que se pudo analizar menos de la mitad de las muestras y NO2 del equipo automático por problemas con los sensores. Por este motivo no es correcto considerar los promedios anuales de estos contaminantes como representativos del promedio anual en la estación, o ser utilizados para la evaluación global del departamento.
+
+Los porcentajes de las diversas categorías de calidad de aire reportadas se muestran en la Tabla 2.5. La mayoría de las muestras recabadas se encuentran dentro de la categoría MUY BUENA, PM10 (95%), Humo Negro (95%) y dióxido de azufre (100%).</default_value>
       <description />
     </parameter>
   </parameters>
@@ -381,7 +464,6 @@
       <name>START</name>
       <description />
       <type>SPECIAL</type>
-      <attributes />
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -395,15 +477,13 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>288</xloc>
+      <xloc>192</xloc>
       <yloc>192</yloc>
-      <attributes_kjc />
     </entry>
     <entry>
       <name>Transformation</name>
       <description />
       <type>TRANS</type>
-      <attributes />
       <specification_method>rep_name</specification_method>
       <trans_object_id />
       <filename />
@@ -436,25 +516,68 @@
       <nr>0</nr>
       <xloc>400</xloc>
       <yloc>192</yloc>
-      <attributes_kjc />
     </entry>
     <entry>
       <name>Success</name>
       <description />
       <type>SUCCESS</type>
-      <attributes />
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>528</xloc>
+      <xloc>496</xloc>
       <yloc>192</yloc>
-      <attributes_kjc />
+    </entry>
+    <entry>
+      <name>Transformation 2</name>
+      <description />
+      <type>TRANS</type>
+      <specification_method>rep_name</specification_method>
+      <trans_object_id />
+      <filename />
+      <transname>GenerarReporteAnualAgruparContaminaciones</transname>
+      <directory>${Internal.Entry.Current.Directory}</directory>
+      <arg_from_previous>N</arg_from_previous>
+      <params_from_previous>N</params_from_previous>
+      <exec_per_row>N</exec_per_row>
+      <clear_rows>N</clear_rows>
+      <clear_files>N</clear_files>
+      <set_logfile>N</set_logfile>
+      <logfile />
+      <logext />
+      <add_date>N</add_date>
+      <add_time>N</add_time>
+      <loglevel>Basic</loglevel>
+      <cluster>N</cluster>
+      <slave_server_name />
+      <set_append_logfile>N</set_append_logfile>
+      <wait_until_finished>Y</wait_until_finished>
+      <follow_abort_remote>N</follow_abort_remote>
+      <create_parent_folder>N</create_parent_folder>
+      <logging_remote_work>N</logging_remote_work>
+      <run_configuration>Pentaho local</run_configuration>
+      <parameters>
+        <pass_all_parameters>Y</pass_all_parameters>
+      </parameters>
+      <parallel>N</parallel>
+      <draw>Y</draw>
+      <nr>0</nr>
+      <xloc>288</xloc>
+      <yloc>192</yloc>
     </entry>
   </entries>
   <hops>
     <hop>
+      <from>Transformation</from>
+      <to>Success</to>
+      <from_nr>0</from_nr>
+      <to_nr>0</to_nr>
+      <enabled>Y</enabled>
+      <evaluation>Y</evaluation>
+      <unconditional>N</unconditional>
+    </hop>
+    <hop>
       <from>START</from>
-      <to>Transformation</to>
+      <to>Transformation 2</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -462,8 +585,8 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>Transformation</from>
-      <to>Success</to>
+      <from>Transformation 2</from>
+      <to>Transformation</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>

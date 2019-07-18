@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>GenerarReporteAnual</name>
+    <name>GenerarReporteAnualAgruparContaminaciones</name>
     <description />
     <extended_description />
     <trans_version />
@@ -8,6 +8,35 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>BellaVista</name>
+        <default_value>No se observaron valores de superación del estándar para ninguno de los parámetros monitoreados en el año 2017. </default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>CiudadVieja</name>
+        <default_value>En el año 2017, se tomaron 31 muestras del tren de monitoreo, y en la estación automática se registraron valores durante 340 días, lo que representa el 90% del año.
+Los porcentajes de las diversas categorías de calidad de aire reportadas se muestran en la Ilustración 2. El 97% de muestras de Humo Negro , y el 90% de PM 2.5 se encuentran dentro de la categoría MUY BUENA.
+
+Cinco días del año 2017 (1%) se registraron valores de PM2.5 promedios diarios mayores de 50 ug/ m3, por lo que la categoría fue INADECUADA (5 días). Estos eventos se registraron en junio, julio y agosto.
+
+Se obtuvieron muy pocos resultados de SO2.  </default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>Colon</name>
+        <default_value>El 74% de los días en que se tiene registro la categoría de ICAire fue MUY BUENA.No se registraron valores superiores al estándar de 150 ug/m3 en todo el año 2017. </default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>CurvaDeMaronas</name>
+        <default_value>La distribución de los resultados obtenidos en el año 2017 por parámetro y por categoría del ICAire se muestra en la tabla y en la gráfica anteriores.
+
+En esta estación, el 84% de las muestras obtenidas de Humo Negro y el 90% de PM10 corresponden a la categoría MUY BUENA.
+
+Once días en el año se superó el valor 50 para PM2.5, por lo que la categoría fue INADECUADA y tres MALA. Estas superaciones se observaron en los meses de marzo, abril, junio, julio y agosto. </default_value>
+        <description />
+      </parameter>
       <parameter>
         <name>DB_HOST</name>
         <default_value>localhost</default_value>
@@ -29,93 +58,43 @@
         <description />
       </parameter>
       <parameter>
-        <name>FILESTASH_URL</name>
-        <default_value>http://localhost:8334</default_value>
+        <name>LaTablada</name>
+        <default_value>El mapa muestra la ubicación de la estación La Tablada, en las inmediaciones de la central térmica de respaldo de UTE en La Tablada.
+
+El porcentaje de días por categoría, se muestra en la tabla y en el gráfico a continuación.
+
+En todos los parámetros la calidad del aire fue mayoritariamente MUY BUENA; no se registró ningún valor de superación del estándar en esta estación.  </default_value>
         <description />
       </parameter>
       <parameter>
-        <name>FROM</name>
-        <default_value>noreply@kona.ai</default_value>
+        <name>LaTeja</name>
+        <default_value>El equipo de NO2, no estuvo operativo gran parte del año, por lo que los resultados registrados no son representativos del año 2017.
+
+En los días en que se monitoreó, se registraron, 5 días de superación del estándar de PM2.5 y 2 días de superación de TRS. 
+</default_value>
         <description />
       </parameter>
       <parameter>
-        <name>OUTPUT_TYPE</name>
-        <default_value>pdf</default_value>
+        <name>PalacioLegislativo</name>
+        <default_value>En ninguna oportunidad se registraron valores superiores a los estándares para ninguno de los parámetros monitoreados.
+
+La mayoría de los valores registrados se encuentran dentro de la categoría MUY BUENA. </default_value>
         <description />
       </parameter>
       <parameter>
-        <name>PATH</name>
-        <default_value>/Users/Gonza/KONA/proygrad/dw-calidad-aire/4. Diseño físico</default_value>
+        <name>PortonesDeCarrasco</name>
+        <default_value>Las muestras no determinadas tanto para el PM10, el humo negro y el dióxido de azufre corresponden a problemas operativos con la conexión eléctrica del equipo.
+
+De los datos registrados, la mayoría corresponden a calidad de aire MUY BUENA. En ninguna oportunidad se registró una calidad INADECUADA. </default_value>
         <description />
       </parameter>
       <parameter>
-        <name>REPORT_OUTPUT_NAME</name>
-        <default_value>output.pdf</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>REPORT_TEMPLATE_NAME</name>
-        <default_value>reporte.prpt</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>SFTP_FOLDER</name>
-        <default_value>/upload</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>SFTP_HOST</name>
-        <default_value>localhost</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>SFTP_PASS</name>
-        <default_value>93765asdflkjsd4123SS</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>SFTP_PORT</name>
-        <default_value>2222</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>SFTP_USER</name>
-        <default_value>admin</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>SMTP_PASS</name>
-        <default_value>password</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>SMTP_PORT</name>
-        <default_value>587</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>SMTP_SERVER</name>
-        <default_value>box.teamkona.io</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>SMTP_USER</name>
-        <default_value>noreply@kona.ai</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>SUBJECT</name>
-        <default_value>DataWarehouse Calidad de Aire</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>TO</name>
-        <default_value>gonzalomelov@gmail.com</default_value>
-        <description />
-      </parameter>
-      <parameter>
-        <name>YEAR</name>
-        <default_value>333</default_value>
+        <name>TresCruces</name>
+        <default_value>En el año 2017 se planificaron 31 muestreos de Humo Negro, SO2 y PM10 determinado por el muestreador de alto volumen. Por problemas operativos se perdieron 3 muestras de Humo Negro, 1 muestra de PM10.
+
+Los muestreos más comprometidos de esta estación son de SO2, que se pudo analizar menos de la mitad de las muestras y NO2 del equipo automático por problemas con los sensores. Por este motivo no es correcto considerar los promedios anuales de estos contaminantes como representativos del promedio anual en la estación, o ser utilizados para la evaluación global del departamento.
+
+Los porcentajes de las diversas categorías de calidad de aire reportadas se muestran en la Tabla 2.5. La mayoría de las muestras recabadas se encuentran dentro de la categoría MUY BUENA, PM10 (95%), Humo Negro (95%) y dióxido de azufre (100%). </default_value>
         <description />
       </parameter>
     </parameters>
@@ -537,10 +516,10 @@
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
-    <created_date>2019/07/09 21:13:52.831</created_date>
+    <created_date>2019/07/18 17:27:57.793</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/07/18 19:23:17.358</modified_date>
-    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
+    <modified_date>2019/07/18 20:20:35.436</modified_date>
+    <key_for_session_key />
     <is_key_private>N</is_key_private>
   </info>
   <notepads>
@@ -551,7 +530,7 @@
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>app</database>
-    <port>${DB_PORT}</port>
+    <port>5432</port>
     <username>${DB_USER}</username>
     <password>${DB_PASS}</password>
     <servername />
@@ -572,7 +551,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>${DB_PORT}</attribute>
+        <attribute>5432</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -598,34 +577,29 @@
   </connection>
   <order>
     <hop>
-      <from>SFTP put</from>
-      <to>Mail</to>
+      <from>Mediciones</from>
+      <to>Modified JavaScript value 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get variables</from>
-      <to>Modified JavaScript value</to>
+      <from>Modified JavaScript value 2</from>
+      <to>REST client</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Modified JavaScript value</from>
-      <to>Generate Reports</to>
+      <from>REST client</from>
+      <to>Split fields</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Generate Reports</from>
-      <to>SFTP put</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Mail</from>
-      <to>Execute SQL script</to>
+      <from>Split fields</from>
+      <to>Actualizar en tabla Mediciones Agrupadas</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>Generate Reports</name>
-    <type>PentahoReportingOutput</type>
+    <name>Actualizar en tabla Mediciones Agrupadas</name>
+    <type>InsertUpdate</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -634,16 +608,55 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <input_file_field>report_template</input_file_field>
-    <output_file_field>report_output</output_file_field>
-    <create_parent_folder>N</create_parent_folder>
-    <parameters>
-      <parameter>
-        <name>YEAR</name>
-        <field>YEAR</field>
-      </parameter>
-    </parameters>
-    <processor_type>PDF</processor_type>
+    <connection>db</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>staging</schema>
+      <table>mediciones2agrupadas</table>
+      <key>
+        <name>idestaciondelared</name>
+        <field>idestaciondelared</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>idcontaminante</name>
+        <field>idcontaminante</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>idestaciondelared</name>
+        <rename>idestaciondelared</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>idcontaminante</name>
+        <rename>idcontaminante</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>mean</name>
+        <rename>mean</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>min</name>
+        <rename>min</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>max</name>
+        <rename>max</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>percentile</name>
+        <rename>percentile</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -652,8 +665,242 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>240</yloc>
+      <xloc>656</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Mediciones</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>db</connection>
+    <sql>SELECT
+  idestaciondelared,
+  idcontaminante,
+  string_agg(concat(contaminacion), ',') as contaminacion
+FROM dw.mediciones2
+GROUP BY idestaciondelared, idcontaminante</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value 2</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var url = "http://localhost:8000/hello?a=" + contaminacion;</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>url</name>
+        <rename>url</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>REST client</name>
+    <type>Rest</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <applicationType>TEXT PLAIN</applicationType>
+    <method>GET</method>
+    <url>http://localhost:8000/hello?a=${contaminacion}</url>
+    <urlInField>Y</urlInField>
+    <dynamicMethod>N</dynamicMethod>
+    <methodFieldName />
+    <urlField>url</urlField>
+    <bodyField />
+    <httpLogin />
+    <httpPassword>Encrypted </httpPassword>
+    <proxyHost />
+    <proxyPort />
+    <preemptive>N</preemptive>
+    <trustStoreFile />
+    <trustStorePassword>Encrypted </trustStorePassword>
+    <headers>
+      </headers>
+    <parameters>
+      </parameters>
+    <matrixParameters>
+      </matrixParameters>
+    <result>
+      <name>result</name>
+      <code />
+      <response_time />
+      <response_header />
+    </result>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>416</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Split fields</name>
+    <type>FieldSplitter</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <splitfield>result</splitfield>
+    <delimiter>, </delimiter>
+    <enclosure />
+    <fields>
+      <field>
+        <name>mean</name>
+        <id />
+        <idrem>N</idrem>
+        <type>Number</type>
+        <format />
+        <group />
+        <decimal />
+        <currency />
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif />
+        <ifnull />
+        <trimtype>none</trimtype>
+      </field>
+      <field>
+        <name>min</name>
+        <id />
+        <idrem>N</idrem>
+        <type>Number</type>
+        <format />
+        <group />
+        <decimal />
+        <currency />
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif />
+        <ifnull />
+        <trimtype>none</trimtype>
+      </field>
+      <field>
+        <name>max</name>
+        <id />
+        <idrem>N</idrem>
+        <type>Number</type>
+        <format />
+        <group />
+        <decimal />
+        <currency />
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif />
+        <ifnull />
+        <trimtype>none</trimtype>
+      </field>
+      <field>
+        <name>n</name>
+        <id />
+        <idrem>N</idrem>
+        <type>Number</type>
+        <format />
+        <group />
+        <decimal />
+        <currency />
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif />
+        <ifnull />
+        <trimtype>none</trimtype>
+      </field>
+      <field>
+        <name>percentile</name>
+        <id />
+        <idrem>N</idrem>
+        <type>Number</type>
+        <format />
+        <group />
+        <decimal />
+        <currency />
+        <length>-1</length>
+        <precision>-1</precision>
+        <nullif />
+        <ifnull />
+        <trimtype>none</trimtype>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>512</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -670,8 +917,8 @@
     </partitioning>
     <fields>
       <field>
-        <name>PATH</name>
-        <variable>${PATH}</variable>
+        <name>BellaVista</name>
+        <variable />
         <type>String</type>
         <format />
         <currency />
@@ -682,8 +929,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>YEAR</name>
-        <variable>${YEAR}</variable>
+        <name>CiudadVieja</name>
+        <variable />
         <type>String</type>
         <format />
         <currency />
@@ -694,8 +941,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>REPORT_OUTPUT_NAME</name>
-        <variable>${REPORT_OUTPUT_NAME}</variable>
+        <name>Colon</name>
+        <variable />
         <type>String</type>
         <format />
         <currency />
@@ -706,8 +953,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>REPORT_TEMPLATE_NAME</name>
-        <variable>${REPORT_TEMPLATE_NAME}</variable>
+        <name>CurvaDeMaronas</name>
+        <variable />
         <type>String</type>
         <format />
         <currency />
@@ -718,8 +965,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>OUTPUT_TYPE</name>
-        <variable>${OUTPUT_TYPE}</variable>
+        <name>LaTablada</name>
+        <variable />
         <type>String</type>
         <format />
         <currency />
@@ -730,8 +977,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>SFTP_HOST</name>
-        <variable>${SFTP_HOST}</variable>
+        <name>LaTeja</name>
+        <variable />
         <type>String</type>
         <format />
         <currency />
@@ -742,8 +989,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>SFTP_PORT</name>
-        <variable>${SFTP_PORT}</variable>
+        <name>PalacioLegislativo</name>
+        <variable />
         <type>String</type>
         <format />
         <currency />
@@ -754,8 +1001,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>SFTP_USER</name>
-        <variable>${SFTP_USER}</variable>
+        <name>PortonesDeCarrasco</name>
+        <variable />
         <type>String</type>
         <format />
         <currency />
@@ -766,116 +1013,8 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>SFTP_PASS</name>
-        <variable>${SFTP_PASS}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SFTP_FOLDER</name>
-        <variable>${SFTP_FOLDER}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SMTP_SERVER</name>
-        <variable>${SMTP_SERVER}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SMTP_PORT</name>
-        <variable>${SMTP_PORT}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SMTP_USER</name>
-        <variable>${SMTP_USER}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SMTP_PASS</name>
-        <variable>${SMTP_PASS}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>FILESTASH_URL</name>
-        <variable>${FILESTASH_URL}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>FROM</name>
-        <variable>${FROM}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>TO</name>
-        <variable>${TO}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SUBJECT</name>
-        <variable>${SUBJECT}</variable>
+        <name>TresCruces</name>
+        <variable />
         <type>String</type>
         <format />
         <currency />
@@ -895,226 +1034,7 @@
     </remotesteps>
     <GUI>
       <xloc>160</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Mail</name>
-    <type>Mail</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <server>SMTP_SERVER</server>
-    <port>SMTP_PORT</port>
-    <destination>TO</destination>
-    <destinationCc />
-    <destinationBCc />
-    <replyToAddresses />
-    <replyto>FROM</replyto>
-    <replytoname />
-    <subject>SUBJECT</subject>
-    <include_date>N</include_date>
-    <include_subfolders>N</include_subfolders>
-    <zipFilenameDynamic>N</zipFilenameDynamic>
-    <isFilenameDynamic>N</isFilenameDynamic>
-    <attachContentFromField>N</attachContentFromField>
-    <attachContentField />
-    <attachContentFileNameField />
-    <dynamicFieldname />
-    <dynamicWildcard />
-    <dynamicZipFilename />
-    <sourcefilefoldername />
-    <sourcewildcard />
-    <contact_person />
-    <contact_phone />
-    <comment>Email</comment>
-    <include_files>N</include_files>
-    <zip_files>N</zip_files>
-    <zip_name />
-    <zip_limit_size>0</zip_limit_size>
-    <use_auth>Y</use_auth>
-    <use_secure_auth>Y</use_secure_auth>
-    <auth_user>SMTP_USER</auth_user>
-    <auth_password>Encrypted 2be98afc86aa7f2b7862d9e4feeb39ce9</auth_password>
-    <only_comment>Y</only_comment>
-    <use_HTML>Y</use_HTML>
-    <use_Priority>N</use_Priority>
-    <encoding>UTF-8</encoding>
-    <priority>normal</priority>
-    <importance>normal</importance>
-    <sensitivity>normal</sensitivity>
-    <secureconnectiontype>TLS</secureconnectiontype>
-    <embeddedimages>
-      </embeddedimages>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>608</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified JavaScript value</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var Separator = "/";
-var Report_Template = PATH + Separator + REPORT_TEMPLATE_NAME;
-var Report_Output = PATH + Separator + REPORT_OUTPUT_NAME;
-var Email = FILESTASH_URL + "/view/" + REPORT_OUTPUT_NAME;</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>Separator</name>
-        <rename>Separator</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>Report_Template</name>
-        <rename>Report_Template</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>Report_Output</name>
-        <rename>Report_Output</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>Email</name>
-        <rename>Email</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>288</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SFTP put</name>
-    <type>SFTPPut</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <servername>${SFTP_HOST}</servername>
-    <serverport>${SFTP_PORT}</serverport>
-    <username>${SFTP_USER}</username>
-    <password>${SFTP_PASS}</password>
-    <sourceFileFieldName>Report_Output</sourceFileFieldName>
-    <remoteDirectoryFieldName>SFTP_FOLDER</remoteDirectoryFieldName>
-    <inputIsStream>N</inputIsStream>
-    <addFilenameResut>N</addFilenameResut>
-    <usekeyfilename>N</usekeyfilename>
-    <keyfilename />
-    <keyfilepass>Encrypted </keyfilepass>
-    <compression>none</compression>
-    <proxyType />
-    <proxyHost />
-    <proxyPort />
-    <proxyUsername />
-    <proxyPassword>Encrypted </proxyPassword>
-    <createRemoteFolder>N</createRemoteFolder>
-    <aftersftpput>nothing</aftersftpput>
-    <destinationfolderFieldName />
-    <createdestinationfolder>N</createdestinationfolder>
-    <remoteFilenameFieldName>REPORT_OUTPUT_NAME</remoteFilenameFieldName>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>528</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Execute SQL script</name>
-    <type>ExecSQL</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>db</connection>
-    <execute_each_row>Y</execute_each_row>
-    <single_statement>Y</single_statement>
-    <replace_variables>N</replace_variables>
-    <quoteString>N</quoteString>
-    <sql>delete from staging.mediciones2agrupadas;</sql>
-    <set_params>N</set_params>
-    <insert_field />
-    <update_field />
-    <delete_field />
-    <read_field />
-    <arguments>
-    </arguments>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>240</yloc>
+      <yloc>160</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
