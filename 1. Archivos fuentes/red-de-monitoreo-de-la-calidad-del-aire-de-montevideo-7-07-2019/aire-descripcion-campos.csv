@@ -1,0 +1,63 @@
+Descripcion de campos de los archivos historicos ,,
+------------------------------------------------,,
+POLLUTANT_ID:,Identificacion de contaminante. Estos identificadores se describen en el archivo contaminantes.csv,
+POLLUTANT_AVERAGING:,Periodo de toma de muestra en horas,
+DATE:,Fecha y hora que fue tomado el dato,
+POLLUTANT_VALUE:,Valor del parametro ,
+POLLUTANT_UNIT:,Unidades en que esta expresado el contaminante,
+STATION_ID:,Denominacion de la zona que caracteriza la estacion.,
+X:,Localizacion. Coordenada X de la estacion (UTM- Zona 21),
+Y:,Localizacion. Coordenada Y de la estacion (UTM- Zona 21),
+ID_ESTACIONES:,Identificacion de la estacion segun consta en el archivo estaciones.csv,
+METHOD_ID:,Identifica el metodo con el cual se midio el Parametro. Los metodos se describen en el archivo metodos.csv,
+,,
+Mas informacion,,
+---------------,,
+Las estaciones automaticas con datos horarios se presentan los datos anuales.,,
+,,
+CV_pm10_14.csv,Ciudad vieja PM10,2014
+CV_pm2_15.csv,Ciudad vieja PM2.5,2015
+CV_pm2_16.csv,Ciudad vieja PM2.5,2016
+CV_pm2_17.csv,Ciudad vieja PM2.5,2017
+CV_pm2_18.csv,Ciudad vieja PM2.5,2018
+,,
+,,
+TRC_pm10_15.csv,Tres Cruces PM10,2014-2015
+TRC_pm10_16.csv,Tres Cruces PM10,2016
+TRC_pm10_17.csv,Tres Cruces PM10,2017
+TRC_pm10_18.csv,Tres Cruces PM10,2018
+,,
+TRC_NO2_15.csv,Tres Cruces NO2,2015
+TRC_NO2_16.csv,Tres Cruces NO2,2016
+TRC_NO2_17.csv,Tres Cruces NO2,2017
+TRC_NO2_18.csv,Tres Cruces NO2,2018
+,,
+,,
+CM_pm2_17.csv,Curva de Maronas PM2.5,2017
+CM_pm2_18.csv,Curva de Maronas PM2.5,2018
+,,
+,,
+CM_NO2_17.csv,Curva de Maronas NO2,2017
+CM_NO2_18.csv,Curva de Maronas NO2 ,2018
+,,
+CM_O3_17.csv,Curva de Maronas O3,2017
+CM_O3_18.csv,Curva de Maronas O3,2018
+,,
+,,
+CO_pm2_18.csv,Colon PM2.5,2018
+,,
+CO_NO2_18.csv,Colon NO2,2018
+,,
+CO_O3_18.csv,Colon O3,2018
+,,
+,,
+,,
+,,
+,,
+Las Estaciones manuales con datos cada 24/48 horas presentan en archivos por parametro,,
+,,
+hn.csv,Humo Negro,2004-2018
+PM2.csv,Material particulado PM2,2007-2013
+PM10.csv,Material particulado PM10 manual,2007-2018
+pts.csv,Particulado total,2004-2018
+SO2.csv,SO2 manual,2012-2018
