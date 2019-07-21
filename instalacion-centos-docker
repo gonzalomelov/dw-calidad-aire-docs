@@ -82,6 +82,7 @@
     docker cp reporte.prpt pdi-slave:/data-integration/repository
     docker cp GenerarReporteAnual.kjb pdi-slave:/data-integration/repository
     docker cp GenerarReporteAnual.ktr pdi-slave:/data-integration/repository
+    docker cp GenerarReporteAnualAgruparContaminaciones.ktr pdi-slave:/data-integration/repository
 -docker exec -d pdi-slave mkdir /data-integration/Carte
 -docker exec -d pdi-slave chmod a+rw /data-integration/Carte
 -(OPTIONAL) Fix Carte ODF temp dir on docker-pdi-ce for ODS input
