@@ -454,7 +454,7 @@
     <created_user>-</created_user>
     <created_date>2014/06/18 22:46:27.415</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2019/07/07 19:48:34.478</modified_date>
+    <modified_date>2019/07/21 18:08:57.816</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -1028,7 +1028,6 @@
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1053,7 +1052,6 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
@@ -1114,7 +1112,6 @@
       <grouping_symbol />
       <currency_symbol />
     </calculation>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1201,7 +1198,6 @@ seasonName = seasons[season-1];</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1226,7 +1222,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>file</field_name>
       <calc_type>CONSTANT</calc_type>
@@ -1287,7 +1282,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <grouping_symbol />
       <currency_symbol />
     </calculation>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1312,7 +1306,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>method_id</field_name>
       <calc_type>CONSTANT</calc_type>
@@ -1343,7 +1336,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <grouping_symbol />
       <currency_symbol />
     </calculation>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1368,7 +1360,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>pollutant_value</field_name>
       <calc_type>ROUND_1</calc_type>
@@ -1384,7 +1375,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <grouping_symbol />
       <currency_symbol />
     </calculation>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1409,7 +1399,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>method_id</field_name>
       <calc_type>CONSTANT</calc_type>
@@ -1440,7 +1429,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <grouping_symbol />
       <currency_symbol />
     </calculation>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1480,7 +1468,6 @@ FROM dw.contaminantes
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1519,7 +1506,6 @@ FROM dw.contaminantescategorias
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1544,7 +1530,6 @@ FROM dw.contaminantescategorias
       <method>none</method>
       <schema_name />
     </partitioning>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1569,7 +1554,6 @@ FROM dw.contaminantescategorias
       <method>none</method>
       <schema_name />
     </partitioning>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1594,7 +1578,6 @@ FROM dw.contaminantescategorias
       <method>none</method>
       <schema_name />
     </partitioning>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1836,7 +1819,6 @@ FROM dw.contaminantescategorias
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>POI</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2019,7 +2001,6 @@ FROM dw.contaminantescategorias
         </conditions>
       </condition>
     </compare>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2100,7 +2081,6 @@ FROM dw.contaminantescategorias
         </conditions>
       </condition>
     </compare>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2133,7 +2113,6 @@ FROM dw.contaminantescategorias
       <value_precision>-1</value_precision>
       <replace_field />
     </formula>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2166,7 +2145,6 @@ FROM dw.contaminantescategorias
       <value_precision>-1</value_precision>
       <replace_field />
     </formula>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2205,7 +2183,6 @@ FROM dw.contaminantescategorias
         <trim_type>none</trim_type>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2263,7 +2240,6 @@ FROM dw.contaminantescategorias
         <valuefield />
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2303,7 +2279,6 @@ FROM dw.contaminantescategorias
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2343,7 +2318,6 @@ FROM dw.contaminantescategorias
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2368,7 +2342,6 @@ FROM dw.contaminantescategorias
       <method>none</method>
       <schema_name />
     </partitioning>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2402,7 +2375,6 @@ FROM dw.contaminantescategorias
     <keys_2>
       <key>nomestaciondelared</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2436,7 +2408,6 @@ FROM dw.contaminantescategorias
     <keys_2>
       <key>nomcontaminante</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2470,7 +2441,6 @@ FROM dw.contaminantescategorias
     <keys_2>
       <key>fecha_with_hours</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2504,7 +2474,6 @@ FROM dw.contaminantescategorias
     <keys_2>
       <key>nommetodo</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2538,7 +2507,6 @@ FROM dw.contaminantescategorias
     <keys_2>
       <key>iddiasemana</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2572,7 +2540,6 @@ FROM dw.contaminantescategorias
     <keys_2>
       <key>idestaciondelanio</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2606,7 +2573,6 @@ FROM dw.contaminantescategorias
     <keys_2>
       <key>idfecha</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2642,7 +2608,6 @@ FROM dw.contaminantescategorias
       <key>idcontaminante</key>
       <key>pollutant_value</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2674,7 +2639,6 @@ FROM dw.contaminantescategorias
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2808,7 +2772,6 @@ FROM dw.contaminantescategorias
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>ODS</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2942,7 +2905,6 @@ FROM dw.contaminantescategorias
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>ODS</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3100,7 +3062,6 @@ FROM dw.contaminantescategorias
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>ODS</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3198,7 +3159,6 @@ FROM dw.contaminantescategorias
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>ODS</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3332,7 +3292,6 @@ FROM dw.contaminantescategorias
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>ODS</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3454,7 +3413,6 @@ FROM dw.contaminantescategorias
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>ODS</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3552,7 +3510,6 @@ FROM dw.contaminantescategorias
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>ODS</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3734,7 +3691,6 @@ FROM dw.contaminantescategorias
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>ODS</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3832,7 +3788,6 @@ FROM dw.contaminantescategorias
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>ODS</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3887,7 +3842,6 @@ var idFechaHora = idFecha + idHora</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3937,7 +3891,6 @@ if (!iddiaimportante) {
         <replace>N</replace>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4027,7 +3980,6 @@ if (ID_estacion == 'La Teja') {
         <replace>Y</replace>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4065,7 +4017,6 @@ filenamedatosmeteorologicos = decodeURI(filenamedatosmeteorologicos);
       </jsScript>
     </jsScripts>
     <fields>    </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4103,7 +4054,6 @@ filename = decodeURI(filename);
       </jsScript>
     </jsScripts>
     <fields>    </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4141,7 +4091,6 @@ filename = decodeURI(filename);
       </jsScript>
     </jsScripts>
     <fields>    </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4177,10 +4126,8 @@ filename = decodeURI(filename);
         <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4228,7 +4175,6 @@ filename = decodeURI(filename);
         <norm>pollutant_value</norm>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4276,7 +4222,6 @@ filename = decodeURI(filename);
         <norm>pollutant_value</norm>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4334,7 +4279,6 @@ filename = decodeURI(filename);
         <norm>pollutant_value</norm>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4367,7 +4311,6 @@ filename = decodeURI(filename);
         <norm>pollutant_value</norm>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4415,7 +4358,6 @@ filename = decodeURI(filename);
         <norm>pollutant_value</norm>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4458,7 +4400,6 @@ filename = decodeURI(filename);
         <norm>pollutant_value</norm>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4491,7 +4432,6 @@ filename = decodeURI(filename);
         <norm>pollutant_value</norm>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4559,7 +4499,6 @@ filename = decodeURI(filename);
         <norm>pollutant_value</norm>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4592,7 +4531,6 @@ filename = decodeURI(filename);
         <norm>pollutant_value</norm>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4620,30 +4558,39 @@ filename = decodeURI(filename);
     <fields>
       <field>
         <name>idhora</name>
+        <rename />
       </field>
       <field>
         <name>idestaciondelanio</name>
+        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
+        <rename />
       </field>
       <field>
         <name>idfecha</name>
+        <rename />
       </field>
       <field>
         <name>nomestaciondelared</name>
+        <rename />
       </field>
       <field>
         <name>idmetodo</name>
+        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Global_Sun_rad_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Relative_Humidity_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Temperature_Extern_1</name>
@@ -4651,9 +4598,11 @@ filename = decodeURI(filename);
       </field>
       <field>
         <name>ANCAP1_Wind_Direction_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Speed_1</name>
+        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
@@ -4667,6 +4616,7 @@ filename = decodeURI(filename);
       </field>
       <field>
         <name>surrogate_key</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -4740,8 +4690,8 @@ filename = decodeURI(filename);
       <meta>
         <name>nomestaciondelared</name>
         <rename>nomestaciondelared</rename>
-        <type>Integer</type>
-        <length>3</length>
+        <type>String</type>
+        <length>-2</length>
         <precision>-2</precision>
         <conversion_mask />
         <date_format_lenient>false</date_format_lenient>
@@ -4806,7 +4756,6 @@ filename = decodeURI(filename);
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5094,7 +5043,6 @@ filename = decodeURI(filename);
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5139,7 +5087,6 @@ filename = decodeURI(filename);
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5199,7 +5146,6 @@ filename = decodeURI(filename);
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5262,7 +5208,6 @@ filename = decodeURI(filename);
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5307,7 +5252,6 @@ filename = decodeURI(filename);
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5349,7 +5293,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5391,7 +5334,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5465,7 +5407,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5507,7 +5448,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5549,7 +5489,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5591,7 +5530,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5633,7 +5571,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5675,7 +5612,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5717,7 +5653,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5759,7 +5694,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5801,7 +5735,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5851,7 +5784,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5901,7 +5833,6 @@ filename = decodeURI(filename);
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5946,7 +5877,6 @@ filename = decodeURI(filename);
         <cut_to>10</cut_to>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -6118,7 +6048,6 @@ filename = decodeURI(filename);
         <trim_type>none</trim_type>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -6150,7 +6079,6 @@ filename = decodeURI(filename);
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -6182,7 +6110,6 @@ filename = decodeURI(filename);
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -6214,7 +6141,6 @@ filename = decodeURI(filename);
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -6246,7 +6172,6 @@ filename = decodeURI(filename);
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -6277,5 +6202,4 @@ filename = decodeURI(filename);
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes />
 </transformation>
