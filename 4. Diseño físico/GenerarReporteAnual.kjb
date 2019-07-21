@@ -8,7 +8,7 @@
   <created_user>-</created_user>
   <created_date>2019/07/09 21:46:46.624</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2019/07/21 16:46:35.825</modified_date>
+  <modified_date>2019/07/21 19:24:09.684</modified_date>
   <parameters>
     <parameter>
       <name>BellaVista</name>
@@ -126,6 +126,11 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
     <parameter>
       <name>REPORT_TEMPLATE_NAME</name>
       <default_value>reporte.prpt</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>R_URL</name>
+      <default_value>http://localhost:8000</default_value>
       <description />
     </parameter>
     <parameter>
