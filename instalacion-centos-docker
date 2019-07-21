@@ -3,13 +3,12 @@
 -Generate server ssh key https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html
 -Install git https://www.digitalocean.com/community/tutorials/how-to-install-git-on-centos-7
 -Clone
-	git clone git@bitbucket.org:gonzalomelokonatech/admin.git 
-	git clone git@bitbucket.org:gonzalomelokonatech/db-service.git
-	git clone git@bitbucket.org:gonzalomelokonatech/sftp.git
-	git clone git@bitbucket.org:gonzalomelokonatech/filestash.git
-	git clone git@bitbucket.org:gonzalomelokonatech/docsify.git
-	git clone git@bitbucket.org:gonzalomelokonatech/docker-pdi-ce.git 8.0
-	git clone git@bitbucket.org:gonzalomelokonatech/docker-biserver-ce.git 8.0
+	git clone --recurse-submodules git@bitbucket.org:gonzalomelokonatech/dockerfiles.git
+-Remove folders
+  rm -rf docker-pdi-ce/ext/
+  rm -rf docker-pdi-ce/data/
+  rm -rf docker-biserver-ce/data/
+  rm -rf db-service/data/
 -Foreach folder: docker-compose up -d
 	admin => Front end para carga de datos
 		admin
@@ -71,6 +70,7 @@
     scp CargaMedidaDiasImportantesContaminacionChild.ktr root@104.237.5.5:/root/transformations
     scp GenerarReporteAnual.kjb root@104.237.5.5:/root/transformations
     scp GenerarReporteAnual.ktr root@104.237.5.5:/root/transformations
+    scp GenerarReporteAnualAgruparContaminaciones.ktr root@104.237.5.5:/root/transformations
   Docker host
     docker cp CargaFechas.kjb pdi-slave:/data-integration/repository
     docker cp CargaFechas.ktr pdi-slave:/data-integration/repository
@@ -82,13 +82,14 @@
     docker cp reporte.prpt pdi-slave:/data-integration/repository
     docker cp GenerarReporteAnual.kjb pdi-slave:/data-integration/repository
     docker cp GenerarReporteAnual.ktr pdi-slave:/data-integration/repository
--Fix Carte ODF temp dir on docker-pdi-ce
+-docker exec -d pdi-slave mkdir /data-integration/Carte
+-docker exec -d pdi-slave chmod a+rw /data-integration/Carte
+-(OPTIONAL) Fix Carte ODF temp dir on docker-pdi-ce for ODS input
   Add org.odftoolkit.odfdom.tmpdir=/data-integration to system properties in Carte
   /data-integration/spoon.sh
     Check diff
     OPT="$OPT $PENTAHO_DI_JAVA_OPTIONS -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.library.path=$LIBPATH -DKETTLE_HOME=$KETTLE_HOME -DKETTLE_REPOSITORY=$KETTLE_REPOSITORY -DKETTLE_USER=$KETTLE_USER -DKETTLE_PASSWORD=$KETTLE_PASSWORD -DKETTLE_PLUGIN_PACKAGES=$KETTLE_PLUGIN_PACKAGES -DKETTLE_LOG_SIZE_LIMIT=$KETTLE_LOG_SIZE_LIMIT -DKETTLE_JNDI_ROOT=$KETTLE_JNDI_ROOT"
     OPT="$OPT $PENTAHO_DI_JAVA_OPTIONS -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.library.path=$LIBPATH -DKETTLE_HOME=$KETTLE_HOME -DKETTLE_REPOSITORY=$KETTLE_REPOSITORY -DKETTLE_USER=$KETTLE_USER -DKETTLE_PASSWORD=$KETTLE_PASSWORD -DKETTLE_PLUGIN_PACKAGES=$KETTLE_PLUGIN_PACKAGES -DKETTLE_LOG_SIZE_LIMIT=$KETTLE_LOG_SIZE_LIMIT -DKETTLE_JNDI_ROOT=$KETTLE_JNDI_ROOT -Dorg.odftoolkit.odfdom.tmpdir=/data-integration"
--Install http://dekarlab.de/wp/?p=5
 -Run the following jobs via API
   Dimensions
     CargaFechas
