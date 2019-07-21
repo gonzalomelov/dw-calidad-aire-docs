@@ -4631,7 +4631,7 @@ filename = decodeURI(filename);
         <name>idfecha</name>
       </field>
       <field>
-        <name>idestaciondelared</name>
+        <name>nomestaciondelared</name>
       </field>
       <field>
         <name>idmetodo</name>
@@ -4738,8 +4738,8 @@ filename = decodeURI(filename);
         <storage_type />
       </meta>
       <meta>
-        <name>idestaciondelared</name>
-        <rename>idestaciondelared</rename>
+        <name>nomestaciondelared</name>
+        <rename>nomestaciondelared</rename>
         <type>Integer</type>
         <length>3</length>
         <precision>-2</precision>

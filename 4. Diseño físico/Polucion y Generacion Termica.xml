@@ -35,7 +35,7 @@
       </Level>
       <Level name="Barrio" visible="true" table="estacionesdelared" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
       </Level>
-      <Level name="EstacionDeLaRed" visible="true" table="estacionesdelared" column="idestaciondelared" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelared">
+      <Level name="EstacionDeLaRed" visible="true" table="estacionesdelared" column="nomestaciondelared" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelared">
       </Level>
     </Hierarchy>
   </Dimension>
@@ -72,7 +72,7 @@
     </DimensionUsage>
     <DimensionUsage source="Metodos" level="Metodo" name="Metodos" visible="true" foreignKey="idmetodo" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="idestaciondelared" highCardinality="false">
+    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="nomestaciondelared" highCardinality="false">
     </DimensionUsage>
     <DimensionUsage source="Industrias" level="Industria" name="Industrias" visible="true" foreignKey="idindustria" highCardinality="false">
     </DimensionUsage>

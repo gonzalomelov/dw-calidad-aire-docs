@@ -594,8 +594,8 @@
         <name2 />
       </key>
       <key>
-        <name>idestaciondelared</name>
-        <field>idestaciondelared</field>
+        <name>nomestaciondelared</name>
+        <field>nomestaciondelared</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -656,8 +656,8 @@
         <update>N</update>
       </value>
       <value>
-        <name>idestaciondelared</name>
-        <rename>idestaciondelared</rename>
+        <name>nomestaciondelared</name>
+        <rename>nomestaciondelared</rename>
         <update>N</update>
       </value>
       <value>

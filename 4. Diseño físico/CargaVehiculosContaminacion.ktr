@@ -2841,7 +2841,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <give_back_row>N</give_back_row>
     <group>
       <field>
-        <name>idestaciondelared</name>
+        <name>nomestaciondelared</name>
       </field>
       <field>
         <name>idcontaminante</name>
@@ -3058,8 +3058,8 @@ seasonName = seasons[season-1];</jsScript_script>
         <name2 />
       </key>
       <key>
-        <name>idestaciondelared</name>
-        <field>idestaciondelared</field>
+        <name>nomestaciondelared</name>
+        <field>nomestaciondelared</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -3114,8 +3114,8 @@ seasonName = seasons[season-1];</jsScript_script>
         <update>N</update>
       </value>
       <value>
-        <name>idestaciondelared</name>
-        <rename>idestaciondelared</rename>
+        <name>nomestaciondelared</name>
+        <rename>nomestaciondelared</rename>
         <update>N</update>
       </value>
       <value>
@@ -3220,7 +3220,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <step1 />
     <step2>CSV Contaminacion</step2>
     <keys_1>
-      <key>idestaciondelared</key>
+      <key>nomestaciondelared</key>
       <key>idcontaminante</key>
       <key>fecha2</key>
       <key>valor_v</key>
@@ -4016,7 +4016,7 @@ var icaire = valor_v * a + b;</jsScript_script>
         <rename>idfecha</rename>
       </field>
       <field>
-        <name>idestaciondelared</name>
+        <name>nomestaciondelared</name>
       </field>
       <field>
         <name>metodo</name>
@@ -4131,8 +4131,8 @@ var icaire = valor_v * a + b;</jsScript_script>
         <storage_type />
       </meta>
       <meta>
-        <name>idestaciondelared</name>
-        <rename>idestaciondelared</rename>
+        <name>nomestaciondelared</name>
+        <rename>nomestaciondelared</rename>
         <type>Integer</type>
         <length>3</length>
         <precision>-2</precision>
@@ -4342,7 +4342,7 @@ var icaire = valor_v * a + b;</jsScript_script>
     </partitioning>
     <fields>
       <field>
-        <name>idestaciondelared</name>
+        <name>nomestaciondelared</name>
       </field>
       <field>
         <name>idcontaminante</name>
@@ -4382,7 +4382,7 @@ var icaire = valor_v * a + b;</jsScript_script>
     </partitioning>
     <fields>
       <field>
-        <name>idestaciondelared</name>
+        <name>nomestaciondelared</name>
       </field>
       <field>
         <name>idcontaminante</name>
