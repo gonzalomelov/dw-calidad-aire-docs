@@ -454,7 +454,7 @@
     <created_user>-</created_user>
     <created_date>2014/06/18 22:46:27.415</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2019/07/21 18:08:57.816</modified_date>
+    <modified_date>2019/07/28 17:31:12.903</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -530,7 +530,7 @@
     <hop>
       <from>Select values 3</from>
       <to>Add constants</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Sort nom estacion</from>
@@ -540,7 +540,7 @@
     <hop>
       <from>Select values 2</from>
       <to>Formula 2</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Group by</from>
@@ -551,11 +551,6 @@
       <from>Sort rows 2</from>
       <to>Merge Join 4</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 2</from>
-      <to>Select values 3</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Contaminante</from>
@@ -571,11 +566,6 @@
       <from>Sort rows 3</from>
       <to>Merge Join 5</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Traer contaminacion de CSV</from>
-      <to>Select values 2</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Metodos</from>
@@ -905,7 +895,7 @@
     <hop>
       <from>Formula 2</from>
       <to>Filter rows 3</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Add constants</from>
@@ -955,7 +945,7 @@
     <hop>
       <from>Mapping input specification</from>
       <to>Modified JavaScript value 2 2</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Modified JavaScript value 2 2</from>
@@ -990,7 +980,7 @@
     <hop>
       <from>Mapping input specification</from>
       <to>Modified JavaScript value 2 3</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Calculator</from>
@@ -1000,6 +990,36 @@
     <hop>
       <from>Contaminantes Categorias</from>
       <to>Sort rows 6</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2 3</from>
+      <to>Formula 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2</from>
+      <to>Select values 2 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2 3</from>
+      <to>Select values 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Traer contaminacion de CSV</from>
+      <to>Select values 2 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2 4</from>
+      <to>Formula 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2 4</from>
+      <to>Select values 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1225,7 +1245,7 @@ seasonName = seasons[season-1];</jsScript_script>
     <calculation>
       <field_name>file</field_name>
       <calc_type>CONSTANT</calc_type>
-      <field_a>/Carte/datos2017.ods</field_a>
+      <field_a>/Carte/CV_pm2_17.csv</field_a>
       <field_b />
       <field_c />
       <value_type>String</value_type>
@@ -2138,7 +2158,7 @@ FROM dw.contaminantescategorias
       <schema_name />
     </partitioning>
     <formula>
-      <field_name>idHora</field_name>
+      <field_name>idhora</field_name>
       <formula_string>TEXT(INT(Hour([date])))</formula_string>
       <value_type>String</value_type>
       <value_length>-1</value_length>
@@ -4558,39 +4578,30 @@ filename = decodeURI(filename);
     <fields>
       <field>
         <name>idhora</name>
-        <rename />
       </field>
       <field>
         <name>idestaciondelanio</name>
-        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
-        <rename />
       </field>
       <field>
         <name>idfecha</name>
-        <rename />
       </field>
       <field>
         <name>nomestaciondelared</name>
-        <rename />
       </field>
       <field>
         <name>idmetodo</name>
-        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Global_Sun_rad_1</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Relative_Humidity_1</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Temperature_Extern_1</name>
@@ -4598,11 +4609,9 @@ filename = decodeURI(filename);
       </field>
       <field>
         <name>ANCAP1_Wind_Direction_1</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Speed_1</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
@@ -4616,7 +4625,6 @@ filename = decodeURI(filename);
       </field>
       <field>
         <name>surrogate_key</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -5060,7 +5068,7 @@ filename = decodeURI(filename);
     <name>Select values 2</name>
     <type>SelectValues</type>
     <description />
-    <distribute>N</distribute>
+    <distribute>Y</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -5095,8 +5103,8 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>944</xloc>
-      <yloc>208</yloc>
+      <xloc>816</xloc>
+      <yloc>304</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5260,7 +5268,7 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1040</xloc>
+      <xloc>1056</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -5901,12 +5909,12 @@ filename = decodeURI(filename);
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>${user.home}/SO2 2012_2016.csv</filename>
+    <filename>${user.home}/Carte/CM_NO2_17.csv</filename>
     <filename_field>filename</filename_field>
     <rownum_field />
     <include_filename>N</include_filename>
     <separator>,</separator>
-    <enclosure />
+    <enclosure>"</enclosure>
     <header>Y</header>
     <buffer_size>50000</buffer_size>
     <lazy_conversion>Y</lazy_conversion>
@@ -5917,64 +5925,20 @@ filename = decodeURI(filename);
     <fields>
       <field>
         <name>ID</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>15</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>feed_id</name>
-        <type>String</type>
+        <type>None</type>
         <format />
-        <currency>$</currency>
+        <currency>UYU</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>19</length>
+        <length>4</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>method_id</name>
-        <type>String</type>
-        <format />
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>11</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>pollutant_averaging</name>
-        <type>Integer</type>
-        <format>#</format>
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>15</length>
-        <precision>0</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
         <name>pollutant_id</name>
         <type>String</type>
         <format />
-        <currency>$</currency>
-        <decimal>.</decimal>
-        <group>,</group>
-        <length>3</length>
-        <precision>-1</precision>
-        <trim_type>both</trim_type>
-      </field>
-      <field>
-        <name>pollutant_unit</name>
-        <type>String</type>
-        <format />
-        <currency>$</currency>
+        <currency>UYU</currency>
         <decimal>.</decimal>
         <group>,</group>
         <length>5</length>
@@ -5982,10 +5946,21 @@ filename = decodeURI(filename);
         <trim_type>none</trim_type>
       </field>
       <field>
+        <name>pollutant_averaging</name>
+        <type>Integer</type>
+        <format>#</format>
+        <currency>UYU</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>15</length>
+        <precision>0</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
         <name>date</name>
         <type>String</type>
         <format />
-        <currency>$</currency>
+        <currency>UYU</currency>
         <decimal>.</decimal>
         <group>,</group>
         <length>-1</length>
@@ -5995,8 +5970,8 @@ filename = decodeURI(filename);
       <field>
         <name>pollutant_value</name>
         <type>String</type>
-        <format>#</format>
-        <currency>$</currency>
+        <format />
+        <currency>UYU</currency>
         <decimal>.</decimal>
         <group>,</group>
         <length>15</length>
@@ -6004,13 +5979,24 @@ filename = decodeURI(filename);
         <trim_type>none</trim_type>
       </field>
       <field>
+        <name>pollutant_unit</name>
+        <type>String</type>
+        <format />
+        <currency>UYU</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>7</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
         <name>station_id</name>
         <type>String</type>
         <format />
-        <currency>$</currency>
+        <currency>UYU</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>8</length>
+        <length>10</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -6018,7 +6004,7 @@ filename = decodeURI(filename);
         <name>X</name>
         <type>Integer</type>
         <format>#</format>
-        <currency>$</currency>
+        <currency>UYU</currency>
         <decimal>.</decimal>
         <group>,</group>
         <length>15</length>
@@ -6029,7 +6015,7 @@ filename = decodeURI(filename);
         <name>Y</name>
         <type>Integer</type>
         <format>#</format>
-        <currency>$</currency>
+        <currency>UYU</currency>
         <decimal>.</decimal>
         <group>,</group>
         <length>15</length>
@@ -6040,10 +6026,21 @@ filename = decodeURI(filename);
         <name>ID_estacion</name>
         <type>String</type>
         <format />
-        <currency>$</currency>
+        <currency>UYU</currency>
         <decimal>.</decimal>
         <group>,</group>
-        <length>14</length>
+        <length>18</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>method_id</name>
+        <type>String</type>
+        <format />
+        <currency>UYU</currency>
+        <decimal>.</decimal>
+        <group>,</group>
+        <length>11</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -6185,10 +6182,122 @@ filename = decodeURI(filename);
       <draw>Y</draw>
     </GUI>
   </step>
+  <step>
+    <name>Select values 2 3</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>date</name>
+        <rename>date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyy-MM-dd HH:mm:ss</conversion_mask>
+        <date_format_lenient>true</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>928</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 2 4</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>date</name>
+        <rename>date</rename>
+        <type>Date</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask>MM/dd/yy HH:mm</conversion_mask>
+        <date_format_lenient>true</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>784</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
   <step_error_handling>
     <error>
       <source_step>Select values 2</source_step>
+      <target_step>Select values 2 3</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename />
+      <descriptions_valuename />
+      <fields_valuename />
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
+    </error>
+    <error>
+      <source_step>Select values 2 3</source_step>
       <target_step>Select values 3</target_step>
+      <is_enabled>Y</is_enabled>
+      <nr_valuename />
+      <descriptions_valuename />
+      <fields_valuename />
+      <codes_valuename />
+      <max_errors />
+      <max_pct_errors />
+      <min_pct_rows />
+    </error>
+    <error>
+      <source_step>Select values 2 4</source_step>
+      <target_step>Select values 2</target_step>
       <is_enabled>Y</is_enabled>
       <nr_valuename />
       <descriptions_valuename />
