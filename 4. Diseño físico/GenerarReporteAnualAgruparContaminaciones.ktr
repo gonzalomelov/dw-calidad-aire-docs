@@ -523,7 +523,7 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
     <created_user>-</created_user>
     <created_date>2019/07/18 17:27:57.793</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/07/21 19:23:58.591</modified_date>
+    <modified_date>2019/07/28 20:31:42.345</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -582,16 +582,6 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
   </connection>
   <order>
     <hop>
-      <from>Modified JavaScript value 2</from>
-      <to>REST client</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>REST client</from>
-      <to>Split fields</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Split fields</from>
       <to>Actualizar en tabla Mediciones Agrupadas</to>
       <enabled>Y</enabled>
@@ -619,6 +609,16 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
     <hop>
       <from>Merge Join</from>
       <to>Modified JavaScript value 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified JavaScript value 2</from>
+      <to>HTTP Post</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>HTTP Post</from>
+      <to>Split fields</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -823,7 +823,7 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
       <field>
         <name>R_URL</name>
         <variable>${R_URL}</variable>
-        <type>None</type>
+        <type>String</type>
         <format />
         <currency />
         <decimal />
@@ -862,7 +862,9 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
   edlr.idestaciondelared,
   m.idcontaminante,
   string_agg(concat(m.contaminacion), ',') as contaminacion
-FROM dw.mediciones2 m join dw.estacionesdelared edlr on m.nomestaciondelared = edlr.nomestaciondelared
+FROM
+  (SELECT nomestaciondelared,idmetodo,idcontaminante,idfecha,avg(contaminacion) as contaminacion FROM dw.mediciones2 GROUP BY nomestaciondelared,idmetodo,idcontaminante,idfecha ORDER BY nomestaciondelared,idmetodo,idcontaminante,idfecha) m
+  join dw.estacionesdelared edlr on m.nomestaciondelared = edlr.nomestaciondelared
 GROUP BY edlr.idestaciondelared, m.idcontaminante
 ORDER BY edlr.idestaciondelared, m.idcontaminante;</sql>
     <limit>0</limit>
@@ -884,6 +886,39 @@ ORDER BY edlr.idestaciondelared, m.idcontaminante;</sql>
     </GUI>
   </step>
   <step>
+    <name>Merge Join</name>
+    <type>MergeJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <join_type>INNER</join_type>
+    <step1>Sort rows</step1>
+    <step2>Mediciones</step2>
+    <keys_1>
+      <key>EstacionDeLaRed</key>
+    </keys_1>
+    <keys_2>
+      <key>idestaciondelared</key>
+    </keys_2>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>320</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Modified JavaScript value 2</name>
     <type>ScriptValueMod</type>
     <description />
@@ -900,7 +935,7 @@ ORDER BY edlr.idestaciondelared, m.idcontaminante;</sql>
       <jsScript>
         <jsScript_type>0</jsScript_type>
         <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var url = R_URL + "/hello?a=" + contaminacion;</jsScript_script>
+        <jsScript_script>var url = R_URL + "/hello";</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
@@ -921,14 +956,14 @@ ORDER BY edlr.idestaciondelared, m.idcontaminante;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>464</xloc>
+      <xloc>448</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>REST client</name>
-    <type>Rest</type>
+    <name>Row Normaliser</name>
+    <type>Normaliser</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -937,33 +972,54 @@ ORDER BY edlr.idestaciondelared, m.idcontaminante;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <applicationType>TEXT PLAIN</applicationType>
-    <method>GET</method>
-    <url>http://localhost:8000/hello?a=${contaminacion}</url>
-    <urlInField>Y</urlInField>
-    <dynamicMethod>N</dynamicMethod>
-    <methodFieldName />
-    <urlField>url</urlField>
-    <bodyField />
-    <httpLogin />
-    <httpPassword>Encrypted </httpPassword>
-    <proxyHost />
-    <proxyPort />
-    <preemptive>N</preemptive>
-    <trustStoreFile />
-    <trustStorePassword>Encrypted </trustStorePassword>
-    <headers>
-      </headers>
-    <parameters>
-      </parameters>
-    <matrixParameters>
-      </matrixParameters>
-    <result>
-      <name>result</name>
-      <code />
-      <response_time />
-      <response_header />
-    </result>
+    <typefield>EstacionDeLaRed</typefield>
+    <fields>
+      <field>
+        <name>BellaVista</name>
+        <value>BellaVista</value>
+        <norm>Description</norm>
+      </field>
+      <field>
+        <name>E1</name>
+        <value>E1</value>
+        <norm>Description</norm>
+      </field>
+      <field>
+        <name>E5</name>
+        <value>E5</value>
+        <norm>Description</norm>
+      </field>
+      <field>
+        <name>E6</name>
+        <value>E6</value>
+        <norm>Description</norm>
+      </field>
+      <field>
+        <name>E7</name>
+        <value>E7</value>
+        <norm>Description</norm>
+      </field>
+      <field>
+        <name>E8</name>
+        <value>E8</value>
+        <norm>Description</norm>
+      </field>
+      <field>
+        <name>LaTablada</name>
+        <value>LaTablada</value>
+        <norm>Description</norm>
+      </field>
+      <field>
+        <name>LaTeja</name>
+        <value>LaTeja</value>
+        <norm>Description</norm>
+      </field>
+      <field>
+        <name>PalacioLegislativo</name>
+        <value>PalacioLegislativo</value>
+        <norm>Description</norm>
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -972,8 +1028,49 @@ ORDER BY edlr.idestaciondelared, m.idcontaminante;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>592</xloc>
-      <yloc>256</yloc>
+      <xloc>160</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>EstacionDeLaRed</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>240</xloc>
+      <yloc>208</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1082,8 +1179,8 @@ ORDER BY edlr.idestaciondelared, m.idcontaminante;</sql>
     </GUI>
   </step>
   <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
+    <name>HTTP Post</name>
+    <type>HTTPPOST</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1092,23 +1189,31 @@ ORDER BY edlr.idestaciondelared, m.idcontaminante;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>EstacionDeLaRed</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
+    <postafile>N</postafile>
+    <encoding>UTF-8</encoding>
+    <url />
+    <urlInField>Y</urlInField>
+    <urlField>url</urlField>
+    <requestEntity />
+    <httpLogin />
+    <httpPassword>Encrypted </httpPassword>
+    <proxyHost />
+    <proxyPort />
+    <socketTimeout>10000</socketTimeout>
+    <connectionTimeout>10000</connectionTimeout>
+    <closeIdleConnectionsTime>-1</closeIdleConnectionsTime>
+    <lookup>
+      <query>
+        <name>contaminacion</name>
+        <parameter>a</parameter>
+      </query>
+    </lookup>
+    <result>
+      <name>result</name>
+      <code />
+      <response_time />
+      <response_header />
+    </result>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1117,112 +1222,7 @@ ORDER BY edlr.idestaciondelared, m.idcontaminante;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Row Normaliser</name>
-    <type>Normaliser</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <typefield>EstacionDeLaRed</typefield>
-    <fields>
-      <field>
-        <name>BellaVista</name>
-        <value>BellaVista</value>
-        <norm>Description</norm>
-      </field>
-      <field>
-        <name>E1</name>
-        <value>E1</value>
-        <norm>Description</norm>
-      </field>
-      <field>
-        <name>E5</name>
-        <value>E5</value>
-        <norm>Description</norm>
-      </field>
-      <field>
-        <name>E6</name>
-        <value>E6</value>
-        <norm>Description</norm>
-      </field>
-      <field>
-        <name>E7</name>
-        <value>E7</value>
-        <norm>Description</norm>
-      </field>
-      <field>
-        <name>E8</name>
-        <value>E8</value>
-        <norm>Description</norm>
-      </field>
-      <field>
-        <name>LaTablada</name>
-        <value>LaTablada</value>
-        <norm>Description</norm>
-      </field>
-      <field>
-        <name>LaTeja</name>
-        <value>LaTeja</value>
-        <norm>Description</norm>
-      </field>
-      <field>
-        <name>PalacioLegislativo</name>
-        <value>PalacioLegislativo</value>
-        <norm>Description</norm>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Merge Join</name>
-    <type>MergeJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <join_type>INNER</join_type>
-    <step1>Sort rows</step1>
-    <step2>Mediciones</step2>
-    <keys_1>
-      <key>EstacionDeLaRed</key>
-    </keys_1>
-    <keys_2>
-      <key>idestaciondelared</key>
-    </keys_2>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>320</xloc>
+      <xloc>576</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
