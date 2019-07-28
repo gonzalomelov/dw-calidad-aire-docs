@@ -10,7 +10,7 @@
     <parameters>
       <parameter>
         <name>CONTAMINACION_PATH</name>
-        <default_value>datos2017.ods</default_value>
+        <default_value>CV_pm2_17.csv</default_value>
         <description />
       </parameter>
       <parameter>
@@ -484,7 +484,7 @@
     <created_user>-</created_user>
     <created_date>2018/04/21 08:43:58.055</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/07/07 10:13:46.388</modified_date>
+    <modified_date>2019/07/28 17:13:36.882</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -691,7 +691,6 @@
         <update>N</update>
       </value>
     </lookup>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -716,7 +715,6 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>carte</field_name>
       <calc_type>CONSTANT</calc_type>
@@ -762,7 +760,6 @@
       <grouping_symbol />
       <currency_symbol />
     </calculation>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -825,7 +822,6 @@
         <trim_type>none</trim_type>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -888,7 +884,6 @@
     </mappings>
     <allow_multiple_input>Y</allow_multiple_input>
     <allow_multiple_output>Y</allow_multiple_output>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -907,5 +902,4 @@
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes />
 </transformation>
