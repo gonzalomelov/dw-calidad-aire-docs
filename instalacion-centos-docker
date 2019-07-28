@@ -59,6 +59,8 @@
 		-http://104.237.5.5:8080
 			admin/password
 		-http://104.237.5.5:12346
+-Install pdi plugins
+  -PDI GIS
 -Upload jobs and transformations to /data-integration/repository
   Local
     scp CargaFechas.kjb root@104.237.5.5:/root/transformations
@@ -68,6 +70,7 @@
     scp CargaMedidaDiasImportantesContaminacion.kjb root@104.237.5.5:/root/transformations
     scp CargaMedidaDiasImportantesContaminacionParent.ktr root@104.237.5.5:/root/transformations
     scp CargaMedidaDiasImportantesContaminacionChild.ktr root@104.237.5.5:/root/transformations
+    scp reporte.prpt root@104.237.5.5:/root/transformations
     scp GenerarReporteAnual.kjb root@104.237.5.5:/root/transformations
     scp GenerarReporteAnual.ktr root@104.237.5.5:/root/transformations
     scp GenerarReporteAnualAgruparContaminaciones.ktr root@104.237.5.5:/root/transformations
