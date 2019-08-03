@@ -8,7 +8,7 @@
   <created_user>-</created_user>
   <created_date>2019/07/09 21:46:46.624</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2019/07/21 19:24:09.684</modified_date>
+  <modified_date>2019/08/03 08:55:49.459</modified_date>
   <parameters>
     <parameter>
       <name>BellaVista</name>
@@ -187,6 +187,11 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
     <parameter>
       <name>TO</name>
       <default_value>gonzalomelov@gmail.com</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>YEAR</name>
+      <default_value>2018</default_value>
       <description />
     </parameter>
   </parameters>
@@ -469,6 +474,7 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
       <name>START</name>
       <description />
       <type>SPECIAL</type>
+      <attributes />
       <start>Y</start>
       <dummy>N</dummy>
       <repeat>N</repeat>
@@ -484,11 +490,13 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
       <nr>0</nr>
       <xloc>192</xloc>
       <yloc>192</yloc>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Transformation</name>
       <description />
       <type>TRANS</type>
+      <attributes />
       <specification_method>rep_name</specification_method>
       <trans_object_id />
       <filename />
@@ -521,21 +529,25 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
       <nr>0</nr>
       <xloc>400</xloc>
       <yloc>192</yloc>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Success</name>
       <description />
       <type>SUCCESS</type>
+      <attributes />
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
       <xloc>496</xloc>
       <yloc>192</yloc>
+      <attributes_kjc />
     </entry>
     <entry>
       <name>Transformation 2</name>
       <description />
       <type>TRANS</type>
+      <attributes />
       <specification_method>rep_name</specification_method>
       <trans_object_id />
       <filename />
@@ -568,6 +580,7 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
       <nr>0</nr>
       <xloc>288</xloc>
       <yloc>192</yloc>
+      <attributes_kjc />
     </entry>
   </entries>
   <hops>

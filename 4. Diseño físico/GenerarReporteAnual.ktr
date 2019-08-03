@@ -539,7 +539,7 @@
     <created_user>-</created_user>
     <created_date>2019/07/09 21:13:52.831</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/07/18 19:23:17.358</modified_date>
+    <modified_date>2019/08/03 09:42:46.056</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -624,6 +624,44 @@
     </hop>
   </order>
   <step>
+    <name>Execute SQL script</name>
+    <type>ExecSQL</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>db</connection>
+    <execute_each_row>Y</execute_each_row>
+    <single_statement>Y</single_statement>
+    <replace_variables>N</replace_variables>
+    <quoteString>N</quoteString>
+    <sql>delete from staging.mediciones2agrupadas;</sql>
+    <set_params>N</set_params>
+    <insert_field />
+    <update_field />
+    <delete_field />
+    <read_field />
+    <arguments>
+    </arguments>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>704</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Generate Reports</name>
     <type>PentahoReportingOutput</type>
     <description />
@@ -644,6 +682,7 @@
       </parameter>
     </parameters>
     <processor_type>PDF</processor_type>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -886,6 +925,7 @@
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -952,6 +992,7 @@
     <secureconnectiontype>TLS</secureconnectiontype>
     <embeddedimages>
       </embeddedimages>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1022,6 +1063,7 @@ var Email = FILESTASH_URL + "/view/" + REPORT_OUTPUT_NAME;</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1068,6 +1110,7 @@ var Email = FILESTASH_URL + "/view/" + REPORT_OUTPUT_NAME;</jsScript_script>
     <destinationfolderFieldName />
     <createdestinationfolder>N</createdestinationfolder>
     <remoteFilenameFieldName>REPORT_OUTPUT_NAME</remoteFilenameFieldName>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1081,46 +1124,10 @@ var Email = FILESTASH_URL + "/view/" + REPORT_OUTPUT_NAME;</jsScript_script>
       <draw>Y</draw>
     </GUI>
   </step>
-  <step>
-    <name>Execute SQL script</name>
-    <type>ExecSQL</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>db</connection>
-    <execute_each_row>Y</execute_each_row>
-    <single_statement>Y</single_statement>
-    <replace_variables>N</replace_variables>
-    <quoteString>N</quoteString>
-    <sql>delete from staging.mediciones2agrupadas;</sql>
-    <set_params>N</set_params>
-    <insert_field />
-    <update_field />
-    <delete_field />
-    <read_field />
-    <arguments>
-    </arguments>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>704</xloc>
-      <yloc>240</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step_error_handling>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes />
 </transformation>
