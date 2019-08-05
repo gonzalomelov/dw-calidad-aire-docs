@@ -10,7 +10,9 @@
   rm -rf docker-biserver-ce/data/
   rm -rf db-service/data/
 -Foreach folder: docker-compose up -d
-	admin => Front end para carga de datos
+	r => Instancia de R para ejecución de informe
+    r_ropensciplumber
+  admin => Front end para carga de datos
 		admin
 	db-service => RESTful API para PostgreSQL + PostgreSQL + DW
 		openresty/openresty:jessie
@@ -26,9 +28,10 @@
 	docsify => Manual de Usuario
 		littlstar/docker-docsify
 	docker-pdi-ce => PDI
+    nginx:latest
 		zhicwu/pdi-ce:8.0
-		mysql/mysql-server:5.7
 	docker-biserver-ce => PBI
+    mysql/mysql-server:5.7
 		zhicwu/biserver-ce:8.0
 -Initialize
 	-admin
