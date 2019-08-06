@@ -62,7 +62,7 @@
 		-http://104.237.5.5:8080
 			admin/password
 		-http://104.237.5.5:12346
--Install pdi plugins
+-(Data Integration) Install pdi plugins
   -PDI GIS
 -Upload jobs and transformations to /data-integration/repository
   Local
