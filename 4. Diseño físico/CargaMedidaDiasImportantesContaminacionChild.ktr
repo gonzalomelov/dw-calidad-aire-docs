@@ -454,7 +454,7 @@
     <created_user>-</created_user>
     <created_date>2014/06/18 22:46:27.415</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2019/08/13 07:29:12.080</modified_date>
+    <modified_date>2019/08/16 14:35:34.449</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -523,18 +523,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Ubic Geo</from>
-      <to>Sort nom estacion</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 3</from>
       <to>Add constants</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort nom estacion</from>
-      <to>Merge Join</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -564,16 +554,6 @@
     </hop>
     <hop>
       <from>Sort rows 3</from>
-      <to>Merge Join 5</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Metodos</from>
-      <to>Sort rows 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows 4</from>
       <to>Merge Join 5</to>
       <enabled>Y</enabled>
     </hop>
@@ -818,11 +798,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Traer contaminacion de CSV</from>
-      <to>Select values 2 4</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 2 4</from>
       <to>Formula 2</to>
       <enabled>Y</enabled>
@@ -830,16 +805,6 @@
     <hop>
       <from>Select values 2 4</from>
       <to>Select values 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Formula 2</from>
-      <to>Modified Java Script Value 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Add constants</from>
-      <to>Modified Java Script Value 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -862,12 +827,107 @@
       <to>Sort rows</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Sort rows 4 2</from>
+      <to>Merge Join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 8</from>
+      <to>Merge Join 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Add constants</from>
+      <to>Sort rows 8</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 3</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Horas</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing) 2</from>
+      <to>Modified Java Script Value 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fechas</from>
+      <to>Join Rows (cartesian product)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Fechas</from>
+      <to>Sort rows 4 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Formula 2</from>
+      <to>Sort rows 9</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 9</from>
+      <to>Merge Join 3 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 9 2</from>
+      <to>Merge Join 3 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 3 2</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Metodos</from>
+      <to>Merge Join 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Estacion de la Red</from>
+      <to>Merge Join</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Traer contaminacion de CSV</from>
+      <to>Select values 2 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Rows (cartesian product)</from>
+      <to>Join Rows (cartesian product) 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Join Rows (cartesian product) 2</from>
+      <to>Sort rows 9 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified JavaScript value 2 3</from>
+      <to>Select values 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 4</from>
+      <to>Join Rows (cartesian product) 2</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Add constants</name>
     <type>Constant</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -896,8 +956,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1184</xloc>
-      <yloc>336</yloc>
+      <xloc>896</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1214,12 +1274,13 @@ seasonName = seasons[season-1];</jsScript_script>
 , idtipo
 , nomtipo
 FROM dw.contaminantes
+WHERE nomcontaminante = 'NO2'
 ORDER BY nomcontaminante;
 </sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
-    <variables_active>N</variables_active>
+    <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
     <cluster_schema />
     <remotesteps>
@@ -1770,6 +1831,14 @@ FROM dw.contaminantescategorias
       <value_precision>-1</value_precision>
       <replace_field />
     </formula>
+    <formula>
+      <field_name>date</field_name>
+      <formula_string>DATE(INT(Year([date])); INT(Month([date])); INT(Day([date])))</formula_string>
+      <value_type>Date</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>date</replace_field>
+    </formula>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1778,8 +1847,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1136</xloc>
-      <yloc>256</yloc>
+      <xloc>864</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1993,7 +2062,7 @@ FROM dw.contaminantescategorias
     </partitioning>
     <join_type>INNER</join_type>
     <step1>Sort Id estacion</step1>
-    <step2>Sort nom estacion</step2>
+    <step2>Estacion de la Red</step2>
     <keys_1>
       <key>ID_estacion</key>
     </keys_1>
@@ -2008,7 +2077,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2192</xloc>
+      <xloc>2112</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2092,7 +2161,7 @@ FROM dw.contaminantescategorias
     </partitioning>
     <join_type>INNER</join_type>
     <step1>Sort rows 3</step1>
-    <step2>Sort rows 4</step2>
+    <step2>Metodos</step2>
     <keys_1>
       <key>method_id</key>
     </keys_1>
@@ -2258,7 +2327,10 @@ FROM dw.contaminantescategorias
       <schema_name />
     </partitioning>
     <connection>db</connection>
-    <sql>SELECT idmetodo, trim(nommetodo) as nommetodo FROM dw.metodos;</sql>
+    <sql>SELECT idmetodo, trim(nommetodo) as nommetodo
+FROM dw.metodos
+WHERE nommetodo = 'UYMVD_NO2_2'
+ORDER BY nommetodo;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -2272,7 +2344,7 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1728</xloc>
+      <xloc>1936</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2421,7 +2493,7 @@ filenamedatosmeteorologicos = decodeURI(filenamedatosmeteorologicos);
     <name>Modified JavaScript value 2 3</name>
     <type>ScriptValueMod</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
@@ -2437,10 +2509,37 @@ filenamedatosmeteorologicos = decodeURI(filenamedatosmeteorologicos);
         <jsScript_script>//Script here
 
 filename = decodeURI(filename);
-</jsScript_script>
+var inmetodo = 'UYMVD_NO2_2'
+var incontaminante = 'NO2'
+var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
       </jsScript>
     </jsScripts>
-    <fields>    </fields>
+    <fields>
+      <field>
+        <name>inmetodo</name>
+        <rename>inmetodo</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>incontaminante</name>
+        <rename>incontaminante</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>innomidestaciondelared</name>
+        <rename>innomidestaciondelared</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2449,7 +2548,7 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>656</xloc>
+      <xloc>608</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3030,8 +3129,8 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>816</xloc>
-      <yloc>304</yloc>
+      <xloc>784</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3142,8 +3241,8 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>928</xloc>
-      <yloc>336</yloc>
+      <xloc>784</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3187,7 +3286,7 @@ filename = decodeURI(filename);
     </remotesteps>
     <GUI>
       <xloc>784</xloc>
-      <yloc>208</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3230,8 +3329,8 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1056</xloc>
-      <yloc>336</yloc>
+      <xloc>784</xloc>
+      <yloc>528</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3273,47 +3372,6 @@ filename = decodeURI(filename);
     <GUI>
       <xloc>2016</xloc>
       <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort nom estacion</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>nomEstacionDeLaRed</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>2032</xloc>
-      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3596,47 +3654,6 @@ filename = decodeURI(filename);
     </GUI>
   </step>
   <step>
-    <name>Sort rows 4</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>nommetodo</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1824</xloc>
-      <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Sort rows 5</name>
     <type>SortRows</type>
     <description />
@@ -3874,13 +3891,13 @@ filename = decodeURI(filename);
     <filename>${user.home}/Carte/CM_NO2_17.csv</filename>
     <filename_field>filename</filename_field>
     <rownum_field />
-    <include_filename>N</include_filename>
+    <include_filename>Y</include_filename>
     <separator>,</separator>
     <enclosure>"</enclosure>
     <header>Y</header>
     <buffer_size>50000</buffer_size>
     <lazy_conversion>N</lazy_conversion>
-    <add_filename_result>N</add_filename_result>
+    <add_filename_result>Y</add_filename_result>
     <parallel>N</parallel>
     <newline_possible>N</newline_possible>
     <encoding />
@@ -4015,13 +4032,13 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
+      <xloc>704</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Ubic Geo</name>
+    <name>Estacion de la Red</name>
     <type>TableInput</type>
     <description />
     <distribute>Y</distribute>
@@ -4032,7 +4049,10 @@ filename = decodeURI(filename);
       <schema_name />
     </partitioning>
     <connection>db</connection>
-    <sql>SELECT * FROM dw.estacionesdelared order by nomEstacionDeLaRed;</sql>
+    <sql>SELECT *
+FROM dw.estacionesdelared
+WHERE nomEstacionDeLaRed = 'Curva de Maronas'
+ORDER BY nomEstacionDeLaRed;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -4046,7 +4066,7 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1920</xloc>
+      <xloc>2112</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4077,7 +4097,7 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3184</xloc>
+      <xloc>3264</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4108,7 +4128,7 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2608</xloc>
+      <xloc>2688</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4139,7 +4159,7 @@ filename = decodeURI(filename);
       </output>
     </remotesteps>
     <GUI>
-      <xloc>2896</xloc>
+      <xloc>2976</xloc>
       <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4289,6 +4309,455 @@ if (pollutant_value == 'NA') {
     <GUI>
       <xloc>1248</xloc>
       <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing) 2</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1168</xloc>
+      <yloc>352</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Fechas</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>db</connection>
+    <sql>SELECT TO_DATE(fecha, 'DD-MM-YYYY')
+FROM dw.fechas
+WHERE anio = 2017;</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>896</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 4 2</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>to_date</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>992</xloc>
+      <yloc>448</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge Join 3</name>
+    <type>MergeJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <join_type>LEFT OUTER</join_type>
+    <step1>Sort rows 4 2</step1>
+    <step2>Sort rows 8</step2>
+    <keys_1>
+      <key>to_date</key>
+    </keys_1>
+    <keys_2>
+      <key>date</key>
+    </keys_2>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1088</xloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 8</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>date</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>992</xloc>
+      <yloc>528</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Horas</name>
+    <type>TableInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>db</connection>
+    <sql>SELECT idhora, hora, idrangohoras, descrangohoras
+FROM dw.horas
+where idhora &lt;&gt; -1;</sql>
+    <limit>0</limit>
+    <lookup />
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join Rows (cartesian product)</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>${TMP_DIR}</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>384</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge Join 3 2</name>
+    <type>MergeJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <join_type>RIGHT OUTER</join_type>
+    <step1>Sort rows 9</step1>
+    <step2>Sort rows 9 2</step2>
+    <keys_1>
+      <key>date</key>
+      <key>idhora</key>
+    </keys_1>
+    <keys_2>
+      <key>to_date</key>
+      <key>idhora</key>
+    </keys_2>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1104</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 9</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>date</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>idhora</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>944</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 9 2</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>to_date</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>idhora</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1072</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Join Rows (cartesian product) 2</name>
+    <type>JoinRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <cache_size>500</cache_size>
+    <main />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue />
+        <function>=</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>992</xloc>
+      <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 4</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>inmetodo</name>
+        <rename />
+      </field>
+      <field>
+        <name>incontaminante</name>
+        <rename />
+      </field>
+      <field>
+        <name>innomidestaciondelared</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>688</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
