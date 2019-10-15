@@ -1,6 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>CargaFechas</name>
+    <name>CargaTiempo</name>
     <description />
     <extended_description />
     <trans_version />
@@ -682,7 +683,7 @@
     <counter_name>cant_dias</counter_name>
     <start_at>0</start_at>
     <increment_by>1</increment_by>
-    <max_value>10000</max_value>
+    <max_value>10950</max_value>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -1058,13 +1059,13 @@ seasonName = seasons[season-1];</jsScript_script>
         <currency />
         <decimal />
         <group />
-        <nullif>1999-01-01</nullif>
+        <nullif>2000-01-01</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
-    <limit>10000</limit>
+    <limit>10950</limit>
     <never_ending>N</never_ending>
     <interval_in_ms>5000</interval_in_ms>
     <row_time_field>now</row_time_field>
