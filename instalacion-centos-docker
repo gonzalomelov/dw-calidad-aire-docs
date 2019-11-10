@@ -1,7 +1,15 @@
+-Stop Apache Server sudo systemctl stop httpd
+-Centos 7 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-centos-7
+  adduser bieccamvd qg?#:9$5n@*dp2GX
+-Centos 7 Additional https://www.digitalocean.com/community/tutorials/additional-recommended-steps-for-new-centos-7-servers
 -Install Docker https://docs.docker.com/install/linux/docker-ce/centos/
 -Install docker-compose https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-centos-7
 -Generate server ssh key https://confluence.atlassian.com/bitbucketserver/creating-ssh-keys-776639788.html
 -Install git https://www.digitalocean.com/community/tutorials/how-to-install-git-on-centos-7
+-Docker manage using non-root user https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user
+-Traefik https://www.digitalocean.com/community/tutorials/how-to-use-traefik-as-a-reverse-proxy-for-docker-containers-on-centos-7
+  [bieccamvd@eccaproygrad ~]$ htpasswd -nb admin GFasyU3VbKQnM8gZ
+  admin:$apr1$fKQj/T/K$aQueUGYRv/x/7lM8OtnOp0
 -Clone
 	git clone --recurse-submodules git@bitbucket.org:gonzalomelokonatech/dockerfiles.git
 -Remove folders
@@ -33,7 +41,21 @@
 	docker-biserver-ce => PBI
     mysql/mysql-server:5.7
 		zhicwu/biserver-ce:8.0
+  dockprom => Docker Monitoring
+    pushgateway
+    cadvisor
+    prometheus
+    caddy
+    nodeexporter
+    alertmanager
+    grafana
+  portainer => Docker Managment
+    nginx-proxy_portainer_1
+  phpmyadmin => Database Managment
+    phpmyadmin_phpmyadmin_1
 -Initialize
+  -r
+    -?
 	-admin
 		-http://104.237.5.5:3001
 		-alice@email.com:pass
@@ -62,8 +84,41 @@
 		-http://104.237.5.5:8080
 			admin/password
 		-http://104.237.5.5:12346
--(Data Integration) Install pdi plugins
+  -dockprom
+    admin/password
+    -http://104.237.5.5:9080
+  -portainer
+    admin/adminadmin
+    -http://104.237.5.5:9000/
+  -phpmyadmin
+    pentaho/pentaho
+    -http://104.237.5.5:10000/
+  PENDING-email server
+-DNS
+  GoDaddy
+  OK-A 104.237.5.5
+    https://bieccamvd.com
+  OK-admin
+    https://admin.bieccamvd.com
+  OK-filestash
+    https://files.bieccamvd.com
+  OK-docsify
+    https://docs.bieccamvd.com
+  OK-docker-biserver-ce
+    https://app.bieccamvd.com
+  OK-dockprom
+    https://monitor.bieccamvd.com
+  OK-portainer
+    https://devops.bieccamvd.com
+-PDI: Install plugins
   -PDI GIS
+-PBI: Install plugins
+  -Pentaho CE Audit 
+  -Pentaho Performance Monitoring
+    git@github.com:.git
+    curl -LJO https://github.com/it4biz/pentaho-performance-monitoring/tarball/master
+    tar -xvzf it4biz-pentaho-performance-monitoring-69ffe78.tar.gz
+    mv it4biz-pentaho-performance-monitoring-69ffe78 pentaho-performance-monitoring
 -Upload jobs and transformations to /data-integration/repository
   Local
     scp CargaFechas.kjb root@104.237.5.5:/root/transformations
