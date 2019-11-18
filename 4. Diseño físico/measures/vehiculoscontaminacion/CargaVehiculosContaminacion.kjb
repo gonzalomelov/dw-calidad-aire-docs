@@ -8,7 +8,7 @@
   <created_user>-</created_user>
   <created_date>2019/02/18 20:37:04.776</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2019/11/18 12:51:09.082</modified_date>
+  <modified_date>2019/11/18 15:11:21.489</modified_date>
   <parameters>
     <parameter>
       <name>CONTAMINACION_PATH</name>
@@ -29,6 +29,46 @@
       <name>DB_HOST</name>
       <default_value>localhost</default_value>
       <description>Database host env</description>
+    </parameter>
+    <parameter>
+      <name>DB_PASS</name>
+      <default_value>superuserpass</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>DB_PORT</name>
+      <default_value>5432</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>DB_USER</name>
+      <default_value>superuser</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>SFTP_HOST</name>
+      <default_value>localhost</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>SFTP_PASS</name>
+      <default_value>93765asdflkjsd4123SS</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>SFTP_PORT</name>
+      <default_value>2222</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>SFTP_USER</name>
+      <default_value>admin</default_value>
+      <description />
+    </parameter>
+    <parameter>
+      <name>TMP_DIR</name>
+      <default_value>/Users/Gonza/KONA/proygrad/desktop-apps/data-integration/tmp</default_value>
+      <description />
     </parameter>
   </parameters>
   <slaveservers>
@@ -391,9 +431,9 @@
       <description />
       <type>SFTP</type>
       <servername>${SFTP_HOST}</servername>
-      <serverport>2222</serverport>
-      <username>admin</username>
-      <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+      <serverport>${SFTP_PORT}</serverport>
+      <username>${SFTP_USER}</username>
+      <password>${SFTP_PASS}</password>
       <sftpdirectory>/upload</sftpdirectory>
       <targetdirectory>${user.home}/Carte</targetdirectory>
       <wildcard>${CONTAMINACION_PATH}</wildcard>
@@ -421,9 +461,9 @@
       <description />
       <type>SFTP</type>
       <servername>${SFTP_HOST}</servername>
-      <serverport>2222</serverport>
-      <username>admin</username>
-      <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+      <serverport>${SFTP_PORT}</serverport>
+      <username>${SFTP_USER}</username>
+      <password>${SFTP_PASS}</password>
       <sftpdirectory>/upload</sftpdirectory>
       <targetdirectory>${user.home}/Carte</targetdirectory>
       <wildcard>${CONTEO_VEHICULAR_PATH}</wildcard>
@@ -451,9 +491,9 @@
       <description />
       <type>SFTP</type>
       <servername>${SFTP_HOST}</servername>
-      <serverport>2222</serverport>
-      <username>admin</username>
-      <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+      <serverport>${SFTP_PORT}</serverport>
+      <username>${SFTP_USER}</username>
+      <password>${SFTP_PASS}</password>
       <sftpdirectory>/upload</sftpdirectory>
       <targetdirectory>${user.home}/Carte</targetdirectory>
       <wildcard>${DATOS_METEOROLOGICOS_PATH}</wildcard>
