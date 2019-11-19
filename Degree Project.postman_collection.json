@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "CargaFechas",
+			"name": "GetStatus",
 			"request": {
 				"auth": {
 					"type": "basic",
@@ -26,7 +26,46 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/kettle/runJob/?job=CargaFechas&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser",
+					"raw": "{{HOST}}/kettle/status?xml=Y",
+					"host": [
+						"{{HOST}}"
+					],
+					"path": [
+						"kettle",
+						"status"
+					],
+					"query": [
+						{
+							"key": "xml",
+							"value": "Y"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CargaTiempo",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "password",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "admin",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{HOST}}/kettle/runJob/?job=CargaTiempo&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser",
 					"host": [
 						"{{HOST}}"
 					],
@@ -38,7 +77,7 @@
 					"query": [
 						{
 							"key": "job",
-							"value": "CargaFechas"
+							"value": "CargaTiempo"
 						},
 						{
 							"key": "DB_HOST",
@@ -82,7 +121,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/kettle/runJob/?job=CargaContaminantesCategorias&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&TMP_DIR=/data-integration",
+					"raw": "{{HOST}}/kettle/runJob/?job=CargaContaminantesCategorias&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&TMP_DIR=/biserver-ce",
 					"host": [
 						"{{HOST}}"
 					],
@@ -114,7 +153,7 @@
 						},
 						{
 							"key": "TMP_DIR",
-							"value": "/data-integration"
+							"value": "/biserver-ce"
 						}
 					]
 				}
@@ -142,7 +181,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{HOST}}/kettle/runJob/?job=CargaMedidaDiasImportantesContaminacion&CONTAMINACION_PATH=datos2017.ods&DATOS_METEOROLOGICOS_PATH=datos EMA 2012 a 2017 horarios para enviar.xlsx&TMP_DIR=/data-integration&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&SFTP_HOST=sftp&SFTP_PASS=9%26*%asdflkjsd4123SS&SFTP_PORT=22&SFTP_USER=admin",
+					"raw": "{{HOST}}/kettle/runJob/?job=CargaMedidaDiasImportantesContaminacion&CONTAMINACION_PATH=datos2017.ods&DATOS_METEOROLOGICOS_PATH=datos EMA 2012 a 2017 horarios para enviar.xlsx&TMP_DIR=/biserver-ce&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&SFTP_HOST=sftp&SFTP_PASS=9%26*%asdflkjsd4123SS&SFTP_PORT=22&SFTP_USER=admin",
 					"host": [
 						"{{HOST}}"
 					],
@@ -166,7 +205,7 @@
 						},
 						{
 							"key": "TMP_DIR",
-							"value": "/data-integration"
+							"value": "/biserver-ce"
 						},
 						{
 							"key": "DB_HOST",
