@@ -15,7 +15,7 @@
 FROM
   "dw"."fechas" 
   inner join (
-    SELECT mediciones2avg.*, cc.surrogate_key, cc.idrangocontaminantescategorias, cc.descrangocontaminantescategorias
+    SELECT mediciones2avg.*, cc.surrogatekey, cc.idrangocontaminantescategorias, cc.descrangocontaminantescategorias
     FROM (
       SELECT nomestaciondelared,idmetodo,idcontaminante,idfecha,round(avg(contaminacion)) as contaminacion
       FROM dw.mediciones2
@@ -31,7 +31,7 @@ FROM
   inner join "dw"."contaminantes" 
          ON mediciones2avg."idcontaminante" = "dw"."contaminantes"."idcontaminante" 
   inner join "dw"."contaminantescategorias" 
-         ON mediciones2avg."surrogate_key" = "dw"."contaminantescategorias"."surrogate_key" 
+         ON mediciones2avg."surrogatekey" = "dw"."contaminantescategorias"."surrogatekey" 
   inner join "staging"."mediciones2agrupadas" 
          ON "dw"."estacionesdelared"."idestaciondelared" = "staging"."mediciones2agrupadas"."idestaciondelared" AND mediciones2avg."idcontaminante" = "staging"."mediciones2agrupadas"."idcontaminante" 
 WHERE
@@ -63,7 +63,7 @@ FROM
   inner join "dw"."contaminantes" 
          ON m."idcontaminante" = "dw"."contaminantes"."idcontaminante" 
   inner join "dw"."contaminantescategorias" 
-         ON m."surrogate_key" = "dw"."contaminantescategorias"."surrogate_key" 
+         ON m."surrogatekey" = "dw"."contaminantescategorias"."surrogatekey" 
   inner join "staging"."mediciones2agrupadas" 
          ON "dw"."estacionesdelared"."idestaciondelared" = "staging"."mediciones2agrupadas"."idestaciondelared" AND m."idcontaminante" = "staging"."mediciones2agrupadas"."idcontaminante" 
 WHERE
