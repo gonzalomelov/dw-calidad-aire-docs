@@ -1,4 +1,6 @@
--Stop Apache Server sudo systemctl stop httpd
+-If Apache Server is started, stop and disable it
+  sudo systemctl stop httpd
+  sudo systemctl disable httpd
 -Centos 7 https://www.digitalocean.com/community/tutorials/initial-server-setup-with-centos-7
   adduser bieccamvd qg?#:9$5n@*dp2GX
 -Centos 7 Additional https://www.digitalocean.com/community/tutorials/additional-recommended-steps-for-new-centos-7-servers
@@ -12,152 +14,180 @@
   admin:$apr1$fKQj/T/K$aQueUGYRv/x/7lM8OtnOp0
 -Clone
 	git clone --recurse-submodules git@bitbucket.org:gonzalomelokonatech/dockerfiles.git
+-Check custom images
+  docker build -t zhicwu/biserver-ce:8.0 .
 -Remove folders
-  rm -rf docker-pdi-ce/ext/
-  rm -rf docker-pdi-ce/data/
   rm -rf docker-biserver-ce/data/
   rm -rf db-service/data/
--Foreach folder: docker-compose up -d
-	r => Instancia de R para ejecución de informe
-    r_ropensciplumber
-  admin => Front end para carga de datos
-		admin
-	db-service => RESTful API para PostgreSQL + PostgreSQL + DW
-		openresty/openresty:jessie
-		subzerocloud/pg-amqp-bridge
-		postgrest/postgrest
-		dpage/pgadmin4
-		mdillon/postgis:9.6
-		rabbitmq:3-management
-	sftp => Servidor de archivos
-		atmoz/sftp
-	filestash => Servidor de archivos
-		machines/filestash
-	docsify => Manual de Usuario
-		littlstar/docker-docsify
-	docker-pdi-ce => PDI
-    nginx:latest
-		zhicwu/pdi-ce:8.0
-	docker-biserver-ce => PBI
-    mysql/mysql-server:5.7
-		zhicwu/biserver-ce:8.0
+-Execute start.sh
+	admin => Front end para carga de datos
+    admin-prod
+  docker-biserver-ce => PBI
+    docker-biserver-ce_nginx_1
+    docker-biserver-ce_phpmyadmin_1
+    bi
+    bi/docker-biserver-ce_mysqlserver_1
   dockprom => Docker Monitoring
-    pushgateway
-    cadvisor
-    prometheus
-    caddy
-    nodeexporter
     alertmanager
+    cadvisor
     grafana
+    nodeexporter
+    prometheus
+    pushgateway
+  docsify => Manual de Usuario
+    docsify_docsify_1
+  filestash => Servidor de archivos
+    filestash
+  landing
+    landing_landing_1
   portainer => Docker Managment
-    nginx-proxy_portainer_1
-  phpmyadmin => Database Managment
-    phpmyadmin_phpmyadmin_1
+    portainer_portainer_1
+  postgreststarterkit (db-service) => RESTful API para PostgreSQL + PostgreSQL + DW
+    postgreststarterkit_openresty_1
+    postgreststarterkit_pg_amqp_bridge_1
+    postgreststarterkit_dbbackup_1
+    postgreststarterkit_postgrest_1
+    pgadmin_container
+    postgreststarterkit_rabbitmq_1
+    bi/db
+  r => Instancia de R para ejecución de informe
+    bi/ropensciplumber
+	sftp => Servidor de archivos
+    atmoz/sftp
+	traefik => Proxy reverso
+    traefik
+  PENDING-email server
 -Initialize
-  -r
-    -?
-	-admin
-		-http://104.237.5.5:3001
-		-alice@email.com:pass
-	-db-service
-		-http://104.237.5.5:3000
-    -http://104.237.5.5:5050
-    -pgadmin4@pgadmin.org admin
-	-sftp
-		-http://104.237.5.5:2222
-	-filestash
-		-http://104.237.5.5:8334
-		-admin password:password
-		-SFTP
-			sftp
-			admin
-			93765asdflkjsd4123SS
-			upload
-			22
-	-docsify
-		-http://104.237.5.5:3199
-	-docker-pdi-ce
-		-https://104.237.5.5:11011  http://104.237.5.5:9090
-			admin/password
-		-http://104.237.5.5:12345
-	-docker-biserver-ce
-		-http://104.237.5.5:8080
-			admin/password
-		-http://104.237.5.5:12346
+  -admin
+    -https://admin.bieccamvd.com
+    -alice@email.com/pass
+  -docker-biserver-ce
+    -https://analytics.bieccamvd.com
+      admin/password
+    -http://104.237.5.5:12346
+    -http://104.237.5.5:10000
+      PHPMyAdmin pentaho/pentaho
   -dockprom
-    admin/password
-    -http://104.237.5.5:9080
+    -https://monitor.bieccamvd.com
+      Grafana admin/admin
+    -http://104.237.5.5:9090 prometheus
+    -http://104.237.5.5:9093 alertmanager
+    -http://104.237.5.5:9100 nodexporter
+    -http://104.237.5.5:9081 cadvisor
+    -http://104.237.5.5:9091 pushgateway
+  -docsify
+    -https://docs.bieccamvd.com
+  -filestash
+    -https://files.bieccamvd.com
+      https://files.bieccamvd.com/admin admin
+    -SFTP
+      sftp
+      admin
+      93765asdflkjsd4123SS
+      upload
+      22
   -portainer
-    admin/adminadmin
-    -http://104.237.5.5:9000/
-  -phpmyadmin
-    pentaho/pentaho
-    -http://104.237.5.5:10000/
+    -https://bieccamvd.com:9000/
+      admin/adminadmin
+  -postgreststarterkit (db-service)
+    -https://postgrest.bieccamvd.com
+    -http://104.237.5.5:5050
+      pgadmin4@pgadmin.org/admin
+      superuser/superuserpass
+      sudo firewall-cmd --add-port=5432/tcp
+      sudo firewall-cmd --remove-port=5432/tcp
+  -r
+    -http://104.237.5.5:8073/hello?a=2,4
+  -sftp
+    -https://bieccamvd.com:2222
+  -traefik
+    -https://traefik.bieccamvd.com
+      admin/GFasyU3VbKQnM8gZ
   PENDING-email server
 -DNS
   GoDaddy
   OK-A 104.237.5.5
     https://bieccamvd.com
+  OK-www
+    https://www.bieccamvd.com
   OK-admin
     https://admin.bieccamvd.com
+  OK-docker-biserver-ce
+    https://carte.bieccamvd.com
   OK-filestash
     https://files.bieccamvd.com
   OK-docsify
     https://docs.bieccamvd.com
   OK-docker-biserver-ce
-    https://app.bieccamvd.com
+    https://analytics.bieccamvd.com
   OK-dockprom
     https://monitor.bieccamvd.com
   OK-portainer
     https://devops.bieccamvd.com
--PDI: Install plugins
-  -PDI GIS
+  OK-postgrest
+    https://postgrest.bieccamvd.com
+  OK-traefik
+    https://traefik.bieccamvd.com
+# -PDI: Install plugins
+  # -PDI GIS
 -PBI: Install plugins
+  -PDI GIS
+    wget https://github.com/atolcd/pentaho-gis-plugins/releases/download/v1.2.1/pentaho-gis-plugins-1.2.1-bin-7.zip
+    unzip pentaho-gis-plugins-1.2.1-bin-7.zip -d .
   -Pentaho CE Audit 
   -Pentaho Performance Monitoring
     git@github.com:.git
     curl -LJO https://github.com/it4biz/pentaho-performance-monitoring/tarball/master
     tar -xvzf it4biz-pentaho-performance-monitoring-69ffe78.tar.gz
     mv it4biz-pentaho-performance-monitoring-69ffe78 pentaho-performance-monitoring
--Upload jobs and transformations to /data-integration/repository
+-Upload jobs and transformations to /biserver-ce/repository
+  Try use APIs
   Local
-    scp CargaFechas.kjb root@104.237.5.5:/root/transformations
-    scp CargaFechas.ktr root@104.237.5.5:/root/transformations
-    scp CargaContaminantesCategorias.kjb root@104.237.5.5:/root/transformations
-    scp CargaContaminantesCategorias.ktr root@104.237.5.5:/root/transformations
-    scp CargaMedidaDiasImportantesContaminacion.kjb root@104.237.5.5:/root/transformations
-    scp CargaMedidaDiasImportantesContaminacionParent.ktr root@104.237.5.5:/root/transformations
-    scp CargaMedidaDiasImportantesContaminacionChild.ktr root@104.237.5.5:/root/transformations
-    scp reporte.prpt root@104.237.5.5:/root/transformations
-    scp GenerarReporteAnual.kjb root@104.237.5.5:/root/transformations
-    scp GenerarReporteAnual.ktr root@104.237.5.5:/root/transformations
-    scp GenerarReporteAnualAgruparContaminaciones.ktr root@104.237.5.5:/root/transformations
+    scp CargaTiempo.kjb bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+    scp CargaTiempo.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+    scp CargaContaminantesCategorias.kjb bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+    scp CargaContaminantesCategorias.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+    scp CargaMedidaDiasImportantesContaminacion.kjb bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+    scp CargaMedidaDiasImportantesContaminacionParent.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+    scp CargaMedidaDiasImportantesContaminacionChild.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+
+    scp CargaVehiculosContaminacion.kjb bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+    scp CargaVehiculosContaminacion.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+
+    scp reporte.prpt bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+    scp GenerarReporteAnual.kjb bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+    scp GenerarReporteAnual.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
+    scp GenerarReporteAnualAgruparContaminaciones.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
   Docker host
-    docker cp CargaFechas.kjb pdi-slave:/data-integration/repository
-    docker cp CargaFechas.ktr pdi-slave:/data-integration/repository
-    docker cp CargaContaminantesCategorias.kjb pdi-slave:/data-integration/repository
-    docker cp CargaContaminantesCategorias.ktr pdi-slave:/data-integration/repository
-    docker cp CargaMedidaDiasImportantesContaminacion.kjb pdi-slave:/data-integration/repository
-    docker cp CargaMedidaDiasImportantesContaminacionParent.ktr pdi-slave:/data-integration/repository
-    docker cp CargaMedidaDiasImportantesContaminacionChild.ktr pdi-slave:/data-integration/repository
-    docker cp reporte.prpt pdi-slave:/data-integration/repository
-    docker cp GenerarReporteAnual.kjb pdi-slave:/data-integration/repository
-    docker cp GenerarReporteAnual.ktr pdi-slave:/data-integration/repository
-    docker cp GenerarReporteAnualAgruparContaminaciones.ktr pdi-slave:/data-integration/repository
--docker exec -d pdi-slave mkdir /data-integration/Carte
--docker exec -d pdi-slave chmod a+rw /data-integration/Carte
+    docker cp CargaTiempo.kjb bi:/biserver-ce/repository
+    docker cp CargaTiempo.ktr bi:/biserver-ce/repository
+    docker cp CargaContaminantesCategorias.kjb bi:/biserver-ce/repository
+    docker cp CargaContaminantesCategorias.ktr bi:/biserver-ce/repository
+    docker cp CargaMedidaDiasImportantesContaminacion.kjb bi:/biserver-ce/repository
+    docker cp CargaMedidaDiasImportantesContaminacionParent.ktr bi:/biserver-ce/repository
+    docker cp CargaMedidaDiasImportantesContaminacionChild.ktr bi:/biserver-ce/repository
+
+    docker cp CargaVehiculosContaminacion.kjb bi:/biserver-ce/repository
+    docker cp CargaVehiculosContaminacion.ktr bi:/biserver-ce/repository
+    
+    docker cp reporte.prpt bi:/biserver-ce/repository
+    docker cp GenerarReporteAnual.kjb bi:/biserver-ce/repository
+    docker cp GenerarReporteAnual.ktr bi:/biserver-ce/repository
+    docker cp GenerarReporteAnualAgruparContaminaciones.ktr bi:/biserver-ce/repository
+-docker exec -d bi mkdir /biserver-ce/Carte
+-docker exec -d bi chmod a+rw /biserver-ce/Carte
 -(OPTIONAL) Fix Carte ODF temp dir on docker-pdi-ce for ODS input
-  Add org.odftoolkit.odfdom.tmpdir=/data-integration to system properties in Carte
-  /data-integration/spoon.sh
+  Add org.odftoolkit.odfdom.tmpdir=/biserver-ce to system properties in Carte
+  /biserver-ce/spoon.sh
     Check diff
     OPT="$OPT $PENTAHO_DI_JAVA_OPTIONS -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.library.path=$LIBPATH -DKETTLE_HOME=$KETTLE_HOME -DKETTLE_REPOSITORY=$KETTLE_REPOSITORY -DKETTLE_USER=$KETTLE_USER -DKETTLE_PASSWORD=$KETTLE_PASSWORD -DKETTLE_PLUGIN_PACKAGES=$KETTLE_PLUGIN_PACKAGES -DKETTLE_LOG_SIZE_LIMIT=$KETTLE_LOG_SIZE_LIMIT -DKETTLE_JNDI_ROOT=$KETTLE_JNDI_ROOT"
-    OPT="$OPT $PENTAHO_DI_JAVA_OPTIONS -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.library.path=$LIBPATH -DKETTLE_HOME=$KETTLE_HOME -DKETTLE_REPOSITORY=$KETTLE_REPOSITORY -DKETTLE_USER=$KETTLE_USER -DKETTLE_PASSWORD=$KETTLE_PASSWORD -DKETTLE_PLUGIN_PACKAGES=$KETTLE_PLUGIN_PACKAGES -DKETTLE_LOG_SIZE_LIMIT=$KETTLE_LOG_SIZE_LIMIT -DKETTLE_JNDI_ROOT=$KETTLE_JNDI_ROOT -Dorg.odftoolkit.odfdom.tmpdir=/data-integration"
+    OPT="$OPT $PENTAHO_DI_JAVA_OPTIONS -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2 -Djava.library.path=$LIBPATH -DKETTLE_HOME=$KETTLE_HOME -DKETTLE_REPOSITORY=$KETTLE_REPOSITORY -DKETTLE_USER=$KETTLE_USER -DKETTLE_PASSWORD=$KETTLE_PASSWORD -DKETTLE_PLUGIN_PACKAGES=$KETTLE_PLUGIN_PACKAGES -DKETTLE_LOG_SIZE_LIMIT=$KETTLE_LOG_SIZE_LIMIT -DKETTLE_JNDI_ROOT=$KETTLE_JNDI_ROOT -Dorg.odftoolkit.odfdom.tmpdir=/biserver-ce"
 -Run the following jobs via API
   Dimensions
-    CargaFechas
-      curl -X GET 'http://104.237.5.5:9090/kettle/runJob/?job=CargaFechas&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser' -H 'Accept: */*' -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' -H 'Cache-Control: no-cache' -H 'Connection: keep-alive' -H 'Host: 104.237.5.5:9090' -H 'Postman-Token: abc99de1-a150-4b59-bcbc-9cad12cdc550,b83c55c7-7ef6-4972-9fbf-f51e49c51792' -H 'User-Agent: PostmanRuntime/7.15.0' -H 'accept-encoding: gzip, deflate' -H 'cache-control: no-cache'
+    CargaTiempo
+      curl -X GET 'https://bieccamvd.com:9090/kettle/runJob/?job=CargaTiempo&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser' -H 'Accept: */*' -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' -H 'Cache-Control: no-cache' -H 'Connection: keep-alive' -H 'Host: 104.237.5.5:9090' -H 'Postman-Token: abc99de1-a150-4b59-bcbc-9cad12cdc550,b83c55c7-7ef6-4972-9fbf-f51e49c51792' -H 'User-Agent: PostmanRuntime/7.15.0' -H 'accept-encoding: gzip, deflate' -H 'cache-control: no-cache'
     CargaContaminantesCategorias
-      curl -X GET 'http://104.237.5.5:9090/kettle/runJob/?job=CargaContaminantesCategorias&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&TMP_DIR=/data-integration' -H 'Accept: */*' -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' -H 'Cache-Control: no-cache' -H 'Connection: keep-alive' -H 'Host: 104.237.5.5:9090' -H 'Postman-Token: ce2c2dcb-b8a4-4bd0-97e9-5516bd7507cc,06183f7e-0839-4107-8f0f-b66388852ebe' -H 'User-Agent: PostmanRuntime/7.15.0' -H 'accept-encoding: gzip, deflate' -H 'cache-control: no-cache'
+      curl -X GET 'https://bieccamvd.com:9090/kettle/runJob/?job=CargaContaminantesCategorias&DB_HOST=db&DB_PASS=superuserpass&DB_PORT=5432&DB_USER=superuser&TMP_DIR=/biserver-ce' -H 'Accept: */*' -H 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' -H 'Cache-Control: no-cache' -H 'Connection: keep-alive' -H 'Host: 104.237.5.5:9090' -H 'Postman-Token: ce2c2dcb-b8a4-4bd0-97e9-5516bd7507cc,06183f7e-0839-4107-8f0f-b66388852ebe' -H 'User-Agent: PostmanRuntime/7.15.0' -H 'accept-encoding: gzip, deflate' -H 'cache-control: no-cache'
 ############# Cargar datos de DiasImportantes
 ############# Reporte de 2017
 -Run the following jobs via API
