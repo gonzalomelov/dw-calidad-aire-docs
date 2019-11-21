@@ -10,17 +10,17 @@
     <parameters>
       <parameter>
         <name>CONTAMINACION_PATH</name>
-        <default_value>CV_pm2_17.csv</default_value>
+        <default_value>contaminacion.csv</default_value>
         <description />
       </parameter>
       <parameter>
         <name>DATOS_METEOROLOGICOS_PATH</name>
-        <default_value>datos EMA 2012 a 2017 horarios para enviar.xlsx</default_value>
+        <default_value>datos_meteorologicos.xlsx</default_value>
         <description />
       </parameter>
       <parameter>
         <name>DB_HOST</name>
-        <default_value>localhost</default_value>
+        <default_value>104.237.5.5</default_value>
         <description />
       </parameter>
       <parameter>
@@ -40,7 +40,7 @@
       </parameter>
       <parameter>
         <name>SFTP_HOST</name>
-        <default_value>localhost</default_value>
+        <default_value>104.237.5.5</default_value>
         <description />
       </parameter>
       <parameter>
@@ -478,13 +478,39 @@
     <partitionschemas>
     </partitionschemas>
     <slaveservers>
+      <slaveserver>
+        <name>104.237.5.5</name>
+        <hostname>104.237.5.5</hostname>
+        <port>8080</port>
+        <webAppName>Server</webAppName>
+        <username>admin</username>
+        <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
+      <slaveserver>
+        <name>carte.bieccamvd.com</name>
+        <hostname>carte.bieccamvd.com</hostname>
+        <port />
+        <webAppName>pentaho</webAppName>
+        <username>admin</username>
+        <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
     </slaveservers>
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
     <created_date>2018/04/21 08:43:58.055</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2019/07/28 17:13:36.882</modified_date>
+    <modified_date>2019/11/21 09:57:07.605</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -543,11 +569,6 @@
   </connection>
   <order>
     <hop>
-      <from>Mapping (sub-transformation)</from>
-      <to>Actualizar en tabla Mediciones</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Get variables</from>
       <to>Calculator</to>
       <enabled>Y</enabled>
@@ -555,6 +576,11 @@
     <hop>
       <from>Calculator</from>
       <to>Mapping (sub-transformation)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Mapping (sub-transformation)</from>
+      <to>Actualizar en tabla Mediciones</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -594,7 +620,7 @@
         <name2 />
       </key>
       <key>
-        <name>nomestaciondelared</name>
+        <name>idestaciondelared</name>
         <field>nomestaciondelared</field>
         <condition>=</condition>
         <name2 />
@@ -630,8 +656,8 @@
         <name2 />
       </key>
       <key>
-        <name>surrogate_key</name>
-        <field>surrogate_key</field>
+        <name>surrogatekey</name>
+        <field>surrogatekey</field>
         <condition>=</condition>
         <name2 />
       </key>
@@ -657,7 +683,7 @@
       </value>
       <value>
         <name>nomestaciondelared</name>
-        <rename>nomestaciondelared</rename>
+        <rename>idestaciondelared</rename>
         <update>N</update>
       </value>
       <value>
@@ -686,11 +712,12 @@
         <update>N</update>
       </value>
       <value>
-        <name>surrogate_key</name>
-        <rename>surrogate_key</rename>
+        <name>surrogatekey</name>
+        <rename>surrogatekey</rename>
         <update>N</update>
       </value>
     </lookup>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -699,7 +726,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>672</xloc>
+      <xloc>688</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>
@@ -715,6 +742,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>carte</field_name>
       <calc_type>CONSTANT</calc_type>
@@ -760,6 +788,7 @@
       <grouping_symbol />
       <currency_symbol />
     </calculation>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -822,6 +851,7 @@
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -884,6 +914,7 @@
     </mappings>
     <allow_multiple_input>Y</allow_multiple_input>
     <allow_multiple_output>Y</allow_multiple_output>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -902,4 +933,5 @@
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes />
 </transformation>

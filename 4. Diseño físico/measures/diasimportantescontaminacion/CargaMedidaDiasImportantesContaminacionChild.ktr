@@ -9,8 +9,18 @@
     <directory>/</directory>
     <parameters>
       <parameter>
+        <name>CONTAMINACION_PATH</name>
+        <default_value>contaminacion.csv</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DATOS_METEOROLOGICOS_PATH</name>
+        <default_value>datos_meteorologicos.xlsx</default_value>
+        <description />
+      </parameter>
+      <parameter>
         <name>DB_HOST</name>
-        <default_value>localhost</default_value>
+        <default_value>104.237.5.5</default_value>
         <description />
       </parameter>
       <parameter>
@@ -26,6 +36,26 @@
       <parameter>
         <name>DB_USER</name>
         <default_value>superuser</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>SFTP_HOST</name>
+        <default_value>104.237.5.5</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>SFTP_PASS</name>
+        <default_value>93765asdflkjsd4123SS</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>SFTP_PORT</name>
+        <default_value>2222</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>SFTP_USER</name>
+        <default_value>admin</default_value>
         <description />
       </parameter>
       <parameter>
@@ -461,13 +491,26 @@
         <master>Y</master>
         <sslMode>N</sslMode>
       </slaveserver>
+      <slaveserver>
+        <name>carte.bieccamvd.com</name>
+        <hostname>carte.bieccamvd.com</hostname>
+        <port />
+        <webAppName>pentaho</webAppName>
+        <username>admin</username>
+        <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
     </slaveservers>
     <clusterschemas>
     </clusterschemas>
     <created_user>-</created_user>
     <created_date>2014/06/18 22:46:27.415</created_date>
     <modified_user>admin</modified_user>
-    <modified_date>2019/11/19 07:10:08.974</modified_date>
+    <modified_date>2019/11/21 10:04:26.901</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -526,11 +569,6 @@
   </connection>
   <order>
     <hop>
-      <from>Sort rows</from>
-      <to>Group by</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sort Id estacion</from>
       <to>Merge Join</to>
       <enabled>Y</enabled>
@@ -546,11 +584,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Group by</from>
-      <to>Sort rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sort rows 2</from>
       <to>Merge Join 4</to>
       <enabled>Y</enabled>
@@ -561,11 +594,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Get variables</from>
-      <to>Calculator</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sort rows 3</from>
       <to>Merge Join 5</to>
       <enabled>Y</enabled>
@@ -573,16 +601,6 @@
     <hop>
       <from>Calcular Season</from>
       <to>Sort rows 5 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge Join 5 2</from>
-      <to>Calcular Season</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge Join 6</from>
-      <to>Sort rows 3 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -616,29 +634,9 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge Join 5</from>
-      <to>Sort Id estacion</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge Join</from>
-      <to>Formula</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Calculadora</from>
       <to>Sort rows 5</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select Final Values</from>
-      <to>Mapping output specification</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select Final Values</from>
-      <to>Dummy (do nothing)</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Formula</from>
@@ -686,11 +684,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge Join 7</from>
-      <to>Modified Java Script Value 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>If field value is null</from>
       <to>Select Final Values</to>
       <enabled>Y</enabled>
@@ -701,18 +694,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge join 2</from>
-      <to>Sort rows 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sort rows 7</from>
       <to>Merge join 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge Join 4</from>
-      <to>Sort rows 7</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -731,11 +714,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge join 2</from>
-      <to>Sort rows 3</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Sort rows 7</from>
       <to>Merge join 2</to>
       <enabled>Y</enabled>
@@ -746,24 +724,9 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge Join 4</from>
-      <to>Sort rows 7</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Calculator 2 2 2</from>
-      <to>Sort rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 2 2 2</from>
       <to>Calculator 2 2 2</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Calculator</from>
-      <to>Modified JavaScript value 2</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Mapping input specification</from>
@@ -774,11 +737,6 @@
       <from>Modified JavaScript value 2</from>
       <to>Excel datos meteorologicos</to>
       <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Calculator</from>
-      <to>Modified JavaScript value 2 3</to>
-      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Modified JavaScript value 2 3</from>
@@ -856,11 +814,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge Join 3</from>
-      <to>Dummy (do nothing) 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Horas</from>
       <to>Join Rows (cartesian product)</to>
       <enabled>Y</enabled>
@@ -935,6 +888,136 @@
       <to>Join Rows (cartesian product) 2</to>
       <enabled>Y</enabled>
     </hop>
+    <hop>
+      <from>Get variables 2</from>
+      <to>Calculator 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculator 2</from>
+      <to>Modified JavaScript value 2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Calculator 2</from>
+      <to>Modified JavaScript value 2 3</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Calculator 2 2 2</from>
+      <to>Select values 2 2 2 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by</from>
+      <to>Sort rows</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows</from>
+      <to>Sort rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2 2 2 3</from>
+      <to>Sort rows 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 4</from>
+      <to>Group by</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 4</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 5</from>
+      <to>Sort rows 7</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge join 2</from>
+      <to>Select values 6</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 6</from>
+      <to>Sort rows 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 5</from>
+      <to>Select values 7</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 7</from>
+      <to>Sort Id estacion</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join</from>
+      <to>Select values 8</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 8</from>
+      <to>Formula</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 5 2</from>
+      <to>Select values 9</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 9</from>
+      <to>Calcular Season</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 6</from>
+      <to>Select values 10</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 10</from>
+      <to>Sort rows 3 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 7</from>
+      <to>Select values 11</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 11</from>
+      <to>Modified Java Script Value 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 3</from>
+      <to>Dummy (do nothing) 2</to>
+      <enabled>N</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows 3</from>
+      <to>Dummy (do nothing)</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Dummy (do nothing)</from>
+      <to>Mapping output specification</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select Final Values</from>
+      <to>Filter rows 3</to>
+      <enabled>Y</enabled>
+    </hop>
   </order>
   <step>
     <name>Add constants</name>
@@ -961,6 +1044,7 @@
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -985,6 +1069,7 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
@@ -1045,6 +1130,7 @@
       <grouping_symbol />
       <currency_symbol />
     </calculation>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1131,6 +1217,7 @@ seasonName = seasons[season-1];</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1145,7 +1232,7 @@ seasonName = seasons[season-1];</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Calculator</name>
+    <name>Calculator 2</name>
     <type>Calculator</type>
     <description />
     <distribute>N</distribute>
@@ -1155,10 +1242,11 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <failIfNoFile>N</failIfNoFile>
     <calculation>
-      <field_name>file</field_name>
+      <field_name>carte</field_name>
       <calc_type>CONSTANT</calc_type>
-      <field_a>/Carte/TCR_NO2_17.csv</field_a>
+      <field_a>/Carte/</field_a>
       <field_b />
       <field_c />
       <value_type>String</value_type>
@@ -1172,25 +1260,10 @@ seasonName = seasons[season-1];</jsScript_script>
     </calculation>
     <calculation>
       <field_name>filename</field_name>
-      <calc_type>ADD</calc_type>
+      <calc_type>ADD3</calc_type>
       <field_a>user_home</field_a>
-      <field_b>file</field_b>
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>filedatosmeteorologicos</field_name>
-      <calc_type>CONSTANT</calc_type>
-      <field_a>/Carte/datos%20EMA%202012%20a%202017%20horarios%20para%20enviar.xlsx</field_a>
-      <field_b />
-      <field_c />
+      <field_b>carte</field_b>
+      <field_c>file</field_c>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -1202,10 +1275,10 @@ seasonName = seasons[season-1];</jsScript_script>
     </calculation>
     <calculation>
       <field_name>filenamedatosmeteorologicos</field_name>
-      <calc_type>ADD</calc_type>
+      <calc_type>ADD3</calc_type>
       <field_a>user_home</field_a>
-      <field_b>filedatosmeteorologicos</field_b>
-      <field_c />
+      <field_b>carte</field_b>
+      <field_c>filedatosmeteorologicos</field_c>
       <value_type>String</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
@@ -1215,6 +1288,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <grouping_symbol />
       <currency_symbol />
     </calculation>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1224,7 +1298,7 @@ seasonName = seasons[season-1];</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>336</xloc>
-      <yloc>208</yloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1239,6 +1313,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>pollutant_value</field_name>
       <calc_type>ROUND_1</calc_type>
@@ -1254,6 +1329,7 @@ seasonName = seasons[season-1];</jsScript_script>
       <grouping_symbol />
       <currency_symbol />
     </calculation>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1286,15 +1362,14 @@ seasonName = seasons[season-1];</jsScript_script>
 , nomsubtipo
 , idtipo
 , nomtipo
-FROM dw.contaminantes
-WHERE nomcontaminante = 'NO2'
-ORDER BY nomcontaminante;
+FROM dw.contaminantes;
 </sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1321,7 +1396,7 @@ ORDER BY nomcontaminante;
     </partitioning>
     <connection>db</connection>
     <sql>SELECT
-  surrogate_key
+  surrogatekey
 , valor
 , idcontaminante
 , idrangocontaminantescategorias
@@ -1333,6 +1408,7 @@ FROM dw.contaminantescategorias
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1357,6 +1433,7 @@ FROM dw.contaminantescategorias
       <method>none</method>
       <schema_name />
     </partitioning>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1365,8 +1442,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3920</xloc>
-      <yloc>336</yloc>
+      <xloc>4064</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1381,6 +1458,7 @@ FROM dw.contaminantescategorias
       <method>none</method>
       <schema_name />
     </partitioning>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1407,14 +1485,13 @@ FROM dw.contaminantescategorias
     </partitioning>
     <connection>db</connection>
     <sql>SELECT *
-FROM dw.estacionesdelared
-WHERE nomEstacionDeLaRed = 'Curva de Maronas'
-ORDER BY nomEstacionDeLaRed;</sql>
+FROM dw.estacionesdelared;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1451,11 +1528,11 @@ ORDER BY nomEstacionDeLaRed;</sql>
     <limit>0</limit>
     <encoding />
     <add_to_result_filenames>Y</add_to_result_filenames>
-    <accept_filenames>Y</accept_filenames>
+    <accept_filenames>N</accept_filenames>
     <accept_field>filenamedatosmeteorologicos</accept_field>
     <accept_stepname>Modified JavaScript value 2</accept_stepname>
     <file>
-      <name>${user_home}/Carte/datos EMA 2012 a 2017 horarios para enviar.xlsx</name>
+      <name>/Users/Gonza/Carte/datos_meteorologicos.xlsx</name>
       <filemask />
       <exclude_filemask />
       <file_required>N</file_required>
@@ -1656,6 +1733,7 @@ ORDER BY nomEstacionDeLaRed;</sql>
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>POI</spreadsheet_type>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1689,6 +1767,7 @@ WHERE anio = 2017;</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1723,6 +1802,7 @@ WHERE anio = 2017;</sql>
         <rightvalue />
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1905,6 +1985,7 @@ WHERE anio = 2017;</sql>
         </conditions>
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1937,6 +2018,7 @@ WHERE anio = 2017;</sql>
       <value_precision>-1</value_precision>
       <replace_field />
     </formula>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1964,7 +2046,7 @@ WHERE anio = 2017;</sql>
     <formula>
       <field_name>idhora</field_name>
       <formula_string>TEXT(INT(Hour([date])))</formula_string>
-      <value_type>String</value_type>
+      <value_type>Integer</value_type>
       <value_length>-1</value_length>
       <value_precision>-1</value_precision>
       <replace_field />
@@ -1977,6 +2059,7 @@ WHERE anio = 2017;</sql>
       <value_precision>-1</value_precision>
       <replace_field>date</replace_field>
     </formula>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1991,7 +2074,7 @@ WHERE anio = 2017;</sql>
     </GUI>
   </step>
   <step>
-    <name>Get variables</name>
+    <name>Get variables 2</name>
     <type>GetVariable</type>
     <description />
     <distribute>Y</distribute>
@@ -2014,7 +2097,32 @@ WHERE anio = 2017;</sql>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
+      <field>
+        <name>file</name>
+        <variable>${CONTAMINACION_PATH}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>filedatosmeteorologicos</name>
+        <variable>${DATOS_METEOROLOGICOS_PATH}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2023,8 +2131,8 @@ WHERE anio = 2017;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>240</xloc>
-      <yloc>208</yloc>
+      <xloc>224</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2049,19 +2157,19 @@ WHERE anio = 2017;</sql>
     <give_back_row>N</give_back_row>
     <group>
       <field>
-        <name>method_id</name>
+        <name>date</name>
       </field>
       <field>
         <name>pollutant_id</name>
       </field>
       <field>
-        <name>date</name>
+        <name>ID_estacion</name>
+      </field>
+      <field>
+        <name>method_id</name>
       </field>
       <field>
         <name>idHora</name>
-      </field>
-      <field>
-        <name>ID_estacion</name>
       </field>
     </group>
     <fields>
@@ -2072,6 +2180,7 @@ WHERE anio = 2017;</sql>
         <valuefield />
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2080,8 +2189,8 @@ WHERE anio = 2017;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1488</xloc>
-      <yloc>256</yloc>
+      <xloc>1472</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2105,6 +2214,7 @@ where idhora &lt;&gt; -1;</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2144,6 +2254,7 @@ where idhora &lt;&gt; -1;</sql>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2180,6 +2291,7 @@ where idhora &lt;&gt; -1;</sql>
         <rightvalue />
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2216,6 +2328,7 @@ where idhora &lt;&gt; -1;</sql>
         <rightvalue />
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2255,6 +2368,7 @@ where idhora &lt;&gt; -1;</sql>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2279,6 +2393,7 @@ where idhora &lt;&gt; -1;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2287,7 +2402,7 @@ where idhora &lt;&gt; -1;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>4000</xloc>
+      <xloc>4192</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2303,7 +2418,7 @@ where idhora &lt;&gt; -1;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <join_type>INNER</join_type>
+    <join_type>LEFT OUTER</join_type>
     <step1>Sort Id estacion</step1>
     <step2>Estacion de la Red</step2>
     <keys_1>
@@ -2312,6 +2427,7 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>nomestaciondelared</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2345,6 +2461,7 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>date</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2380,6 +2497,7 @@ where idhora &lt;&gt; -1;</sql>
       <key>to_date</key>
       <key>idhora</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2404,7 +2522,7 @@ where idhora &lt;&gt; -1;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <join_type>INNER</join_type>
+    <join_type>LEFT OUTER</join_type>
     <step1>Sort rows 2</step1>
     <step2>Contaminante</step2>
     <keys_1>
@@ -2413,6 +2531,7 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>nomcontaminante</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2446,6 +2565,7 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>fecha_with_hours</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2463,14 +2583,14 @@ where idhora &lt;&gt; -1;</sql>
     <name>Merge Join 5</name>
     <type>MergeJoin</type>
     <description />
-    <distribute>Y</distribute>
+    <distribute>N</distribute>
     <custom_distribution />
     <copies>1</copies>
     <partitioning>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <join_type>INNER</join_type>
+    <join_type>LEFT OUTER</join_type>
     <step1>Sort rows 3</step1>
     <step2>Metodos</step2>
     <keys_1>
@@ -2479,6 +2599,7 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>nommetodo</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2503,7 +2624,7 @@ where idhora &lt;&gt; -1;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <join_type>INNER</join_type>
+    <join_type>LEFT OUTER</join_type>
     <step1>Sort rows 5</step1>
     <step2>diassemana</step2>
     <keys_1>
@@ -2512,6 +2633,7 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>iddiasemana</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2536,7 +2658,7 @@ where idhora &lt;&gt; -1;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <join_type>INNER</join_type>
+    <join_type>LEFT OUTER</join_type>
     <step1>Sort rows 5 2</step1>
     <step2>estacionesdelanio</step2>
     <keys_1>
@@ -2545,6 +2667,7 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>idestaciondelanio</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2578,6 +2701,7 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>idfecha</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2602,7 +2726,7 @@ where idhora &lt;&gt; -1;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <join_type>INNER</join_type>
+    <join_type>RIGHT OUTER</join_type>
     <step1>Sort rows 6</step1>
     <step2>Sort rows 7</step2>
     <keys_1>
@@ -2613,6 +2737,7 @@ where idhora &lt;&gt; -1;</sql>
       <key>idcontaminante</key>
       <key>pollutant_value</key>
     </keys_2>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2640,13 +2765,13 @@ where idhora &lt;&gt; -1;</sql>
     <connection>db</connection>
     <sql>SELECT idmetodo, trim(nommetodo) as nommetodo
 FROM dw.metodos
-WHERE nommetodo = 'UYMVD_NO2_2'
 ORDER BY nommetodo;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2701,6 +2826,7 @@ var idFechaHora = idFecha + idHora</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2747,6 +2873,7 @@ if (pollutant_value == 'NA') {
         <replace>Y</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2796,6 +2923,7 @@ if (!iddiaimportante) {
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2833,6 +2961,7 @@ filenamedatosmeteorologicos = decodeURI(filenamedatosmeteorologicos);
       </jsScript>
     </jsScripts>
     <fields>    </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2866,9 +2995,9 @@ filenamedatosmeteorologicos = decodeURI(filenamedatosmeteorologicos);
         <jsScript_script>//Script here
 
 filename = decodeURI(filename);
-var inmetodo = 'UYMVD_NO2_2'
-var incontaminante = 'NO2'
-var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
+var inmetodo = 'UYMVD_PM2'
+var incontaminante = 'PM2'
+var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </jsScript>
     </jsScripts>
     <fields>
@@ -2897,6 +3026,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2932,8 +3062,10 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
+        <is_unicode>no</is_unicode>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2961,30 +3093,43 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     <fields>
       <field>
         <name>idhora</name>
+        <rename />
       </field>
       <field>
         <name>idestaciondelanio</name>
+        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
+        <rename />
       </field>
       <field>
         <name>idfecha</name>
+        <rename />
       </field>
       <field>
-        <name>nomestaciondelared</name>
+        <name>ID_estacion</name>
+        <rename>idestaciondelared</rename>
       </field>
       <field>
         <name>idmetodo</name>
+        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
+        <rename />
+      </field>
+      <field>
+        <name>surrogatekey</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Global_Sun_rad_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Relative_Humidity_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Temperature_Extern_1</name>
@@ -2992,22 +3137,21 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
       </field>
       <field>
         <name>ANCAP1_Wind_Direction_1</name>
+        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Speed_1</name>
-      </field>
-      <field>
-        <name>pollutant_value</name>
-        <rename>contaminacion</rename>
-        <length>100</length>
-        <precision>4</precision>
+        <rename />
       </field>
       <field>
         <name>iddiaimportantenuevo</name>
         <rename>iddiaimportante</rename>
       </field>
       <field>
-        <name>surrogate_key</name>
+        <name>pollutant_value</name>
+        <rename>contaminacion</rename>
+        <length>100</length>
+        <precision>4</precision>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -3079,8 +3223,8 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <storage_type />
       </meta>
       <meta>
-        <name>nomestaciondelared</name>
-        <rename>nomestaciondelared</rename>
+        <name>idestaciondelared</name>
+        <rename>idestaciondelared</rename>
         <type>String</type>
         <length>-2</length>
         <precision>-2</precision>
@@ -3147,6 +3291,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3434,6 +3579,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3444,6 +3590,178 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     <GUI>
       <xloc>3184</xloc>
       <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 10</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>date</name>
+        <rename />
+      </field>
+      <field>
+        <name>idhora</name>
+        <rename />
+      </field>
+      <field>
+        <name>iddiasemana</name>
+        <rename />
+      </field>
+      <field>
+        <name>idestaciondelanio</name>
+        <rename />
+      </field>
+      <field>
+        <name>idcontaminante</name>
+        <rename />
+      </field>
+      <field>
+        <name>surrogatekey</name>
+        <rename />
+      </field>
+      <field>
+        <name>ID_estacion</name>
+        <rename />
+      </field>
+      <field>
+        <name>idmetodo</name>
+        <rename />
+      </field>
+      <field>
+        <name>pollutant_value</name>
+        <rename />
+      </field>
+      <field>
+        <name>idFecha</name>
+        <rename />
+      </field>
+      <field>
+        <name>idFechaHora</name>
+        <rename />
+      </field>
+      <field>
+        <name>year</name>
+        <rename />
+      </field>
+      <field>
+        <name>month</name>
+        <rename />
+      </field>
+      <field>
+        <name>day</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3152</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 11</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>date</name>
+        <rename />
+      </field>
+      <field>
+        <name>idhora</name>
+        <rename />
+      </field>
+      <field>
+        <name>iddiasemana</name>
+        <rename />
+      </field>
+      <field>
+        <name>idestaciondelanio</name>
+        <rename />
+      </field>
+      <field>
+        <name>idcontaminante</name>
+        <rename />
+      </field>
+      <field>
+        <name>surrogatekey</name>
+        <rename />
+      </field>
+      <field>
+        <name>ID_estacion</name>
+        <rename />
+      </field>
+      <field>
+        <name>idmetodo</name>
+        <rename />
+      </field>
+      <field>
+        <name>iddiaimportante</name>
+        <rename />
+      </field>
+      <field>
+        <name>pollutant_value</name>
+        <rename />
+      </field>
+      <field>
+        <name>idFecha</name>
+        <rename />
+      </field>
+      <field>
+        <name>idFechaHora</name>
+        <rename />
+      </field>
+      <field>
+        <name>year</name>
+        <rename />
+      </field>
+      <field>
+        <name>month</name>
+        <rename />
+      </field>
+      <field>
+        <name>day</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3392</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3478,6 +3796,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3504,22 +3823,28 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     </partitioning>
     <fields>
       <field>
-        <name>date</name>
+        <name>to_date</name>
+        <rename />
       </field>
       <field>
         <name>pollutant_id</name>
+        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
+        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
+        <rename />
       </field>
       <field>
         <name>method_id</name>
+        <rename />
       </field>
       <field>
-        <name>idhora</name>
+        <name>idhora_1</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -3540,6 +3865,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3566,28 +3892,68 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     </partitioning>
     <fields>
       <field>
-        <name>date</name>
+        <name>to_date</name>
+        <rename />
       </field>
       <field>
         <name>pollutant_id</name>
+        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
-      </field>
-      <field>
-        <name>pollutant_value</name>
+        <rename />
       </field>
       <field>
         <name>method_id</name>
+        <rename />
       </field>
       <field>
-        <name>idhora</name>
+        <name>idhora_1</name>
+        <rename />
+      </field>
+      <field>
+        <name>pollutant_value</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
+        <name>to_date</name>
+        <rename>date</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>idhora_1</name>
+        <rename>idhora</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
         <name>pollutant_value</name>
         <rename>pollutant_value</rename>
-        <type>Number</type>
+        <type>Integer</type>
         <length>-2</length>
         <precision>-2</precision>
         <conversion_mask />
@@ -3602,6 +3968,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3612,6 +3979,116 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     <GUI>
       <xloc>1344</xloc>
       <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 2 2 2 3</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>to_date</name>
+        <rename />
+      </field>
+      <field>
+        <name>pollutant_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>ID_estacion</name>
+        <rename />
+      </field>
+      <field>
+        <name>method_id</name>
+        <rename />
+      </field>
+      <field>
+        <name>idhora_1</name>
+        <rename />
+      </field>
+      <field>
+        <name>pollutant_value</name>
+        <rename />
+      </field>
+      <field>
+        <name>pollutant_value_1</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>pollutant_value</name>
+      </remove>
+      <meta>
+        <name>pollutant_value_1</name>
+        <rename>pollutant_value</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>to_date</name>
+        <rename>date</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+      <meta>
+        <name>idhora_1</name>
+        <rename>idhora</rename>
+        <type>None</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1328</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3646,6 +4123,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3655,7 +4133,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>784</xloc>
-      <yloc>352</yloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3690,6 +4168,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3734,6 +4213,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3770,6 +4250,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3780,6 +4261,286 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     <GUI>
       <xloc>688</xloc>
       <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 5</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>date</name>
+      </field>
+      <field>
+        <name>idcontaminante</name>
+      </field>
+      <field>
+        <name>ID_estacion</name>
+      </field>
+      <field>
+        <name>method_id</name>
+      </field>
+      <field>
+        <name>idhora</name>
+      </field>
+      <field>
+        <name>pollutant_value</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1728</xloc>
+      <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 6</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>date</name>
+      </field>
+      <field>
+        <name>idcontaminante</name>
+      </field>
+      <field>
+        <name>surrogatekey</name>
+      </field>
+      <field>
+        <name>ID_estacion</name>
+      </field>
+      <field>
+        <name>method_id</name>
+      </field>
+      <field>
+        <name>idhora</name>
+      </field>
+      <field>
+        <name>pollutant_value</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1856</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 7</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>date</name>
+      </field>
+      <field>
+        <name>idcontaminante</name>
+      </field>
+      <field>
+        <name>surrogatekey</name>
+      </field>
+      <field>
+        <name>ID_estacion</name>
+      </field>
+      <field>
+        <name>idmetodo</name>
+      </field>
+      <field>
+        <name>idhora</name>
+      </field>
+      <field>
+        <name>pollutant_value</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2016</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 8</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>date</name>
+        <rename />
+      </field>
+      <field>
+        <name>idcontaminante</name>
+        <rename />
+      </field>
+      <field>
+        <name>surrogatekey</name>
+        <rename />
+      </field>
+      <field>
+        <name>ID_estacion</name>
+        <rename />
+      </field>
+      <field>
+        <name>idmetodo</name>
+        <rename />
+      </field>
+      <field>
+        <name>idhora</name>
+        <rename />
+      </field>
+      <field>
+        <name>pollutant_value</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2176</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 9</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>date</name>
+        <rename />
+      </field>
+      <field>
+        <name>idhora</name>
+        <rename />
+      </field>
+      <field>
+        <name>iddiasemana</name>
+        <rename />
+      </field>
+      <field>
+        <name>idcontaminante</name>
+        <rename />
+      </field>
+      <field>
+        <name>surrogatekey</name>
+        <rename />
+      </field>
+      <field>
+        <name>ID_estacion</name>
+        <rename />
+      </field>
+      <field>
+        <name>idmetodo</name>
+        <rename />
+      </field>
+      <field>
+        <name>pollutant_value</name>
+        <rename />
+      </field>
+      <field>
+        <name>idFecha</name>
+        <rename />
+      </field>
+      <field>
+        <name>idFechaHora</name>
+        <rename />
+      </field>
+      <field>
+        <name>year</name>
+        <rename />
+      </field>
+      <field>
+        <name>month</name>
+        <rename />
+      </field>
+      <field>
+        <name>day</name>
+        <rename />
+      </field>
+      <select_unspecified>N</select_unspecified>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>2784</xloc>
+      <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3811,6 +4572,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3884,6 +4646,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3892,7 +4655,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1408</xloc>
+      <xloc>1504</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -3925,6 +4688,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3966,6 +4730,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4007,6 +4772,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4048,6 +4814,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4089,6 +4856,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4099,6 +4867,80 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     <GUI>
       <xloc>3520</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 4</name>
+    <type>SortRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory />
+    <compress>N</compress>
+    <compress_variable />
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>date</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>pollutant_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>ID_estacion</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>method_id</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+      <field>
+        <name>idhora</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1408</xloc>
+      <yloc>352</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4130,6 +4972,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4171,6 +5014,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4212,6 +5056,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4261,6 +5106,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4310,6 +5156,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4351,6 +5198,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4400,6 +5248,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4449,6 +5298,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4493,6 +5343,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <cut_to>10</cut_to>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4653,6 +5504,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4684,6 +5536,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4715,6 +5568,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4746,6 +5600,7 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4756,6 +5611,41 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
     <GUI>
       <xloc>2976</xloc>
       <yloc>336</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows 3</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing)</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>contaminacion</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3952</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -4800,4 +5690,5 @@ var innomidestaciondelared = 'UYMVD_E6'</jsScript_script>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes />
 </transformation>
