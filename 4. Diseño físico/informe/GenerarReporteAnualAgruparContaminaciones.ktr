@@ -99,7 +99,7 @@ La mayoría de los valores registrados se encuentran dentro de la categoría M
       </parameter>
       <parameter>
         <name>R_URL</name>
-        <default_value>http://localhost:8000</default_value>
+        <default_value>http://localhost:8073</default_value>
         <description />
       </parameter>
     </parameters>
