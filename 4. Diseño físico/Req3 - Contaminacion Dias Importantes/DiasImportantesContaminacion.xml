@@ -31,7 +31,7 @@
       </Level>
       <Level name="Barrio" visible="true" table="estacionesdelared" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
       </Level>
-      <Level name="EstacionDeLaRed" visible="true" table="estacionesdelared" column="nomestaciondelared" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelared">
+      <Level name="EstacionDeLaRed" visible="true" table="estacionesdelared" column="idestaciondelared" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="idestaciondelared">
       </Level>
     </Hierarchy>
   </Dimension>
@@ -89,7 +89,7 @@
       </Table>
       <Level name="Categoria" visible="true" table="contaminantescategorias" column="idrangocontaminantescategorias" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangocontaminantescategorias">
       </Level>
-      <Level name="ContaminanteCategoria" visible="true" table="contaminantescategorias" column="surrogate_key" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="valor">
+      <Level name="ContaminanteCategoria" visible="true" table="contaminantescategorias" column="surrogatekey" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="valor">
       </Level>
     </Hierarchy>
   </Dimension>
@@ -100,7 +100,7 @@
     </DimensionUsage>
     <DimensionUsage source="Contaminantes" level="Contaminante" name="Contaminantes" visible="true" foreignKey="idcontaminante" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="nomestaciondelared" highCardinality="false">
+    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="idestaciondelared" highCardinality="false">
     </DimensionUsage>
     <DimensionUsage source="DiasSemana" level="DiaSemana" name="DiasSemana" visible="true" foreignKey="iddiasemana" highCardinality="false">
     </DimensionUsage>
@@ -114,11 +114,11 @@
     </DimensionUsage>
     <DimensionUsage source="DiasImportantes" level="DiaImportante" name="DiasImportantes" visible="true" foreignKey="iddiaimportante" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="ContaminantesCategorias" level="ContaminanteCategoria" name="ContaminantesCategorias" visible="true" foreignKey="surrogate_key" highCardinality="false">
+    <DimensionUsage source="ContaminantesCategorias" level="ContaminanteCategoria" name="ContaminantesCategorias" visible="true" foreignKey="surrogatekey" highCardinality="false">
     </DimensionUsage>
     <Measure name="Contaminacion Promedio" column="contaminacion" datatype="Numeric" aggregator="avg" visible="true">
     </Measure>
-    <Measure name="Contador" column="surrogate_key" aggregator="count" visible="true">
+    <Measure name="Contador" column="surrogatekey" aggregator="count" visible="true">
     </Measure>
   </Cube>
 </Schema>
