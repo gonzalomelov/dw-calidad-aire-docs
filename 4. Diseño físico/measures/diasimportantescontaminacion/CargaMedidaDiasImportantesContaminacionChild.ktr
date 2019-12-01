@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
     <name>CargaMedidaDiasImportantesContaminacionChild</name>
@@ -694,33 +695,13 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 7</from>
-      <to>Merge join 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Merge Join 4 2</from>
       <to>If field value is null</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Sort rows 6</from>
-      <to>Merge join 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>If field value is null</from>
       <to>Select Final Values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows 7</from>
-      <to>Merge join 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows 6</from>
-      <to>Merge join 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -791,11 +772,6 @@
     <hop>
       <from>Filter rows</from>
       <to>Select values 2 2 2 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Select values 2 2 2 2</from>
-      <to>Sort rows</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -909,16 +885,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Group by</from>
-      <to>Sort rows</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Sort rows</from>
-      <to>Sort rows 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 2 2 2 3</from>
       <to>Sort rows 4</to>
       <enabled>Y</enabled>
@@ -929,18 +895,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Merge Join 4</from>
-      <to>Select values 5</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Select values 5</from>
       <to>Sort rows 7</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge join 2</from>
-      <to>Select values 6</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1016,6 +972,46 @@
     <hop>
       <from>Select Final Values</from>
       <to>Filter rows 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 6</from>
+      <to>Merge Join 4 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Sort rows 7</from>
+      <to>Merge Join 4 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 4</from>
+      <to>Modified JavaScript value</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified JavaScript value</from>
+      <to>Select values 5</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 4 3</from>
+      <to>Select values 6</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Group by</from>
+      <to>String operations</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 2 2 2 2</from>
+      <to>String operations</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>String operations</from>
+      <to>Sort rows 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1357,13 +1353,18 @@ seasonName = seasons[season-1];</jsScript_script>
     <connection>db</connection>
     <sql>SELECT
   idcontaminante
-, nomcontaminante
+, trim(nomcontaminante) as nomcontaminante
 , idsubtipo
 , nomsubtipo
 , idtipo
 , nomtipo
-FROM dw.contaminantes;
-</sql>
+, muybuena
+, buena
+, aceptable
+, inadecuada
+, mala
+FROM dw.contaminantes
+order by nomcontaminante asc;</sql>
     <limit>0</limit>
     <lookup />
     <execute_each_row>N</execute_each_row>
@@ -1397,9 +1398,7 @@ FROM dw.contaminantes;
     <connection>db</connection>
     <sql>SELECT
   surrogatekey
-, valor
 , idcontaminante
-, idrangocontaminantescategorias
 , descrangocontaminantescategorias
 FROM dw.contaminantescategorias
 </sql>
@@ -1417,8 +1416,8 @@ FROM dw.contaminantescategorias
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1632</xloc>
-      <yloc>176</yloc>
+      <xloc>1648</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2000,6 +1999,41 @@ WHERE anio = 2017;</sql>
     </GUI>
   </step>
   <step>
+    <name>Filter rows 3</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>Dummy (do nothing)</send_true_to>
+    <send_false_to />
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>contaminacion</leftvalue>
+        <function>IS NOT NULL</function>
+        <rightvalue />
+      </condition>
+    </compare>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3952</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Formula</name>
     <type>Formula</type>
     <description />
@@ -2189,8 +2223,8 @@ WHERE anio = 2017;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1472</xloc>
-      <yloc>352</yloc>
+      <xloc>1424</xloc>
+      <yloc>336</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2716,42 +2750,6 @@ where idhora &lt;&gt; -1;</sql>
     </GUI>
   </step>
   <step>
-    <name>Merge join 2</name>
-    <type>MergeJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <join_type>RIGHT OUTER</join_type>
-    <step1>Sort rows 6</step1>
-    <step2>Sort rows 7</step2>
-    <keys_1>
-      <key>idcontaminante</key>
-      <key>valor</key>
-    </keys_1>
-    <keys_2>
-      <key>idcontaminante</key>
-      <key>pollutant_value</key>
-    </keys_2>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1792</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Metodos</name>
     <type>TableInput</type>
     <description />
@@ -3093,19 +3091,15 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>idhora</name>
-        <rename />
       </field>
       <field>
         <name>idestaciondelanio</name>
-        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
-        <rename />
       </field>
       <field>
         <name>idfecha</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
@@ -3113,23 +3107,18 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </field>
       <field>
         <name>idmetodo</name>
-        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
-        <rename />
       </field>
       <field>
         <name>surrogatekey</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Global_Sun_rad_1</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Relative_Humidity_1</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Temperature_Extern_1</name>
@@ -3137,11 +3126,9 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </field>
       <field>
         <name>ANCAP1_Wind_Direction_1</name>
-        <rename />
       </field>
       <field>
         <name>ANCAP1_Wind_Speed_1</name>
-        <rename />
       </field>
       <field>
         <name>iddiaimportantenuevo</name>
@@ -3607,59 +3594,45 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>date</name>
-        <rename />
       </field>
       <field>
         <name>idhora</name>
-        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
-        <rename />
       </field>
       <field>
         <name>idestaciondelanio</name>
-        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
-        <rename />
       </field>
       <field>
         <name>surrogatekey</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
-        <rename />
       </field>
       <field>
         <name>idmetodo</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
-        <rename />
       </field>
       <field>
         <name>idFecha</name>
-        <rename />
       </field>
       <field>
         <name>idFechaHora</name>
-        <rename />
       </field>
       <field>
         <name>year</name>
-        <rename />
       </field>
       <field>
         <name>month</name>
-        <rename />
       </field>
       <field>
         <name>day</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -3691,63 +3664,48 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>date</name>
-        <rename />
       </field>
       <field>
         <name>idhora</name>
-        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
-        <rename />
       </field>
       <field>
         <name>idestaciondelanio</name>
-        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
-        <rename />
       </field>
       <field>
         <name>surrogatekey</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
-        <rename />
       </field>
       <field>
         <name>idmetodo</name>
-        <rename />
       </field>
       <field>
         <name>iddiaimportante</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
-        <rename />
       </field>
       <field>
         <name>idFecha</name>
-        <rename />
       </field>
       <field>
         <name>idFechaHora</name>
-        <rename />
       </field>
       <field>
         <name>year</name>
-        <rename />
       </field>
       <field>
         <name>month</name>
-        <rename />
       </field>
       <field>
         <name>day</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -3824,27 +3782,21 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>to_date</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_id</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
-        <rename />
       </field>
       <field>
         <name>method_id</name>
-        <rename />
       </field>
       <field>
         <name>idhora_1</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -3893,27 +3845,21 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>to_date</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_id</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
-        <rename />
       </field>
       <field>
         <name>method_id</name>
-        <rename />
       </field>
       <field>
         <name>idhora_1</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -3996,31 +3942,24 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>to_date</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_id</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
-        <rename />
       </field>
       <field>
         <name>method_id</name>
-        <rename />
       </field>
       <field>
         <name>idhora_1</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value_1</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <remove>
@@ -4278,21 +4217,51 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>date</name>
+        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
+        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
+        <rename />
       </field>
       <field>
         <name>method_id</name>
+        <rename />
       </field>
       <field>
         <name>idhora</name>
+        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
+        <rename />
+      </field>
+      <field>
+        <name>muybuena</name>
+        <rename />
+      </field>
+      <field>
+        <name>buena</name>
+        <rename />
+      </field>
+      <field>
+        <name>aceptable</name>
+        <rename />
+      </field>
+      <field>
+        <name>inadecuada</name>
+        <rename />
+      </field>
+      <field>
+        <name>mala</name>
+        <rename />
+      </field>
+      <field>
+        <name>descRangoContaminantesCategorias</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -4324,24 +4293,31 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>date</name>
+        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
+        <rename />
       </field>
       <field>
         <name>surrogatekey</name>
+        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
+        <rename />
       </field>
       <field>
         <name>method_id</name>
+        <rename />
       </field>
       <field>
         <name>idhora</name>
+        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
+        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -4422,31 +4398,24 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>date</name>
-        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
-        <rename />
       </field>
       <field>
         <name>surrogatekey</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
-        <rename />
       </field>
       <field>
         <name>idmetodo</name>
-        <rename />
       </field>
       <field>
         <name>idhora</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -4478,55 +4447,42 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>date</name>
-        <rename />
       </field>
       <field>
         <name>idhora</name>
-        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
-        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
-        <rename />
       </field>
       <field>
         <name>surrogatekey</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
-        <rename />
       </field>
       <field>
         <name>idmetodo</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
-        <rename />
       </field>
       <field>
         <name>idFecha</name>
-        <rename />
       </field>
       <field>
         <name>idFechaHora</name>
-        <rename />
       </field>
       <field>
         <name>year</name>
-        <rename />
       </field>
       <field>
         <name>month</name>
-        <rename />
       </field>
       <field>
         <name>day</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
@@ -4582,80 +4538,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>2016</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows</name>
-    <type>SortRows</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory />
-    <compress>N</compress>
-    <compress_variable />
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>method_id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>pollutant_id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>date</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>idhora</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-      <field>
-        <name>ID_estacion</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1504</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -4939,8 +4821,8 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1408</xloc>
-      <yloc>352</yloc>
+      <xloc>1328</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5098,7 +4980,7 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
       <field>
-        <name>valor</name>
+        <name>descrangocontaminantescategorias</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -5116,7 +4998,7 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     </remotesteps>
     <GUI>
       <xloc>1728</xloc>
-      <yloc>176</yloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5148,7 +5030,7 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
       <field>
-        <name>pollutant_value</name>
+        <name>descRangoContaminantesCategorias</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -5615,8 +5497,8 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Filter rows 3</name>
-    <type>FilterRows</type>
+    <name>Merge Join 4 3</name>
+    <type>MergeJoin</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -5625,16 +5507,17 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <send_true_to>Dummy (do nothing)</send_true_to>
-    <send_false_to />
-    <compare>
-      <condition>
-        <negated>N</negated>
-        <leftvalue>contaminacion</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
-      </condition>
-    </compare>
+    <join_type>LEFT OUTER</join_type>
+    <step1>Sort rows 7</step1>
+    <step2>Sort rows 6</step2>
+    <keys_1>
+      <key>idcontaminante</key>
+      <key>descRangoContaminantesCategorias</key>
+    </keys_1>
+    <keys_2>
+      <key>idcontaminante</key>
+      <key>descrangocontaminantescategorias</key>
+    </keys_2>
     <attributes />
     <cluster_schema />
     <remotesteps>
@@ -5644,7 +5527,107 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3952</xloc>
+      <xloc>1792</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+var descRangoContaminantesCategorias;
+if (!pollutant_value) {
+  descRangoContaminantesCategorias = 'ND';
+} else if (0 &lt;= pollutant_value &amp;&amp; pollutant_value &lt;= muybuena) {
+  descRangoContaminantesCategorias = 'MUY BUENA';
+} else if (muybuena &lt; pollutant_value &amp;&amp; pollutant_value &lt;= buena) {
+  descRangoContaminantesCategorias = 'BUENA';
+} else if (buena &lt; pollutant_value &amp;&amp; pollutant_value &lt;= aceptable) {
+  descRangoContaminantesCategorias = 'ACEPTABLE';
+} else if (aceptable &lt; pollutant_value &amp;&amp; pollutant_value &lt;= inadecuada) {
+  descRangoContaminantesCategorias = 'INADECUADA';
+} else if (inadecuada &lt; pollutant_value &amp;&amp; pollutant_value &lt;= mala) {
+  descRangoContaminantesCategorias = 'MALA';
+} else if (mala &lt; pollutant_value) {
+  descRangoContaminantesCategorias = 'MUY MALA';
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>descRangoContaminantesCategorias</name>
+        <rename>descRangoContaminantesCategorias</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1680</xloc>
+      <yloc>176</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>String operations</name>
+    <type>StringOperations</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>pollutant_id</in_stream_name>
+        <out_stream_name />
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char />
+        <pad_len />
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
