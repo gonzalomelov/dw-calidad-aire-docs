@@ -193,3 +193,7 @@
 -Run the following jobs via API
   Measures
       CargaMedidaDiasImportantesContaminacion
+-Cargar cubos
+  DiasImportantesContaminacion.xml
+  Polucion y Generacion Termica.xml
+  VehiculosContaminacion.xml
