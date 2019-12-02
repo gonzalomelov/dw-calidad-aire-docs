@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
     <name>CargaMedidaDiasImportantesContaminacionParent</name>
@@ -602,12 +603,6 @@
       <schema>dw</schema>
       <table>mediciones2</table>
       <key>
-        <name>valorEnCTemperaturaExterna</name>
-        <field>valorEnCTemperaturaExterna</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
         <name>idHora</name>
         <field>idHora</field>
         <condition>=</condition>
@@ -650,22 +645,47 @@
         <name2 />
       </key>
       <key>
-        <name>iddiaimportante</name>
-        <field>iddiaimportante</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
         <name>surrogatekey</name>
         <field>surrogatekey</field>
         <condition>=</condition>
         <name2 />
       </key>
-      <value>
-        <name>valorEnCTemperaturaExterna</name>
-        <rename>valorEnCTemperaturaExterna</rename>
-        <update>N</update>
-      </value>
+      <key>
+        <name>idRangoRadiacionSolarGlobal</name>
+        <field>idRangoRadiacionSolarGlobal</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>idRangoHumedadRelativa</name>
+        <field>idRangoHumedadRelativa</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>idRangoVientoDireccion</name>
+        <field>idRangoVientoDireccion</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>idRangoVientoVelocidad</name>
+        <field>idRangoVientoVelocidad</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>idRangoTemperaturaExterna</name>
+        <field>idRangoTemperaturaExterna</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>iddiaimportante</name>
+        <field>iddiaimportante</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
       <value>
         <name>contaminacion</name>
         <rename>contaminacion</rename>
@@ -707,13 +727,38 @@
         <update>N</update>
       </value>
       <value>
-        <name>iddiaimportante</name>
-        <rename>iddiaimportante</rename>
+        <name>surrogatekey</name>
+        <rename>surrogatekey</rename>
         <update>N</update>
       </value>
       <value>
-        <name>surrogatekey</name>
-        <rename>surrogatekey</rename>
+        <name>idRangoRadiacionSolarGlobal</name>
+        <rename>idRangoRadiacionSolarGlobal</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>idRangoHumedadRelativa</name>
+        <rename>idRangoHumedadRelativa</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>idRangoVientoDireccion</name>
+        <rename>idRangoVientoDireccion</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>idRangoVientoVelocidad</name>
+        <rename>idRangoVientoVelocidad</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>idRangoTemperaturaExterna</name>
+        <rename>idRangoTemperaturaExterna</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>iddiaimportante</name>
+        <rename>iddiaimportante</rename>
         <update>N</update>
       </value>
     </lookup>

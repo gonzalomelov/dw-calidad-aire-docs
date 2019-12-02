@@ -685,11 +685,6 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>If field value is null</from>
-      <to>Select Final Values</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Modified Java Script Value 3</from>
       <to>Sort rows 3 3 2</to>
       <enabled>Y</enabled>
@@ -697,11 +692,6 @@
     <hop>
       <from>Merge Join 4 2</from>
       <to>If field value is null</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>If field value is null</from>
-      <to>Select Final Values</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1012,6 +1002,26 @@
     <hop>
       <from>String operations</from>
       <to>Sort rows 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>If field value is null</from>
+      <to>Calculator</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Calculator</from>
+      <to>TempExterrna</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>TempExterrna</from>
+      <to>RadiacionSolarGlobal</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RadiacionSolarGlobal</from>
+      <to>Select Final Values</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1527,7 +1537,7 @@ FROM dw.estacionesdelared;</sql>
     <limit>0</limit>
     <encoding />
     <add_to_result_filenames>Y</add_to_result_filenames>
-    <accept_filenames>N</accept_filenames>
+    <accept_filenames>Y</accept_filenames>
     <accept_field>filenamedatosmeteorologicos</accept_field>
     <accept_stepname>Modified JavaScript value 2</accept_stepname>
     <file>
@@ -2282,7 +2292,31 @@ where idhora &lt;&gt; -1;</sql>
       </valuetypes>
     <fields>
       <field>
+        <name>ANCAP1_Global_Sun_rad_1</name>
+        <value>-1</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>ANCAP1_Relative_Humidity_1</name>
+        <value>-1</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
         <name>ANCAP1_Temperature_Extern_1</name>
+        <value>-1</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>ANCAP1_Wind_Direction_1</name>
+        <value>-1</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>ANCAP1_Wind_Speed_1</name>
         <value>-1</value>
         <mask />
         <set_empty_string>N</set_empty_string>
@@ -3091,15 +3125,19 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>idhora</name>
+        <rename />
       </field>
       <field>
         <name>idestaciondelanio</name>
+        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
+        <rename />
       </field>
       <field>
         <name>idfecha</name>
+        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
@@ -3107,28 +3145,35 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </field>
       <field>
         <name>idmetodo</name>
+        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
+        <rename />
       </field>
       <field>
         <name>surrogatekey</name>
+        <rename />
       </field>
       <field>
-        <name>ANCAP1_Global_Sun_rad_1</name>
+        <name>idRangoRadiacionSolarGlobal</name>
+        <rename />
       </field>
       <field>
-        <name>ANCAP1_Relative_Humidity_1</name>
+        <name>idRangoHumedadRelativa</name>
+        <rename />
       </field>
       <field>
-        <name>ANCAP1_Temperature_Extern_1</name>
-        <rename>valorEnCTemperaturaExterna</rename>
+        <name>idRangoVientoDireccion</name>
+        <rename />
       </field>
       <field>
-        <name>ANCAP1_Wind_Direction_1</name>
+        <name>idRangoVientoVelocidad</name>
+        <rename />
       </field>
       <field>
-        <name>ANCAP1_Wind_Speed_1</name>
+        <name>idRangoTemperaturaExterna</name>
+        <rename />
       </field>
       <field>
         <name>iddiaimportantenuevo</name>
@@ -3137,8 +3182,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       <field>
         <name>pollutant_value</name>
         <rename>contaminacion</rename>
-        <length>100</length>
-        <precision>4</precision>
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -5629,6 +5672,263 @@ if (!pollutant_value) {
     <GUI>
       <xloc>1472</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>TempExterrna</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var valor = ANCAP1_Temperature_Extern_1;
+
+//idRangoTemperaturaExterna = -1;
+
+if (valor) {
+  var ranges = [
+    { id: 1, desc: 'Baja', min: null, max: 5 },
+    { id: 2, desc: 'Media', min: 5, max: 20 },
+    { id: 3, desc: 'Alta', min: 20, max: 35 },
+    { id: 4, desc: 'Muy Alta', min: 35, max: null }
+  ];
+
+  for (var i = 0; i &lt; ranges.length; i++) {
+    var range = ranges[i];
+    var min = range.min;
+    var max = range.max;
+    var id = range.id;
+    if (min &amp;&amp; max) {
+      if (min &lt;= valor &amp;&amp; valor &lt; max) {
+        idRangoTemperaturaExterna = id;
+      }
+    } else if (min) {
+      if (min &lt;= valor) {
+        idRangoTemperaturaExterna = id;
+      }
+    } else if (max) {
+      if (valor &lt; max) {
+        idRangoTemperaturaExterna = id;
+      }
+    }
+  }
+}
+
+//console.log(idRangoTemperaturaExterna);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>idRangoTemperaturaExterna</name>
+        <rename>idRangoTemperaturaExterna</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3696</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Calculator</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>Y</failIfNoFile>
+    <calculation>
+      <field_name>idRangoRadiacionSolarGlobal</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>-1</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>idRangoHumedadRelativa</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>-1</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>idRangoTemperaturaExterna</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>-1</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>idRangoVientoDireccion</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>-1</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>idRangoVientoVelocidad</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>-1</field_a>
+      <field_b />
+      <field_c />
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3632</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>RadiacionSolarGlobal</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var valor = ANCAP1_Global_Sun_rad_1;
+
+//idRangoRadiacionSolarGlobal = -1;
+
+if (valor) {
+  var ranges = [
+  { id: 1, desc: '&lt; 200', min: null, max: 200 },
+  { id: 2, desc: '200-400', min: 200, max: 400 },
+  { id: 3, desc: '400-600', min: 400, max: 600 },
+  { id: 4, desc: '600-800', min: 600, max: 800 },
+  { id: 5, desc: '800-1000', min: 800, max: 1000 },
+  { id: 6, desc: '>= 1000', min: 1000, max: null }
+  ];
+
+  for (var i = 0; i &lt; ranges.length; i++) {
+    var range = ranges[i];
+    var min = range.min;
+    var max = range.max;
+    var id = range.id;
+    if (min &amp;&amp; max) {
+      if (min &lt;= valor &amp;&amp; valor &lt; max) {
+        idRangoRadiacionSolarGlobal = id;
+      }
+    } else if (min) {
+      if (min &lt;= valor) {
+        idRangoRadiacionSolarGlobal = id;
+      }
+    } else if (max) {
+      if (valor &lt; max) {
+        idRangoRadiacionSolarGlobal = id;
+      }
+    }
+  }
+}
+
+//console.log(idRangoRadiacionSolarGlobal);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>idRangoRadiacionSolarGlobal</name>
+        <rename>idRangoRadiacionSolarGlobal</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3744</xloc>
+      <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

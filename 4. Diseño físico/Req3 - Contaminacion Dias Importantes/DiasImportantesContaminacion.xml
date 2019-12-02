@@ -71,7 +71,7 @@
     <Hierarchy name="TemperaturaExterna" visible="true" hasAll="true">
       <Table name="temperaturaexterna" schema="dw">
       </Table>
-      <Level name="TemperaturaExterna" visible="true" table="temperaturaexterna" column="valorenc" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      <Level name="TemperaturaExterna" visible="true" table="temperaturaexterna" column="idrangotemperaturaexterna" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangotemperaturaexterna">
       </Level>
     </Hierarchy>
   </Dimension>
@@ -108,7 +108,7 @@
     </DimensionUsage>
     <DimensionUsage source="Metodos" level="Metodo" name="Metodos" visible="true" foreignKey="idmetodo" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenc" highCardinality="false">
+    <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="idrangotemperaturaexterna" highCardinality="false">
     </DimensionUsage>
     <DimensionUsage source="DiasImportantes" level="DiaImportante" name="DiasImportantes" visible="true" foreignKey="iddiaimportante" highCardinality="false">
     </DimensionUsage>
