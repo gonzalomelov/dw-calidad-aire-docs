@@ -128,8 +128,8 @@
     https://postgrest.bieccamvd.com
   OK-traefik
     https://traefik.bieccamvd.com
-# -PDI: Install plugins
-  # -PDI GIS
+-Traefik
+  chmod 600 
 -PBI: Install plugins
   -PDI GIS
     wget https://github.com/atolcd/pentaho-gis-plugins/releases/download/v1.2.1/pentaho-gis-plugins-1.2.1-bin-7.zip
@@ -145,8 +145,6 @@
   Local
     scp CargaTiempo.kjb bieccamvd@104.237.5.5:/home/bieccamvd/transformations
     scp CargaTiempo.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
-    scp CargaContaminantesCategorias.kjb bieccamvd@104.237.5.5:/home/bieccamvd/transformations
-    scp CargaContaminantesCategorias.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
     scp CargaMedidaDiasImportantesContaminacion.kjb bieccamvd@104.237.5.5:/home/bieccamvd/transformations
     scp CargaMedidaDiasImportantesContaminacionParent.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
     scp CargaMedidaDiasImportantesContaminacionChild.ktr bieccamvd@104.237.5.5:/home/bieccamvd/transformations
@@ -161,8 +159,6 @@
   Docker host
     docker cp CargaTiempo.kjb bi:/biserver-ce/repository
     docker cp CargaTiempo.ktr bi:/biserver-ce/repository
-    docker cp CargaContaminantesCategorias.kjb bi:/biserver-ce/repository
-    docker cp CargaContaminantesCategorias.ktr bi:/biserver-ce/repository
     docker cp CargaMedidaDiasImportantesContaminacion.kjb bi:/biserver-ce/repository
     docker cp CargaMedidaDiasImportantesContaminacionParent.ktr bi:/biserver-ce/repository
     docker cp CargaMedidaDiasImportantesContaminacionChild.ktr bi:/biserver-ce/repository
@@ -193,6 +189,13 @@
 -Run the following jobs via API
   Measures
       CargaMedidaDiasImportantesContaminacion
+-Generar Saiku connection
+  dw
+  db
+  app
+  5432
+  superuser
+  superuserpass
 -Cargar cubos
   DiasImportantesContaminacion.xml
   Polucion y Generacion Termica.xml
