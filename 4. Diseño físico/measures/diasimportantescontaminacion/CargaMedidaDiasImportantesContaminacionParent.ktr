@@ -494,8 +494,8 @@
       </slaveserver>
       <slaveserver>
         <name>carte.bieccamvd.com</name>
-        <hostname>carte.bieccamvd.com</hostname>
-        <port />
+        <hostname>104.237.5.5</hostname>
+        <port>8080</port>
         <webAppName>pentaho</webAppName>
         <username>admin</username>
         <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
@@ -597,7 +597,7 @@
       <schema_name />
     </partitioning>
     <connection>db</connection>
-    <commit>100</commit>
+    <commit>1000</commit>
     <update_bypassed>N</update_bypassed>
     <lookup>
       <schema>dw</schema>
@@ -771,7 +771,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>688</xloc>
+      <xloc>672</xloc>
       <yloc>272</yloc>
       <draw>Y</draw>
     </GUI>

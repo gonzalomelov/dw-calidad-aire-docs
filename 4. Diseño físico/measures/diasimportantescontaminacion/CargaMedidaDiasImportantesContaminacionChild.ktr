@@ -494,8 +494,8 @@
       </slaveserver>
       <slaveserver>
         <name>carte.bieccamvd.com</name>
-        <hostname>carte.bieccamvd.com</hostname>
-        <port />
+        <hostname>104.237.5.5</hostname>
+        <port>8080</port>
         <webAppName>pentaho</webAppName>
         <username>admin</username>
         <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
@@ -680,18 +680,8 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Select values</from>
-      <to>Replace in string 2 2 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
       <from>Modified Java Script Value 3</from>
       <to>Sort rows 3 3 2</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>Merge Join 4 2</from>
-      <to>If field value is null</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -702,7 +692,7 @@
     <hop>
       <from>Mapping input specification</from>
       <to>Modified JavaScript value 2</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Modified JavaScript value 2</from>
@@ -717,7 +707,7 @@
     <hop>
       <from>Mapping input specification</from>
       <to>Modified JavaScript value 2 3</to>
-      <enabled>Y</enabled>
+      <enabled>N</enabled>
     </hop>
     <hop>
       <from>Contaminantes Categorias</from>
@@ -862,12 +852,12 @@
     <hop>
       <from>Calculator 2</from>
       <to>Modified JavaScript value 2</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Calculator 2</from>
       <to>Modified JavaScript value 2 3</to>
-      <enabled>N</enabled>
+      <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Calculator 2 2 2</from>
@@ -1005,13 +995,28 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>If field value is null</from>
+      <from>Calculator</from>
+      <to>TempExterrna</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Formula 3</from>
       <to>Calculator</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Calculator</from>
-      <to>TempExterrna</to>
+      <from>HumedadRelativa</from>
+      <to>VientoVelocidad</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>If field value is null</from>
+      <to>Formula 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>RadiacionSolarGlobal</from>
+      <to>HumedadRelativa</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
@@ -1020,8 +1025,23 @@
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>RadiacionSolarGlobal</from>
+      <from>VientoVelocidad</from>
+      <to>VientoDireccion</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Merge Join 4 2</from>
+      <to>If field value is null</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>VientoDireccion</from>
       <to>Select Final Values</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values</from>
+      <to>Replace in string 2 2 2</to>
       <enabled>Y</enabled>
     </hop>
   </order>
@@ -1050,7 +1070,6 @@
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1075,7 +1094,6 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>day</field_name>
       <calc_type>DAY_OF_MONTH</calc_type>
@@ -1136,7 +1154,6 @@
       <grouping_symbol />
       <currency_symbol />
     </calculation>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1223,7 +1240,6 @@ seasonName = seasons[season-1];</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1248,7 +1264,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>carte</field_name>
       <calc_type>CONSTANT</calc_type>
@@ -1294,7 +1309,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <grouping_symbol />
       <currency_symbol />
     </calculation>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1319,7 +1333,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <failIfNoFile>N</failIfNoFile>
     <calculation>
       <field_name>pollutant_value</field_name>
       <calc_type>ROUND_1</calc_type>
@@ -1335,7 +1348,6 @@ seasonName = seasons[season-1];</jsScript_script>
       <grouping_symbol />
       <currency_symbol />
     </calculation>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1380,7 +1392,6 @@ order by nomcontaminante asc;</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>Y</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1417,7 +1428,6 @@ FROM dw.contaminantescategorias
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1442,7 +1452,6 @@ FROM dw.contaminantescategorias
       <method>none</method>
       <schema_name />
     </partitioning>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1467,7 +1476,6 @@ FROM dw.contaminantescategorias
       <method>none</method>
       <schema_name />
     </partitioning>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1500,7 +1508,6 @@ FROM dw.estacionesdelared;</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1742,7 +1749,6 @@ FROM dw.estacionesdelared;</sql>
     <extensionFieldName />
     <sizeFieldName />
     <spreadsheet_type>POI</spreadsheet_type>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1776,7 +1782,6 @@ WHERE anio = 2017;</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1811,7 +1816,6 @@ WHERE anio = 2017;</sql>
         <rightvalue />
       </condition>
     </compare>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1994,7 +1998,6 @@ WHERE anio = 2017;</sql>
         </conditions>
       </condition>
     </compare>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2003,8 +2006,8 @@ WHERE anio = 2017;</sql>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3024</xloc>
-      <yloc>176</yloc>
+      <xloc>2432</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2024,12 +2027,51 @@ WHERE anio = 2017;</sql>
     <compare>
       <condition>
         <negated>N</negated>
-        <leftvalue>contaminacion</leftvalue>
-        <function>IS NOT NULL</function>
-        <rightvalue />
+        <conditions>
+          <condition>
+            <negated>N</negated>
+            <leftvalue>contaminacion</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>idRangoRadiacionSolarGlobal</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>idRangoHumedadRelativa</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>idRangoVientoDireccion</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>idRangoVientoVelocidad</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+          <condition>
+            <negated>N</negated>
+            <operator>AND</operator>
+            <leftvalue>idRangoTemperaturaExterna</leftvalue>
+            <function>IS NOT NULL</function>
+            <rightvalue />
+          </condition>
+        </conditions>
       </condition>
     </compare>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2062,7 +2104,6 @@ WHERE anio = 2017;</sql>
       <value_precision>-1</value_precision>
       <replace_field />
     </formula>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2103,7 +2144,6 @@ WHERE anio = 2017;</sql>
       <value_precision>-1</value_precision>
       <replace_field>date</replace_field>
     </formula>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2166,7 +2206,6 @@ WHERE anio = 2017;</sql>
         <trim_type>none</trim_type>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2224,7 +2263,6 @@ WHERE anio = 2017;</sql>
         <valuefield />
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2258,7 +2296,6 @@ where idhora &lt;&gt; -1;</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2269,70 +2306,6 @@ where idhora &lt;&gt; -1;</sql>
     <GUI>
       <xloc>880</xloc>
       <yloc>336</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>If field value is null</name>
-    <type>IfNull</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <replaceAllByValue />
-    <replaceAllMask />
-    <selectFields>Y</selectFields>
-    <selectValuesType>N</selectValuesType>
-    <setEmptyStringAll>N</setEmptyStringAll>
-    <valuetypes>
-      </valuetypes>
-    <fields>
-      <field>
-        <name>ANCAP1_Global_Sun_rad_1</name>
-        <value>-1</value>
-        <mask />
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>ANCAP1_Relative_Humidity_1</name>
-        <value>-1</value>
-        <mask />
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>ANCAP1_Temperature_Extern_1</name>
-        <value>-1</value>
-        <mask />
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>ANCAP1_Wind_Direction_1</name>
-        <value>-1</value>
-        <mask />
-        <set_empty_string>N</set_empty_string>
-      </field>
-      <field>
-        <name>ANCAP1_Wind_Speed_1</name>
-        <value>-1</value>
-        <mask />
-        <set_empty_string>N</set_empty_string>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>3728</xloc>
-      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2359,7 +2332,6 @@ where idhora &lt;&gt; -1;</sql>
         <rightvalue />
       </condition>
     </compare>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2396,7 +2368,6 @@ where idhora &lt;&gt; -1;</sql>
         <rightvalue />
       </condition>
     </compare>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2436,7 +2407,6 @@ where idhora &lt;&gt; -1;</sql>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2461,7 +2431,6 @@ where idhora &lt;&gt; -1;</sql>
       <method>none</method>
       <schema_name />
     </partitioning>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2495,7 +2464,6 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>nomestaciondelared</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2529,7 +2497,6 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>date</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2565,7 +2532,6 @@ where idhora &lt;&gt; -1;</sql>
       <key>to_date</key>
       <key>idhora</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2599,7 +2565,6 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>nomcontaminante</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2633,7 +2598,6 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>fecha_with_hours</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2643,6 +2607,41 @@ where idhora &lt;&gt; -1;</sql>
     </remotesteps>
     <GUI>
       <xloc>3616</xloc>
+      <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Merge Join 4 3</name>
+    <type>MergeJoin</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <join_type>LEFT OUTER</join_type>
+    <step1>Sort rows 7</step1>
+    <step2>Sort rows 6</step2>
+    <keys_1>
+      <key>idcontaminante</key>
+      <key>descRangoContaminantesCategorias</key>
+    </keys_1>
+    <keys_2>
+      <key>idcontaminante</key>
+      <key>descrangocontaminantescategorias</key>
+    </keys_2>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1792</xloc>
       <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
@@ -2667,7 +2666,6 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>nommetodo</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2701,7 +2699,6 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>iddiasemana</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2735,7 +2732,6 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>idestaciondelanio</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2769,7 +2765,6 @@ where idhora &lt;&gt; -1;</sql>
     <keys_2>
       <key>idfecha</key>
     </keys_2>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2803,7 +2798,6 @@ ORDER BY nommetodo;</sql>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2858,7 +2852,6 @@ var idFechaHora = idFecha + idHora</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2905,7 +2898,6 @@ if (pollutant_value == 'NA') {
         <replace>Y</replace>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2955,7 +2947,6 @@ if (!iddiaimportante) {
         <replace>N</replace>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -2966,6 +2957,65 @@ if (!iddiaimportante) {
     <GUI>
       <xloc>3392</xloc>
       <yloc>256</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+var descRangoContaminantesCategorias;
+if (!pollutant_value) {
+  descRangoContaminantesCategorias = 'ND';
+} else if (0 &lt;= pollutant_value &amp;&amp; pollutant_value &lt;= muybuena) {
+  descRangoContaminantesCategorias = 'MUY BUENA';
+} else if (muybuena &lt; pollutant_value &amp;&amp; pollutant_value &lt;= buena) {
+  descRangoContaminantesCategorias = 'BUENA';
+} else if (buena &lt; pollutant_value &amp;&amp; pollutant_value &lt;= aceptable) {
+  descRangoContaminantesCategorias = 'ACEPTABLE';
+} else if (aceptable &lt; pollutant_value &amp;&amp; pollutant_value &lt;= inadecuada) {
+  descRangoContaminantesCategorias = 'INADECUADA';
+} else if (inadecuada &lt; pollutant_value &amp;&amp; pollutant_value &lt;= mala) {
+  descRangoContaminantesCategorias = 'MALA';
+} else if (mala &lt; pollutant_value) {
+  descRangoContaminantesCategorias = 'MUY MALA';
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>descRangoContaminantesCategorias</name>
+        <rename>descRangoContaminantesCategorias</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1680</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2993,7 +3043,6 @@ filenamedatosmeteorologicos = decodeURI(filenamedatosmeteorologicos);
       </jsScript>
     </jsScripts>
     <fields>    </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3058,7 +3107,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <replace>N</replace>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3094,10 +3142,8 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <replace_field_by_string />
         <whole_word>no</whole_word>
         <case_sensitive>no</case_sensitive>
-        <is_unicode>no</is_unicode>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3125,19 +3171,15 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>idhora</name>
-        <rename />
       </field>
       <field>
         <name>idestaciondelanio</name>
-        <rename />
       </field>
       <field>
         <name>iddiasemana</name>
-        <rename />
       </field>
       <field>
         <name>idfecha</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
@@ -3145,35 +3187,27 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </field>
       <field>
         <name>idmetodo</name>
-        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
-        <rename />
       </field>
       <field>
         <name>surrogatekey</name>
-        <rename />
       </field>
       <field>
         <name>idRangoRadiacionSolarGlobal</name>
-        <rename />
       </field>
       <field>
         <name>idRangoHumedadRelativa</name>
-        <rename />
       </field>
       <field>
         <name>idRangoVientoDireccion</name>
-        <rename />
       </field>
       <field>
         <name>idRangoVientoVelocidad</name>
-        <rename />
       </field>
       <field>
         <name>idRangoTemperaturaExterna</name>
-        <rename />
       </field>
       <field>
         <name>iddiaimportantenuevo</name>
@@ -3321,7 +3355,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3609,7 +3642,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3618,8 +3650,8 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3184</xloc>
-      <yloc>176</yloc>
+      <xloc>2528</xloc>
+      <yloc>48</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -3679,7 +3711,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3752,7 +3783,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3797,7 +3827,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3860,7 +3889,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -3957,7 +3985,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4060,7 +4087,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4105,7 +4131,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4150,7 +4175,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4195,7 +4219,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <storage_type />
       </meta>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4232,7 +4255,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4260,55 +4282,42 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>date</name>
-        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
-        <rename />
       </field>
       <field>
         <name>method_id</name>
-        <rename />
       </field>
       <field>
         <name>idhora</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
-        <rename />
       </field>
       <field>
         <name>muybuena</name>
-        <rename />
       </field>
       <field>
         <name>buena</name>
-        <rename />
       </field>
       <field>
         <name>aceptable</name>
-        <rename />
       </field>
       <field>
         <name>inadecuada</name>
-        <rename />
       </field>
       <field>
         <name>mala</name>
-        <rename />
       </field>
       <field>
         <name>descRangoContaminantesCategorias</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4336,35 +4345,27 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <fields>
       <field>
         <name>date</name>
-        <rename />
       </field>
       <field>
         <name>idcontaminante</name>
-        <rename />
       </field>
       <field>
         <name>surrogatekey</name>
-        <rename />
       </field>
       <field>
         <name>ID_estacion</name>
-        <rename />
       </field>
       <field>
         <name>method_id</name>
-        <rename />
       </field>
       <field>
         <name>idhora</name>
-        <rename />
       </field>
       <field>
         <name>pollutant_value</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4413,7 +4414,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4462,7 +4462,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4529,7 +4528,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
       </field>
       <select_unspecified>N</select_unspecified>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4571,7 +4569,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4613,7 +4610,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4655,7 +4651,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4697,7 +4692,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4739,7 +4733,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4781,7 +4774,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4855,7 +4847,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4897,7 +4888,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4939,7 +4929,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -4981,7 +4970,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5031,7 +5019,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5081,7 +5068,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5123,7 +5109,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5173,7 +5158,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5223,7 +5207,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <presorted>N</presorted>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5234,6 +5217,45 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <GUI>
       <xloc>1072</xloc>
       <yloc>320</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>String operations</name>
+    <type>StringOperations</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <in_stream_name>pollutant_id</in_stream_name>
+        <out_stream_name />
+        <trim_type>both</trim_type>
+        <lower_upper>none</lower_upper>
+        <padding_type>none</padding_type>
+        <pad_char />
+        <pad_len />
+        <init_cap>no</init_cap>
+        <mask_xml>none</mask_xml>
+        <digits>none</digits>
+        <remove_special_characters>none</remove_special_characters>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>256</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5268,7 +5290,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <cut_to>10</cut_to>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5429,7 +5450,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
         <trim_type>none</trim_type>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5461,7 +5481,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5493,7 +5512,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5525,7 +5543,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     <execute_each_row>N</execute_each_row>
     <variables_active>N</variables_active>
     <lazy_conversion_active>N</lazy_conversion_active>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5540,219 +5557,6 @@ var innomidestaciondelared = 'UYMVD_E8'</jsScript_script>
     </GUI>
   </step>
   <step>
-    <name>Merge Join 4 3</name>
-    <type>MergeJoin</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <join_type>LEFT OUTER</join_type>
-    <step1>Sort rows 7</step1>
-    <step2>Sort rows 6</step2>
-    <keys_1>
-      <key>idcontaminante</key>
-      <key>descRangoContaminantesCategorias</key>
-    </keys_1>
-    <keys_2>
-      <key>idcontaminante</key>
-      <key>descrangocontaminantescategorias</key>
-    </keys_2>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1792</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified JavaScript value</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-var descRangoContaminantesCategorias;
-if (!pollutant_value) {
-  descRangoContaminantesCategorias = 'ND';
-} else if (0 &lt;= pollutant_value &amp;&amp; pollutant_value &lt;= muybuena) {
-  descRangoContaminantesCategorias = 'MUY BUENA';
-} else if (muybuena &lt; pollutant_value &amp;&amp; pollutant_value &lt;= buena) {
-  descRangoContaminantesCategorias = 'BUENA';
-} else if (buena &lt; pollutant_value &amp;&amp; pollutant_value &lt;= aceptable) {
-  descRangoContaminantesCategorias = 'ACEPTABLE';
-} else if (aceptable &lt; pollutant_value &amp;&amp; pollutant_value &lt;= inadecuada) {
-  descRangoContaminantesCategorias = 'INADECUADA';
-} else if (inadecuada &lt; pollutant_value &amp;&amp; pollutant_value &lt;= mala) {
-  descRangoContaminantesCategorias = 'MALA';
-} else if (mala &lt; pollutant_value) {
-  descRangoContaminantesCategorias = 'MUY MALA';
-}</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>descRangoContaminantesCategorias</name>
-        <rename>descRangoContaminantesCategorias</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1680</xloc>
-      <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>String operations</name>
-    <type>StringOperations</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <in_stream_name>pollutant_id</in_stream_name>
-        <out_stream_name />
-        <trim_type>both</trim_type>
-        <lower_upper>none</lower_upper>
-        <padding_type>none</padding_type>
-        <pad_char />
-        <pad_len />
-        <init_cap>no</init_cap>
-        <mask_xml>none</mask_xml>
-        <digits>none</digits>
-        <remove_special_characters>none</remove_special_characters>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1472</xloc>
-      <yloc>256</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>TempExterrna</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var valor = ANCAP1_Temperature_Extern_1;
-
-//idRangoTemperaturaExterna = -1;
-
-if (valor) {
-  var ranges = [
-    { id: 1, desc: 'Baja', min: null, max: 5 },
-    { id: 2, desc: 'Media', min: 5, max: 20 },
-    { id: 3, desc: 'Alta', min: 20, max: 35 },
-    { id: 4, desc: 'Muy Alta', min: 35, max: null }
-  ];
-
-  for (var i = 0; i &lt; ranges.length; i++) {
-    var range = ranges[i];
-    var min = range.min;
-    var max = range.max;
-    var id = range.id;
-    if (min &amp;&amp; max) {
-      if (min &lt;= valor &amp;&amp; valor &lt; max) {
-        idRangoTemperaturaExterna = id;
-      }
-    } else if (min) {
-      if (min &lt;= valor) {
-        idRangoTemperaturaExterna = id;
-      }
-    } else if (max) {
-      if (valor &lt; max) {
-        idRangoTemperaturaExterna = id;
-      }
-    }
-  }
-}
-
-//console.log(idRangoTemperaturaExterna);</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>idRangoTemperaturaExterna</name>
-        <rename>idRangoTemperaturaExterna</rename>
-        <type>Integer</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>3696</xloc>
-      <yloc>64</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Calculator</name>
     <type>Calculator</type>
     <description />
@@ -5763,7 +5567,6 @@ if (valor) {
       <method>none</method>
       <schema_name />
     </partitioning>
-    <failIfNoFile>Y</failIfNoFile>
     <calculation>
       <field_name>idRangoRadiacionSolarGlobal</field_name>
       <calc_type>CONSTANT</calc_type>
@@ -5839,7 +5642,38 @@ if (valor) {
       <grouping_symbol />
       <currency_symbol />
     </calculation>
-    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3712</xloc>
+      <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Formula 3</name>
+    <type>Formula</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <formula>
+      <field_name>ANCAP1_Wind_Speed_1</field_name>
+      <formula_string>[ANCAP1_Wind_Speed_1]*3.6</formula_string>
+      <value_type>Number</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field>ANCAP1_Wind_Speed_1</replace_field>
+    </formula>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5850,6 +5684,144 @@ if (valor) {
     <GUI>
       <xloc>3632</xloc>
       <yloc>112</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>HumedadRelativa</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var valor = ANCAP1_Relative_Humidity_1;
+
+//idRangoHumedadRelativa = -1;
+
+if (valor) {
+  var ranges = [
+  { id: 1, desc: 'Baja: (0-40)', min: 0, max: 40 },
+  { id: 2, desc: 'Media: (40-70)', min: 40, max: 70 },
+  { id: 3, desc: 'Alta: (70-100)', min: 70, max: 100 }
+  ];
+
+  for (var i = 0; i &lt; ranges.length; i++) {
+    var range = ranges[i];
+    var min = range.min;
+    var max = range.max;
+    var id = range.id;
+    if (min &amp;&amp; max) {
+      if (min &lt;= valor &amp;&amp; valor &lt; max) {
+        idRangoHumedadRelativa = id;
+      }
+    } else if (min) {
+      if (min &lt;= valor) {
+        idRangoHumedadRelativa = id;
+      }
+    } else if (max) {
+      if (valor &lt; max) {
+        idRangoHumedadRelativa = id;
+      }
+    }
+  }
+}
+
+//console.log(idRangoHumedadRelativa);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>idRangoHumedadRelativa</name>
+        <rename>idRangoHumedadRelativa</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3872</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>If field value is null</name>
+    <type>IfNull</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <replaceAllByValue />
+    <replaceAllMask />
+    <selectFields>Y</selectFields>
+    <selectValuesType>N</selectValuesType>
+    <setEmptyStringAll>N</setEmptyStringAll>
+    <valuetypes>
+      </valuetypes>
+    <fields>
+      <field>
+        <name>ANCAP1_Global_Sun_rad_1</name>
+        <value>-1</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>ANCAP1_Relative_Humidity_1</name>
+        <value>-1</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>ANCAP1_Temperature_Extern_1</name>
+        <value>-1</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>ANCAP1_Wind_Direction_1</name>
+        <value>-1</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+      <field>
+        <name>ANCAP1_Wind_Speed_1</name>
+        <value>-1</value>
+        <mask />
+        <set_empty_string>N</set_empty_string>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3568</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -5918,7 +5890,6 @@ if (valor) {
         <replace>Y</replace>
       </field>
     </fields>
-    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -5927,7 +5898,254 @@ if (valor) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>3744</xloc>
+      <xloc>3824</xloc>
+      <yloc>128</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>TempExterrna</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var valor = ANCAP1_Temperature_Extern_1;
+
+//idRangoTemperaturaExterna = -1;
+
+if (valor) {
+  var ranges = [
+    { id: 1, desc: 'Baja', min: null, max: 5 },
+    { id: 2, desc: 'Media', min: 5, max: 20 },
+    { id: 3, desc: 'Alta', min: 20, max: 35 },
+    { id: 4, desc: 'Muy Alta', min: 35, max: null }
+  ];
+
+  for (var i = 0; i &lt; ranges.length; i++) {
+    var range = ranges[i];
+    var min = range.min;
+    var max = range.max;
+    var id = range.id;
+    if (min &amp;&amp; max) {
+      if (min &lt;= valor &amp;&amp; valor &lt; max) {
+        idRangoTemperaturaExterna = id;
+      }
+    } else if (min) {
+      if (min &lt;= valor) {
+        idRangoTemperaturaExterna = id;
+      }
+    } else if (max) {
+      if (valor &lt; max) {
+        idRangoTemperaturaExterna = id;
+      }
+    }
+  }
+}
+
+//console.log(idRangoTemperaturaExterna);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>idRangoTemperaturaExterna</name>
+        <rename>idRangoTemperaturaExterna</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3776</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>VientoDireccion</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var valor = ANCAP1_Wind_Direction_1;
+
+//idRangoVientoDireccion = -1;
+
+if (valor) {
+  var ranges = [
+  { id: 1, desc: 'N (337.5° a 22.5°)', min: 337.5, max: 22.5 },
+  { id: 2, desc: 'NE (22.5° a 67.5°)', min: 22.5, max: 67.5 },
+  { id: 3, desc: 'E (67.5° a 112.5°)', min: 67.5, max: 112.5 },
+  { id: 4, desc: 'SE (112.5° a 157.5°)', min: 112.5, max: 157.5 },
+  { id: 5, desc: 'S (157.5° a 202.5°)', min: 157.5, max: 202.5 },
+  { id: 6, desc: 'SW (202.5° a 247.5°)', min: 202.5, max: 247.5 },
+  { id: 7, desc: 'W (247.5° a 292.5°)', min: 247.5, max: 292.5 },
+  { id: 8, desc: 'NW (292.5° a 337.5°)', min: 292.5, max: 337.5 }
+  ];
+
+  for (var i = 0; i &lt; ranges.length; i++) {
+    var range = ranges[i];
+    var min = range.min;
+    var max = range.max;
+    var id = range.id;
+    if (min &amp;&amp; max) {
+      if (min > max) {
+        if (min &lt;= valor &amp;&amp; valor &lt;= 360 || 0 &lt;= valor &lt; max) {
+          idRangoVientoDireccion = id;
+        }
+      } else {
+        if (min &lt;= valor &amp;&amp; valor &lt; max) {
+          idRangoVientoDireccion = id;
+        }
+      }
+    } else if (min) {
+      if (min &lt;= valor) {
+        idRangoVientoDireccion = id;
+      }
+    } else if (max) {
+      if (valor &lt; max) {
+        idRangoVientoDireccion = id;
+      }
+    }
+  }
+}
+
+//console.log(idRangoVientoDireccion);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>idRangoVientoDireccion</name>
+        <rename>idRangoVientoDireccion</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>4016</xloc>
+      <yloc>64</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>VientoVelocidad</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var valor = ANCAP1_Wind_Speed_1;
+
+//idRangoVientoVelocidad = -1;
+
+if (valor) {
+  var ranges = [
+	{ id: 0, desc: 'Calma (0 a 2 km/h)', min: 0, max: 2 },
+	{ id: 1, desc: 'Ventolina (2 a 6 km/h)', min: 2, max: 6 },
+	{ id: 2, desc: 'Brisa muy débil (6 a 12 km/h)', min: 6, max: 12 },
+	{ id: 3, desc: 'Brisa ligera (12 a 20 km/h)', min: 12, max: 20 },
+	{ id: 4, desc: 'Brisa moderada (20 a 29 km/h)', min: 20, max: 29 },
+	{ id: 5, desc: 'Brisa fresca (29 a 39 km/h)', min: 29, max: 39 },
+	{ id: 6, desc: 'Brisa fuerte (39 a 50 km/h)', min: 39, max: 50 },
+	{ id: 7, desc: 'Viento fuerte (50 a 62 km/h)', min: 50, max: 62 },
+	{ id: 8, desc: 'Viento duro (62 a 75 km/h)', min: 62, max: 75 },
+	{ id: 9, desc: 'Viento muy duro (75 a 89 km/h)', min: 75, max: 89 },
+	{ id: 10, desc: 'Temporal (89 a 103 km/h)', min: 89, max: 103 },
+	{ id: 11, desc: 'Borrasca (103 a 118 km/h)', min: 103, max: 118 },
+	{ id: 12, desc: 'Haracán (> 118 km/h)', min: 118, max: null }
+  ];
+
+  for (var i = 0; i &lt; ranges.length; i++) {
+    var range = ranges[i];
+    var min = range.min;
+    var max = range.max;
+    var id = range.id;
+    if (min &amp;&amp; max) {
+      if (min &lt;= valor &amp;&amp; valor &lt; max) {
+        idRangoVientoVelocidad = id;
+      }
+    } else if (min) {
+      if (min &lt;= valor) {
+        idRangoVientoVelocidad = id;
+      }
+    } else if (max) {
+      if (valor &lt; max) {
+        idRangoVientoVelocidad = id;
+      }
+    }
+  }
+}
+
+//console.log(idRangoVientoVelocidad);</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>idRangoVientoVelocidad</name>
+        <rename>idRangoVientoVelocidad</rename>
+        <type>Integer</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>Y</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>3936</xloc>
       <yloc>128</yloc>
       <draw>Y</draw>
     </GUI>
@@ -5973,5 +6191,4 @@ if (valor) {
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
-  <attributes />
 </transformation>
