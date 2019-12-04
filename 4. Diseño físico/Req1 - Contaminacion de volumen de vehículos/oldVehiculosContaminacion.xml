@@ -1,0 +1,116 @@
+<Schema name="VehiculosContaminacion3">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Fechas">
+    <Hierarchy name="Fechas" visible="true" hasAll="true">
+      <Table name="fechas" schema="dw">
+      </Table>
+      <Level name="Anio" visible="true" table="fechas" column="anio" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+      <Level name="Mes" visible="true" table="fechas" column="idmes" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="mes">
+      </Level>
+      <Level name="Fecha" visible="true" table="fechas" column="idfecha" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Contaminantes">
+    <Hierarchy name="Contaminantes" visible="true" hasAll="true">
+      <Table name="contaminantes" schema="dw">
+      </Table>
+      <Level name="Tipo" visible="true" table="contaminantes" column="idtipo" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomtipo">
+      </Level>
+      <Level name="Subtipo" visible="true" table="contaminantes" column="idsubtipo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomsubtipo">
+      </Level>
+      <Level name="Contaminante" visible="true" table="contaminantes" column="idcontaminante" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomcontaminante">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesDeLaRed">
+    <Hierarchy name="EstacionesDeLaRed" visible="true" hasAll="true">
+      <Table name="estacionesdelared" schema="dw">
+      </Table>
+      <Level name="CCZ" visible="true" table="estacionesdelared" column="idccz" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomccz">
+      </Level>
+      <Level name="Barrio" visible="true" table="estacionesdelared" column="idbarrio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nombarrio">
+      </Level>
+      <Level name="EstacionDeLaRed" visible="true" table="estacionesdelared" column="nomestaciondelared" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelared">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Camaras">
+    <Hierarchy name="Camaras" visible="true" hasAll="true">
+      <Table name="camaras" schema="dw">
+      </Table>
+      <Level name="Camara" visible="true" table="camaras" column="iddetector" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="dscubicacion">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="DiasSemana">
+    <Hierarchy name="DiasSemana" visible="true" hasAll="true">
+      <Table name="diassemana" schema="dw">
+      </Table>
+      <Level name="DiaSemana" visible="true" table="diassemana" column="iddiasemana" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomdiasemana">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="EstacionesDelAnio">
+    <Hierarchy name="EstacionesDelAnio" visible="true" hasAll="true">
+      <Table name="estacionesdelanio" schema="dw">
+      </Table>
+      <Level name="EstacionDelAnio" visible="true" table="estacionesdelanio" column="idestaciondelanio" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nomestaciondelanio">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Horas">
+    <Hierarchy name="Horas" visible="true" hasAll="true">
+      <Table name="horas" schema="dw">
+      </Table>
+      <Level name="RangoHoras" visible="true" table="horas" column="idrangohoras" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangohoras">
+      </Level>
+      <Level name="Hora" visible="true" table="horas" column="idhora" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="hora">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Metodos">
+    <Hierarchy name="Metodos" visible="true" hasAll="true">
+      <Table name="metodos" schema="dw">
+      </Table>
+      <Level name="Metodo" visible="true" table="metodos" column="idmetodo" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="nommetodo">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="TemperaturaExterna">
+    <Hierarchy name="TemperaturaExterna" visible="true" hasAll="true">
+      <Table name="temperaturaexterna" schema="dw">
+      </Table>
+      <Level name="TemperaturaExterna" visible="true" table="temperaturaexterna" column="valorenc" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="Contaminacion y Volumen Autos Final" visible="true" cache="true" enabled="true">
+    <Table name="mediciones" schema="dw">
+    </Table>
+    <DimensionUsage source="Fechas" level="Fecha" name="Fechas" visible="true" foreignKey="idfecha" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Contaminantes" level="Contaminante" name="Contaminantes" visible="true" foreignKey="idcontaminante" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="nomestacionDeLaRed" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Camaras" level="Camara" name="Camaras" visible="true" foreignKey="iddetector" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="DiasSemana" level="DiaSemana" name="DiasSemana" visible="true" foreignKey="iddiasemana" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="EstacionesDelAnio" level="EstacionDelAnio" name="EstacionesDelAnio" visible="true" foreignKey="idestaciondelanio" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Horas" level="Hora" name="Horas" visible="true" foreignKey="idhora" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Metodos" level="Metodo" name="Metodos" visible="true" foreignKey="idmetodo" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenctemperaturaexterna" highCardinality="false">
+    </DimensionUsage>
+    <Measure name="Contaminacion Promedio" column="contaminacion" datatype="Numeric" aggregator="avg" visible="true">
+    </Measure>
+    <Measure name="Volumen Vehicular Promedio" column="volumenvehiculos" datatype="Numeric" aggregator="avg" visible="true">
+    </Measure>
+    <Measure name="Contador" aggregator="count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
