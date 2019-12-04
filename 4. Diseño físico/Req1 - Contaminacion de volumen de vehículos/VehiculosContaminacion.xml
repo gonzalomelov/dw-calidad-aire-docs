@@ -5,7 +5,7 @@
       </Table>
       <Level name="Anio" visible="true" table="fechas" column="anio" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
       </Level>
-      <Level name="Mes" visible="true" table="fechas" column="idmes" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="mes">
+      <Level name="Mes" visible="true" table="fechas" column="idmes" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="mes">
       </Level>
       <Level name="Fecha" visible="true" table="fechas" column="idfecha" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
       </Level>
@@ -35,14 +35,6 @@
       </Level>
     </Hierarchy>
   </Dimension>
-  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="Camaras">
-    <Hierarchy name="Camaras" visible="true" hasAll="true">
-      <Table name="camaras" schema="dw">
-      </Table>
-      <Level name="Camara" visible="true" table="camaras" column="iddetector" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="dscubicacion">
-      </Level>
-    </Hierarchy>
-  </Dimension>
   <Dimension type="StandardDimension" visible="true" highCardinality="false" name="DiasSemana">
     <Hierarchy name="DiasSemana" visible="true" hasAll="true">
       <Table name="diassemana" schema="dw">
@@ -63,8 +55,6 @@
     <Hierarchy name="Horas" visible="true" hasAll="true">
       <Table name="horas" schema="dw">
       </Table>
-      <Level name="RangoHoras" visible="true" table="horas" column="idrangohoras" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangohoras">
-      </Level>
       <Level name="Hora" visible="true" table="horas" column="idhora" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="hora">
       </Level>
     </Hierarchy>
@@ -81,20 +71,66 @@
     <Hierarchy name="TemperaturaExterna" visible="true" hasAll="true">
       <Table name="temperaturaexterna" schema="dw">
       </Table>
-      <Level name="TemperaturaExterna" visible="true" table="temperaturaexterna" column="valorenc" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+      <Level name="TemperaturaExterna" visible="true" table="temperaturaexterna" column="idrangotemperaturaexterna" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangotemperaturaexterna">
       </Level>
     </Hierarchy>
   </Dimension>
-  <Cube name="Contaminacion y Volumen Autos Final" visible="true" cache="true" enabled="true">
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="ContaminantesCategorias">
+    <Hierarchy name="ContaminantesCategorias" visible="true" hasAll="true">
+      <Table name="contaminantescategorias" schema="dw">
+      </Table>
+      <Level name="ContaminanteCategoria" visible="true" table="contaminantescategorias" column="surrogatekey" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangocontaminantescategorias">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="HumedadRelativa">
+    <Hierarchy name="HumedadRelativa" visible="true" hasAll="true">
+      <Table name="humedadrelativa" schema="dw">
+      </Table>
+      <Level name="HumedadRelativa" visible="true" table="humedadrelativa" column="idrangohumedadrelativa" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangohumedadrelativa">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="RadiacionSolarGlobal">
+    <Hierarchy name="RadiacionSolarGlobal" visible="true" hasAll="true">
+      <Table name="radiacionsolarglobal" schema="dw">
+      </Table>
+      <Level name="RadiacionSolarGlobal" visible="true" table="radiacionsolarglobal" column="idrangoradiacionsolarglobal" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangoradiacionsolarglobal">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="VientoDireccion">
+    <Hierarchy name="VientoDireccion" visible="true" hasAll="true">
+      <Table name="vientodireccion" schema="dw">
+      </Table>
+      <Level name="VientoDireccion" visible="true" table="vientodireccion" column="idrangovientodireccion" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangovientodireccion">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" highCardinality="false" name="VientoVelocidad">
+    <Hierarchy name="VientoVelocidad" visible="true" hasAll="true">
+      <Table name="vientovelocidad" schema="dw">
+      </Table>
+      <Level name="VientoVelocidad" visible="true" table="vientovelocidad" column="idrangovientovelocidad" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="descrangovientovelocidad">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="Camaras">
+    <Hierarchy name="Camaras" visible="true" hasAll="true">
+      <Table name="camaras" schema="dw" alias="">
+      </Table>
+      <Level name="Camara" visible="true" table="camaras" column="iddetector" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never" captionColumn="dscubicacion">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="VehiculosContaminacion3" visible="true" cache="true" enabled="true">
     <Table name="mediciones" schema="dw">
     </Table>
     <DimensionUsage source="Fechas" level="Fecha" name="Fechas" visible="true" foreignKey="idfecha" highCardinality="false">
     </DimensionUsage>
     <DimensionUsage source="Contaminantes" level="Contaminante" name="Contaminantes" visible="true" foreignKey="idcontaminante" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="nomestacionDeLaRed" highCardinality="false">
-    </DimensionUsage>
-    <DimensionUsage source="Camaras" level="Camara" name="Camaras" visible="true" foreignKey="iddetector" highCardinality="false">
+    <DimensionUsage source="EstacionesDeLaRed" level="EstacionDeLaRed" name="EstacionesDeLaRed" visible="true" foreignKey="nomestaciondelared" highCardinality="false">
     </DimensionUsage>
     <DimensionUsage source="DiasSemana" level="DiaSemana" name="DiasSemana" visible="true" foreignKey="iddiasemana" highCardinality="false">
     </DimensionUsage>
@@ -104,13 +140,25 @@
     </DimensionUsage>
     <DimensionUsage source="Metodos" level="Metodo" name="Metodos" visible="true" foreignKey="idmetodo" highCardinality="false">
     </DimensionUsage>
-    <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="valorenctemperaturaexterna" highCardinality="false">
+    <DimensionUsage source="TemperaturaExterna" level="TemperaturaExterna" name="TemperaturaExterna" visible="true" foreignKey="idrangotemperaturaexterna" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="ContaminantesCategorias" level="ContaminanteCategoria" name="ContaminantesCategorias" visible="true" foreignKey="surrogatekey" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="HumedadRelativa" level="HumedadRelativa" name="HumedadRelativa" visible="true" foreignKey="idrangohumedadrelativa" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="RadiacionSolarGlobal" level="RadiacionSolarGlobal" name="RadiacionSolarGlobal" visible="true" foreignKey="idrangoradiacionsolarglobal" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="VientoDireccion" level="VientoDireccion" name="VientoDireccion" visible="true" foreignKey="idrangovientodireccion" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="VientoVelocidad" level="VientoVelocidad" name="VientoVelocidad" visible="true" foreignKey="idrangovientovelocidad" highCardinality="false">
+    </DimensionUsage>
+    <DimensionUsage source="Camaras" level="Camara" name="Camara" visible="true" foreignKey="iddetector">
     </DimensionUsage>
     <Measure name="Contaminacion Promedio" column="contaminacion" datatype="Numeric" aggregator="avg" visible="true">
     </Measure>
-    <Measure name="Volumen Vehicular Promedio" column="volumenvehiculos" datatype="Numeric" aggregator="avg" visible="true">
+    <Measure name="Contador" column="surrogatekey" aggregator="count" visible="true">
     </Measure>
-    <Measure name="Contador" aggregator="count" visible="true">
+    <Measure name="ConteoVehicular" column="volumenvehiculos" aggregator="sum" visible="true">
     </Measure>
   </Cube>
 </Schema>
