@@ -628,8 +628,8 @@
     </hop>
   </order>
   <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
+    <name>Actualizar en tabla Camaras</name>
+    <type>InsertUpdate</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -638,6 +638,55 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <connection>db</connection>
+    <commit>1000</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>data</schema>
+      <table>camaras</table>
+      <key>
+        <name>id_detector</name>
+        <field>iddetector</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>iddetector</name>
+        <rename>id_detector</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>idcarril</name>
+        <rename>id_carril</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>dscavenida</name>
+        <rename>dsc_avenida</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>dscintanterior</name>
+        <rename>dsc_int_anterior</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>dscintsiguiente</name>
+        <rename>dsc_int_siguiente</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>dscubicacion</name>
+        <rename>dsc_ubicacion</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>ubiccamara</name>
+        <rename>new_geometry</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -646,149 +695,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>1680</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Calculator 2</name>
-    <type>Calculator</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <calculation>
-      <field_name>carte</field_name>
-      <calc_type>CONSTANT</calc_type>
-      <field_a>/Carte/</field_a>
-      <field_b />
-      <field_c />
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <calculation>
-      <field_name>filenameconteovehicular</field_name>
-      <calc_type>ADD3</calc_type>
-      <field_a>user_home</field_a>
-      <field_b>carte</field_b>
-      <field_c>fileconteovehicular</field_c>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <remove>N</remove>
-      <conversion_mask />
-      <decimal_symbol />
-      <grouping_symbol />
-      <currency_symbol />
-    </calculation>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>288</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get variables 2</name>
-    <type>GetVariable</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>user_home</name>
-        <variable>${user.home}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>fileconteovehicular</name>
-        <variable>${CONTEO_VEHICULAR_PATH}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified JavaScript value 2</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>N</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-filenameconteovehicular = decodeURI(filenameconteovehicular);
-</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>400</yloc>
+      <xloc>1792</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -939,6 +847,7 @@ filenameconteovehicular = decodeURI(filenameconteovehicular);
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1099,6 +1008,7 @@ filenameconteovehicular = decodeURI(filenameconteovehicular);
         <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1109,6 +1019,62 @@ filenameconteovehicular = decodeURI(filenameconteovehicular);
     <GUI>
       <xloc>1008</xloc>
       <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Calculator 2</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <failIfNoFile>N</failIfNoFile>
+    <calculation>
+      <field_name>carte</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>/Carte/</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>filenameconteovehicular</field_name>
+      <calc_type>ADD3</calc_type>
+      <field_a>user_home</field_a>
+      <field_b>carte</field_b>
+      <field_c>fileconteovehicular</field_c>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1203,6 +1169,7 @@ filenameconteovehicular = decodeURI(filenameconteovehicular);
     <rootUriNameFieldName />
     <extensionFieldName />
     <sizeFieldName />
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1212,6 +1179,64 @@ filenameconteovehicular = decodeURI(filenameconteovehicular);
     </remotesteps>
     <GUI>
       <xloc>608</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Coordinate system operation</name>
+    <type>GisCoordinateTransformation</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <crsOperation>REPROJECT</crsOperation>
+    <geometryFieldName>geom</geometryFieldName>
+    <outputGeometryFieldName>new_geometry</outputGeometryFieldName>
+    <inputCRSAuthority>epsg</inputCRSAuthority>
+    <inputCRSCode>4326</inputCRSCode>
+    <outputCRSAuthority>epsg</outputCRSAuthority>
+    <outputCRSCode>32721</outputCRSCode>
+    <crsFromGeometry>N</crsFromGeometry>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1568</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1680</xloc>
       <yloc>400</yloc>
       <draw>Y</draw>
     </GUI>
@@ -1246,6 +1271,7 @@ filenameconteovehicular = decodeURI(filenameconteovehicular);
         </value>
       </condition>
     </compare>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1260,8 +1286,8 @@ filenameconteovehicular = decodeURI(filenameconteovehicular);
     </GUI>
   </step>
   <step>
-    <name>Modified Java Script Value 2 2</name>
-    <type>ScriptValueMod</type>
+    <name>Get variables 2</name>
+    <type>GetVariable</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -1270,31 +1296,33 @@ filenameconteovehicular = decodeURI(filenameconteovehicular);
       <method>none</method>
       <schema_name />
     </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-var delimiter;
-if (row.indexOf(',') > -1) {
-	delimiter = ",";
-} else if (row.indexOf(';') > -1) {
-	delimiter = ";";
-}</jsScript_script>
-      </jsScript>
-    </jsScripts>
     <fields>
       <field>
-        <name>delimiter</name>
-        <rename>delimiter</rename>
+        <name>user_home</name>
+        <variable>${user.home}</variable>
         <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
         <length>-1</length>
         <precision>-1</precision>
-        <replace>N</replace>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>fileconteovehicular</name>
+        <variable>${CONTEO_VEHICULAR_PATH}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1303,127 +1331,8 @@ if (row.indexOf(',') > -1) {
       </output>
     </remotesteps>
     <GUI>
-      <xloc>752</xloc>
+      <xloc>176</xloc>
       <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified Java Script Value 2 2 2</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var point = 'POINT(' + longitud + ' ' + latitud + ')';</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>point</name>
-        <rename>point</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1360</xloc>
-      <yloc>416</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Coordinate system operation</name>
-    <type>GisCoordinateTransformation</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <crsOperation>ASSIGN</crsOperation>
-    <geometryFieldName>geom</geometryFieldName>
-    <outputGeometryFieldName>new_geometry</outputGeometryFieldName>
-    <inputCRSAuthority>epsg</inputCRSAuthority>
-    <inputCRSCode>32721</inputCRSCode>
-    <outputCRSAuthority />
-    <outputCRSCode />
-    <crsFromGeometry>N</crsFromGeometry>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1568</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values 4 2</name>
-    <type>SelectValues</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <select_unspecified>N</select_unspecified>
-      <meta>
-        <name>point</name>
-        <rename>geom</rename>
-        <type>Geometry</type>
-        <length>-2</length>
-        <precision>-2</precision>
-        <conversion_mask />
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale />
-        <date_format_timezone />
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding />
-        <decimal_symbol />
-        <grouping_symbol />
-        <currency_symbol />
-        <storage_type />
-      </meta>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1472</xloc>
-      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1471,6 +1380,7 @@ if (row.indexOf(',') > -1) {
     </group>
     <fields>
       </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1481,6 +1391,192 @@ if (row.indexOf(',') > -1) {
     <GUI>
       <xloc>1232</xloc>
       <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified Java Script Value 2 2</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+var delimiter;
+if (row.indexOf(',') > -1) {
+	delimiter = ",";
+} else if (row.indexOf(';') > -1) {
+	delimiter = ";";
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>delimiter</name>
+        <rename>delimiter</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified Java Script Value 2 2 2</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var point = 'POINT(' + longitud + ' ' + latitud + ')';
+var dsc_ubicacion = dsc_avenida + " entre " + dsc_int_anterior + " y " + dsc_int_siguiente + ". Carril: " + id_carril;</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>point</name>
+        <rename>point</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>dsc_ubicacion</name>
+        <rename>dsc_ubicacion</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value 2</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+filenameconteovehicular = decodeURI(filenameconteovehicular);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 4 2</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>point</name>
+        <rename>geom</rename>
+        <type>Geometry</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <attributes />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1560,6 +1656,7 @@ if (row.indexOf(',') > -1) {
         <presorted>N</presorted>
       </field>
     </fields>
+    <attributes />
     <cluster_schema />
     <remotesteps>
       <input>
@@ -1573,81 +1670,10 @@ if (row.indexOf(',') > -1) {
       <draw>Y</draw>
     </GUI>
   </step>
-  <step>
-    <name>Actualizar en tabla Camaras</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>db</connection>
-    <commit>1000</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>data</schema>
-      <table>camaras</table>
-      <key>
-        <name>id_detector</name>
-        <field>iddetector</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>iddetector</name>
-        <rename>id_detector</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>idcarril</name>
-        <rename>id_carril</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>dscavenida</name>
-        <rename>dsc_avenida</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>dscintanterior</name>
-        <rename>dsc_int_anterior</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>dscintsiguiente</name>
-        <rename>dsc_int_siguiente</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>dscubicacion</name>
-        <rename>dsc_int_anterior</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>ubiccamara</name>
-        <rename>new_geometry</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1792</xloc>
-      <yloc>432</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
   <step_error_handling>
   </step_error_handling>
   <slave-step-copy-partition-distribution>
   </slave-step-copy-partition-distribution>
   <slave_transformation>N</slave_transformation>
+  <attributes />
 </transformation>
