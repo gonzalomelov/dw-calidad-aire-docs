@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
     <name>CargaCamaras</name>
@@ -8,6 +9,56 @@
     <trans_status>0</trans_status>
     <directory>/</directory>
     <parameters>
+      <parameter>
+        <name>CONTEO_VEHICULAR_PATH</name>
+        <default_value>conteovehicular.csv</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_HOST</name>
+        <default_value>104.237.5.5</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_PASS</name>
+        <default_value>superuserpass</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_PORT</name>
+        <default_value>5432</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>DB_USER</name>
+        <default_value>superuser</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>SFTP_HOST</name>
+        <default_value>104.237.5.5</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>SFTP_PASS</name>
+        <default_value>93765asdflkjsd4123SS</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>SFTP_PORT</name>
+        <default_value>2222</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>SFTP_USER</name>
+        <default_value>admin</default_value>
+        <description />
+      </parameter>
+      <parameter>
+        <name>TMP_DIR</name>
+        <default_value>/Users/Gonza/KONA/proygrad/desktop-apps/data-integration/tmp</default_value>
+        <description />
+      </parameter>
     </parameters>
     <log>
       <trans-log-table>
@@ -423,6 +474,19 @@
     <partitionschemas>
     </partitionschemas>
     <slaveservers>
+      <slaveserver>
+        <name>carte.bieccamvd.com</name>
+        <hostname>104.237.5.5</hostname>
+        <port>8080</port>
+        <webAppName>pentaho</webAppName>
+        <username>admin</username>
+        <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+        <proxy_hostname />
+        <proxy_port />
+        <non_proxy_hosts />
+        <master>Y</master>
+        <sslMode>N</sslMode>
+      </slaveserver>
     </slaveservers>
     <clusterschemas>
     </clusterschemas>
@@ -436,14 +500,14 @@
   <notepads>
   </notepads>
   <connection>
-    <name>data</name>
-    <server>localhost</server>
+    <name>db</name>
+    <server>${DB_HOST}</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>app</database>
-    <port>5432</port>
-    <username>superuser</username>
-    <password>Encrypted 2be98afbb1fd79796be0aab62ce93bcc9</password>
+    <port>${DB_PORT}</port>
+    <username>${DB_USER}</username>
+    <password>${DB_PASS}</password>
     <servername />
     <data_tablespace />
     <index_tablespace />
@@ -462,7 +526,7 @@
       </attribute>
       <attribute>
         <code>PORT_NUMBER</code>
-        <attribute>5432</attribute>
+        <attribute>${DB_PORT}</attribute>
       </attribute>
       <attribute>
         <code>PRESERVE_RESERVED_WORD_CASE</code>
@@ -488,33 +552,248 @@
   </connection>
   <order>
     <hop>
+      <from>Calculator 2</from>
+      <to>Modified JavaScript value 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Get variables 2</from>
+      <to>Calculator 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Conteo Vehicular</from>
+      <to>Modified Java Script Value 2 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows 4</from>
+      <to>CSV Conteo Vehicular 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Filter rows 4</from>
+      <to>CSV Conteo Vehicular 3</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified Java Script Value 2 2</from>
+      <to>Filter rows 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified JavaScript value 2</from>
+      <to>Conteo Vehicular</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Modified Java Script Value 2 2 2</from>
+      <to>Select values 4 2</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Select values 4 2</from>
+      <to>Coordinate system operation</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
       <from>Sort rows 4</from>
       <to>Group by 3</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>CSV Conteo Vehicular</from>
+      <from>CSV Conteo Vehicular 2</from>
+      <to>Sort rows 4</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>CSV Conteo Vehicular 3</from>
       <to>Sort rows 4</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
       <from>Group by 3</from>
-      <to>Dummy (do nothing)</to>
-      <enabled>N</enabled>
-    </hop>
-    <hop>
-      <from>Group by 3</from>
-      <to>Geoprocessing</to>
+      <to>Modified Java Script Value 2 2 2</to>
       <enabled>Y</enabled>
     </hop>
     <hop>
-      <from>Geoprocessing</from>
-      <to>Insert Camaras</to>
+      <from>Dummy (do nothing)</from>
+      <to>Actualizar en tabla Camaras</to>
+      <enabled>Y</enabled>
+    </hop>
+    <hop>
+      <from>Coordinate system operation</from>
+      <to>Dummy (do nothing)</to>
       <enabled>Y</enabled>
     </hop>
   </order>
   <step>
-    <name>CSV Conteo Vehicular</name>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1680</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Calculator 2</name>
+    <type>Calculator</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <calculation>
+      <field_name>carte</field_name>
+      <calc_type>CONSTANT</calc_type>
+      <field_a>/Carte/</field_a>
+      <field_b />
+      <field_c />
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <calculation>
+      <field_name>filenameconteovehicular</field_name>
+      <calc_type>ADD3</calc_type>
+      <field_a>user_home</field_a>
+      <field_b>carte</field_b>
+      <field_c>fileconteovehicular</field_c>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <remove>N</remove>
+      <conversion_mask />
+      <decimal_symbol />
+      <grouping_symbol />
+      <currency_symbol />
+    </calculation>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>288</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Get variables 2</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>user_home</name>
+        <variable>${user.home}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>fileconteovehicular</name>
+        <variable>${CONTEO_VEHICULAR_PATH}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value 2</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>N</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+
+filenameconteovehicular = decodeURI(filenameconteovehicular);
+</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>CSV Conteo Vehicular 2</name>
     <type>CsvInput</type>
     <description />
     <distribute>Y</distribute>
@@ -524,8 +803,8 @@
       <method>none</method>
       <schema_name />
     </partitioning>
-    <filename>${user.home}/Carte/autoscope_feb_2018.csv</filename>
-    <filename_field>/Users/gonzalomelo/Kona/proy-grad/Proyecto Calidad del Aire/1. Archivos fuentes/red-de-monitoreo-de-la-calidad-del-aire-de-montevideo-7-09-2017/aire-datos-historicos/CV_PM10 2014.csv</filename_field>
+    <filename>${user.home}/Carte/${CONTEO_VEHICULAR}</filename>
+    <filename_field>fieldname</filename_field>
     <rownum_field />
     <include_filename>N</include_filename>
     <separator>,</separator>
@@ -668,8 +947,483 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>432</xloc>
-      <yloc>192</yloc>
+      <xloc>1008</xloc>
+      <yloc>368</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>CSV Conteo Vehicular 3</name>
+    <type>CsvInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <filename>${user.home}/Carte/${CONTEO_VEHICULAR}</filename>
+    <filename_field>fieldname</filename_field>
+    <rownum_field />
+    <include_filename>N</include_filename>
+    <separator>;</separator>
+    <enclosure />
+    <header>Y</header>
+    <buffer_size>50000</buffer_size>
+    <lazy_conversion>Y</lazy_conversion>
+    <add_filename_result>N</add_filename_result>
+    <parallel>N</parallel>
+    <newline_possible>N</newline_possible>
+    <encoding />
+    <fields>
+      <field>
+        <name>id_detector</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>id_carril</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>fecha</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>hora</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>dsc_avenida</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>dsc_int_anterior</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>dsc_int_siguiente</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>latitud</name>
+        <type>Number</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>longitud</name>
+        <type>Number</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>volumen</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>volumen_hora</name>
+        <type>Integer</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1008</xloc>
+      <yloc>464</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Conteo Vehicular</name>
+    <type>TextFileInput</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <accept_filenames>Y</accept_filenames>
+    <passing_through_fields>N</passing_through_fields>
+    <accept_field>filenameconteovehicular</accept_field>
+    <accept_stepname>Modified JavaScript value 2</accept_stepname>
+    <separator />
+    <enclosure>"</enclosure>
+    <enclosure_breaks>N</enclosure_breaks>
+    <escapechar />
+    <header>N</header>
+    <nr_headerlines>1</nr_headerlines>
+    <footer>N</footer>
+    <nr_footerlines>1</nr_footerlines>
+    <line_wrapped>N</line_wrapped>
+    <nr_wraps>1</nr_wraps>
+    <layout_paged>N</layout_paged>
+    <nr_lines_per_page>80</nr_lines_per_page>
+    <nr_lines_doc_header>0</nr_lines_doc_header>
+    <noempty>Y</noempty>
+    <include>Y</include>
+    <include_field>fieldname</include_field>
+    <rownum>N</rownum>
+    <rownumByFile>N</rownumByFile>
+    <rownum_field />
+    <format>mixed</format>
+    <encoding />
+    <length>Characters</length>
+    <add_to_result_filenames>Y</add_to_result_filenames>
+    <file>
+      <name />
+      <filemask />
+      <exclude_filemask />
+      <file_required>N</file_required>
+      <include_subfolders>N</include_subfolders>
+      <type>Fixed</type>
+      <compression>None</compression>
+    </file>
+    <filters>
+    </filters>
+    <fields>
+      <field>
+        <name>row</name>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <nullif />
+        <ifnull />
+        <position>0</position>
+        <length>180</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+        <repeat>N</repeat>
+      </field>
+    </fields>
+    <limit>1</limit>
+    <error_ignored>N</error_ignored>
+    <skip_bad_files>N</skip_bad_files>
+    <file_error_field />
+    <file_error_message_field />
+    <error_line_skipped>N</error_line_skipped>
+    <error_count_field />
+    <error_fields_field />
+    <error_text_field />
+    <bad_line_files_destination_directory />
+    <bad_line_files_extension>warning</bad_line_files_extension>
+    <error_line_files_destination_directory />
+    <error_line_files_extension>error</error_line_files_extension>
+    <line_number_files_destination_directory />
+    <line_number_files_extension>line</line_number_files_extension>
+    <date_format_lenient>Y</date_format_lenient>
+    <date_format_locale>en_US</date_format_locale>
+    <shortFileFieldName />
+    <pathFieldName />
+    <hiddenFieldName />
+    <lastModificationTimeFieldName />
+    <uriNameFieldName />
+    <rootUriNameFieldName />
+    <extensionFieldName />
+    <sizeFieldName />
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>608</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Filter rows 4</name>
+    <type>FilterRows</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <send_true_to>CSV Conteo Vehicular 2</send_true_to>
+    <send_false_to>CSV Conteo Vehicular 3</send_false_to>
+    <compare>
+      <condition>
+        <negated>N</negated>
+        <leftvalue>delimiter</leftvalue>
+        <function>=</function>
+        <rightvalue />
+        <value>
+          <name>constant</name>
+          <type>String</type>
+          <text>,</text>
+          <length>-1</length>
+          <precision>-1</precision>
+          <isnull>N</isnull>
+          <mask />
+        </value>
+      </condition>
+    </compare>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>880</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified Java Script Value 2 2</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>//Script here
+var delimiter;
+if (row.indexOf(',') > -1) {
+	delimiter = ",";
+} else if (row.indexOf(';') > -1) {
+	delimiter = ";";
+}</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>delimiter</name>
+        <rename>delimiter</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>752</xloc>
+      <yloc>400</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified Java Script Value 2 2 2</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var point = 'POINT(' + longitud + ' ' + latitud + ')';</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>point</name>
+        <rename>point</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1360</xloc>
+      <yloc>416</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Coordinate system operation</name>
+    <type>GisCoordinateTransformation</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <crsOperation>ASSIGN</crsOperation>
+    <geometryFieldName>geom</geometryFieldName>
+    <outputGeometryFieldName>new_geometry</outputGeometryFieldName>
+    <inputCRSAuthority>epsg</inputCRSAuthority>
+    <inputCRSCode>32721</inputCRSCode>
+    <outputCRSAuthority />
+    <outputCRSCode />
+    <crsFromGeometry>N</crsFromGeometry>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1568</xloc>
+      <yloc>432</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values 4 2</name>
+    <type>SelectValues</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <select_unspecified>N</select_unspecified>
+      <meta>
+        <name>point</name>
+        <rename>geom</rename>
+        <type>Geometry</type>
+        <length>-2</length>
+        <precision>-2</precision>
+        <conversion_mask />
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale />
+        <date_format_timezone />
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding />
+        <decimal_symbol />
+        <grouping_symbol />
+        <currency_symbol />
+        <storage_type />
+      </meta>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1472</xloc>
+      <yloc>384</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -725,80 +1479,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>656</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert Camaras</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>data</connection>
-    <commit>100</commit>
-    <update_bypassed>Y</update_bypassed>
-    <lookup>
-      <schema>data</schema>
-      <table>camaras</table>
-      <key>
-        <name>id_detector</name>
-        <field>iddetector</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>iddetector</name>
-        <rename>id_detector</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>idcarril</name>
-        <rename>id_carril</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>dscavenida</name>
-        <rename>dsc_avenida</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>dscintanterior</name>
-        <rename>dsc_int_anterior</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>dscintsiguiente</name>
-        <rename>dsc_int_siguiente</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>dscubicacion</name>
-        <rename>dscubicacion</rename>
-        <update>Y</update>
-      </value>
-      <value>
-        <name>ubiccamara</name>
-        <rename>ubiccamara</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>896</xloc>
-      <yloc>192</yloc>
+      <xloc>1232</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -886,14 +1568,14 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>560</xloc>
-      <yloc>192</yloc>
+      <xloc>1136</xloc>
+      <yloc>416</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
   <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
+    <name>Actualizar en tabla Camaras</name>
+    <type>InsertUpdate</type>
     <description />
     <distribute>Y</distribute>
     <custom_distribution />
@@ -902,6 +1584,54 @@
       <method>none</method>
       <schema_name />
     </partitioning>
+    <connection>db</connection>
+    <commit>1000</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>data</schema>
+      <table>camaras</table>
+      <key>
+        <name>id_detector</name>
+        <field>iddetector</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>iddetector</name>
+        <rename>id_detector</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>idcarril</name>
+        <rename>id_carril</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>dscavenida</name>
+        <rename>dsc_avenida</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>dscintanterior</name>
+        <rename>dsc_int_anterior</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>dscintsiguiente</name>
+        <rename>dsc_int_siguiente</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>dscubicacion</name>
+        <rename>dsc_int_anterior</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>ubiccamara</name>
+        <rename>new_geometry</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
     <cluster_schema />
     <remotesteps>
       <input>
@@ -910,77 +1640,8 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>800</xloc>
-      <yloc>272</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Geoprocessing</name>
-    <type>GisGeoprocessing</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <operator>INTERIOR_POINT</operator>
-    <returnType>ALL</returnType>
-    <extractType>ALL</extractType>
-    <firstGeometryFieldName />
-    <secondGeometryFieldName />
-    <dynamicDistance>N</dynamicDistance>
-    <distanceFieldName />
-    <distanceValue />
-    <outputFieldName />
-    <bufferSegmentsCount>8</bufferSegmentsCount>
-    <bufferSingleSide>N</bufferSingleSide>
-    <bufferCapStyle>ROUND</bufferCapStyle>
-    <bufferJoinStyle>ROUND</bufferJoinStyle>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>784</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Spatial relationship and proximity</name>
-    <type>GisRelate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <operator>CONTAINS</operator>
-    <returnType>ALL</returnType>
-    <firstGeometryFieldName />
-    <secondGeometryFieldName />
-    <dynamicDistance>N</dynamicDistance>
-    <distanceFieldName />
-    <distanceValue />
-    <outputFieldName />
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>368</yloc>
+      <xloc>1792</xloc>
+      <yloc>432</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
