@@ -657,7 +657,7 @@
     </partitioning>
     <valuename>cant_dias</valuename>
     <use_database>N</use_database>
-    <connection>dwcalidadaire-final</connection>
+    <connection />
     <schema />
     <seqname>SEQ_</seqname>
     <use_counter>Y</use_counter>
@@ -675,6 +675,30 @@
     <GUI>
       <xloc>208</xloc>
       <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Dummy (do nothing)</name>
+    <type>Dummy</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1312</xloc>
+      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -740,13 +764,13 @@
         <currency />
         <decimal />
         <group />
-        <nullif>2017-11-01</nullif>
+        <nullif>2017-01-01</nullif>
         <length>-1</length>
         <precision>-1</precision>
         <set_empty_string>N</set_empty_string>
       </field>
     </fields>
-    <limit>1</limit>
+    <limit>1000</limit>
     <never_ending>N</never_ending>
     <interval_in_ms>5000</interval_in_ms>
     <row_time_field>now</row_time_field>
@@ -855,6 +879,128 @@
     </GUI>
   </step>
   <step>
+    <name>Get variables</name>
+    <type>GetVariable</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <fields>
+      <field>
+        <name>PATH</name>
+        <variable>${PATH}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>REPORT_OUTPUT_NAME</name>
+        <variable>${REPORT_OUTPUT_NAME}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>SFTP_HOST</name>
+        <variable>${SFTP_HOST}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>SFTP_PORT</name>
+        <variable>${SFTP_PORT}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>SFTP_USER</name>
+        <variable>${SFTP_USER}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>SFTP_PASS</name>
+        <variable>${SFTP_PASS}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>SFTP_FOLDER</name>
+        <variable>${SFTP_FOLDER}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+      <field>
+        <name>FILESTASH_URL</name>
+        <variable>${FILESTASH_URL}</variable>
+        <type>String</type>
+        <format />
+        <currency />
+        <decimal />
+        <group />
+        <length>-1</length>
+        <precision>-1</precision>
+        <trim_type>none</trim_type>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>128</xloc>
+      <yloc>160</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>HTML to XML</name>
     <type>Html2Xml</type>
     <description />
@@ -957,6 +1103,64 @@
     </GUI>
   </step>
   <step>
+    <name>Insert / Update</name>
+    <type>InsertUpdate</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <connection>db</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema>staging</schema>
+      <table>generaciontermica_mwh</table>
+      <key>
+        <name>idFecha</name>
+        <field>idFecha</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <key>
+        <name>idindustria</name>
+        <field>idindustria</field>
+        <condition>=</condition>
+        <name2 />
+      </key>
+      <value>
+        <name>idFecha</name>
+        <rename>idFecha</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>idindustria</name>
+        <rename>idindustria</rename>
+        <update>N</update>
+      </value>
+      <value>
+        <name>energiagenerada</name>
+        <rename>energiagenerada</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1424</xloc>
+      <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Merge Join 5</name>
     <type>MergeJoin</type>
     <description />
@@ -986,6 +1190,58 @@
     <GUI>
       <xloc>1200</xloc>
       <yloc>224</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Modified JavaScript value</name>
+    <type>ScriptValueMod</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>
+      <jsScript>
+        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>var Separator = "/";
+var Report_Output = PATH + Separator + REPORT_OUTPUT_NAME;</jsScript_script>
+      </jsScript>
+    </jsScripts>
+    <fields>
+      <field>
+        <name>Separator</name>
+        <rename>Separator</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+      <field>
+        <name>Report_Output</name>
+        <rename>Report_Output</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>
+    </fields>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>160</xloc>
+      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1027,6 +1283,52 @@
     </GUI>
   </step>
   <step>
+    <name>SFTP put</name>
+    <type>SFTPPut</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <servername>${SFTP_HOST}</servername>
+    <serverport>${SFTP_PORT}</serverport>
+    <username>${SFTP_USER}</username>
+    <password>${SFTP_PASS}</password>
+    <sourceFileFieldName>Report_Output</sourceFileFieldName>
+    <remoteDirectoryFieldName>SFTP_FOLDER</remoteDirectoryFieldName>
+    <inputIsStream>N</inputIsStream>
+    <addFilenameResut>N</addFilenameResut>
+    <usekeyfilename>N</usekeyfilename>
+    <keyfilename />
+    <keyfilepass>Encrypted </keyfilepass>
+    <compression>none</compression>
+    <proxyType />
+    <proxyHost />
+    <proxyPort />
+    <proxyUsername />
+    <proxyPassword>Encrypted </proxyPassword>
+    <createRemoteFolder>N</createRemoteFolder>
+    <aftersftpput>delete</aftersftpput>
+    <destinationfolderFieldName />
+    <createdestinationfolder>N</createdestinationfolder>
+    <remoteFilenameFieldName>REPORT_OUTPUT_NAME</remoteFilenameFieldName>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>1520</xloc>
+      <yloc>144</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Select values</name>
     <type>SelectValues</type>
     <description />
@@ -1040,51 +1342,39 @@
     <fields>
       <field>
         <name>DimensionDate</name>
-        <rename />
       </field>
       <field>
         <name>central</name>
-        <rename />
       </field>
       <field>
         <name>valueStrCommas</name>
-        <rename />
       </field>
       <field>
         <name>idFecha</name>
-        <rename />
       </field>
       <field>
         <name>REPORT_OUTPUT_NAME</name>
-        <rename />
       </field>
       <field>
         <name>SFTP_HOST</name>
-        <rename />
       </field>
       <field>
         <name>SFTP_PORT</name>
-        <rename />
       </field>
       <field>
         <name>SFTP_USER</name>
-        <rename />
       </field>
       <field>
         <name>SFTP_PASS</name>
-        <rename />
       </field>
       <field>
         <name>SFTP_FOLDER</name>
-        <rename />
       </field>
       <field>
         <name>FILESTASH_URL</name>
-        <rename />
       </field>
       <field>
         <name>Report_Output</name>
-        <rename />
       </field>
       <select_unspecified>N</select_unspecified>
       <meta>
@@ -1226,6 +1516,46 @@
     </GUI>
   </step>
   <step>
+    <name>Setear Fecha 2</name>
+    <type>Formula</type>
+    <description />
+    <distribute>Y</distribute>
+    <custom_distribution />
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name />
+    </partitioning>
+    <formula>
+      <field_name>URL</field_name>
+      <formula_string>"https://adme.com.uy/mmee/pdf/informes/postoper/PostOper/" &amp; [Year] &amp; "/" &amp; IF([Month]&lt;10;"0" &amp; [Month];[Month]) &amp; "/" &amp; IF([Day]&lt;10;"0" &amp; [Day];[Day]) &amp; "/index.html"</formula_string>
+      <value_type>String</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <formula>
+      <field_name>idFecha</field_name>
+      <formula_string>[Year]*10000+[Month]*100+[Day]</formula_string>
+      <value_type>Integer</value_type>
+      <value_length>-1</value_length>
+      <value_precision>-1</value_precision>
+      <replace_field />
+    </formula>
+    <cluster_schema />
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>448</xloc>
+      <yloc>208</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
     <name>Sort rows 4</name>
     <type>SortRows</type>
     <description />
@@ -1267,46 +1597,6 @@
     </GUI>
   </step>
   <step>
-    <name>Setear Fecha 2</name>
-    <type>Formula</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <formula>
-      <field_name>URL</field_name>
-      <formula_string>"https://adme.com.uy/mmee/pdf/informes/postoper/PostOper/" &amp; [Year] &amp; "/" &amp; IF([Month]&lt;10;"0" &amp; [Month];[Month]) &amp; "/" &amp; IF([Day]&lt;10;"0" &amp; [Day];[Day]) &amp; "/index.html"</formula_string>
-      <value_type>String</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field />
-    </formula>
-    <formula>
-      <field_name>idFecha</field_name>
-      <formula_string>[Year]*10000+[Month]*100+[Day]</formula_string>
-      <value_type>Integer</value_type>
-      <value_length>-1</value_length>
-      <value_precision>-1</value_precision>
-      <replace_field />
-    </formula>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>448</xloc>
-      <yloc>208</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
     <name>Sort rows 4 2</name>
     <type>SortRows</type>
     <description />
@@ -1344,88 +1634,6 @@
     <GUI>
       <xloc>1088</xloc>
       <yloc>176</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Dummy (do nothing)</name>
-    <type>Dummy</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1312</xloc>
-      <yloc>224</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Insert / Update</name>
-    <type>InsertUpdate</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <connection>db</connection>
-    <commit>100</commit>
-    <update_bypassed>N</update_bypassed>
-    <lookup>
-      <schema>staging</schema>
-      <table>generaciontermica_mwh</table>
-      <key>
-        <name>idFecha</name>
-        <field>idFecha</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <key>
-        <name>idindustria</name>
-        <field>idindustria</field>
-        <condition>=</condition>
-        <name2 />
-      </key>
-      <value>
-        <name>idFecha</name>
-        <rename>idFecha</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>idindustria</name>
-        <rename>idindustria</rename>
-        <update>N</update>
-      </value>
-      <value>
-        <name>energiagenerada</name>
-        <rename>energiagenerada</rename>
-        <update>Y</update>
-      </value>
-    </lookup>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1424</xloc>
-      <yloc>224</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1519,226 +1727,6 @@
     <GUI>
       <xloc>1408</xloc>
       <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>SFTP put</name>
-    <type>SFTPPut</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <servername>${SFTP_HOST}</servername>
-    <serverport>${SFTP_PORT}</serverport>
-    <username>${SFTP_USER}</username>
-    <password>${SFTP_PASS}</password>
-    <sourceFileFieldName>Report_Output</sourceFileFieldName>
-    <remoteDirectoryFieldName>SFTP_FOLDER</remoteDirectoryFieldName>
-    <inputIsStream>N</inputIsStream>
-    <addFilenameResut>N</addFilenameResut>
-    <usekeyfilename>N</usekeyfilename>
-    <keyfilename />
-    <keyfilepass>Encrypted </keyfilepass>
-    <compression>none</compression>
-    <proxyType />
-    <proxyHost />
-    <proxyPort />
-    <proxyUsername />
-    <proxyPassword>Encrypted </proxyPassword>
-    <createRemoteFolder>N</createRemoteFolder>
-    <aftersftpput>delete</aftersftpput>
-    <destinationfolderFieldName />
-    <createdestinationfolder>N</createdestinationfolder>
-    <remoteFilenameFieldName>REPORT_OUTPUT_NAME</remoteFilenameFieldName>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>1520</xloc>
-      <yloc>144</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Get variables</name>
-    <type>GetVariable</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <fields>
-      <field>
-        <name>PATH</name>
-        <variable>${PATH}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>REPORT_OUTPUT_NAME</name>
-        <variable>${REPORT_OUTPUT_NAME}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SFTP_HOST</name>
-        <variable>${SFTP_HOST}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SFTP_PORT</name>
-        <variable>${SFTP_PORT}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SFTP_USER</name>
-        <variable>${SFTP_USER}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SFTP_PASS</name>
-        <variable>${SFTP_PASS}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>SFTP_FOLDER</name>
-        <variable>${SFTP_FOLDER}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>FILESTASH_URL</name>
-        <variable>${FILESTASH_URL}</variable>
-        <type>String</type>
-        <format />
-        <currency />
-        <decimal />
-        <group />
-        <length>-1</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>128</xloc>
-      <yloc>160</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Modified JavaScript value</name>
-    <type>ScriptValueMod</type>
-    <description />
-    <distribute>Y</distribute>
-    <custom_distribution />
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name />
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>var Separator = "/";
-var Report_Output = PATH + Separator + REPORT_OUTPUT_NAME;</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>Separator</name>
-        <rename>Separator</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-      <field>
-        <name>Report_Output</name>
-        <rename>Report_Output</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>
-    </fields>
-    <cluster_schema />
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>160</xloc>
-      <yloc>288</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
